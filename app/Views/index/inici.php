@@ -1,0 +1,1 @@
+<?= $this->extend('layouts/index') ?>
