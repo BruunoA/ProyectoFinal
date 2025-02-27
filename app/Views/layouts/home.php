@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Index</title>
+    <title>Home</title>
     <link rel="stylesheet" href="<?php // base_url('el_meu_estil/burlywood.css') ?>">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>

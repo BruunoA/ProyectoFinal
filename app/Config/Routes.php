@@ -7,4 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+$routes->get('home', 'IndexController::home');
 $routes->get('index', 'IndexController::index');
+
