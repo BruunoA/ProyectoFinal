@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 <footer style="background-color: black; color: white; padding: 2rem 0; text-align: center;">
     <div>
         <h3>Xarxes socials</h3>
