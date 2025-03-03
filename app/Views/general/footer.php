@@ -1,9 +1,9 @@
 <footer style="background-color: black; color: white; padding: 2rem 0; text-align: center;">
     <div>
         <h3>Xarxes socials</h3>
-        <img src="<?= base_url('img/x.jpg') ?>" alt="">
-        <img src="<?= base_url('img/facebook.png') ?>" alt="">
-        <img src="<?= base_url('img/instagram.png') ?>" alt="">
+        <img src="<?= base_url('assets/img/x.jpg') ?>" alt="">
+        <img src="<?= base_url('assets/img/facebook.png') ?>" alt="">
+        <img src="<?= base_url('assets/img/instagram.png') ?>" alt="">
     </div>
     <div>
         <a href="<?= base_url('/') ?>">Inici</a>

@@ -2,7 +2,7 @@
 
 <?= $this->section('menu') ?>
 
-<link rel="stylesheet" href="<?= base_url('css/classificacio.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/classificacio.css'); ?>">
 
 <div class="w3-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
     <?php foreach ($resultats as $resultat): ?>
