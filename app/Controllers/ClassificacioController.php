@@ -16,8 +16,8 @@ class ClassificacioController extends BaseController
                 ['equip_v' => 'Balaguer', 'equip_l' => 'Alpicat', 'gols_v' => 2, 'gols_l' => 2],
             ],
             'taula' => [
-                ['posicio' => 1, 'equip' => 'Alpicat', 'punts' => 30, 'partits_jugats' => 7, 'partits_guanyats' => 6, 'partits_empatats' => 1, 'partits_perduts' => 0, 'gols_favor' => 18, 'gols_en_contra' => 3, 'diferencia_gols' => 15],
-                ['posicio' => 2, 'equip' => 'Lleida', 'punts' => 28, 'partits_jugats' => 7, 'partits_guanyats' => 5, 'partits_empatats' => 2, 'partits_perduts' => 0, 'gols_favor' => 14, 'gols_en_contra' => 5, 'diferencia_gols' => 9],
+                ['posicio' => 1, 'equip' => 'Alpicat', 'punts' => 30, 'pj' => 7, 'pg' => 6, 'pe' => 1, 'pp' => 0, 'gf' => 18, 'gc' => 3, 'dg' => 15],
+                ['posicio' => 2, 'equip' => 'Lleida', 'punts' => 28, 'pj' => 7, 'pg' => 5, 'pe' => 2, 'pp' => 0, 'gf' => 14, 'gc' => 5, 'dg' => 9],
             ],
         ];        
 

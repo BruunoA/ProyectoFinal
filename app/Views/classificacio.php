@@ -44,13 +44,13 @@
             <td><?= esc($equip['posicio']) ?></td>
             <td><?= esc($equip['equip']) ?></td>
             <td><?= esc($equip['punts']) ?></td>
-            <td><?= esc($equip['partits_jugats']) ?></td>
-            <td><?= esc($equip['partits_guanyats']) ?></td>
-            <td><?= esc($equip['partits_empatats']) ?></td>
-            <td><?= esc($equip['partits_perduts']) ?></td>
-            <td><?= esc($equip['gols_favor']) ?></td>
-            <td><?= esc($equip['gols_en_contra']) ?></td>
-            <td><?= esc($equip['diferencia_gols']) ?></td>
+            <td><?= esc($equip['pj']) ?></td>
+            <td><?= esc($equip['pg']) ?></td>
+            <td><?= esc($equip['pe']) ?></td>
+            <td><?= esc($equip['pp']) ?></td>
+            <td><?= esc($equip['gf']) ?></td>
+            <td><?= esc($equip['gc']) ?></td>
+            <td><?= esc($equip['dg']) ?></td>
         </tr>
 <?php endforeach; ?>
     </table>
