@@ -1,9 +1,15 @@
-<?= $this->extend('layouts/main') ?>
-
-<?= $this->section('menu') ?>
-
-<link rel="stylesheet" href="<?= base_url('assets/css/classificacio.css'); ?>">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/classificacio.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+    <title>Classificacio</title>
+</head>
+<body>
+<?= $this->include('general/menu'); ?>
 <div class="w3-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
     <?php foreach ($resultats as $resultat): ?>
         <div class="w3-card-4" style="width: 30%;">
@@ -55,5 +61,6 @@
 <?php endforeach; ?>
     </table>
 </div>
-
-<?= $this->endSection() ?>
+<?= $this->include('general/footer'); ?>
+</body>
+</html>
