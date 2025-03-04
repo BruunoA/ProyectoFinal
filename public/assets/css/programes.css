@@ -1,0 +1,18 @@
+
+#Programes h3 {
+    padding-left: 1rem;
+    background-color: rgb(165, 0, 0);
+    color: white;
+    width: 20%;
+    margin-left: 3%;
+    border-radius: 8px;
+}
+
+#Horario .horario {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
