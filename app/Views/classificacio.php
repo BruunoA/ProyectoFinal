@@ -12,7 +12,7 @@
 <?= $this->include('general/menu'); ?>
 <div class="w3-container" style="display: flex; justify-content: center; gap: 1rem;">
     <?php foreach ($resultats as $resultat): ?>
-        <div class="w3-card" style="width: 30%;">
+        <div style="width: 30%;">
             <div class="w3-container w3-black w3-center w3-padding-16" style="border-radius: 8px; margin-top:1rem">
                 <h1 class="w3-xlarge w3-margin-bottom">Resultat</h1>
                 <div class="w3-row w3-margin-bottom">
