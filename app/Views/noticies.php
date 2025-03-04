@@ -18,7 +18,7 @@
     <div class="w3-row-padding" style="margin-top: 2rem;">
       <div class="w3-col l6 m6 s10 main-news">
         <?php for ($i = 0; $i < 6; $i++): ?>
-        <div class="w3-card news-card">
+        <div class="w3-card news-card" style="display:flex; flex-direction: column;">
           <a href="noticiaGrande.html"><img src="<?= base_url('assets/img/noticia.jpeg'); ?>" style="width:100%"></a>
           <div class="w3-container news-container">
             <h5><strong>5 Terre</strong></h5>
