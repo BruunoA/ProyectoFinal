@@ -1,0 +1,34 @@
+div.absolute {
+    position: absolute;
+    top: 11rem;
+    right: 0;
+    left: 55%;
+    border: 3px solid #73AD21;
+    padding: 1rem;
+    background-color: #f1f1f1;
+  }
+
+  .main-news {
+    height: 100%;
+  }
+
+  .news-card {
+    margin-bottom: 1rem;
+  }
+
+  .news-img {
+    width: 100%;
+  }
+
+  .news-container {
+    padding: 15px;
+  }
+
+  .w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .news-card {
+    height: 100%;
+  }

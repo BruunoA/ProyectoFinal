@@ -10,7 +10,7 @@
 <body>
 <?= $this->include('general/menu'); ?>
 
-<div class="w3-container" style="margin-top: 2rem;">
+<div class="w3-container" style="margin-top: 2rem; margin-bottom: 2rem;">
     <div class="w3-container w3-teal">
         <h1 style="text-align: center;">Galeria</h1>
     </div>
