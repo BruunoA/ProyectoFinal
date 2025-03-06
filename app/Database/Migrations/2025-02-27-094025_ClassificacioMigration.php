@@ -11,15 +11,9 @@ class ClassificacioMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'logo'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
-            ],
-            'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
@@ -52,8 +46,8 @@ class ClassificacioMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('classificacio');
         $this->forge->addForeignKey('nom', 'albums', 'id');
+        $this->forge->createTable('classificacio');
     }
 
     public function down()

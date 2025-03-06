@@ -11,18 +11,16 @@ class BannerMigration extends Migration
         $this->forge->addField([
             'id'    => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'text'  => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 
-                'null'           => false,
             ],
             'boto'  => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255,
-                'null'           => false,
+                'null'           => true,   
             ],
             'img'   => [
                 'type'           => 'VARCHAR',

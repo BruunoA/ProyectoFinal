@@ -11,7 +11,6 @@ class StaffMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -30,8 +29,8 @@ class StaffMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('staff');
         $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->createTable('staff');
     }
 
     public function down()

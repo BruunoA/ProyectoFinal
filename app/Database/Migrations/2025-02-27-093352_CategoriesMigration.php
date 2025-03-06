@@ -11,7 +11,6 @@ class CategoriesMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'titol'          => [
@@ -36,8 +35,8 @@ class CategoriesMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('categories');
         $this->forge->addForeignKey('descripcio', 'equips', 'id');
+        $this->forge->createTable('categories');
     }
 
     public function down()

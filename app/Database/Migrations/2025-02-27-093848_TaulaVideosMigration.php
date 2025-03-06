@@ -11,7 +11,6 @@ class TaulaVideosMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'enllaç'          => [
@@ -21,12 +20,12 @@ class TaulaVideosMigration extends Migration
             ],
             'id_album'          => [
                 'type'           => 'INT',
-                'null'           => false,
+                'null'           => true,
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('taula_videos');
         $this->forge->addForeignKey('id_album', 'albums', 'id');
+        $this->forge->createTable('taula_videos');
     }
 
     public function down()

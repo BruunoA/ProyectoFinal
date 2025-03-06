@@ -11,7 +11,6 @@ class ContacteMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -50,6 +49,7 @@ class ContacteMigration extends Migration
             ],
             'id_tag'          => [
                 'type'           => 'INT',
+                'null'           => false,
             ],
             'id_assumpte'          => [
                 'type'           => 'INT',

@@ -11,7 +11,6 @@ class JugadorsMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -34,8 +33,8 @@ class JugadorsMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('jugadors');
         $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->createTable('jugadors');
     }
 
     public function down()

@@ -11,7 +11,6 @@ class MenuMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -28,8 +27,9 @@ class MenuMigration extends Migration
                 'type'           => 'INT',
             ],
             'visibilitat'          => [
-                'type'           => 'INT',
-                'null'           => false,
+                'type'           => 'TINYINT',
+                'visible'        => 'TINYINT',
+                'default'        => true,       // TODO: ACABAR DE VEURE COM SERIA
             ],
             'ordre'          => [
                 'type'           => 'INT',

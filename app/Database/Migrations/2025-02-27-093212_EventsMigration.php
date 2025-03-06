@@ -11,7 +11,6 @@ class EventsMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -36,6 +35,7 @@ class EventsMigration extends Migration
             ],
             'id_tag'          => [
                 'type'           => 'INT',
+                'null'           => false,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -49,9 +49,9 @@ class EventsMigration extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('events');
         $this->forge->addForeignKey('tipus_event', 'equips', 'id');
         $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->createTable('events');
     }
 
     public function down()
