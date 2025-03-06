@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-<footer style="background-color: black; color: white; padding: 2rem 0; text-align: center; margin:1.5rem">
+<footer style="background-color: black; color: white; padding: 2rem 0; text-align: center;">
     <div>
         <h3>Xarxes socials</h3>
         <img src="<?= base_url('assets/img/x.jpg') ?>" alt="">
