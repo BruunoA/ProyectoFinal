@@ -33,3 +33,5 @@ class EquipsMigration extends Migration
         $this->forge->dropTable('equips');
     }
 }
+
+

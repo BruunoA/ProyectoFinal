@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JugadorsMigration extends Migration
+class StaffMigration extends Migration
 {
     public function up()
     {
@@ -18,27 +18,23 @@ class JugadorsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'id_equip'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
-            'dorsal'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
-            'posicio'          => [
+            'carrec'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 
+                'null'           => false,
+            ],
+            'id_equip'          => [
+                'type'           => 'INT',
                 'null'           => false,
             ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_equip', 'equips', 'id');
-        $this->forge->createTable('jugadors');
+        $this->forge->createTable('staff');
     }
 
     public function down()
     {
-        $this->forge->dropTable('jugadors');
+        $this->forge->dropTable('staff');
     }
 }

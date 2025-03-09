@@ -18,11 +18,6 @@ class EventsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'tipus_event'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
-            ],
             'publicated_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,
@@ -33,10 +28,6 @@ class EventsMigration extends Migration
                 'null'           => true,
                 'default'        => null,
             ],
-            'id_tag'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -46,11 +37,18 @@ class EventsMigration extends Migration
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
                 'default'    =>  null,
-            ]
+            ],
+            'tipus_event'          => [
+                'type'           => 'int',
+            ],
+            'id_tag'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('tipus_event', 'equips', 'id');
-        $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        // $this->forge->addForeignKey('tipus_event', 'equips', 'id');
+        // $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('events');
     }
 

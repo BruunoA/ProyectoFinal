@@ -20,11 +20,11 @@ class TagMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('tag');
+        $this->forge->createTable('tags');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tag');
+        $this->forge->dropTable('tags');
     }
 }

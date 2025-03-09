@@ -44,9 +44,13 @@ class ClassificacioMigration extends Migration
             'gc'          => [
                 'type'           => 'INT',
             ],
+            'id_album'         => [
+                'type'           => 'int',
+                'null'           => true,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('nom', 'albums', 'id');
+        $this->forge->addForeignKey('id_album', 'albums', 'id');
         $this->forge->createTable('classificacio');
     }
 
