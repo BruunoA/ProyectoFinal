@@ -44,7 +44,7 @@ class ClassificacioMigration extends Migration
             'gc'          => [
                 'type'           => 'INT',
             ],
-            'id_album'         => [
+            'id_album'         => [             // TODO: LOGOS?
                 'type'           => 'int',
                 'null'           => true,
             ],

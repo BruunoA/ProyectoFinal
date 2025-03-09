@@ -22,9 +22,13 @@ class TaulaVideosMigration extends Migration
                 'type'           => 'INT',
                 'null'           => true,
             ],
+            'id_tag'          => [
+                'type'           => 'INT',
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_album', 'albums', 'id');
+        $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('taula_videos');
     }
 
