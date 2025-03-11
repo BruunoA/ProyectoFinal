@@ -46,7 +46,7 @@
                     amet sint. Repellat, blanditiis!</p>
             </div>
 
-            <div id="Vissio" class="w3-container w3-border city" style="display:none">
+            <div id="Vissio" class="w3-container w3-border city" style="display:none"> 
                 <h2>Vissio</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nihil porro officia natus eum ab
                     quis eius dicta. Quia voluptatum adipisci, impedit et reiciendis nulla porro ab voluptate in
