@@ -16,8 +16,8 @@
     </div>
 </nav>
 
-<!-- <script>
+<script>
     function toggleMenu() {
         document.querySelector(".menu-items").classList.toggle("show");
     }
-</script> -->
+</script>
