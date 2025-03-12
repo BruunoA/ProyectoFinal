@@ -10,11 +10,11 @@ class IndexController extends BaseController
     public function home()
     {
         
-        return view("inici/home");
+        return view("home");
     }
 
     public function index()
     {
-        return view("index/inici");
+        return view("inici");
     }
 }

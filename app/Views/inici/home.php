@@ -1,2 +1,0 @@
-<?= $this->extend('layouts/home') ?>
-
