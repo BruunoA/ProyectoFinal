@@ -18,6 +18,11 @@ class JugadorsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'cognoms'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 255, 
+                'null'           => false,
+            ],
             'dorsal'          => [
                 'type'           => 'INT',
                 'null'           => false,
@@ -29,7 +34,19 @@ class JugadorsMigration extends Migration
             ],
             'id_equip'          => [
                 'type'           => 'INT',
+                'null'           => true,       // TODO: Canviar a false
+            ],
+            'created_at'          => [
+                'type'           => 'DATETIME',
                 'null'           => false,
+            ],
+            'deleted_at'          => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+            ],
+            'updated_at'          => [
+                'type'           => 'DATETIME',
+                'null'           => true,
             ],
         ]);
         $this->forge->addPrimaryKey('id');

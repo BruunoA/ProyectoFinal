@@ -91,7 +91,7 @@ a:active {
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
     footer {
         background-color: black;
         position: absolute;
@@ -100,4 +100,10 @@ a:active {
         /* height: 40px; */
         color: white;
     }
+
+    .resultats-container{
+        height: 15rem;
+    }
+
+    
 }
