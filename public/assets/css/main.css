@@ -20,8 +20,8 @@ footer a:hover {
     color: #d32f2f;
 }
 
-a:active{
-  color: red;
+a:active {
+    color: red;
 }
 
 /* MENU   ESTILOS*/
@@ -88,5 +88,16 @@ a:active{
 
     .menu-toggle {
         display: block;
+    }
+}
+
+@media (max-width: 1024px) {
+    footer {
+        background-color: black;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* height: 40px; */
+        color: white;
     }
 }

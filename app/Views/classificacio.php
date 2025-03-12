@@ -63,7 +63,7 @@
                     <div class="w3-half w3-large"><strong><?= esc($resultat['gols_v']) ?></strong></div>
                     <div class="w3-half w3-large"><strong><?= esc($resultat['gols_l']) ?></strong></div>
                 </div>
-                <footer class="w3-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom" style="border-radius: 10px; width: 250px; margin-left: 5.4rem;">
+                <footer class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom" style="border-radius: 10px; width: 250px; margin-left: 5.4rem;">
                     12/12/2025
                 </footer>
             </div>
