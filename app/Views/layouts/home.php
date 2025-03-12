@@ -50,17 +50,7 @@
     }
     </style>
 <body>
-<header>
-        <div class="w3-bar w3-border" style="background-color: white;">
-            <a href="index.html" class="w3-bar-item w3-button w3-padding-16">Inici</a>
-            <a href="pages/Contacte.html" class="w3-bar-item w3-button w3-padding-16">Contacte</a>
-            <a href="pages/sobreNosaltres.html" class="w3-bar-item w3-button w3-padding-16">Sobre Nosaltres</a>
-            <a href="pages/Programes.html" class="w3-bar-item w3-button w3-padding-16">Programes</a>
-            <a href="pages/Noticies.html" class="w3-bar-item w3-button w3-padding-16">Noticies</a>
-            <a href="pages/Galeria.html" class="w3-bar-item w3-button w3-padding-16">Galeria</a>
-            <a href="pages/Classificacio.html" class="w3-bar-item w3-button w3-padding-16">Classificacio</a>
-        </div>
-    </header>
+<?= $this->include('general/menu'); ?>
 
     <section class="w3-display-container w3-center w3-padding-32">
         <img src="img/campoAlpicat.jpg" alt="Campo de fútbol Alpicat" class="w3-image" style="max-width: 80%; border-radius: 10px;">
@@ -121,6 +111,7 @@
             </div>
         </div>
     </section>
+    <?= $this->include('general/footer'); ?>
 
     <footer>
         <div>
