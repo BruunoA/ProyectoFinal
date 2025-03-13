@@ -1,12 +1,3 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
 footer {
     background-color: #000;
     color: white;
@@ -116,5 +107,12 @@ a:active {
         height: 15rem;
     }
 
-    
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
 }
