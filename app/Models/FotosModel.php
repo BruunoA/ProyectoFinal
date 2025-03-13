@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class FotosModel extends Model
 {
-    protected $table            = 'fotos';
+    protected $table            = 'taula_fotos';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

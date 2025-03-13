@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ContacteModel extends Model
 {
-    protected $table            = 'contactes';
+    protected $table            = 'contacte';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

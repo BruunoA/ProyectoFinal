@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ClassificacioModel extends Model
 {
-    protected $table            = 'classificacios';
+    protected $table            = 'classificacio';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
