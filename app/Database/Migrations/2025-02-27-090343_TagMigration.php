@@ -18,6 +18,21 @@ class TagMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('tags');

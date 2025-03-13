@@ -37,10 +37,25 @@ class MenuMigration extends Migration
             'id_tag'          => [
                 'type'           => 'INT',
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('menu');
-        $this->forge->addForeignKey('id_tag', 'tag', 'id');
     }
 
     public function down()

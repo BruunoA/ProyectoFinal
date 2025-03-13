@@ -28,26 +28,6 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'deleted_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
-            'created_at'      =>  [
-                'type'         =>  'DATETIME',
-                'null'         =>  true,
-                'default'    =>  null,
-            ],
-            'updated_at'     =>  [
-                'type'         =>  'DATETIME',
-                'null'         =>  true,
-                'default'    =>  null,
-            ],
             'id_album'          => [
                 'type'           => 'INT',
                 'null'           => true,     
@@ -55,7 +35,21 @@ class TaulaFotosMigration extends Migration
             'id_tag'          => [
                 'type'           => 'INT',
             ],
-
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_album', 'albums', 'id');

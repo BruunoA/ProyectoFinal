@@ -27,6 +27,26 @@ class StaffMigration extends Migration
                 'type'           => 'INT',
                 'null'           => false,
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_equip', 'equips', 'id');

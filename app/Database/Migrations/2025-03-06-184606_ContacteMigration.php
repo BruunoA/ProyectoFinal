@@ -47,18 +47,33 @@ class ContacteMigration extends Migration
                 'type'           => 'TIMESTAMP',
                 'null'           => false,
             ],
-            'id_tag'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
+            // 'id_tag'          => [       // TODO: ACABAR DE VEURE SI FA FALTA FICAR-HO
+            //     'type'           => 'INT',
+            //     'null'           => false,
+            // ],
             'id_assumpte'          => [
                 'type'           => 'INT',
                 'null'           => false,
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [      // TODO: FA FALTA?
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('contacte');
-        $this->forge->addForeignKey('id_tag', 'tag', 'id');
+        // $this->forge->addForeignKey('id_tag', 'tag', 'id');
         $this->forge->addForeignKey('id_assumpte', 'assumptes', 'id');
     }
 

@@ -15,12 +15,12 @@ class JugadorsMigration extends Migration
             ],
             'nom'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => 255,
                 'null'           => false,
             ],
             'cognoms'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => 255,
                 'null'           => false,
             ],
             'dorsal'          => [
@@ -29,24 +29,32 @@ class JugadorsMigration extends Migration
             ],
             'posicio'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => 255,
                 'null'           => false,
             ],
             'id_equip'          => [
                 'type'           => 'INT',
                 'null'           => true,       // TODO: Canviar a false
             ],
-            'created_at'          => [
-                'type'           => 'DATETIME',
-                'null'           => false,
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
             ],
             'deleted_at'          => [
-                'type'           => 'DATETIME',
+                'type'           => 'TIMESTAMP',
                 'null'           => true,
-            ],
-            'updated_at'          => [
-                'type'           => 'DATETIME',
-                'null'           => true,
+                'default'        => null,
             ],
         ]);
         $this->forge->addPrimaryKey('id');
