@@ -5,9 +5,19 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 1024px) {
+    footer {
+        background-color: black;
+        position: absolute;
+        bottom: 20;
+        width: 100%;
+        /* height: 40px; */
+        color: white;
+        }
+}
 footer div {
     margin-bottom: 1rem;
-}
+}º
 
 footer a {
     color: #ccc;
@@ -91,4 +101,21 @@ a:active{
     .menu-toggle {
         display: block;
     }
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura / anchura * 100) */
+    height: 0;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }

@@ -1,18 +1,52 @@
 
 #Programes h3 {
-    padding-left: 1rem;
     background-color: rgb(165, 0, 0);
     color: white;
-    width: 20%;
-    margin-left: 3%;
-    border-radius: 8px;
+    width: 20%; /* Mantiene el ancho en pantallas grandes */
+    max-width: 200px; /* Limita el crecimiento del ancho */
+    border-radius: 5px;
+    font-size: 1.2rem; /* Evita que el tamaño de la fuente cambie */
+    text-align: center;
 }
 
 #Horario .horario {
     margin-top: 10px;
     padding: 10px;
-    background-color: #f1f1f1;
     text-align: center;
-    border-radius: 5px;
     font-weight: bold;
+}
+section {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #Programes h3 {
+        width: auto; /* Permite que el ancho se adapte al contenido */
+        max-width: 90%; /* Asegura que no sea demasiado ancho */
+        padding: 10px; /* Mejora la legibilidad */
+        text-align: center; /* Centra el texto */
+        font-size: 1rem; /* Ajusta el tamaño de la fuente para móviles */
+        margin: 0 auto; /* Centra el bloque */
+    }
+}
+
+@media (max-width: 768px) {
+    h3.w3-center {
+        font-size: 1.5rem; /* Ajusta el tamaño del texto */
+        text-align: center; /* Asegura que esté centrado */
+        padding: 10px 0; /* Espaciado arriba y abajo */
+    }
+}
+
+@media (max-width: 768px) {
+    .w3-cell-row {
+        display: flex;
+        flex-direction: column;
+        height: auto !important; /* Evita alturas fijas */
+    }
+
+    .w3-cell {
+        width: 100% !important; /* Ocupar todo el ancho */
+        text-align: center; /* Centrar texto */
+    }
 }

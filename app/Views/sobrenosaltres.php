@@ -31,8 +31,6 @@
 
     <div class="w3-container" style="margin-top: 2rem;">
         <div class="w3-container">
-            <h1>Títol</h1>
-
             <div class="w3-bar w3-black">
                 <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Missio')">Missio</button>
                 <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Vissio')">Vissio</button>
