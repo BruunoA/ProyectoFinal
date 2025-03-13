@@ -27,27 +27,6 @@
         .calendar .day {
             background-color: #e7f3fe;
         }
-        footer {
-        background-color: #000;
-        color: white;
-        padding: 2rem 0;
-        text-align: center;
-    }
-
-    footer div {
-        margin-bottom: 1rem;
-    }
-
-    footer a {
-        color: #ccc;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-        color: #d32f2f;
-    }
     </style>
 <body>
 <?= $this->include('general/menu'); ?>

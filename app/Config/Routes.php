@@ -16,4 +16,5 @@ $routes->get('noticies', 'NoticiesController::index');
 $routes->get('programes', 'ProgramesController::index');
 $routes->get('contacte', 'ContacteController::index');
 $routes->get('sobrenosaltres', 'SobreNosaltresController::index');
+$routes->get('dades', 'ClassificacioController::obtenirDades');
 

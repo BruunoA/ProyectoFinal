@@ -13,6 +13,9 @@ class ClassificacioMigration extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
+            'posicio'          => [
+                'type'           => 'INT',
+            ],
             'logo'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
