@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="<?php // base_url('el_meu_estil/burlywood.css') ?>">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 </head>
 <style>
         .calendar {
@@ -112,24 +112,6 @@
         </div>
     </section>
     <?= $this->include('general/footer'); ?>
-
-    <footer>
-        <div>
-            <h3>Xarxes socials</h3>
-            <img src="img/x.jpg" alt="">
-            <img src="img/facebook.png" alt="">
-            <img src="img/instagram.png" alt="">
-        </div>
-        <div>
-            <a href="#">Inici</a>
-            <a href="#">Contacte</a>
-            <a href="#">Sobre Nosaltres</a>
-            <a href="#">Programes</a>
-            <a href="#">Noticies</a>
-            <a href="#">Galeria</a>
-            <a href="#">Classificacio</a>
-        </div>
-    </footer>
 </body>
 
 </html>

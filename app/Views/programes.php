@@ -8,7 +8,18 @@
 
     <title>Sobre Nosaltres Staff</title>
 </head>
+<style>
+    @media (max-width: 768px) {
+    .w3-cell-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        /* height: auto; */
+    }
+}
 
+</style>
 <body>
 <?= $this->include('general/menu'); ?>
 
