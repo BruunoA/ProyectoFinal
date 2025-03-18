@@ -11,7 +11,7 @@
 <?= $this->include('general/menu'); ?>
 
     <section class="w3-container w3-center w3-padding-32">
-        <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat" class="w3-image w3-round" style="max-width: 100%; height: auto;">
+        <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat" class="w3-image w3-round" style="max-width: 100%; width: 80%; height: 500px;">
     </section>
 
     <section class="w3-row-padding w3-padding-32">

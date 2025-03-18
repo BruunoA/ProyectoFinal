@@ -59,7 +59,7 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container equips-container">
-    <?php foreach ($taula as $equip): ?>
+    <?php foreach ($resultats as $equip): ?>
         <div class="equip-card">
                 <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
                     <h1 class="w3-xlarge">equip</h1>
@@ -88,7 +88,6 @@
         <table>
             <tr>
                 <th>Posició</th>
-                <th>Logo</th>
                 <th>Equip</th>
                 <th>Punts</th>
                 <th>PP</th>
@@ -97,12 +96,11 @@
                 <th>PP</th>
                 <th>GF</th>
                 <th>GC</th>
-                <th>equips</th>
+                <!-- <th>equips</th> -->
             </tr>
             <?php foreach ($taula as $equip): ?>
                 <tr>
                     <td><?= esc($equip['posicio']) ?></td>
-                    <td><img src="<?= esc($equip['logo']) ?>"></td>
                     <td><?= esc($equip['nom']) ?></td>
                     <td><?= esc($equip['punts']) ?></td>
                     <td><?= esc($equip['pj']) ?></td>
@@ -111,9 +109,8 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <td><?= $equip['equips'] ?></td>
+                    <!-- <td><?php // $equip['equips'] ?></td> -->
                 </tr>
-                <?php print_r($equip['resultats']); ?>
             <?php endforeach; ?>
         </table>
     </div>

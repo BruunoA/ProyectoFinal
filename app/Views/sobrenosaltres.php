@@ -45,7 +45,7 @@
     <div class="w3-container" style="margin-top: 2rem;">
         <h2 class="w3-center">Historia</h2>
         <div class="historia-container">
-            <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img">
+            <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
             <div class="w3-container historia-text">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam temporibus placeat doloribus
                     eveniet cumque illum officia recusandae quas ut fuga esse nobis, optio reprehenderit possimus.
@@ -78,7 +78,7 @@
 
             <div id="Valors" class="w3-container w3-border city" style="display:none">
                 <h2>Valors</h2>
-                <p>Text de la vissio</p>
+                <p>Text dels valors</p>
             </div>
         </div>
 
