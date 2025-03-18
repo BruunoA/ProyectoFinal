@@ -180,6 +180,7 @@ if ($table) {
             'pp' => $gamesLost,
             'gf' => $goalsFor,
             'gc' => $goalsAgainst,
+            'resultats' => implode($resultadosConLogos),
         ]);
     }
     echo "</table>";

@@ -93,20 +93,21 @@ a:active {
 }
 
 /* RESPONSIVE TABLET */
-@media (min-width: 1007px) {
+@media (max-width: 1007px) {
     footer {
         background-color: black;
         position: absolute;
-        /* bottom: 0; */
+        bottom: 10;
         width: 100%;
+        /* height: 40px; */
         color: white;
     }
 
-    .resultats-container{
+    /* .resultats-container{
         height: 15rem;
     }
 
-    /* html,
+    html,
     body {
         height: 100%;
         margin: 0;

@@ -47,6 +47,10 @@
                 width: 90%;
             }
         }
+        img{
+            width: 40px;
+            height: 40px;
+        }
     </style>
 </head>
 
@@ -90,7 +94,7 @@
                 <th>PP</th>
                 <th>GF</th>
                 <th>GC</th>
-                <th>DG</th>
+                <th>Resultats</th>
             </tr>
             <?php foreach ($taula as $equip): ?>
                 <tr>
@@ -103,7 +107,7 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <td><?= esc($equip['resultats']) ?></td>
+                    <td><?= $equip['resultats'] ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
