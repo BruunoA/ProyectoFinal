@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
 </head>
 <body>
 <?= $this->include('general/menu'); ?>
@@ -24,23 +25,28 @@
             <p class="w3-justify">El día 22 de septiembre 2019, ha sido inaugurado el campo de fútbol de Alpicat, tras el trabajo de remodelación realizado por Sports&Landscape, aprovechando así el torneo entre At. Club Alpicat y Torrefarrera CF. Por lo que los jugadores pudieron disfrutar de un terreno en perfectas condiciones gracias a un nuevo césped combinación de hilos monofilamentos y fibrilados de 60 mm.</p>
         </div>
 
-        <div class="w3-col l4 m12 s12 w3-padding-16 w3-center">
+        <div class="calendario-container">
             <h2 class="w3-text-black">Calendario</h2>
-            <div class="w3-responsive w3-card w3-padding">
-                <div class="w3-row w3-border-bottom">
-                    <div class="w3-col s1 w3-padding-small">L</div>
-                    <div class="w3-col s1 w3-padding-small">M</div>
-                    <div class="w3-col s1 w3-padding-small">X</div>
-                    <div class="w3-col s1 w3-padding-small">J</div>
-                    <div class="w3-col s1 w3-padding-small">V</div>
-                    <div class="w3-col s1 w3-padding-small">S</div>
-                    <div class="w3-col s1 w3-padding-small">D</div>
-                </div>
-                <div class="w3-row">
-                    <?php for ($i = 1; $i <= 30; $i++): ?>
-                        <div class="w3-col s1 w3-padding-small w3-border w3-center"> <?= $i; ?> </div>
-                    <?php endfor; ?>
-                </div>
+            <div class="calendario">
+                <?php 
+                $year = date('Y');
+                $month = date('m');
+                $today = date('j');
+                $firstDayOfMonth = strtotime("$year-$month-01");
+                $daysInMonth = date('t', $firstDayOfMonth);
+                $firstDayOfWeek = date('N', $firstDayOfMonth);
+                $diasSemana = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+                foreach ($diasSemana as $dia) {
+                    echo "<div class='calendario-header'>$dia</div>";
+                }
+                for ($i = 1; $i < $firstDayOfWeek; $i++) {
+                    echo '<div class="calendario-dia"> </div>';
+                }
+                for ($day = 1; $day <= $daysInMonth; $day++) {
+                    $class = ($day == $today) ? 'calendario-dia hoy' : 'calendario-dia';
+                    echo "<div class='$class'>$day</div>";
+                }
+                ?>
             </div>
         </div>
     </section>
