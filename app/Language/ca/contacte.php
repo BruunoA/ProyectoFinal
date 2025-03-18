@@ -10,8 +10,9 @@ return [
     "Placeholder" => "Escriu el motiu aqui...",
     "TitolContacte" => "Dades de contacte",
     "CampUbicacio" => "Ubicacio:",
-    "Ubicacio" => "Ubicacio",
-    "Telefon" => "Telefon:",
-    "Correu" => "Correu electronic:",
+    "Ubicacio" => " Camí del Graó, 25110, 25110 Alpicat, Lleida",
+    "CampTelefon" => "Telefon:",
+    "CampCorreu" => "Correu electronic:",
+    "Correu" => " contacte@ejemple.com",
     
 ];

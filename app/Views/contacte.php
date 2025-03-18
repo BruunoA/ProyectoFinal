@@ -40,9 +40,9 @@
         <div class="w3-half w3-padding">
             <h2 class="w3-center"><?=lang('contacte.TitolContacte')?></h2>
             <div class="w3-card w3-white w3-padding w3-margin-bottom">
-                <p><strong>Ubicacio:</strong><?=lang('contacte.Ubicacio')?></p>
-                <p><strong>Telefon:</strong> +34 123-456-7890</p>
-                <p><strong>Correu electronic:</strong> contacto@ejemplo.com</p>
+                <p><strong><?=lang('contacte.CampUbicacio')?></strong><?=lang('contacte.Ubicacio')?></p>
+                <p><strong><?=lang('contacte.CampTelefon')?></strong> +34 123-456-7890</p>
+                <p><strong><?=lang('contacte.CampCorreu')?></strong><?=lang('contacte.Correu')?></p>
             </div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d745.0913701723812!2d0.5514229867548115!3d41.66944958758179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a71eaf593a5081%3A0x85412f105933abd3!2sCamp%20Municipal%20de%20Alpicat%20-%20Club%20Atl%C3%A8tic%20d%E2%80%99Alpicat!5e0!3m2!1ses!2ses!4v1741114931620!5m2!1ses!2ses" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
