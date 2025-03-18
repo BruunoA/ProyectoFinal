@@ -49,8 +49,7 @@
             <div class="w3-container historia-text">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam temporibus placeat doloribus
                     eveniet cumque illum officia recusandae quas ut fuga esse nobis, optio reprehenderit possimus.
-                    Debitis exercitationem pariatur veniam dolore.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit at quas mollitia? Sit
+                    Debitis exercitationem pariatur veniam dolore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit at quas mollitia? Sit
                     distinctio maxime nesciunt rem. Id vero ipsam ipsa delectus architecto similique laborum, labore
                     quas incidunt ipsum?</p>
             </div>
@@ -69,23 +68,17 @@
 
             <div id="Missio" class="w3-container w3-border city">
                 <h2>Missio</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto sed mollitia inventore
-                    odit, molestiae recusandae quibusdam molestias animi velit neque commodi ad quisquam vel doloremque
-                    amet sint. Repellat, blanditiis!</p>
+                <p>Text de la missio</p>
             </div>
 
             <div id="Vissio" class="w3-container w3-border city" style="display:none">
                 <h2>Vissio</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nihil porro officia natus eum ab
-                    quis eius dicta. Quia voluptatum adipisci, impedit et reiciendis nulla porro ab voluptate in
-                    reprehenderit!</p>
+                <p>Text de la vissio</p>
             </div>
 
             <div id="Valors" class="w3-container w3-border city" style="display:none">
                 <h2>Valors</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut dolores incidunt architecto facere?
-                    Eos, iste iusto perspiciatis velit ratione quos tempora ea! Vel obcaecati doloribus error ea
-                    repellat numquam praesentium?</p>
+                <p>Text de la vissio</p>
             </div>
         </div>
 

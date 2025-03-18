@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <title>Sobre Nosaltres Staff</title>
+    <title>Sobre Nosaltres - Staff</title>
 </head>
 <style>
     @media (max-width: 768px) {
@@ -37,8 +37,8 @@
                     est optio fugiat nulla ullam rem. Veniam laudantium nobis, in excepturi quas ex reiciendis
                     cupiditate illo, ut ullam voluptate esse libero enim obcaecati?</p>
                 <div id="Horario" class="horario">
-                    <p>Lunes, miercoles, viernes</p>
-                    <p>Horario: 9:00 am - 15:00 pm</p>
+                    <p>Dilluns, dimecres, divendres</p>
+                    <p>Horari: 9:00 am - 15:00 pm</p>
                 </div>
             </div>
         </div>

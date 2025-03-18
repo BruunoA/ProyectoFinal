@@ -16,11 +16,6 @@ class ClassificacioMigration extends Migration
             'posicio'          => [
                 'type'           => 'INT',
             ],
-            'logo'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
-            ],
             'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',

@@ -169,19 +169,21 @@ if ($table) {
 
             echo "</tr>";
         }
-        $clasificacionModel->insert([
-            'posicio' => $position,
-            'logo' => $logo,
-            'nom' => $teamName,
-            'punts' => $points,
-            'pj' => $gamesPlayed,
-            'pg' => $gamesFor,
-            'pe' => $gamesDrawn,
-            'pp' => $gamesLost,
-            'gf' => $goalsFor,
-            'gc' => $goalsAgainst,
-            'resultats' => implode($resultadosConLogos),
-        ]);
+        foreach ($resultadosConLogos as $resultat) {
+            $clasificacionModel->insert([
+                'posicio' => $position,
+                'logo' => $logo,
+                'nom' => $teamName,
+                'punts' => $points,
+                'pj' => $gamesPlayed,
+                'pg' => $gamesFor,
+                'pe' => $gamesDrawn,
+                'pp' => $gamesLost,
+                'gf' => $goalsFor,
+                'gc' => $goalsAgainst,
+                'resultats' => $resultat, // Guardamos cada resultado en una fila diferente
+            ]);
+        }
     }
     echo "</table>";
 } else {

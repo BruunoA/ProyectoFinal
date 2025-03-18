@@ -81,11 +81,14 @@
             </div>
         <?php endforeach; ?>
     </div>
+    
+    <a href="<?= base_url('dades'); ?>" class="w3-button w3-black w3-margin">Actualitzar dades</a>
 
     <div class="w3-container table-responsive">
         <table>
             <tr>
                 <th>Posició</th>
+                <th>Logo</th>
                 <th>Equip</th>
                 <th>Punts</th>
                 <th>PP</th>
@@ -99,6 +102,7 @@
             <?php foreach ($taula as $equip): ?>
                 <tr>
                     <td><?= esc($equip['posicio']) ?></td>
+                    <td><img src="<?= esc($equip['logo']) ?>"></td>
                     <td><?= esc($equip['nom']) ?></td>
                     <td><?= esc($equip['punts']) ?></td>
                     <td><?= esc($equip['pj']) ?></td>
@@ -107,11 +111,15 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <td><?= $equip['resultats'] ?></td>
+                    <td><?= print_r($equip['resultats']); ?></td>
                 </tr>
+                <?php print_r($equip['resultats']); ?>
             <?php endforeach; ?>
         </table>
     </div>
+    <pre>
+        
+    </pre>
 
     <?= $this->include('general/footer'); ?>
 
