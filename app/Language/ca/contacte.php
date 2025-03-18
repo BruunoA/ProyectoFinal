@@ -14,5 +14,4 @@ return [
     "CampTelefon" => "Telefon:",
     "CampCorreu" => "Correu electronic:",
     "Correu" => " contacte@ejemple.com",
-    
 ];

@@ -43,42 +43,38 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <h2 class="w3-center">Historia</h2>
+        <h2 class="w3-center"><?=lang('sobreNosaltres.Titol')?></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
             <div class="w3-container historia-text">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam temporibus placeat doloribus
-                    eveniet cumque illum officia recusandae quas ut fuga esse nobis, optio reprehenderit possimus.
-                    Debitis exercitationem pariatur veniam dolore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit at quas mollitia? Sit
-                    distinctio maxime nesciunt rem. Id vero ipsam ipsa delectus architecto similique laborum, labore
-                    quas incidunt ipsum?</p>
+                <p><?=lang('sobreNosaltres.TextHistoria')?></p>
             </div>
         </div>
     </div>
 
     <div class="w3-container" style="margin-top: 2rem; margin-bottom: 2rem;">
         <div class="w3-container">
-            <h1 class="w3-center">Títol</h1>
+            <h1 class="w3-center"><?=lang('sobreNosaltres.Subtitol')?></h1>
 
             <div class="w3-bar w3-black">
-                <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Missio')">Missio</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Vissio')">Vissio</button>
-                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Valors')">Valors</button>
+                <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Missio')"><?=lang('sobreNosaltres.TitolMissio')?></button>
+                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Vissio')"><?=lang('sobreNosaltres.TitolVissio')?></button>
+                <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Valors')"><?=lang('sobreNosaltres.TitolValors')?></button>
             </div>
 
             <div id="Missio" class="w3-container w3-border city">
-                <h2>Missio</h2>
-                <p>Text de la missio</p>
+                <h2><?=lang('sobreNosaltres.TitolMissio')?></h2>
+                <p><?=lang('sobreNosaltres.Missio')?></p>
             </div>
 
             <div id="Vissio" class="w3-container w3-border city" style="display:none">
-                <h2>Vissio</h2>
-                <p>Text de la vissio</p>
+                <h2><?=lang('sobreNosaltres.TitolVissio')?></h2>
+                <p><?=lang('sobreNosaltres.Vissio')?></p>
             </div>
 
             <div id="Valors" class="w3-container w3-border city" style="display:none">
-                <h2>Valors</h2>
-                <p>Text dels valors</p>
+                <h2><?=lang('sobreNosaltres.TitolValors')?></h2>
+                <p><?=lang('sobreNosaltres.Valors')?></p>
             </div>
         </div>
 
