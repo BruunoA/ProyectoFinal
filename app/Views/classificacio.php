@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <title>Classificacio</title>
     <style>
-        .resultats-container {
+        .equips-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
         }
 
-        .resultat-card {
+        .equip-card {
             width: 30%;
             min-width: 280px;
         }
@@ -38,12 +38,12 @@
         }
 
         @media screen and (max-width: 768px) {
-            .resultats-container {
+            .equips-container {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .resultat-card {
+            .equip-card {
                 width: 90%;
             }
         }
@@ -58,21 +58,21 @@
 
     <?= $this->include('general/menu'); ?>
 
-    <div class="w3-container resultats-container">
-        <?php foreach ($resultats as $resultat): ?>
-            <div class="resultat-card">
+    <div class="w3-container equips-container">
+    <?php foreach ($taula as $equip): ?>
+        <div class="equip-card">
                 <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
-                    <h1 class="w3-xlarge">Resultat</h1>
+                    <h1 class="w3-xlarge">equip</h1>
                     <div class="w3-row">
-                        <div class="w3-half w3-large"><strong><?= esc($resultat['equip_v']) ?></strong></div>
-                        <div class="w3-half w3-large"><strong><?= esc($resultat['equip_l']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['equip_v']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['equip_l']) ?></strong></div>
                     </div>
                     <div class="w3-row">
                         <div class="w3-col w3-center w3-xlarge"><strong>VS</strong></div>
                     </div>
                     <div class="w3-row w3-margin-bottom">
-                        <div class="w3-half w3-large"><strong><?= esc($resultat['gols_v']) ?></strong></div>
-                        <div class="w3-half w3-large"><strong><?= esc($resultat['gols_l']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['gols_v']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['gols_l']) ?></strong></div>
                     </div>
                     <footer class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom" style="border-radius: 20px;">
                         12/12/2025
@@ -97,7 +97,7 @@
                 <th>PP</th>
                 <th>GF</th>
                 <th>GC</th>
-                <th>Resultats</th>
+                <th>equips</th>
             </tr>
             <?php foreach ($taula as $equip): ?>
                 <tr>
@@ -111,7 +111,7 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <td><?= print_r($equip['resultats']); ?></td>
+                    <td><?= $equip['equips'] ?></td>
                 </tr>
                 <?php print_r($equip['resultats']); ?>
             <?php endforeach; ?>

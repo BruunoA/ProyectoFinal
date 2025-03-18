@@ -146,44 +146,39 @@ if ($table) {
                 $resultadosConLogos = [];
                 $links = $cells[12]->getElementsByTagName('a');
             
-                foreach ($links as $link) {
-                    // Obtener el <span> dentro del <a> y extraer el texto del resultado
-                    $span = $link->getElementsByTagName('span')->item(0);
-                    $resultado = ($span) ? trim($span->nodeValue) : "N/A";
-                    // Obtener todas las imágenes dentro del <a>
-                    $imgs = $link->getElementsByTagName('img');
-                    // Si hay al menos 2 imágenes, guardarlas
-                    if ($imgs->length >= 2) {
-                        $logo1 = "<img src='" . $imgs->item(0)->getAttribute('src') . "' width='30' height='30' style='vertical-align:middle; margin-right:5px;'>";
-                        $logo2 = "<img src='" . $imgs->item(1)->getAttribute('src') . "' width='30' height='30' style='vertical-align:middle; margin-right:5px;'>";
-                    } else {
-                        // Si no hay suficientes imágenes, mostrar "No Logo"
-                        $logo1 = "No Logo";
-                        $logo2 = "No Logo";
-                    }
-                    // Guardar en array con formato: [logo1] resultado [logo2]
-                    $resultadosConLogos[] = $logo1 . " " . $resultado . " " . $logo2;
-                }
-                // Mostrar los resultados con logos en la misma celda, separados por <br> para mejor visualización
-                echo "<td>" . implode("<br>", $resultadosConLogos) . "</td>";
+                $resultados = [];
+            $links = $cells[12]->getElementsByTagName('a');
+            
+            foreach ($links as $link) {
+                // Obtener el <span> dentro del <a> y extraer el texto del resultado
+                $span = $link->getElementsByTagName('span')->item(0);
+                $resultado = ($span) ? trim($span->nodeValue) : "N/A";
+                
+                // Guardar solo el resultado en el array
+                $resultados[] = $resultado;
+            }
+            
+            // Imprimir los resultados sin logos
+            echo "<td>";
+            foreach ($resultados as $resultado) {
+                echo $resultado . "<br>";
+            }
+            echo "</td>";
 
             echo "</tr>";
         }
-        foreach ($resultadosConLogos as $resultat) {
-            $clasificacionModel->insert([
-                'posicio' => $position,
-                'logo' => $logo,
-                'nom' => $teamName,
-                'punts' => $points,
-                'pj' => $gamesPlayed,
-                'pg' => $gamesFor,
-                'pe' => $gamesDrawn,
-                'pp' => $gamesLost,
-                'gf' => $goalsFor,
-                'gc' => $goalsAgainst,
-                'resultats' => $resultat, // Guardamos cada resultado en una fila diferente
-            ]);
-        }
+        $clasificacionModel->insert([
+            'posicio' => $position,
+            'nom' => $teamName,
+            'punts' => $points,
+            'pj' => $gamesPlayed,
+            'pg' => $gamesFor,
+            'pe' => $gamesDrawn,
+            'pp' => $gamesLost,
+            'gf' => $goalsFor,
+            'gc' => $goalsAgainst,
+            'resultats' => implode($resultadosConLogos),
+        ]);
     }
     echo "</table>";
 } else {
