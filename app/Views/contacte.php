@@ -15,32 +15,32 @@
 
     <div class="w3-row content">
         <div class="w3-half w3-padding">
-            <h2 class="w3-center">Contactans</h2>
+            <h2 class="w3-center"><?=lang('contacte.Titol')?></h2>
             <form class="w3-container w3-card w3-padding w3-white">
                 <div class="w3-section">
-                    <label>Nom</label>
+                    <label><?=lang('contacte.Camp_nom')?></label>
                     <input class="w3-input w3-border" type="text" required>
                 </div>
                 <div class="w3-section">
-                    <label>Correu electronic</label>
+                    <label><?=lang('contacte.Camp_correu')?></label>
                     <input class="w3-input w3-border" type="email" required>
                 </div>
                 <div class="w3-section">
-                    <label>Assumpte</label>
+                    <label><?=lang('contacte.Camp_assumpte')?></label>
                     <input class="w3-input w3-border" type="text" required>
                 </div>
                 <div class="w3-section">
-                    <label>Motiu</label>
-                    <textarea class="w3-input w3-border" rows="4" required placeholder="Escriu el motiu aqui..."></textarea>
+                    <label><?=lang('contacte.Camp_motiu')?></label>
+                    <textarea class="w3-input w3-border" rows="4" required placeholder="<?=lang('contacte.Placeholder')?>"></textarea>
                 </div>
-                <button type="submit" class="w3-btn w3-blue">Enviar</button>
+                <button type="submit" class="w3-btn w3-blue"><?=lang('contacte.Boto_enviar')?></button>
             </form>
         </div>
 
         <div class="w3-half w3-padding">
-            <h2 class="w3-center">Dades de contacte</h2>
+            <h2 class="w3-center"><?=lang('contacte.TitolContacte')?></h2>
             <div class="w3-card w3-white w3-padding w3-margin-bottom">
-                <p><strong>Ubicacio:</strong> Camí del Graó, 25110, 25110 Alpicat, Lleida</p>
+                <p><strong>Ubicacio:</strong><?=lang('contacte.Ubicacio')?></p>
                 <p><strong>Telefon:</strong> +34 123-456-7890</p>
                 <p><strong>Correu electronic:</strong> contacto@ejemplo.com</p>
             </div>

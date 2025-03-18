@@ -16,17 +16,17 @@
 
     <section class="w3-row-padding w3-padding-32">
         <div class="w3-col l4 m6 s12 w3-margin-bottom">
-            <h2 class="w3-text-green">Destacat</h2>
+            <h2 class="w3-text-green"><?=lang('home.Destacat')?></h2>
             <img src="<?= base_url('assets/img/destacado.jpg'); ?>" alt="Destacado" class="w3-image w3-hover-opacity w3-round" style="width:100%">
         </div>
 
         <div class="w3-col l4 m6 s12 w3-margin-bottom">
-            <h2 class="w3-text-green">Inaugurado el campo de fútbol municipal de Alpicat (Lleida)</h2>
-            <p class="w3-justify">El día 22 de septiembre 2019, ha sido inaugurado el campo de fútbol de Alpicat, tras el trabajo de remodelación realizado por Sports&Landscape, aprovechando así el torneo entre At. Club Alpicat y Torrefarrera CF. Por lo que los jugadores pudieron disfrutar de un terreno en perfectas condiciones gracias a un nuevo césped combinación de hilos monofilamentos y fibrilados de 60 mm.</p>
+            <h2 class="w3-text-green"><?=lang('home.TitolBanner')?></h2>
+            <p class="w3-justify"><?=lang('home.DescripcioBanner')?></p>
         </div>
 
         <div class="calendario-container">
-            <h2 class="w3-text-black">Calendario</h2>
+            <h2 class="w3-text-black"><?=lang('home.Calendari')?></h2>
             <div class="calendario">
                 <?php 
                 $year = date('Y');
