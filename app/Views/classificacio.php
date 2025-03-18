@@ -95,7 +95,7 @@
             <?php foreach ($taula as $equip): ?>
                 <tr>
                     <td><?= esc($equip['posicio']) ?></td>
-                    <td><?= esc($equip['equip']) ?></td>
+                    <td><?= esc($equip['nom']) ?></td>
                     <td><?= esc($equip['punts']) ?></td>
                     <td><?= esc($equip['pj']) ?></td>
                     <td><?= esc($equip['pg']) ?></td>
@@ -103,7 +103,6 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <td><?= esc($equip['dg']) ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

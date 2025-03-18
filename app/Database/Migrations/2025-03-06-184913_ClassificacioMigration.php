@@ -61,6 +61,11 @@ class ClassificacioMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
+            'deleted_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_album', 'albums', 'id');
