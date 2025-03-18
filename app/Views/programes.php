@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/programes.css'); ?>">
 
     <title>Sobre Nosaltres Staff</title>
 </head>
 <style>
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
     .w3-cell-row {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         margin-bottom: 21rem;
-        /* height: auto; */
+        height: auto;
     }
-}
+} */
 
 </style>
 <body>
