@@ -103,6 +103,7 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
+                    <td><?= esc($equip['resultats']) ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

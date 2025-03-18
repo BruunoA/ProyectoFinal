@@ -47,6 +47,11 @@ class ClassificacioMigration extends Migration
             'gc'          => [
                 'type'           => 'INT',
             ],
+            'resultats'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
+            ],
             'id_album'         => [             // TODO: LOGOS? canviar id_album pero la taula de fotos (o la ruta de la carpta logos)
                 'type'           => 'int',
                 'null'           => true,
