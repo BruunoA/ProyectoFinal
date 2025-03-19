@@ -24,7 +24,7 @@ class GestioController extends BaseController
 
         $model = new GestioModel();
         $model->insert($data);
-        return view('gestio_pag/gestio', $data);
+        return redirect()->to('/gestio');
     }
 
     public function gestio()

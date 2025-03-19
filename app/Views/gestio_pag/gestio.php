@@ -26,9 +26,9 @@
                             </div>
                             <div>
                                 <?php 
-                                    echo "<a href='<?=base_url('/create/add')?>'>Mostrar</a> "; // mostrar
-                                    echo "<a href='<?=base_url('/create/add')?>'>Editar</a> "; // editar
-                                    echo "<a href='<?=base_url('/create/add')?>'>Esborrar</a> "; // borrar
+                                    echo "<a href='<?=base_url('/create/add')?>Mostrar</a> "; // mostrar
+                                    echo "<a href='<?=base_url('/create/add')?>Editar</a> "; // editar
+                                    echo "<a href='<?=base_url('/create/add')?>Esborrar</a> "; // borrar
                                 ?>
                             </div>
                         </div>
