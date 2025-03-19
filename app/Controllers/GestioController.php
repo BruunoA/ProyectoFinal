@@ -21,8 +21,7 @@ class GestioController extends BaseController
             'seccio' => $this->request->getPost('seccio'),
             'contingut' => $this->request->getPost('editordata')
         ];
-        // var_dump($data);
-        // die;
+
         $model = new GestioModel();
         $model->insert($data);
         return view('add', $data);
