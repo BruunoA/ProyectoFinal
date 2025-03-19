@@ -83,6 +83,7 @@
     </div>
     
     <a href="<?= base_url('dades'); ?>" class="w3-button w3-black w3-margin">Actualitzar dades</a>
+    <a href="<?= base_url('wysiwyg'); ?>" class="w3-button w3-black w3-margin">WYSIWYG</a>
 
     <div class="w3-container table-responsive">
         <table>

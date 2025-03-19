@@ -18,3 +18,6 @@ $routes->get('contacte', 'ContacteController::index');
 $routes->get('sobrenosaltres', 'SobreNosaltresController::index');
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
+$routes->get('wysiwyg', 'GestioController::index');
+$routes->post('create/add', 'GestioController::add');
+
