@@ -90,47 +90,35 @@ if ($table) {
 
         $cells = filterCellsByClass($cells, 'detallada');
 
-        // if ($cells->length > 0) {
         if (count($cells) > 0) {
             echo "<tr>";
            
-            // Posición
             $position = $cells[0]->nodeValue;
             echo "<td>" . trim($position) . "</td>";
 
-            // Nombre del equipo
             $teamName = $cells[2]->nodeValue;
             echo "<td>" . trim($teamName) . "</td>";
            
-            // Puntos
             $points = $cells[3]->nodeValue;
             echo "<td>" . trim($points) . "</td>";
            
-            // Partits jugats (PJ)
             $gamesPlayed = $cells[6]->nodeValue;
             echo "<td>" . trim($gamesPlayed) . "</td>";
            
-            // Patits guanyats (PG)
             $gamesFor = $cells[7]->nodeValue;
             echo "<td>" . trim($gamesFor) . "</td>";
            
-            // Partits empatats (PE)
             $gamesDrawn = $cells[8]->nodeValue;
             echo "<td>" . trim($gamesDrawn) . "</td>";
 
-             // Partits perduts (PP)
              $gamesLost = $cells[9]->nodeValue;
              echo "<td>" . trim($gamesLost) . "</td>";
            
-            // Gols a favor (GF)
             $goalsFor = $cells[10]->nodeValue;
             echo "<td>" . trim($goalsFor) . "</td>";
         
-            // Gols contra (GC)
             $goalsAgainst = $cells[11]->nodeValue;
             echo "<td>" . trim($goalsAgainst) . "</td>";
-
-            //MOSTRAR RESULTADOS de los partidos
 
                 $resultadosConLogos = [];
                 $links = $cells[12]->getElementsByTagName('a');
@@ -139,15 +127,12 @@ if ($table) {
             $links = $cells[12]->getElementsByTagName('a');
             
             foreach ($links as $link) {
-                // Obtener el <span> dentro del <a> y extraer el texto del resultado
                 $span = $link->getElementsByTagName('span')->item(0);
                 $resultado = ($span) ? trim($span->nodeValue) : "N/A";
                 
-                // Guardar solo el resultado en el array
                 $resultados[] = $resultado;
             }
             
-            // Imprimir los resultados sin logos
             echo "<td>";
             foreach ($resultados as $resultado) {
                 echo $resultado . "<br>";
@@ -166,7 +151,7 @@ if ($table) {
             'pp' => $gamesLost,
             'gf' => $goalsFor,
             'gc' => $goalsAgainst,
-            'resultats' => implode($resultadosConLogos),
+            'resultats' => json_encode($resultados),
         ]);
     }
     echo "</table>";
