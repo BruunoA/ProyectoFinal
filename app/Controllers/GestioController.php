@@ -10,7 +10,7 @@ class GestioController extends BaseController
 {
     public function index()
     {
-        return view('add');
+        return view('gestio_pag/add');
     }
 
     public function add()
@@ -24,6 +24,27 @@ class GestioController extends BaseController
 
         $model = new GestioModel();
         $model->insert($data);
-        return view('add', $data);
+        return view('gestio_pag/gestio', $data);
+    }
+
+    public function gestio()
+    {
+        $model = new GestioModel();
+        $data['gestio'] = $model->findAll();
+        return view('gestio_pag/gestio', $data);
+    }
+
+    public function delete($id)
+    {
+        $model = new GestioModel();
+        $model->delete($id);
+        return redirect()->to('/gestio');
+    }
+
+    public function edit($id)
+    {
+        $model = new GestioModel();
+        $data['gestio'] = $model->find($id);
+        return view('edit', $data);
     }
 }

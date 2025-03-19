@@ -18,7 +18,10 @@ $routes->get('contacte', 'ContacteController::index');
 $routes->get('sobrenosaltres', 'SobreNosaltresController::index');
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
-$routes->get('/gestio', 'GestioController::index');
+// GESTIO
+$routes->get('gestio', 'GestioController::gestio');
 $routes->get('wysiwyg', 'GestioController::index');
 $routes->post('create/add', 'GestioController::add');
+$routes->get('gestio/delete/(:num)', 'GestioController::delete/$1');
+$routes->get('gestio/edit/(:num)', 'GestioController::edit/$1');
 
