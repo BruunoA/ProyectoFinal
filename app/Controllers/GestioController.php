@@ -45,6 +45,6 @@ class GestioController extends BaseController
     {
         $model = new GestioModel();
         $data['gestio'] = $model->find($id);
-        return view('edit', $data);
+        return view('gestio_pag/modify', $data);
     }
 }

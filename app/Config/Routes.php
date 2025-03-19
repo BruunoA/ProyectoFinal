@@ -23,5 +23,5 @@ $routes->get('gestio', 'GestioController::gestio');
 $routes->get('wysiwyg', 'GestioController::index');
 $routes->post('create/add', 'GestioController::add');
 $routes->get('gestio/delete/(:num)', 'GestioController::delete/$1');
-$routes->get('gestio/edit/(:num)', 'GestioController::edit/$1');
+$routes->get('gestio/modify/(:num)', 'GestioController::edit/$1');
 
