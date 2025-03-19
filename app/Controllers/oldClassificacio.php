@@ -77,7 +77,7 @@ $table = $xpath->query("//table[contains(@class, 'fcftable-e')]")->item(0);
 if ($table) {
     $clasificacionModel = new ClassificacioModel();
     echo "<table border='1'>";
-    echo "<tr><th>Posición</th><th>Equipo</th><th>Puntos</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>resultado</th></tr>";
+    echo "<tr><th>Posición</th><th>Logo</th><th>Equipo</th><th>Puntos</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>resultado</th></tr>";
 
     // Iteramos sobre las filas de la tabla (saltamos la cabecera)
     foreach ($table->getElementsByTagName('tr') as $index => $row) {
@@ -97,6 +97,17 @@ if ($table) {
             // Posición
             $position = $cells[0]->nodeValue;
             echo "<td>" . trim($position) . "</td>";
+           
+            // Logo (si existe una imagen en la celda)
+            $logoCell = $cells[1];
+            $logoImg = $logoCell->getElementsByTagName('img')->item(0);
+            if ($logoImg) {
+                $logo = $logoImg->getAttribute('src');
+                echo "<td><img src='" . $logo . "' width='30' height='30'></td>";
+            } else {
+                // Si no hay logo, dejamos la celda vacía o mostramos un texto
+                echo "<td>No Logo</td>";
+            }
 
             // Nombre del equipo
             $teamName = $cells[2]->nodeValue;

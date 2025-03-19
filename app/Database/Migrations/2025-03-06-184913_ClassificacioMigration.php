@@ -47,10 +47,6 @@ class ClassificacioMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'id_album'         => [             // TODO: LOGOS? canviar id_album pero la taula de fotos (o la ruta de la carpta logos)
-                'type'           => 'int',
-                'null'           => true,
-            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -68,7 +64,6 @@ class ClassificacioMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('id_album', 'albums', 'id');
         $this->forge->createTable('classificacio');
     }
 
