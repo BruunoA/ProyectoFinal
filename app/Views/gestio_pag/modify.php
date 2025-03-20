@@ -20,7 +20,7 @@
     }
 </style>
 <body>
-<form method="post" action="<?=base_url('/create/add')?>">
+<form method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
     <?= csrf_field() ?>
     <label for="nom">Titol</label>
     <input type="text" name="nom" id="nom" value="<?= $gestio['nom'] ?>"><br>
@@ -28,7 +28,7 @@
     <input type="text" name="resum" id="resum" value="<?= $gestio['resum'] ?>"><br>
     <label for="seccio">Seccio</label>
     <input type="text" name="seccio" id="seccio" value="<?= $gestio['seccio'] ?>"><br>
-  <textarea id="summernote" name="editordata" value="<?= $gestio['contingut'] ?>"></textarea>
+  <textarea id="summernote" name="editordata"><?= $gestio['contingut'] ?></textarea>
   <button type="submit">Submit</button>
 </form>
 

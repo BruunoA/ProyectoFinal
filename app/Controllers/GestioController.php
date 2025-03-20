@@ -47,4 +47,17 @@ class GestioController extends BaseController
         $data['gestio'] = $model->find($id);
         return view('gestio_pag/modify', $data);
     }
+
+public function update($id)
+    {
+        $model = new GestioModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'resum' => $this->request->getPost('resum'),
+            'seccio' => $this->request->getPost('seccio'),
+            'contingut' => $this->request->getPost('editordata')
+        ];
+        $model->update($id, $data);
+        return redirect()->to('/gestio');
+    }
 }
