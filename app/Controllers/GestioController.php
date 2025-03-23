@@ -48,7 +48,7 @@ class GestioController extends BaseController
         return view('gestio_pag/modify', $data);
     }
 
-public function update($id)
+    public function update($id)
     {
         $model = new GestioModel();
         $data = [

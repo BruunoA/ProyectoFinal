@@ -27,7 +27,11 @@
     <label for="text">Resum</label>
     <input type="text" name="resum" id="resum"><br>
     <label for="seccio">Seccio</label>
-    <input type="text" name="seccio" id="seccio"><br>
+        <select name="seccio" id="seccio">
+            <option value="noticies">Noticies</option>
+            <option value="historia">Historia</option>
+            <option value="categories">Categories</option>
+        </select><br>
   <textarea id="summernote" name="editordata"></textarea>
   <button type="submit">Submit</button>
 </form>
