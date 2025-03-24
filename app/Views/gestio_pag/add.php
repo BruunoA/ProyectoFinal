@@ -20,19 +20,28 @@
     }
 </style>
 <body>
+<?php if (session()->has('errors')) : ?>
+    <ul>
+        <?php foreach (session('errors') as $error) : ?>
+            <li><?= esc($error) ?></li>
+        <?php endforeach ?>
+    </ul>
+<?php endif ?>
+
 <form method="post" action="<?=base_url('/create/add')?>">
     <?= csrf_field() ?>
-    <label for="nom">Titol</label>
-    <input type="text" name="nom" id="nom"><br>
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom" value="<?= old('nom')?>"><br>
     <label for="text">Resum</label>
-    <input type="text" name="resum" id="resum"><br>
+    <input type="text" name="resum" id="resum" value="<?= old('resum')?>"><br>
     <label for="seccio">Seccio</label>
-        <select name="seccio" id="seccio">
+        <select name="seccio" id="seccio" value="<?= old('seccio')?>">
             <option value="noticies">Noticies</option>
             <option value="historia">Historia</option>
             <option value="categories">Categories</option>
+            <option value="event">Event</option>    <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->  
         </select><br>
-  <textarea id="summernote" name="editordata"></textarea>
+  <textarea id="summernote" name="editordata"><?= old('editordata')?></textarea></br>
   <button type="submit">Submit</button>
 </form>
 

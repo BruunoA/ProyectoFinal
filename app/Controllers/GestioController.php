@@ -15,16 +15,31 @@ class GestioController extends BaseController
 
     public function add()
     {
+        helper(["form"]);
+        // TODO: VEURE COM FER PER A QUE SI ES EVENT, QUE L'ULTIM CAMP NO SIGUI OBLIGATORI
+        // $validationRule = [
+        //     'nom' => 'required',
+        //     'resum' => 'required',
+        //     'seccio' => 'required',
+        //     'editordata' => 'required'
+        // ];
+        
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata')
+            'editordata' => $this->request->getPost('editordata')
         ];
 
         $model = new GestioModel();
-        $model->insert($data);
-        return redirect()->to('/gestio');
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->insert($data);
+            return redirect()->to('/gestio');
+        }
+        
     }
 
     public function gestio()

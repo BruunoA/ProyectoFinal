@@ -28,8 +28,26 @@ class GestioModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'nom' => 'required',
+        'resum' => 'required',
+        'seccio' => 'required',
+        'editordata' => 'required'
+    ];
+    protected $validationMessages   = [
+        'nom' => [
+            'required' => 'El camp nom és obligatori'
+        ],
+        'resum' => [
+            'required' => 'El camp resum és obligatori'
+        ],
+        'seccio' => [
+            'required' => 'La camp secció és obligatoria'
+        ],
+        'editordata' => [
+            'required' => 'El camp contingut és obligatori'
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
@@ -43,4 +61,7 @@ class GestioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    
 }
+
+
