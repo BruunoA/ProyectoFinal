@@ -22,19 +22,26 @@
 </style>
 
 <body>
+<?php if (session()->has('errors')) : ?>
+    <ul>
+        <?php foreach (session('errors') as $error) : ?>
+            <li><?= esc($error) ?></li>
+        <?php endforeach ?>
+    </ul>
+<?php endif ?>
     <form method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
         <?= csrf_field() ?>
         <label for="nom">Titol</label>
-        <input type="text" name="nom" id="nom" value="<?= $gestio['nom'] ?>"><br>
+        <input type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>"><br>
         <label for="text">Resum</label>
-        <input type="text" name="resum" id="resum" value="<?= $gestio['resum'] ?>"><br>
+        <input type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>"><br>
         <label for="seccio">Seccio</label>
         <select name="seccio" id="seccio">
             <option value="noticies">Noticies</option>
             <option value="historia">Historia</option>
             <option value="categories">Categories</option>
         </select><br>
-        <textarea id="summernote" name="editordata"><?= $gestio['contingut'] ?></textarea>
+        <textarea id="summernote" name="editordata"><?= old('editordata', $gestio['contingut']) ?></textarea>
         <button type="submit">Submit</button>
     </form>
 

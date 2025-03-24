@@ -32,7 +32,7 @@ class GestioModel extends Model
         'nom' => 'required',
         'resum' => 'required',
         'seccio' => 'required',
-        'editordata' => 'required'
+        'contingut' => 'required'
     ];
     protected $validationMessages   = [
         'nom' => [
@@ -44,7 +44,7 @@ class GestioModel extends Model
         'seccio' => [
             'required' => 'La camp secció és obligatoria'
         ],
-        'editordata' => [
+        'contingut' => [
             'required' => 'El camp contingut és obligatori'
         ]
     ];

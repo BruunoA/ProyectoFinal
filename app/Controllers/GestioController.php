@@ -17,18 +17,12 @@ class GestioController extends BaseController
     {
         helper(["form"]);
         // TODO: VEURE COM FER PER A QUE SI ES EVENT, QUE L'ULTIM CAMP NO SIGUI OBLIGATORI
-        // $validationRule = [
-        //     'nom' => 'required',
-        //     'resum' => 'required',
-        //     'seccio' => 'required',
-        //     'editordata' => 'required'
-        // ];
-        
+    
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'editordata' => $this->request->getPost('editordata')
+            'contingut' => $this->request->getPost('editordata')
         ];
 
         $model = new GestioModel();
@@ -65,14 +59,20 @@ class GestioController extends BaseController
 
     public function update($id)
     {
+        helper(["form"]);
         $model = new GestioModel();
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
             'contingut' => $this->request->getPost('editordata')
-        ];
-        $model->update($id, $data);
-        return redirect()->to('/gestio');
+        ];  
+        // TODO: ACABAR DE VEURE PER QUE NO FA LA VALIDACIO DEL CAMP CONTINGUT
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->update($id, $data);
+            return redirect()->to('/gestio');
+        }
     }
 }
