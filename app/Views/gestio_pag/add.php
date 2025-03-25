@@ -36,10 +36,17 @@
     <input type="text" name="resum" id="resum" value="<?= old('resum')?>"><br>
     <label for="seccio">Seccio</label>
         <select name="seccio" id="seccio" value="<?= old('seccio')?>">
-            <option value="noticies">Noticies</option>
-            <option value="historia">Historia</option>
+        <option value="#"></option> <!-- Veure com fer per a que no surti cap seleccionat--> 
+        <option value="#" disabled>Noticies</option>    <!-- Son les diferents pàgines que hi ha, per separar el apartats en el select -->
+            <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
+            <option value="event">&nbsp;&nbsp;&nbsp;Events</option>    <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->  
+        <option value="#" disabled>Sobre nosaltres</option>
+            <option value="historia">&nbsp;&nbsp;&nbsp;Historia</option>
+            <option value="missio">&nbsp;&nbsp;&nbsp;Missio</option>
+            <option value="vissio">&nbsp;&nbsp;&nbsp;Vissio</option>
+            <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
+        <option value="#" disabled>Programes</option>
             <option value="categories">Categories</option>
-            <option value="event">Event</option>    <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->  
         </select><br>
   <textarea id="summernote" name="editordata"><?= old('editordata')?></textarea></br>
   <button type="submit">Submit</button>
