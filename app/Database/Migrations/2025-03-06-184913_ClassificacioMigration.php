@@ -47,6 +47,16 @@ class ClassificacioMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'categoria'         => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
+            ],
+            'grup'         => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,

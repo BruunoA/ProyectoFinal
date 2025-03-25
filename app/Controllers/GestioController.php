@@ -17,22 +17,9 @@ class GestioController extends BaseController
     {
         $validation = \Config\Services::validation();
         helper(["form"]);
-        // TODO: VEURE COM FER PER A QUE SI ES EVENT, QUE L'ULTIM CAMP NO SIGUI OBLIGATORI
+        
         $event = $this->request->getPost('seccio');
-        // if($event === 'event'){
-        //     $this->validation->setValidationRules([
-        //         'nom' => 'required',
-        //         'resum' => 'required',
-        //         'seccio' => 'required',
-        //     ]);
-        // }else{
-        //     $this->validation->setValidationRules([
-        //         'nom' => 'required',
-        //         'resum' => 'required',
-        //         'seccio' => 'required',
-        //         'contingut' => 'required'
-        //     ]);
-        // }
+
         $rules = [
             'nom' => 'required',
             'resum' => 'required',
@@ -96,7 +83,6 @@ class GestioController extends BaseController
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];  
         
-        // TODO: ACABAR DE VEURE PER QUE NO FA LA VALIDACIO DEL CAMP CONTINGUT
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {

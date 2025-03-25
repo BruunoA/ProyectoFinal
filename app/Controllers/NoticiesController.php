@@ -9,6 +9,8 @@ class NoticiesController extends BaseController
 {
     public function index()
     {
-        return view('noticies');
+        $model = new GestioModel();
+        $data['gestio'] = $model->findAll();
+        return view('noticies', $data);
     }
 }
