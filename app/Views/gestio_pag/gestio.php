@@ -31,7 +31,7 @@
 
         <!-- Botones para filtrar -->
         <div class="w3-center w3-margin-bottom">
-            <button onclick="mostrarTodos()" class="w3-button w3-blue">Mostrar Tot</button>
+            <button onclick="mostrarTots()" class="w3-button w3-blue">Mostrar Tot</button>
         </div>
 
         <?php if (!empty($gestio)): ?>
@@ -43,9 +43,9 @@
                                 <h3><?= esc($item['nom']) ?></h3>
                             </header>   
                             <div class="w3-container">
-                                <p>Resum: <strong></strong> <?= esc($item['resum']) ?></p>
-                                <p>Contingut: <strong></strong> <?= esc($item['contingut']) ?></p>
-                                <p>Seccio: <strong></strong> <?= esc($item['seccio']) ?></p>
+                                <p>Resum: <strong></strong> <?= $item['resum'] ?></p>
+                                <p style="overflow: hidden; text-overflow: ellipsis;">Contingut: <strong></strong> <?= $item['contingut'] ?></p>
+                                <p>Seccio: <strong></strong> <?= $item['seccio'] ?></p>
                             </div>
                             <div class="w3-container w3-center">
                                 <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>">Editar</a>
@@ -61,7 +61,7 @@
     </div>
 
     <script>
-    function mostrarTodos() {
+    function mostrarTots() {
         document.querySelectorAll(".gestio-item").forEach(item => {
             item.style.display = "block";
         });

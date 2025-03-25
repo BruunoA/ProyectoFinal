@@ -15,24 +15,60 @@ class GestioController extends BaseController
 
     public function add()
     {
+        $validation = \Config\Services::validation();
         helper(["form"]);
         // TODO: VEURE COM FER PER A QUE SI ES EVENT, QUE L'ULTIM CAMP NO SIGUI OBLIGATORI
+        $event = $this->request->getPost('seccio');
+        // if($event === 'event'){
+        //     $this->validation->setValidationRules([
+        //         'nom' => 'required',
+        //         'resum' => 'required',
+        //         'seccio' => 'required',
+        //     ]);
+        // }else{
+        //     $this->validation->setValidationRules([
+        //         'nom' => 'required',
+        //         'resum' => 'required',
+        //         'seccio' => 'required',
+        //         'contingut' => 'required'
+        //     ]);
+        // }
+        $rules = [
+            'nom' => 'required',
+            'resum' => 'required',
+            'seccio' => 'required',
+        ];
+        
+        if ($event !== 'event') {
+            $rules['contingut'] = 'required';
+        }
     
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata')
+            'contingut' => $this->request->getPost('editordata'),
+            'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
-        $model = new GestioModel();
+        $validation->setRules($rules);
 
-        if (!$model->validate($data)) {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        } else {
+         if($validation){
+            $model = new GestioModel();
             $model->insert($data);
             return redirect()->to('/gestio');
+        }else {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
+
+        
+
+        // // if (!$model->validate($data)) {
+        // //     return redirect()->back()->withInput()->with('errors', $model->errors());
+        // // } else {
+        //     $model->insert($data);
+        //     return redirect()->to('/gestio');
+        // }
         
     }
 
@@ -65,7 +101,8 @@ class GestioController extends BaseController
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata')
+            'contingut' => $this->request->getPost('editordata'),
+            'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];  
         
         // TODO: ACABAR DE VEURE PER QUE NO FA LA VALIDACIO DEL CAMP CONTINGUT

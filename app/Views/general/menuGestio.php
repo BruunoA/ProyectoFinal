@@ -8,9 +8,9 @@
         <ul class="menu-items">
             <li><a href="">Inici</a></li>
             <li><a href="">Contacte</a></li>
-            <!-- <li><a href="">Sobre Nosaltres</a></li> -->
             <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
-                <option value="">Sobre Nosaltres</option>
+                <!-- <option value="">Sobre Nosaltres</option> -->
+                <option value="sobreNosaltres">Sobre Nosaltres</option>
                 <option value="historia">Història</option>
                 <option value="missio">Missió</option>
                 <option value="vissio">Visió</option>
