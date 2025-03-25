@@ -54,23 +54,13 @@ class GestioController extends BaseController
 
         $validation->setRules($rules);
 
-         if($validation){
+         if($this->validate($rules)){
             $model = new GestioModel();
             $model->insert($data);
             return redirect()->to('/gestio');
         }else {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-
-        
-
-        // // if (!$model->validate($data)) {
-        // //     return redirect()->back()->withInput()->with('errors', $model->errors());
-        // // } else {
-        //     $model->insert($data);
-        //     return redirect()->to('/gestio');
-        // }
-        
+        } 
     }
 
     public function gestio()
