@@ -50,10 +50,10 @@
     display: none;
 }
 
-.w3-container {
-    margin-left: 240px; 
+/* .w3-container {
+    margin-left: 14%; 
     padding: 20px;
-}
+} */
 
 @media (max-width: 768px) {
     .menu {

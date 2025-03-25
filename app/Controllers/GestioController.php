@@ -67,6 +67,7 @@ class GestioController extends BaseController
             'seccio' => $this->request->getPost('seccio'),
             'contingut' => $this->request->getPost('editordata')
         ];  
+        
         // TODO: ACABAR DE VEURE PER QUE NO FA LA VALIDACIO DEL CAMP CONTINGUT
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());

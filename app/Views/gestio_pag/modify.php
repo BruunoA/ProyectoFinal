@@ -17,14 +17,14 @@
 <style>
     .note-editor.note-frame .note-editing-area .note-editable {
         height: 200px;
-        width: 400px;
+        width: 700px;
     }
 </style>
 
 <body>
 <?php if (session()->has('errors')) : ?>
     <ul>
-        <?php foreach (session('errors') as $error) : ?>
+        <?php foreach (('errors') as $error) : ?>
             <li><?= esc($error) ?></li>
         <?php endforeach ?>
     </ul>
