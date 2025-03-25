@@ -62,6 +62,7 @@
     <div class="w3-container equips-container">
         <?php foreach ($taula as $equip): ?>
             <?php if ($equip['posicio'] == 1): ?>
+                <?php $items = range(0, 3); foreach ($items as $i): ?>
                 <div class="equip-card">
                     <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
                         <h1 class="w3-xlarge">Resultado</h1>
@@ -69,9 +70,11 @@
                             <div class="w3-half w3-large"><strong><?= esc($equip['nom']) ?></strong></div>
                             <div class="w3-half w3-large">
                                 <strong>
-                                    <?php
+                                    <?=
                                     $resultats = json_decode($equip['resultats'], true) ?? [];
-                                    echo isset($resultats[0]) ? trim($resultats[0]) : 'Sin resultado';
+                                    for ($i = 0; $i < 4; $i++) {
+                                        echo isset($resultats[$i]) ? trim($resultats[$i]) . '<br>' : 'Sin resultado<br>';
+                                    }
                                     // foreach ($resultats as $resultat) {
                                     //     echo trim($resultat) . '<br>'; 
                                     // }
@@ -86,6 +89,7 @@
                         </footer>
                     </div>
                 </div>
+                <?php endforeach; ?>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>
