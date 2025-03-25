@@ -37,10 +37,11 @@ class GestioController extends BaseController
             'nom' => 'required',
             'resum' => 'required',
             'seccio' => 'required',
+            'contingut' => 'required'
         ];
         
-        if ($event !== 'event') {
-            $rules['contingut'] = 'required';
+        if ($event === 'event') {
+            unset($rules['contingut']);
         }
     
         $data = [
