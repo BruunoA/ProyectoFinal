@@ -22,7 +22,7 @@
         <?php endif; ?>
         <div class="w3-col l4 m6 s12" style="margin-bottom: 1rem;">
             <div class="w3-card news-card" style="display:flex; flex-direction: column;">
-                <a href="noticiaGrande.html">
+            <a href="<?= base_url('noticia/' . $noticia['id']); ?>">
                     <img src="<?= base_url('assets/img/noticia.jpeg'); ?>" style="width:100%">
                 </a>
                 <div class="w3-container news-container">

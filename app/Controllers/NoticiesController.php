@@ -16,4 +16,14 @@ class NoticiesController extends BaseController
         // $data['gestio'] = $model->findAll();
         return view('noticies', $data);
     }
+    
+    public function noticia($id)
+    {
+        $model = new GestioModel();
+
+        $data['noticia'] = $model->find($id);
+        $data['titol'] = $data['noticia']['nom'];
+        
+        return view('noticiaGran', $data);
+    }
 }
