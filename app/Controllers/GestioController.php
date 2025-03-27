@@ -15,21 +15,21 @@ class GestioController extends BaseController
 
     public function add()
     {
-        $validation = \Config\Services::validation();
+        // $validation = \Config\Services::validation();
         helper(["form"]);
         
-        $event = $this->request->getPost('seccio');
+        // $event = $this->request->getPost('seccio');
 
-        $rules = [
-            'nom' => 'required',
-            'resum' => 'required',
-            'seccio' => 'required',
-            'contingut' => 'required'
-        ];
+        // $rules = [
+        //     'nom' => 'required',
+        //     'resum' => 'required',
+        //     'seccio' => 'required',
+        //     'contingut' => 'required'   
+        // ];
         
-        if ($event === 'event') {
-            unset($rules['contingut']);
-        }
+        // if ($event === 'event') {
+        //     unset($rules['contingut']);
+        // }
     
         $data = [
             'nom' => $this->request->getPost('nom'),
@@ -39,15 +39,22 @@ class GestioController extends BaseController
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
-        $validation->setRules($rules);
+        // $validation->setRules($rules);
 
-         if($this->validate($rules)){
-            $model = new GestioModel();
-            $model->insert($data);
-            return redirect()->to('/gestio');
-        }else {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        } 
+        //  if($this->validate($rules)){
+        //     $model = new GestioModel();
+        //     $model->insert($data);
+        //     return redirect()->to('/gestio');
+        // }else {
+        //     return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        // } 
+
+        $model = new GestioModel();
+    if ($model->insert($data)) {
+        return redirect()->to('/gestio');
+    } else {
+        return redirect()->back()->withInput()->with('errors', $model->errors());
+    }
     }
 
     public function gestio()

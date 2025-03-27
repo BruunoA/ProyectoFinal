@@ -22,6 +22,7 @@
 .w3-card div a:hover {
     background: #0056b3;
 }
+
 </style>
 <body class="w3-light-grey">
 <?= $this->include('general/menuGestio'); ?>
@@ -29,7 +30,7 @@
     <div class="w3-container">
         <h1 class="w3-center">Llista de gestio</h1>
 
-        <!-- Botones para filtrar -->
+<!-- TODO: VEURE COM FER PER A QUE MOSTRI LA IMATGE DE LA BASE DE DADES, MOSTRAR COM A TAL I TAMBÉ AL FER CLICK A EDITAR-->
         <div class="w3-center w3-margin-bottom">
             <button onclick="mostrarTots()" class="w3-button w3-blue">Mostrar Tot</button>
         </div>

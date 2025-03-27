@@ -43,7 +43,7 @@
         <option value="#" disabled>Sobre nosaltres</option>
             <option value="historia">&nbsp;&nbsp;&nbsp;Historia</option>
             <option value="missio">&nbsp;&nbsp;&nbsp;Missio</option>
-            <option value="vissio">&nbsp;&nbsp;&nbsp;Vissio</option>
+            <option value="visio">&nbsp;&nbsp;&nbsp;Visio</option>
             <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
         <option value="#" disabled>Programes</option>
             <option value="categories">Categories</option>

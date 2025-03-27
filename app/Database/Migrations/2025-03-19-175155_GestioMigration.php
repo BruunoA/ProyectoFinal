@@ -24,7 +24,7 @@ class GestioMigration extends Migration
                     ],
                     'contingut'          => [
                             'type'           => 'VARCHAR',
-                            'constraint'     => '400',
+                            'constraint'     => '400',  // TODO: canviar a text
                     ],
                     'seccio'          => [
                             'type'           => 'VARCHAR',
