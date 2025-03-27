@@ -22,10 +22,10 @@ class GestioMigration extends Migration
                             'type'           => 'VARCHAR',
                             'constraint'     => '250',
                     ],
-                    'contingut'          => [
-                            'type'           => 'VARCHAR',
-                            'constraint'     => '400',  // TODO: canviar a text
-                    ],
+                     'contingut' => [
+                            'type'           => 'TEXT',  
+                            'null'           => true,   
+                        ],
                     'seccio'          => [
                             'type'           => 'VARCHAR',
                             'constraint'     => '100',

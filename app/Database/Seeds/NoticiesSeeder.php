@@ -14,7 +14,7 @@ class NoticiesSeeder extends Seeder
         for ($i = 0; $i < 6; $i++) { 
             $nom = $fake->sentence(6); 
             $resum = $fake->text(100); 
-            $contingut = $fake->paragraphs(3, true); 
+            $contingut = $fake->paragraphs(20, true); 
             $seccio = "noticies";
             $url = url_title($nom, '-', true);
 
