@@ -77,6 +77,7 @@
                                     }
                                     // foreach ($resultats as $resultat) {
                                     //     echo trim($resultat) . '<br>'; 
+                                    // prueba
                                     // }
                                     ?>
                                 </strong>
