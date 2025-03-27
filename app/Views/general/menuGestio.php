@@ -13,7 +13,7 @@
                 <option value="sobreNosaltres">Sobre Nosaltres</option>
                 <option value="historia">Història</option>
                 <option value="missio">Missió</option>
-                <option value="vissio">Visió</option>
+                <option value="visio">Visió</option>
                 <option value="valors">Valors</option>
             </select>
             <li><a href="">Programes</a></li>
