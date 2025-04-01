@@ -16,7 +16,7 @@
 <style>
     .note-editor.note-frame .note-editing-area .note-editable {
         height: 200px;
-        width: 400px;
+        /* width: 400px; */
     }
 </style>
 <body>

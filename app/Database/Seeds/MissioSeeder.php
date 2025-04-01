@@ -13,7 +13,7 @@ class MissioSeeder extends Seeder
         $nom = $fake->words(3, true);
             $data = [
                 'nom' => $nom,
-                'resum' => $fake->paragraph(2),
+                'contingut' => $fake->paragraph(20),
                 'seccio' => 'missio',
                 'url' => url_title($nom, '-', true),
                 'created_at' => date('Y-m-d H:i:s'),

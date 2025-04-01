@@ -45,14 +45,14 @@
                             </header>   
                             <div class="w3-container">
                                 <p>Resum: <strong></strong> <?= $item['resum'] ?></p>
-                                <p style="overflow: hidden; text-overflow: ellipsis;">Contingut: <strong></strong> <?= $item['contingut'] ?></p>
+                                <p>Contingut: <!-- <strong></strong>--> <?= $item['contingut'] ?></p>
                                 <p>Seccio: <strong></strong> <?= $item['seccio'] ?></p>
                             </div>
                             <div class="w3-container w3-center">
                                 <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>">Editar</a>
                                 <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>">Esborrar</a>
                             </div>
-                        </div>
+                        </div>  
                     </div>
                 <?php endforeach; ?>
             </div>
