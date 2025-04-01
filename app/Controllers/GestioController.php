@@ -35,7 +35,7 @@ class GestioController extends BaseController
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata'),
+            'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
@@ -86,7 +86,7 @@ class GestioController extends BaseController
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata'),
+            'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];  
         

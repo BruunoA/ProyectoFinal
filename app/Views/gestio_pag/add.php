@@ -9,11 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css"
@@ -70,24 +65,20 @@
             <option value="categories">Categories</option>
         </select><br>
         <!-- TODO: ABANS DE FER SUBMIT, MIRAR QUE COMPLEIXI LES REGLES EN BANDA CLIENT I SERVER-->
-        <!-- <textarea id="summernote" name="editordata"><?= old('editordata') ?></textarea></br> -->
         <div style="width:800px">
-        <textarea name="editor1" id="editor1" rows="10" cols="80">
+        <textarea name="ckeditor" id="ckeditor" rows="10" cols="80">
             </textarea>
     </div>
         <button type="submit">Submit</button>
     </form>
 
     <script>
-        $(document).ready(function () {
-            $('#summernote').summernote();
-        });
 
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
 
         ClassicEditor
-            .create(document.querySelector('#editor1'), {
+            .create(document.querySelector('#ckeditor'), {
                 removePlugins: [ 'Markdown'],
                 toolbar: {
                     items: [
