@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11afc21338782bbf7137b333ed774cea",
+    "content-hash": "dd259f9a10220668753bea6a673b48b3",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -256,12 +256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SIENSIS/CICMDTools.git",
-                "reference": "3363fe78fe5513f08984934f42c5647529f82743"
+                "reference": "3d41f7ea91bf2263b034c4c60d2405e036e08ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SIENSIS/CICMDTools/zipball/3363fe78fe5513f08984934f42c5647529f82743",
-                "reference": "3363fe78fe5513f08984934f42c5647529f82743",
+                "url": "https://api.github.com/repos/SIENSIS/CICMDTools/zipball/3d41f7ea91bf2263b034c4c60d2405e036e08ce5",
+                "reference": "3d41f7ea91bf2263b034c4c60d2405e036e08ce5",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                 "issues": "https://github.com/SIENSIS/CICMDTools/issues",
                 "source": "https://github.com/SIENSIS/CICMDTools/tree/main"
             },
-            "time": "2025-03-11T10:32:47+00:00"
+            "time": "2025-04-01T13:33:07+00:00"
         },
         {
             "name": "studio-42/elfinder",

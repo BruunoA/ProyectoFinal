@@ -32,6 +32,9 @@ $routes->post('create/add', 'GestioController::add');
 $routes->get('gestio/delete/(:num)', 'GestioController::delete/$1');
 $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1');
 $routes->post('/modify/(:num)', 'GestioController::update/$1');
-
-
-
+// elFinder
+$routes->get('elfinder', 'FileExplorerController::manager');
+$routes->post('elfinder', 'FileExplorerController::manager');
+$routes->get('fileget/(:any)', 'FileExplorerController::getFile');
+$routes->get('fileconnector', 'FileExplorerController::connector');
+$routes->post('fileconnector', 'FileExplorerController::connector');
