@@ -9,14 +9,15 @@ use elFinderConnector;
 
 class FileExplorerController extends BaseController
 {
-    public function index()
-    {
 
+    public function ckeditor()
+    {
+        return view('ckeditor/index');
     }
         public function getFile()
     {
         $varName=current_url(true)->setSegment(1,'')->getPath();
-        $file = new \CodeIgniter\Files\File(WRITEPATH . "/uploads/" . urldecode($varName));
+        $file = new \CodeIgniter\Files\File(path: WRITEPATH . "/uploads/" . urldecode($varName));
 
         if (!$file->isFile()){     // if (!is_file(WRITEPATH . "/uploads/" . $varName)){
             throw new \CodeIgniter\Exceptions\PageNotFoundException($varName . ' no found');

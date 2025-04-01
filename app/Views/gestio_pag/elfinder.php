@@ -5,14 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" />
-
-    <link rel="stylesheet" type="text/css" href="<?= base_url('elfinder/css/elfinder.min.css') ?>" />
-
-    <script src="<?= base_url('elfinder/js/elfinder.min.js') ?>"></script>
 </head>
 
 <body>
@@ -20,8 +12,6 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
     <script>
-        const connectorUrl = "<?= base_url('fileconnector') ?>";
-        const uploadTargetHash = 'l1_XA';
         define('elFinderConfig', {
             // elFinder options (REQUIRED)
             // Documentation for client options:
@@ -195,8 +185,6 @@
 
         })();
     </script>
-
-    <div id="elfinder"></div>
 </body>
 
 </html>

@@ -38,3 +38,5 @@ $routes->post('elfinder', 'FileExplorerController::manager');
 $routes->get('fileget/(:any)', 'FileExplorerController::getFile');
 $routes->get('fileconnector', 'FileExplorerController::connector');
 $routes->post('fileconnector', 'FileExplorerController::connector');
+
+$routes->get('ck','FileExplorerController::ckeditor');
