@@ -10,23 +10,32 @@
 <body>
 <?= $this->include('general/menu'); ?>
 
-<div class="w3-container" style="margin-top: 2rem; margin-bottom: 2rem;">
-    <div class="w3-container w3-teal">
-        <h1 style="text-align: center;">Galeria</h1>
-    </div>
-
-    <div class="w3-row-padding w3-margin-top">
-        <?php for ($i = 0; $i < 6; $i++): ?>
-            <div class="w3-third">
-                <div class="w3-card">
-                    <img src="<?= base_url('assets/img/camara.png'); ?>" style="width:100%">
-                    <div class="w3-container">
-                        <h5>20 imatges / 5 vídeos</h5>
-                    </div>
+<div class="w3-container">
+    <h1>Galería de Fotos</h1>
+    
+    <?php if(!empty($albums)): ?>
+        <?php foreach ($albums as $albumId => $albumData): ?>
+            <div class="w3-panel w3-border w3-round-large" style="margin-bottom: 20px;">
+                <h2>Album <?= $albumId ?> - <?= $albumData['count'] ?> imatges</h2>
+                
+                <div class="w3-row-padding">
+                    <?php foreach ($albumData['fotos'] as $foto): ?>
+                        <div class="w3-col m3 w3-margin-bottom">
+                            <div class="w3-card w3-padding" style="height: 250px; overflow: hidden;">
+                                <h4><?= esc($foto['titol']) ?></h4>
+                                <p><?= esc(substr($foto['descripcio'], 0, 50)) ?>...</p>
+                                <small>ID: <?= $foto['id'] ?></small>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-        <?php endfor; ?>
-    </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="w3-panel w3-yellow">
+            <p>No hi ha fotos</p>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?= $this->include('general/footer'); ?>
