@@ -17,4 +17,12 @@ class IndexController extends BaseController
     {
         return view("inici");
     }
+
+    public function equipo2(){
+        return view("equipo2");
+    }
+
+    public function equipo3(){
+        return view("equipo3");
+    }
 }

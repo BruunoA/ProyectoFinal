@@ -5,7 +5,12 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'IndexController::home');
+
+ $routes->get('/', 'Home::index');
+ $routes->get('/equipo2', 'IndexController::equipo2');
+ $routes->get('/equipo3', 'IndexController::equipo3');
+
+// $routes->get('/', 'IndexController::home');
 
 $routes->get('home', 'IndexController::home');
 $routes->get('index', 'IndexController::index');
