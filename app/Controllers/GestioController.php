@@ -10,21 +10,115 @@ class GestioController extends BaseController
 {
     public function index()
     {
-        return view('add');
+        return view('gestio_pag/add');
     }
 
     public function add()
     {
+        // $validation = \Config\Services::validation();
+        helper(["form"]);
+        
+        // $event = $this->request->getPost('seccio');
+
+        // $rules = [
+        //     'nom' => 'required',
+        //     'resum' => 'required',
+        //     'seccio' => 'required',
+        //     'contingut' => 'required'   
+        // ];
+        
+        // if ($event === 'event') {
+        //     unset($rules['contingut']);
+        // }
+    
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'contingut' => $this->request->getPost('editordata')
+            'contingut' => $this->request->getPost('editordata'),
+            'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
-        // var_dump($data);
-        // die;
+
+        // $validation->setRules($rules);
+
+        //  if($this->validate($rules)){
+        //     $model = new GestioModel();
+        //     $model->insert($data);
+        //     return redirect()->to('/gestio');
+        // }else {
+        //     return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        // } 
+
         $model = new GestioModel();
-        $model->insert($data);
-        return view('add', $data);
+    if ($model->insert($data)) {
+        return redirect()->to('/gestio');
+    } else {
+        return redirect()->back()->withInput()->with('errors', $model->errors());
+    }
+    }
+
+    public function gestio()
+    {
+        $model = new GestioModel();
+        $data['gestio'] = $model->findAll();
+        return view('gestio_pag/gestio', $data);
+    }
+
+    public function delete($id)
+    {
+        $model = new GestioModel();
+        $model->delete($id);
+        return redirect()->to('/gestio');
+    }
+
+    public function edit($id)
+    {
+        $model = new GestioModel();
+        $data['gestio'] = $model->find($id);
+        return view('gestio_pag/modify', $data);
+    }
+
+    public function update($id)
+    {
+        helper(["form"]);
+        $model = new GestioModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'resum' => $this->request->getPost('resum'),
+            'seccio' => $this->request->getPost('seccio'),
+            'contingut' => $this->request->getPost('editordata'),
+            'url' => mb_url_title($this->request->getPost('nom'), '-', true)
+        ];  
+        
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->update($id, $data);
+            return redirect()->to('/gestio');
+        }
+    }
+
+    public function missio(){
+        $model = new GestioModel();
+        $data['missio'] = $model->where('seccio', 'missio')->findAll();
+        return view('sobreNosaltres', $data);
+    }
+
+    public function historia(){
+        $model = new GestioModel();
+        $data['historia'] = $model->where('seccio', 'historia')->findAll();
+        return view('sobreNosaltres', $data);
+    }
+
+    public function visio(){
+        $model = new GestioModel();
+        $data['gestio'] = $model->where('seccio', 'visio')->findAll();
+        return view('sobreNosaltres', $data);
+    }
+
+    public function valors(){
+        $model = new GestioModel();
+        $data['gestio'] = $model->where('seccio', 'valors')->findAll();
+        return view('sobreNosaltres', $data);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class GestioMigration extends Migration
+class ConfiguracioMigration extends Migration
 {
     public function up()
     {
@@ -12,27 +12,17 @@ class GestioMigration extends Migration
                     'id'          => [
                             'type'           => 'INT',
                             'auto_increment' => true,
-                            'null'           => false,
                     ],
                     'nom'          => [
                             'type'           => 'VARCHAR',
                             'constraint'     => '250',
                     ],
-                    'resum'          => [
+                    'valor'          => [
                             'type'           => 'VARCHAR',
                             'constraint'     => '250',
                     ],
-                     'contingut' => [
-                            'type'           => 'TEXT',  
-                            'null'           => true,   
-                        ],
-                    'seccio'          => [
-                            'type'           => 'VARCHAR',
-                            'constraint'     => '100',
-                    ],
-                    'url'          => [
-                            'type'           => 'VARCHAR',
-                            'constraint'     => '150',
+                    'tag'          => [
+                            'type'           => 'INT',
                     ],
                     'created_at'      =>  [
                               'type'         =>  'DATETIME',
@@ -51,11 +41,11 @@ class GestioMigration extends Migration
                     ],
             ]);
             $this->forge->addPrimaryKey('id');
-            $this->forge->createTable('gestio');
+            $this->forge->createTable('configuracio');
     }
     
     public function down()
     {
-            $this->forge->dropTable('gestio');
+            $this->forge->dropTable('configuracio');
     }
 }

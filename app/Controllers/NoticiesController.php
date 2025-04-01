@@ -4,11 +4,26 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\GestioModel;
 
 class NoticiesController extends BaseController
 {
     public function index()
     {
-        return view('noticies');
+        $model = new GestioModel();
+        // agafa tot lo que té com a secció noticies
+        $data['gestio'] = $model->where('seccio', 'noticies')->findAll();
+        // $data['gestio'] = $model->findAll();
+        return view('noticies', $data);
+    }
+    
+    public function noticia($id)
+    {
+        $model = new GestioModel();
+
+        $data['noticia'] = $model->find($id);
+        $data['titol'] = $data['noticia']['nom'];
+        
+        return view('noticiaGran', $data);
     }
 }

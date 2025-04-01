@@ -47,8 +47,7 @@
                 width: 90%;
             }
         }
-
-        img {
+        img{
             width: 40px;
             height: 40px;
         }
@@ -60,41 +59,29 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container equips-container">
-        <?php foreach ($taula as $equip): ?>
-            <?php if ($equip['posicio'] == 1): ?>
-                <?php $items = range(0, 3); foreach ($items as $i): ?>
-                <div class="equip-card">
-                    <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
-                        <h1 class="w3-xlarge">Resultado</h1>
-                        <div class="w3-row">
-                            <div class="w3-half w3-large"><strong><?= esc($equip['nom']) ?></strong></div>
-                            <div class="w3-half w3-large">
-                                <strong>
-                                    <?=
-                                    $resultats = json_decode($equip['resultats'], true) ?? [];
-                                    for ($i = 0; $i < 4; $i++) {
-                                        echo isset($resultats[$i]) ? trim($resultats[$i]) . '<br>' : 'Sin resultado<br>';
-                                    }
-                                    // foreach ($resultats as $resultat) {
-                                    //     echo trim($resultat) . '<br>'; 
-                                    // prueba
-                                    // }
-                                    ?>
-                                </strong>
-                            </div>
-                        </div>
-                        <footer
-                            class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom"
-                            style="border-radius: 20px;">
-                            12/12/2025
-                        </footer>
+    <?php foreach ($resultats as $equip): ?>
+        <div class="equip-card">
+                <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
+                    <h1 class="w3-xlarge">equip</h1>
+                    <div class="w3-row">
+                        <div class="w3-half w3-large"><strong><?= esc($equip['equip_v']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['equip_l']) ?></strong></div>
                     </div>
+                    <div class="w3-row">
+                        <div class="w3-col w3-center w3-xlarge"><strong>VS</strong></div>
+                    </div>
+                    <div class="w3-row w3-margin-bottom">
+                        <div class="w3-half w3-large"><strong><?= esc($equip['gols_v']) ?></strong></div>
+                        <div class="w3-half w3-large"><strong><?= esc($equip['gols_l']) ?></strong></div>
+                    </div>
+                    <footer class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom" style="border-radius: 20px;">
+                        12/12/2025
+                    </footer>
                 </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+            </div>
         <?php endforeach; ?>
     </div>
-
+    
     <a href="<?= base_url('dades'); ?>" class="w3-button w3-black w3-margin">Actualitzar dades</a>
     <a href="<?= base_url('wysiwyg'); ?>" class="w3-button w3-black w3-margin">WYSIWYG</a>
 
@@ -129,7 +116,7 @@
         </table>
     </div>
     <pre>
-
+        
     </pre>
 
     <?= $this->include('general/footer'); ?>
