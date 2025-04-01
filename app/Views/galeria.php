@@ -37,7 +37,6 @@
                 <div class="w3-panel w3-border w3-round-large" style="margin-bottom: 20px;">
                     <h2>Titol album</h2>
                     <div class="w3-row-padding">
-                        
                         <div class="w3-col m3 w3-margin-bottom">
                             <div class="w3-card w3-padding" style="height: 250px; overflow: hidden;">
                                 <img src="<?= base_url('assets/img/camara.png'); ?>" style="width:100%">
@@ -47,7 +46,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-        <?php else: ?>
+        <?php else: ?> 
             <div class="w3-panel w3-yellow">
                 <p>No hi ha fotos</p>
             </div>
