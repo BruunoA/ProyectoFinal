@@ -4,25 +4,38 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class EventsMigration extends Migration
+class StaffMigration extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '255',
+                'constraint'     => 255, 
                 'null'           => false,
             ],
-            'tipus_event'          => [
+            'carrec'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '255',
+                'constraint'     => 255, 
                 'null'           => false,
+            ],
+            'id_equip'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
             ],
             'publicated_at'          => [
                 'type'           => 'TIMESTAMP',
@@ -34,28 +47,14 @@ class EventsMigration extends Migration
                 'null'           => true,
                 'default'        => null,
             ],
-            'id_tag'          => [
-                'type'           => 'INT',
-            ],
-            'created_at'      =>  [
-                'type'         =>  'DATETIME',
-                'null'         =>  true,
-                'default'    =>  null,
-            ],
-            'updated_at'     =>  [
-                'type'         =>  'DATETIME',
-                'null'         =>  true,
-                'default'    =>  null,
-            ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('events');
-        $this->forge->addForeignKey('tipus_event', 'equips', 'id');
-        $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->createTable('staff');
     }
 
     public function down()
     {
-        $this->forge->dropTable('events');
+        $this->forge->dropTable('staff');
     }
 }

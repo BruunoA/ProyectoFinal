@@ -11,15 +11,9 @@ class ClassificacioMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'logo'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
-            ],
-            'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
@@ -50,10 +44,24 @@ class ClassificacioMigration extends Migration
             'gc'          => [
                 'type'           => 'INT',
             ],
+            'id_album'         => [             // TODO: LOGOS? canviar id_album pero la taula de fotos (o la ruta de la carpta logos)
+                'type'           => 'int',
+                'null'           => true,
+            ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_album', 'albums', 'id');
         $this->forge->createTable('classificacio');
-        $this->forge->addForeignKey('nom', 'albums', 'id');
     }
 
     public function down()

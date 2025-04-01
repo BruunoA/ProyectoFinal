@@ -4,19 +4,16 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class TagMigration extends Migration
+class MenuTagsMigration extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_menu'          => [
                 'type'           => 'INT',
-                'auto_increment' => true,
             ],
-            'nom_tag'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
-                'null'           => false,
+            'id_tags'          => [
+                'type'           => 'INT',
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -34,12 +31,14 @@ class TagMigration extends Migration
                 'default'        => null,
             ],
         ]);
-        $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('tags');
+        $this->forge->addPrimaryKey('id_menu', 'id_tags');
+        $this->forge->addForeignKey('id_menu', 'menu', 'id');
+        $this->forge->addForeignKey('id_tags', 'tags', 'id');
+        $this->forge->createTable('menu_tags');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tags');
+        $this->forge->dropTable('menu_tags');
     }
 }

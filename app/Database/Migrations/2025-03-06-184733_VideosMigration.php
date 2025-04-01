@@ -4,38 +4,36 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class StaffMigration extends Migration
+class TaulaVideosMigration extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nom'          => [
+            'enllaç'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => '255',
                 'null'           => false,
             ],
-            'id_equip'          => [
+            'id_album'          => [
                 'type'           => 'INT',
-                'null'           => false,
+                'null'           => true,
             ],
-            'carrec'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
-                'null'           => false,
+            'id_tag'          => [
+                'type'           => 'INT',
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('staff');
-        $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->addForeignKey('id_album', 'albums', 'id');
+        $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->createTable('taula_videos');
     }
 
     public function down()
     {
-        $this->forge->dropTable('staff');
+        $this->forge->dropTable('taula_videos');
     }
 }

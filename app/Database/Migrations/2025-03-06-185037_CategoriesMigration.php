@@ -11,7 +11,6 @@ class CategoriesMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'titol'          => [
@@ -34,10 +33,33 @@ class CategoriesMigration extends Migration
                 'constraint'     => '400',
                 'null'           => false,
             ],
+            'id_equip'          => [
+                'type'           => 'int',
+            ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_equip', 'equips', 'id');
         $this->forge->createTable('categories');
-        $this->forge->addForeignKey('descripcio', 'equips', 'id');
     }
 
     public function down()

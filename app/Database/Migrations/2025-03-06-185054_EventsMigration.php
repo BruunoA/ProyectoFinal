@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class TagMigration extends Migration
+class EventsMigration extends Migration
 {
     public function up()
     {
@@ -13,9 +13,16 @@ class TagMigration extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'nom_tag'          => [
+            'nom'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => '255',
+                'null'           => false,
+            ],
+            'tipus_event'          => [
+                'type'           => 'int',
+            ],
+            'id_tag'          => [
+                'type'           => 'INT',
                 'null'           => false,
             ],
             'created_at'      =>  [
@@ -28,6 +35,11 @@ class TagMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,
@@ -35,11 +47,12 @@ class TagMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('tags');
+        // $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->createTable('events');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tags');
+        $this->forge->dropTable('events');
     }
 }

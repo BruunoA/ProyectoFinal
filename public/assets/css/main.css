@@ -3,6 +3,7 @@ footer {
     color: white;
     padding: 2rem 0;
     text-align: center;
+    margin-top: auto;
 }
 
 footer div {
@@ -20,6 +21,98 @@ footer a:hover {
     color: #d32f2f;
 }
 
-a:active{
-  color: red;
+a:active {
+    color: red;
+}
+
+/* MENU   ESTILOS*/
+
+.menu {
+    background: white;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 20px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+}
+
+.menu-items {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-items li {
+    display: inline;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.menu-items a:hover {
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: white;
+        width: 100%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-items.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* RESPONSIVE TABLET */
+@media (min-width: 1007px) {
+    footer {
+        background-color: black;
+        position: absolute;
+        bottom: 10;
+        width: 100%;
+        /* height: 40px; */
+        color: white;
+    }
+
+    /* .resultats-container{
+        height: 15rem;
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    } */
 }

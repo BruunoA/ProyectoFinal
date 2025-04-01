@@ -11,7 +11,6 @@ class EquipsMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -23,10 +22,30 @@ class EquipsMigration extends Migration
                 'type'           => 'INT',
                 'null'           => false,
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'publicated_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('equips');
         $this->forge->addForeignKey('id_classificacio', 'classificacio', 'id');
+        $this->forge->createTable('equips');
     }
 
     public function down()
@@ -34,3 +53,5 @@ class EquipsMigration extends Migration
         $this->forge->dropTable('equips');
     }
 }
+
+

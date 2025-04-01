@@ -11,7 +11,6 @@ class MenuMigration extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'nom'          => [
@@ -28,8 +27,9 @@ class MenuMigration extends Migration
                 'type'           => 'INT',
             ],
             'visibilitat'          => [
-                'type'           => 'INT',
-                'null'           => false,
+                'type'           => 'TINYINT',
+                'visible'        => 'TINYINT',
+                'default'        => true,       // TODO: ACABAR DE VEURE COM SERIA
             ],
             'ordre'          => [
                 'type'           => 'INT',
@@ -37,10 +37,25 @@ class MenuMigration extends Migration
             'id_tag'          => [
                 'type'           => 'INT',
             ],
+            'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'deleted_at'          => [
+                'type'           => 'TIMESTAMP',
+                'null'           => true,
+                'default'        => null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('menu');
-        $this->forge->addForeignKey('id_tag', 'tag', 'id');
     }
 
     public function down()

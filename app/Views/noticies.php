@@ -15,20 +15,35 @@
     <div class="w3-container w3-teal">
         <h1>Noticies</h1>
     </div>
-    <div class="w3-row-padding" style="margin-top: 2rem;">
-      <div class="w3-col l6 m6 s10 main-news">
-        <?php for ($i = 0; $i < 6; $i++): ?>
-        <div class="w3-card news-card">
-          <a href="noticiaGrande.html"><img src="<?= base_url('assets/img/noticia.jpeg'); ?>" style="width:100%"></a>
-          <div class="w3-container news-container">
-            <h5><strong>5 Terre</strong></h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, hic et quidem sunt debitis error.
-              Architecto facilis sit nisi velit aperiam. Ex nulla labore, doloremque adipisci odit animi esse eligendi?
-            </p>
-          </div>
+    
+    <div class="w3-container" style="margin-top: 2rem;">
+    <?php 
+
+for ($i = 0; $i < 6; $i++): 
+    if ($i % 3 == 0): ?> 
+        <div class="w3-row-padding">
+    <?php endif; ?> 
+
+    <div class="w3-col l4 m6 s12" style="margin-bottom: 1rem;">
+        <div class="w3-card news-card" style="display:flex; flex-direction: column;">
+            <a href="noticiaGrande.html">
+                <img src="<?= base_url('assets/img/noticia.jpeg'); ?>" style="width:100%">
+            </a>
+            <div class="w3-container news-container">
+                <h5><strong>Noticia <?= $i + 1 ?></strong></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt.</p>
+            </div>
         </div>
-        <?php endfor; ?>
-      </div>
+    </div>
+
+    <?php if ($i % 3 == 2): ?>
+    </div>
+<?php endif; ?>
+
+<?php endfor; ?>
+
+    </div>
+</div>
 
 <?= $this->include('general/footer'); ?>
 </body>
