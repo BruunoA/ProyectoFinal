@@ -12,7 +12,8 @@
     "require": {
         "php": "^8.1",
         "codeigniter4/framework": "^4.0",
-        "siensis/cicmdtools": "@dev"
+        "siensis/cicmdtools": "@dev",
+        "studio-42/elfinder": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
