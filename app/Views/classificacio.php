@@ -47,7 +47,8 @@
                 width: 90%;
             }
         }
-        img{
+
+        img {
             width: 40px;
             height: 40px;
         }
@@ -58,9 +59,9 @@
 
     <?= $this->include('general/menu'); ?>
 
-    <div class="w3-container equips-container">
-    <?php foreach ($resultats as $equip): ?>
-        <div class="equip-card">
+    <!-- <div class="w3-container equips-container">
+        <?php  foreach ($resultats as $equip): ?>
+            <div class="equip-card">
                 <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
                     <h1 class="w3-xlarge">equip</h1>
                     <div class="w3-row">
@@ -74,14 +75,16 @@
                         <div class="w3-half w3-large"><strong><?= esc($equip['gols_v']) ?></strong></div>
                         <div class="w3-half w3-large"><strong><?= esc($equip['gols_l']) ?></strong></div>
                     </div>
-                    <footer class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom" style="border-radius: 20px;">
+                    <footer
+                        class="w3-black w3-color-white w3-padding-small w3-border-top-black w3-border-light-gray w3-center w3-margin-bottom"
+                        style="border-radius: 20px;">
                         12/12/2025
                     </footer>
                 </div>
             </div>
         <?php endforeach; ?>
-    </div>
-    
+    </div> -->
+
     <a href="<?= base_url('dades'); ?>" class="w3-button w3-black w3-margin">Actualitzar dades</a>
     <a href="<?= base_url('wysiwyg'); ?>" class="w3-button w3-black w3-margin">WYSIWYG</a>
 
@@ -116,7 +119,7 @@
         </table>
     </div>
     <pre>
-        
+
     </pre>
 
     <?= $this->include('general/footer'); ?>

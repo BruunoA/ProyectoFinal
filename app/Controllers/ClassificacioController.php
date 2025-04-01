@@ -12,10 +12,9 @@ use DOMXPath;
 class ClassificacioController extends BaseController
 {
     public function index()
-    {     
-        
+    {
         $classificacioModel = new ClassificacioModel();
-        $taula = $classificacioModel->findAll(); 
+        $taula = $classificacioModel->findAll();
 
         $data = [
             'títol' => 'Classificació',
@@ -29,134 +28,139 @@ class ClassificacioController extends BaseController
         return view('classificacio', $data);
     }
 
+    private function getCategoryAndGroup($url)
+    {
+        $path = parse_url($url, PHP_URL_PATH);
+        $segments = explode('/', trim($path, '/'));
+
+        $categoria = isset($segments[3]) ? ucfirst(str_replace('-', ' ', $segments[3])) : 'Desconocido';
+        $grupo = isset($segments[4]) ? ucfirst(str_replace('-', ' ', $segments[4])) : 'Desconocido'; 
+
+        return [$categoria, $grupo];
+    }
+
+    private function filterCellsByClass($cells, $classToAvoid)
+    {
+        $filteredCells = [];
+
+        foreach ($cells as $cell) {
+            $classAttribute = $cell->getAttribute('class');
+            if (strpos($classAttribute, $classToAvoid) === false) {
+                $filteredCells[] = $cell;
+            }
+        }
+
+        return $filteredCells;
+    }
+
     public function obtenirDades()
     {
-// URL de la página
-$url = 'https://www.fcf.cat/classificacio/2425/futbol-11/segona-catalana/grup-5';
+        $urls = [
+            'https://www.fcf.cat/classificacio/2425/futbol-11/segona-catalana/grup-5',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-46',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-22',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/tercera-catalana/grup-14',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/primera-federacio/grup-1',
+        ];
 
+        foreach ($urls as $url) {
+            list($categoria, $grupo) = $this->getCategoryAndGroup($url);
 
-function filterCellsByClass($cells, $classToAvoid) {
-    $filteredCells = [];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-    foreach ($cells as $cell) {
-        $classAttribute = $cell->getAttribute('class');
-       
-        // Si no contiene 'classToAvoid', lo agregamos al resultado
-        if (strpos($classAttribute, $classToAvoid) === false) {
-            $filteredCells[] = $cell;
-        }
-    }
+            $html = curl_exec($ch);
+            curl_close($ch);
 
-    return $filteredCells;
-}
+            $dom = new DOMDocument();
+            @$dom->loadHTML($html);
 
+            $xpath = new DOMXPath($dom);
+            $table = $xpath->query("//table[contains(@class, 'fcftable-e')]")->item(0);
 
-// Inicializamos cURL
-$ch = curl_init();
+            if ($table) {
+                $clasificacionModel = new ClassificacioModel();
+                echo "<table border='1'>";
+                echo "<tr><th>Posición</th><th>Equipo</th><th>Puntos</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>resultado</th><th>categoria</th><th>grupo</th></tr>";
 
-// Establecemos la URL y algunas opciones de cURL
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // Deshabilitar la verificación SSL (si es necesario)
+                foreach ($table->getElementsByTagName('tr') as $index => $row) {
+                    if ($index === 0 || $index === 1) {
+                        continue;
+                    }
 
-// Ejecutamos la petición
-$html = curl_exec($ch);
+                    $cells = $row->getElementsByTagName('td');
+                    $cells = $this->filterCellsByClass($cells, 'detallada');
 
-// Cerramos cURL
-curl_close($ch);
+                    if (count($cells) > 0) {
+                        echo "<tr>";
 
-// Cargar el HTML en DOMDocument
-$dom = new DOMDocument();
-@$dom->loadHTML($html);
+                        $position = $cells[0]->nodeValue;
+                        echo "<td>" . trim($position) . "</td>";
 
-// Buscamos la tabla por la clase "fcftable-e"
-$xpath = new DOMXPath($dom);
-$table = $xpath->query("//table[contains(@class, 'fcftable-e')]")->item(0);
+                        $teamName = $cells[2]->nodeValue;
+                        echo "<td>" . trim($teamName) . "</td>";
 
-// Si encontramos la tabla, procesamos sus filas
-if ($table) {
-    $clasificacionModel = new ClassificacioModel();
-    echo "<table border='1'>";
-    echo "<tr><th>Posición</th><th>Equipo</th><th>Puntos</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>resultado</th></tr>";
+                        $points = $cells[3]->nodeValue;
+                        echo "<td>" . trim($points) . "</td>";
 
-    // Iteramos sobre las filas de la tabla (saltamos la cabecera)
-    foreach ($table->getElementsByTagName('tr') as $index => $row) {
-        if ($index === 0 || $index===1) {
-            // Saltamos la primera fila (cabecera)
-            continue;
-        }
+                        $gamesPlayed = $cells[6]->nodeValue;
+                        echo "<td>" . trim($gamesPlayed) . "</td>";
 
-        $cells = $row->getElementsByTagName('td');
+                        $gamesFor = $cells[7]->nodeValue;
+                        echo "<td>" . trim($gamesFor) . "</td>";
 
-        $cells = filterCellsByClass($cells, 'detallada');
+                        $gamesDrawn = $cells[8]->nodeValue;
+                        echo "<td>" . trim($gamesDrawn) . "</td>";
 
-        if (count($cells) > 0) {
-            echo "<tr>";
-           
-            $position = $cells[0]->nodeValue;
-            echo "<td>" . trim($position) . "</td>";
+                        $gamesLost = $cells[9]->nodeValue;
+                        echo "<td>" . trim($gamesLost) . "</td>";
 
-            $teamName = $cells[2]->nodeValue;
-            echo "<td>" . trim($teamName) . "</td>";
-           
-            $points = $cells[3]->nodeValue;
-            echo "<td>" . trim($points) . "</td>";
-           
-            $gamesPlayed = $cells[6]->nodeValue;
-            echo "<td>" . trim($gamesPlayed) . "</td>";
-           
-            $gamesFor = $cells[7]->nodeValue;
-            echo "<td>" . trim($gamesFor) . "</td>";
-           
-            $gamesDrawn = $cells[8]->nodeValue;
-            echo "<td>" . trim($gamesDrawn) . "</td>";
+                        $goalsFor = $cells[10]->nodeValue;
+                        echo "<td>" . trim($goalsFor) . "</td>";
 
-             $gamesLost = $cells[9]->nodeValue;
-             echo "<td>" . trim($gamesLost) . "</td>";
-           
-            $goalsFor = $cells[10]->nodeValue;
-            echo "<td>" . trim($goalsFor) . "</td>";
-        
-            $goalsAgainst = $cells[11]->nodeValue;
-            echo "<td>" . trim($goalsAgainst) . "</td>";
+                        $goalsAgainst = $cells[11]->nodeValue;
+                        echo "<td>" . trim($goalsAgainst) . "</td>";
 
-                $resultadosConLogos = [];
-                $links = $cells[12]->getElementsByTagName('a');
-            
-                $resultados = [];
-            $links = $cells[12]->getElementsByTagName('a');
-            
-            foreach ($links as $link) {
-                $span = $link->getElementsByTagName('span')->item(0);
-                $resultado = ($span) ? trim($span->nodeValue) : "N/A";
-                
-                $resultados[] = $resultado;
+                        $resultados = [];
+                        $links = $cells[12]->getElementsByTagName('a');
+
+                        foreach ($links as $link) {
+                            $span = $link->getElementsByTagName('span')->item(0);
+                            $resultado = ($span) ? trim($span->nodeValue) : "N/A";
+                            $resultados[] = $resultado;
+                        }
+
+                        echo "<td>";
+                        foreach ($resultados as $resultado) {
+                            echo $resultado . "<br>";
+                        }
+                        echo "</td>";
+                        echo "<td>$categoria</td>";
+                        echo "<td>$grupo</td>";
+                        echo "</tr>";
+
+                        $clasificacionModel->insert([
+                            'posicio' => $position,
+                            'nom' => $teamName,
+                            'punts' => $points,
+                            'pj' => $gamesPlayed,
+                            'pg' => $gamesFor,
+                            'pe' => $gamesDrawn,
+                            'pp' => $gamesLost,
+                            'gf' => $goalsFor,
+                            'gc' => $goalsAgainst,
+                            'resultats' => json_encode($resultados),
+                            'categoria' => $categoria,
+                            'grup' => $grupo,
+                        ]);
+                    }
+                }
+                echo "</table>";
+            } else {
+                echo "No se encontró la tabla de clasificación para la URL: $url";
             }
-            
-            echo "<td>";
-            foreach ($resultados as $resultado) {
-                echo $resultado . "<br>";
-            }
-            echo "</td>";
-
-            echo "</tr>";
         }
-        $clasificacionModel->insert([
-            'posicio' => $position,
-            'nom' => $teamName,
-            'punts' => $points,
-            'pj' => $gamesPlayed,
-            'pg' => $gamesFor,
-            'pe' => $gamesDrawn,
-            'pp' => $gamesLost,
-            'gf' => $goalsFor,
-            'gc' => $goalsAgainst,
-            'resultats' => json_encode($resultados),
-        ]);
-    }
-    echo "</table>";
-} else {
-    echo "No se encontró la tabla de clasificación.";
-}
     }
 }
