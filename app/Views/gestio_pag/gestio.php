@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/gestio.css'); ?>">
 </head>
 <style>
+    .w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; 
+}
+
+.w3-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.w3-card .w3-container.w3-center {
+    margin-top: auto; 
+}
+
 .w3-card div a {
     display: inline-block;
     margin: 5px 0;
@@ -30,7 +47,6 @@
     <div class="w3-container">
         <h1 class="w3-center">Llista de gestio</h1>
 
-<!-- TODO: VEURE COM FER PER A QUE MOSTRI LA IMATGE DE LA BASE DE DADES, MOSTRAR COM A TAL I TAMBÉ AL FER CLICK A EDITAR-->
         <div class="w3-center w3-margin-bottom">
             <button onclick="mostrarTots()" class="w3-button w3-blue">Mostrar Tot</button>
         </div>
@@ -45,7 +61,7 @@
                             </header>   
                             <div class="w3-container">
                                 <p>Resum: <strong></strong> <?= $item['resum'] ?></p>
-                                <p>Contingut: <!-- <strong></strong>--> <?= $item['contingut'] ?></p>
+                                <!-- <p>Contingut: <strong></strong> <?= $item['contingut'] ?></p> -->
                                 <p>Seccio: <strong></strong> <?= $item['seccio'] ?></p>
                             </div>
                             <div class="w3-container w3-center">

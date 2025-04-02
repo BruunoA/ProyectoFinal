@@ -2,9 +2,6 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
 $routes->get('/', 'IndexController::home');
 
 $routes->get('home', 'IndexController::home');
