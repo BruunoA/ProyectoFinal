@@ -36,3 +36,7 @@ $routes->post('fileconnector', 'FileExplorerController::connector');
 $routes->get('fileget/(:any)', 'FileExplorerController::getFile');
 
 $routes->get('ck','FileExplorerController::ckeditor');
+
+//USERS 
+$routes->get('login', 'UsersController::login');
+$routes->post('login', 'UsersController::loginVerify');

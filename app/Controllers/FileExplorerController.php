@@ -14,6 +14,7 @@ class FileExplorerController extends BaseController
     {
         return view('ckeditor/index');
     }
+    
         public function getFile()
     {
         $varName=current_url(true)->setSegment(1,'')->getPath();
