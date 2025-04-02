@@ -47,18 +47,20 @@
         <input type="text" name="resum" id="resum" value="<?= old('resum') ?>"><br>
         <label for="seccio">Seccio</label>
         <select name="seccio" id="seccio" value="<?= old('seccio') ?>">
-            <option value="">Selecciona una opcio</option> <!-- Veure com fer per a que no surti cap seleccionat-->
-            <option value="#" disabled>Noticies</option>
+            <option value="">Selecciona una opcio</option>
+            <option value="#" disabled style="font-weight: bold;">Noticies</option>
             <!-- Son les diferents pàgines que hi ha, per separar el apartats en el select -->
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="event">&nbsp;&nbsp;&nbsp;Events</option> <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->
-            <option value="#" disabled>Sobre nosaltres</option>
+            <option value="#" disabled style="font-weight: bold;">Sobre nosaltres</option>
             <option value="historia">&nbsp;&nbsp;&nbsp;Historia</option>
             <option value="missio">&nbsp;&nbsp;&nbsp;Missio</option>
             <option value="visio">&nbsp;&nbsp;&nbsp;Visio</option>
             <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled>Programes</option>
+            <option value="#" disabled style="font-weight: bold;">Programes</option>
             <option value="categories">Categories</option>
+            <option value="#" disabled style="font-weight: bold;">Configuracio</option>
+            <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select><br>
         <!-- TODO: ABANS DE FER SUBMIT, MIRAR QUE COMPLEIXI LES REGLES EN BANDA CLIENT I SERVER-->
         <div style="width:800px">

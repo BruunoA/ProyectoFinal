@@ -19,6 +19,7 @@
             <li><a href="">Programes</a></li>
             <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li>
             <li><a href="">Galeria</a></li>
+            <li><a href="">Configuracio</a></li>
             <!-- <li><a href="">Classificacio</a></li> -->
         </ul>
     </div>
