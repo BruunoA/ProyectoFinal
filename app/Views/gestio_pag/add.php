@@ -14,14 +14,8 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="<?php //= base_url('elfinder/css/elfinder.min.css') 
-                                                    ?>" />
-
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/css/elfinder.min.css" />
-
-    <script src="<?php //= base_url('elfinder/js/elfinder.min.js') 
-                    ?>"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/js/elfinder.min.js"></script>
 
@@ -68,7 +62,7 @@
         </select><br>
         <!-- TODO: ABANS DE FER SUBMIT, MIRAR QUE COMPLEIXI LES REGLES EN BANDA CLIENT I SERVER-->
         <div style="width:800px">
-            <textarea name="ckeditor" id="ckeditor" rows="10" cols="80">
+            <textarea name="ckeditor" id="ckeditor">
             </textarea>
         </div>
         <button type="submit">Submit</button>
