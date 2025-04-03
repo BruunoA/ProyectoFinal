@@ -4,13 +4,10 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- W3.CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
 </head>
@@ -90,13 +87,13 @@
     
 <?= $this->include('general/footer'); ?>
 
-<!-- Bootstrap 5 JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Auto-slide personalizado (opcional) -->
+
 <script>
     var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
-        interval: 4000, // Cambia cada 4 segundos
+        interval: 4000, 
         ride: 'carousel'
     });
 </script>

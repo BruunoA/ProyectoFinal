@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 
-<nav class="menu">
+<nav class="menu" >
     <div class="menu-container">
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="menu-toggle" onclick="toggleMenu()" >☰</div>
 
         <ul class="menu-items">
             <li><a href="<?= base_url('/') ?>">Inici</a></li>
