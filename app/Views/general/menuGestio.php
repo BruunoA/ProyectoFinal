@@ -9,18 +9,16 @@
             <li><a href="">Inici</a></li>
             <li><a href="">Contacte</a></li>
             <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
-                <!-- <option value="">Sobre Nosaltres</option> -->
-                <option value="sobreNosaltres">Sobre Nosaltres</option>
-                <option value="historia">Història</option>
-                <option value="missio">Missió</option>
-                <option value="visio">Visió</option>
-                <option value="valors">Valors</option>
+                <option value="" style="font-weight: bold;">Sobre Nosaltres</option>
+                <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
+                <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
+                <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
+                <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
             </select>
             <li><a href="">Programes</a></li>
             <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li>
             <li><a href="">Galeria</a></li>
             <li><a href="">Configuracio</a></li>
-            <!-- <li><a href="">Classificacio</a></li> -->
         </ul>
     </div>
 </nav>

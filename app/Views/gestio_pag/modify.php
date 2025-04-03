@@ -48,7 +48,6 @@
         <select name="seccio" id="seccio" value="<?= old('seccio') ?>">
             <option value="">Selecciona una opcio</option>
             <option value="#" disabled style="font-weight: bold;">Noticies</option>
-            <!-- Son les diferents pàgines que hi ha, per separar el apartats en el select -->
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="event">&nbsp;&nbsp;&nbsp;Events</option> <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->
             <option value="#" disabled style="font-weight: bold;">Sobre nosaltres</option>
