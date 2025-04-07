@@ -12,7 +12,7 @@ class GestioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'resum', 'contingut', 'seccio', 'url'];
+    protected $allowedFields    = ['nom', 'resum', 'contingut', 'seccio', 'portada', 'url'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

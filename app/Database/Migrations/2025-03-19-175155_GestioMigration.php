@@ -30,6 +30,10 @@ class GestioMigration extends Migration
                             'type'           => 'VARCHAR',
                             'constraint'     => '100',
                     ],
+                    'portada'          => [
+                            'type'           => 'VARCHAR',
+                            'constraint'     => '250',
+                    ],
                     'url'          => [
                             'type'           => 'VARCHAR',
                             'constraint'     => '150',

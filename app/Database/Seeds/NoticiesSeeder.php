@@ -23,6 +23,7 @@ class NoticiesSeeder extends Seeder
                 'resum' => $resum,
                 'contingut' => $contingut,
                 'seccio' => $seccio,
+                'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
                 'created_at' => date('Y-m-d H:i:s'),
             ];

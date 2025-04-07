@@ -4,73 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Formulario con W3.CSS</title>
+
+    <!-- W3.CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- jQuery y elFinder -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
 
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/css/elfinder.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/css/elfinder.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/js/elfinder.min.js"></script>
 
-
+    <!-- CKEditor -->
     <script src="<?= base_url('ckeditor/ckeditor.js') ?>"></script>
-    <title>Document</title>
-</head>
-<style>
-    .note-editor.note-frame .note-editing-area .note-editable {
-        height: 200px;
-        /* width: 400px; */
-    }
-</style>
 
-<body>
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 400px;
+        }
+    </style>
+</head>
+
+<body class="w3-container w3-padding">
+
     <?php if (session()->has('errors')): ?>
-        <ul>
-            <?php foreach (session('errors') as $error): ?>
-                <li><?= esc($error) ?></li>
-            <?php endforeach ?>
-        </ul>
+        <div class="w3-panel w3-red w3-padding">
+            <ul>
+                <?php foreach (session('errors') as $error): ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach ?>
+            </ul>
+        </div>
     <?php endif ?>
 
-    <form method="post" action="<?= base_url('/create/add') ?>">
+    <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('/create/add') ?>">
         <?= csrf_field() ?>
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" value="<?= old('nom') ?>"><br>
-        <label for="text">Resum</label>
-        <input type="text" name="resum" id="resum" value="<?= old('resum') ?>"><br>
-        <label for="seccio">Seccio</label>
-        <select name="seccio" id="seccio" value="<?= old('seccio') ?>">
-            <option value="">Selecciona una opcio</option>
-            <option value="#" disabled style="font-weight: bold;">Noticies</option>
-            <!-- Son les diferents pàgines que hi ha, per separar el apartats en el select -->
+
+        <label for="nom" class="w3-text-black"><b>Nom</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
+
+        <label for="resum" class="w3-text-black"><b>Resum</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
+
+        <label for="seccio" class="w3-text-black"><b>Secció</b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
+            <option value="">Selecciona una opció</option>
+            <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="event">&nbsp;&nbsp;&nbsp;Events</option> <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->
-            <option value="#" disabled style="font-weight: bold;">Sobre nosaltres</option>
-            <option value="historia">&nbsp;&nbsp;&nbsp;Historia</option>
-            <option value="missio">&nbsp;&nbsp;&nbsp;Missio</option>
-            <option value="visio">&nbsp;&nbsp;&nbsp;Visio</option>
+            <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
+            <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
+            <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
+            <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
+            <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
             <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled style="font-weight: bold;">Programes</option>
+            <option value="#" disabled class="w3-bold">Programes</option>
             <option value="categories">Categories</option>
-            <option value="#" disabled style="font-weight: bold;">Configuracio</option>
+            <option value="#" disabled class="w3-bold">Configuració</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
-        </select><br>
-        <!-- TODO: ABANS DE FER SUBMIT, MIRAR QUE COMPLEIXI LES REGLES EN BANDA CLIENT I SERVER-->
-        <div style="width:800px">
-            <textarea name="ckeditor" id="ckeditor">
-            </textarea>
+        </select>
+
+        <div id="portada" class="w3-margin-bottom" style="display: none;">
+            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
+            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
-        <button type="submit">Submit</button>
+
+        <label class="w3-text-black"><b>Contingut</b></label>
+        <div class="w3-margin-bottom">
+            <textarea name="ckeditor" id="ckeditor"></textarea>
+        </div>
+
+        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
+        document.getElementById('seccio').addEventListener('change', function() {
+            const portada = document.getElementById('portada');
+            if (this.value === 'noticies') {
+                portada.style.display = 'block';
+            } else {
+                portada.style.display = 'none';
+            }
+        });
+
+        function openFileManager() {
+            $('<div/>').dialogelfinder({
+                url: '<?= base_url("fileconnector") ?>',
+                width: '80%',
+                height: '80%',
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: 'close',
+                        multiple: false
+                    }
+                },
+                getFileCallback: function(file) {
+                    console.log(file);
+                    $('#portada').val(file.url);
+                }
+            });
+        }
+
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
 
