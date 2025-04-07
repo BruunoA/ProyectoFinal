@@ -65,7 +65,7 @@
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
-        <div id="portada" class="w3-margin-bottom" style="display: none;">
+        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
             <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
@@ -81,31 +81,13 @@
 
     <script>
         document.getElementById('seccio').addEventListener('change', function() {
-            const portada = document.getElementById('portada');
+            const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {
                 portada.style.display = 'block';
             } else {
                 portada.style.display = 'none';
             }
         });
-
-        function openFileManager() {
-            $('<div/>').dialogelfinder({
-                url: '<?= base_url("fileconnector") ?>',
-                width: '80%',
-                height: '80%',
-                commandsOptions: {
-                    getfile: {
-                        oncomplete: 'close',
-                        multiple: false
-                    }
-                },
-                getFileCallback: function(file) {
-                    console.log(file);
-                    $('#portada').val(file.url);
-                }
-            });
-        }
 
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
@@ -338,6 +320,23 @@
         //     const inputModificar = document.getElementById('summernote');
         //     inputModificar.removeAttribute('required');
         // }
+        function openFileManager() {
+            $('<div/>').dialogelfinder({
+                url: '<?= base_url("fileconnector") ?>',
+                width: '80%',
+                height: '80%',
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: 'close',
+                        multiple: false
+                    }
+                },
+                getFileCallback: function(file) {
+                    console.log(file);
+                    $('#portada').val(file.url);
+                }
+            });
+        }
     </script>
 </body>
 

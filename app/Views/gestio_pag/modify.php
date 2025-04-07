@@ -60,6 +60,9 @@
             <option value="#" disabled style="font-weight: bold;">Configuracio</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select><br>
+        <label for="portada">Portada Notícia</label>
+        <input class="w3-input w3-border" type="text" name="portada" id="portada" value="<?= old('portada', $gestio['portada']) ?>" readonly>
+        <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button><br><br>
 
         <div style="width:800px">
             <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor', $gestio['contingut']) ?>
