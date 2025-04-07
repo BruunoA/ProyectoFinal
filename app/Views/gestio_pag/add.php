@@ -65,6 +65,7 @@
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
+        <!-- TODO: VEURE SI CANVIAR LA RUTA A PUBLIC O DEIXAR-LA A WRITABLE -->
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
             <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>

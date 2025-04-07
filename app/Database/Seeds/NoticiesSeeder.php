@@ -25,6 +25,7 @@ class NoticiesSeeder extends Seeder
                 'seccio' => $seccio,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
+                'estat' => $fake->randomElement(['publicat', 'no_publicat']),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

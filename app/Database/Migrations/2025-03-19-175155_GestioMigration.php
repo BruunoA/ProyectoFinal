@@ -38,6 +38,11 @@ class GestioMigration extends Migration
                             'type'           => 'VARCHAR',
                             'constraint'     => '150',
                     ],
+                    'estat'         =>  [
+                            'type'           => 'ENUM',
+                            'constraint'     => ['publicat', 'no_publicat'],
+                            'default'        => 'no_publicat',
+                    ],
                     'created_at'      =>  [
                               'type'         =>  'DATETIME',
                                'null'         =>  true,

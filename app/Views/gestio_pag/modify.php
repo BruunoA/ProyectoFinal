@@ -45,21 +45,18 @@
         <label for="text">Resum</label>
         <input type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>"><br>
         <label for="seccio">Seccio</label>
-        <select name="seccio" id="seccio" value="<?= old('seccio') ?>">
+        <select name="seccio" id="seccio">
             <option value="">Selecciona una opcio</option>
-            <option value="#" disabled style="font-weight: bold;">Noticies</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="event">&nbsp;&nbsp;&nbsp;Events</option> <!-- TODO: VEURE SI FICAR-HO AL WYSIWYG O NO -->
-            <option value="#" disabled style="font-weight: bold;">Sobre nosaltres</option>
-            <option value="historia">&nbsp;&nbsp;&nbsp;Historia</option>
-            <option value="missio">&nbsp;&nbsp;&nbsp;Missio</option>
-            <option value="visio">&nbsp;&nbsp;&nbsp;Visio</option>
-            <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled style="font-weight: bold;">Programes</option>
-            <option value="categories">Categories</option>
-            <option value="#" disabled style="font-weight: bold;">Configuracio</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
+            <option value="noticies" <?= old('seccio', $gestio['seccio']) == 'noticies' ? 'selected' : '' ?>>Noticies</option>
+            <option value="event" <?= old('seccio', $gestio['seccio']) == 'event' ? 'selected' : '' ?>>Events</option>
+            <option value="historia" <?= old('seccio', $gestio['seccio']) == 'historia' ? 'selected' : '' ?>>Historia</option>
+            <option value="missio" <?= old('seccio', $gestio['seccio']) == 'missio' ? 'selected' : '' ?>>Missio</option>
+            <option value="visio" <?= old('seccio', $gestio['seccio']) == 'visio' ? 'selected' : '' ?>>Visio</option>
+            <option value="valors" <?= old('seccio', $gestio['seccio']) == 'valors' ? 'selected' : '' ?>>Valors</option>
+            <option value="categories" <?= old('seccio', $gestio['seccio']) == 'categories' ? 'selected' : '' ?>>Categories</option>
+            <option value="banner" <?= old('seccio', $gestio['seccio']) == 'banner' ? 'selected' : '' ?>>Banner</option>
         </select><br>
+
         <label for="portada">Portada Notícia</label>
         <input class="w3-input w3-border" type="text" name="portada" id="portada" value="<?= old('portada', $gestio['portada']) ?>" readonly>
         <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button><br><br>
@@ -72,6 +69,14 @@
     </form>
 
     <script>
+        document.getElementById('seccio').addEventListener('change', function() {
+            const portada = document.getElementById('portada-container');
+            if (this.value === 'noticies') {
+                portada.style.display = 'block';
+            } else {
+                portada.style.display = 'none';
+            }
+        });
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
 

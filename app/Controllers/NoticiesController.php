@@ -12,7 +12,7 @@ class NoticiesController extends BaseController
     {
         $model = new GestioModel();
         // agafa tot lo que té com a secció noticies
-        $data['gestio'] = $model->where('seccio', 'noticies')->findAll();
+        $data['gestio'] = $model->where('seccio', 'noticies')->where('estat', 'publicat')->findAll();
         // $data['gestio'] = $model->findAll();
         return view('noticies', $data);
     }
