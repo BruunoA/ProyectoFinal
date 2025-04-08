@@ -14,7 +14,7 @@ class VisioSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
-                'resum' => $fake->paragraph(3),
+                'contingut' => $fake->paragraph(3),
                 'seccio' => 'visio',
                 'url' => url_title($nom, '-', true),
                 'created_at' => date('Y-m-d H:i:s'),

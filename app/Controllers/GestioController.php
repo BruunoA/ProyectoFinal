@@ -99,11 +99,11 @@ class GestioController extends BaseController
         }
     }
 
-    public function missio(){
-        $model = new GestioModel();
-        $data['missio'] = $model->where('seccio', 'missio')->findAll();
-        return view('sobreNosaltres', $data);
-    }
+    // public function missio(){
+    //     $model = new GestioModel();
+    //     $data['missio'] = $model->where('seccio', 'missio')->first();
+    //     return view('sobreNosaltres', $data);
+    // }
 
     public function historia(){
         $model = new GestioModel();

@@ -39,47 +39,49 @@
                 <h2><?= lang('sobreNosaltres.TitolMissio') ?></h2>
                 <p><?= lang('sobreNosaltres.Missio') ?></p>
             </div> -->
+            <a href="<?= base_url('sobre-nosaltres/missio') ?>">Ver Misión</a>
             <div id="Missio" class="w3-container w3-border city">
                 <?php if (!empty($missio)): ?>
-                    <?php foreach ($missio as $item): ?>
-                        <strong><?= esc($item['nom']) ?></strong>
-                        <pre>
-                            <?php var_dump($item['resum'])?>
-                        </pre>
-                        <p><?= esc($item['resum']) ?></p>
-                    <?php endforeach; ?>
+                    <p><?= esc($missio['contingut']) ?></p>
+                <?php else: ?>
+                    <p>No s'ha carregat</p>
                 <?php endif; ?>
             </div>
 
-            <div id="Vissio" class="w3-container w3-border city" style="display:none">
-                <h2><?= lang('sobreNosaltres.TitolVissio') ?></h2>
-                <p><?= lang('sobreNosaltres.Vissio') ?></p>
+            <div id="Visio" class="w3-container w3-border city">
+                <?php if (!empty($visio)): ?>
+                    <p><?= esc($visio['contingut']) ?></p>
+                <?php else: ?>
+                    <p>No s'ha carregat</p>
+                <?php endif; ?>
             </div>
 
-            <div id="Valors" class="w3-container w3-border city" style="display:none">
-                <h2><?= lang('sobreNosaltres.TitolValors') ?></h2>
-                <p><?= lang('sobreNosaltres.Valors') ?></p>
+            <div id="Valors" class="w3-container w3-border city">
+                <?php if (!empty($valors)): ?>
+                    <p><?= esc($valors['contingut']) ?></p>
+                <?php else: ?>
+                    <p>No s'ha carregat</p>
+                <?php endif; ?>
             </div>
+
+            <script>
+                function openCity(evt, cityName) {
+                    var i, x, tablinks;
+                    x = document.getElementsByClassName("city");
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablink");
+                    for (i = 0; i < x.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " w3-red";
+                }
+            </script>
         </div>
 
-        <script>
-            function openCity(evt, cityName) {
-                var i, x, tablinks;
-                x = document.getElementsByClassName("city");
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablink");
-                for (i = 0; i < x.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-                }
-                document.getElementById(cityName).style.display = "block";
-                evt.currentTarget.className += " w3-red";
-            }
-        </script>
-    </div>
-
-    <?= $this->include('general/footer'); ?>
+        <?= $this->include('general/footer'); ?>
 
 </body>
 

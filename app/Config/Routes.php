@@ -18,7 +18,7 @@ $routes->get('programes', 'ProgramesController::index');
 
 $routes->get('contacte', 'ContacteController::index');
 
-$routes->get('sobrenosaltres', 'SobreNosaltresController::index');
+$routes->get('sobreNosaltres', 'SobreNosaltresController::index');
 
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
@@ -44,3 +44,5 @@ $routes->post('login', 'UsersController::loginVerify');
 
 // Multi idioma
 // $routes->get('(:segment)/idioma/cambiar/(:segment)', 'Home::cambiar/$2');
+
+// $routes->get('sobre-nosaltres/missio', 'GestioController::missio');

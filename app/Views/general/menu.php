@@ -7,7 +7,7 @@
         <ul class="menu-items">
             <li><a href="<?= base_url('/') ?>">Inici</a></li>
             <li><a href="<?= base_url('contacte') ?>">Contacte</a></li>
-            <li><a href="<?= base_url('sobrenosaltres') ?>">Sobre Nosaltres</a></li>
+            <li><a href="<?= base_url('sobreNosaltres') ?>">Sobre Nosaltres</a></li>
             <li><a href="<?= base_url('programes') ?>">Programes</a></li>
             <li><a href="<?= base_url('noticies') ?>">Noticies</a></li>
             <li><a href="<?= base_url('galeria') ?>">Galeria</a></li>
