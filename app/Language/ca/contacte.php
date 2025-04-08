@@ -1,7 +1,7 @@
 <?php 
 
 return [
-    "Titol" => "Contanta'ns",
+    "Titol" => "Contacta'ns",
     "Camp_nom" => "Nom",
     "Camp_correu" => "Correu electronic",
     "Camp_assumpte" => "Assumpte",

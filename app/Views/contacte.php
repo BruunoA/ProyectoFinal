@@ -19,19 +19,19 @@
             <form class="w3-container w3-card w3-padding w3-white" action="<?= base_url('contacte/send') ?>" method="post">
                 <div class="w3-section">
                     <label><?=lang('contacte.Camp_nom')?></label>
-                    <input class="w3-input w3-border" type="text" required>
+                    <input class="w3-input w3-border" name="nom" type="text" required>
                 </div>
                 <div class="w3-section">
                     <label><?=lang('contacte.Camp_correu')?></label>
-                    <input class="w3-input w3-border" type="email" required>
+                    <input class="w3-input w3-border" name="from_email"  type="email" required>
                 </div>
                 <div class="w3-section">
                     <label><?=lang('contacte.Camp_assumpte')?></label>
-                    <input class="w3-input w3-border" type="text" required>
+                    <input class="w3-input w3-border" name="assumpte"  type="text" required>
                 </div>
                 <div class="w3-section">
                     <label><?=lang('contacte.Camp_motiu')?></label>
-                    <textarea class="w3-input w3-border" rows="4" required placeholder="<?=lang('contacte.Placeholder')?>"></textarea>
+                    <textarea class="w3-input w3-border" name="text" rows="4"  required placeholder="<?=lang('contacte.Placeholder')?>"></textarea>
                 </div>
                 <button type="submit" class="w3-btn w3-blue"><?=lang('contacte.Boto_enviar')?></button>
             </form>
