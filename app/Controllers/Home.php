@@ -9,11 +9,12 @@ class Home extends BaseController
         return view('welcome_message');
     }
 
-    public function cambiar($lang = 'es')
+    public function cambiar($lang = 'ca')
     {
         $session = session();
         $session->set('lang', $lang);
-
+        echo "Idioma es: " . $lang;
+        // die;
         return redirect()->back();
     }
 }

@@ -13,8 +13,7 @@
             <li><a href="<?= base_url('galeria') ?>">Galeria</a></li>
             <li><a href="<?= base_url('classificacio') ?>">Classificacio</a></li>
             <a href="<?= site_url('idioma/cambiar/es') ?>">ES</a> |
-            <a href="<?= site_url('idioma/cambiar/ca') ?>">CAT</a> |
-            <a href="<?= site_url('idioma/cambiar/en') ?>">EN</a>
+            <a href="<?= site_url('idioma/cambiar/ca') ?>">CA</a> |
         </ul>
     </div>
 </nav>
