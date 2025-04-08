@@ -7,51 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/classificacio.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-    <title>Classificacio</title>
-    <style>
-        .equips-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .equip-card {
-            width: 30%;
-            min-width: 280px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        @media screen and (max-width: 768px) {
-            .equips-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .equip-card {
-                width: 90%;
-            }
-        }
-        img{
-            width: 40px;
-            height: 40px;
-        }
-    </style>
+    <title><?= lang('classificacio.TitolCLassificacio') ?></title>
 </head>
 
 <body>
@@ -59,8 +15,8 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container equips-container">
-    <?php foreach ($resultats as $equip): ?>
-        <div class="equip-card">
+        <?php foreach ($resultats as $equip): ?>
+            <div class="equip-card">
                 <div class="w3-container w3-green w3-center" style="border-radius: 8px; margin-top:1rem;">
                     <h1 class="w3-xlarge">equip</h1>
                     <div class="w3-row">
@@ -81,16 +37,16 @@
             </div>
         <?php endforeach; ?>
     </div>
-    
+
     <a href="<?= base_url('dades'); ?>" class="w3-button w3-black w3-margin">Actualitzar dades</a>
     <a href="<?= base_url('wysiwyg'); ?>" class="w3-button w3-black w3-margin">WYSIWYG</a>
 
     <div class="w3-container table-responsive">
         <table>
             <tr>
-                <th>Posició</th>
-                <th>Equip</th>
-                <th>Punts</th>
+                <th><?= lang('classificacio.Posicio') ?></th>
+                <th><?= lang('classificacio.Equip') ?></th>
+                <th><?= lang('classificacio.Punts') ?></th>
                 <th>PP</th>
                 <th>PG</th>
                 <th>PE</th>
@@ -110,13 +66,14 @@
                     <td><?= esc($equip['pp']) ?></td>
                     <td><?= esc($equip['gf']) ?></td>
                     <td><?= esc($equip['gc']) ?></td>
-                    <!-- <td><?php // $equip['equips'] ?></td> -->
+                    <!-- <td><?php // $equip['equips'] 
+                                ?></td> -->
                 </tr>
             <?php endforeach; ?>
         </table>
     </div>
     <pre>
-        
+
     </pre>
 
     <?= $this->include('general/footer'); ?>
