@@ -29,6 +29,7 @@ $routes->post('create/add', 'GestioController::add');
 $routes->get('gestio/delete/(:num)', 'GestioController::delete/$1');
 $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1');
 $routes->post('/modify/(:num)', 'GestioController::update/$1');
+
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');
 $routes->get('fileconnector', 'FileExplorerController::connector');
@@ -41,4 +42,5 @@ $routes->get('ck','FileExplorerController::ckeditor');
 $routes->get('login', 'UsersController::login');
 $routes->post('login', 'UsersController::loginVerify');
 
-$routes->get('idioma/cambiar/(:segment)', 'Home::cambiar/$1');
+// Multi idioma
+// $routes->get('(:segment)/idioma/cambiar/(:segment)', 'Home::cambiar/$2');

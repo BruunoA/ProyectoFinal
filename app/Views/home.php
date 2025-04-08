@@ -11,7 +11,6 @@
 
 <body>
     <?= $this->include('general/menu'); ?>
-    <p>L'idioma de la vista es <?= service('request')->getLocale(); ?></p>
 
     <section class="w3-container w3-center w3-padding-32">
         <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat" class="w3-image w3-round" style="max-width: 100%; width: 80%; height: 500px;">
