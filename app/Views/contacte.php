@@ -16,7 +16,7 @@
     <div class="w3-row content">
         <div class="w3-half w3-padding">
             <h2 class="w3-center"><?=lang('contacte.Titol')?></h2>
-            <form class="w3-container w3-card w3-padding w3-white">
+            <form class="w3-container w3-card w3-padding w3-white" action="<?= base_url('contacte/send') ?>" method="post">
                 <div class="w3-section">
                     <label><?=lang('contacte.Camp_nom')?></label>
                     <input class="w3-input w3-border" type="text" required>

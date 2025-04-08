@@ -30,6 +30,9 @@ $routes->get('sobrenosaltres', 'SobreNosaltresController::index');
 
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
+$routes->post('contacte/send', 'ContacteController::send');
+$routes->get('contacte/(:any)', 'ContacteController::index/$1');
+
 // GESTIO
 $routes->get('gestio', 'GestioController::gestio');
 $routes->get('wysiwyg', 'GestioController::index');
