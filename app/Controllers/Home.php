@@ -8,4 +8,12 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
+
+    public function cambiar($lang = 'es')
+    {
+        $session = session();
+        $session->set('lang', $lang);
+
+        return redirect()->back();
+    }
 }

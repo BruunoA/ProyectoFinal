@@ -40,3 +40,5 @@ $routes->get('ck','FileExplorerController::ckeditor');
 //USERS 
 $routes->get('login', 'UsersController::login');
 $routes->post('login', 'UsersController::loginVerify');
+
+$routes->get('idioma/cambiar/(:segment)', 'Home::cambiar/$1');
