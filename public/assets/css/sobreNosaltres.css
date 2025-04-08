@@ -1,0 +1,29 @@
+.historia-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.historia-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.historia-text {
+    background-color: #f1f1f1;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .historia-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .historia-text {
+        width: 100%;
+    }
+}

@@ -1,5 +1,6 @@
 <?php 
 
 return [
-    
+    "Titol" => "Programes",
+      
 ];

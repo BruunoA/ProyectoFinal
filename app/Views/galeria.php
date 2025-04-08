@@ -6,31 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-    <title>Document</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/galeria.css'); ?>">
+    <title><?=lang('galeria.Titol')?></title>
 </head>
 <style>
-    .album-header {
-        display: flex;
-        align-items: center;
-        background-color: #f5f5f5;
-        padding: 10px 15px;
-        border-radius: 5px 5px 0 0;
-    }
 
-    .photo-count {
-        background-color: #009688;
-        color: white;
-        padding: 3px 10px;
-        border-radius: 12px;
-        font-size: 0.9em;
-    }
 </style>
 
 <body>
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container">
-        <h1>Galería de Fotos</h1>
+        <h1><?=lang('galeria.TitolGaleria')?></h1>
 
         <?php if (!empty($albums)): ?>
             <?php foreach ($albums as $albumId => $albumData): ?>
@@ -48,7 +35,7 @@
             <?php endforeach; ?>
         <?php else: ?> 
             <div class="w3-panel w3-yellow">
-                <p>No hi ha fotos</p>
+                <p><?=lang('galeria.ErrorFotos')?></p>
             </div>
         <?php endif; ?>
     </div>

@@ -5,45 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Sobre nosaltres</title>
-    <style>
-        .historia-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .historia-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .historia-text {
-            background-color: #f1f1f1;
-            padding: 16px;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .historia-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .historia-text {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('assets/css/sobreNosaltres.css'); ?>">
+    <title><?= lang('sobreNosaltres.Titol') ?></title>
 </head>
 
 <body>
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <h2 class="w3-center"><?= lang('sobreNosaltres.Titol') ?></h2>
+        <h2 class="w3-center"><?= lang('sobreNosaltres.TitolHistoria') ?></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
             <div class="w3-container historia-text">
@@ -70,7 +40,6 @@
                 <p><?= lang('sobreNosaltres.Missio') ?></p>
             </div> -->
             <div id="Missio" class="w3-container w3-border city">
-                <h2>Misión</h2>
                 <?php if (!empty($missio)): ?>
                     <?php foreach ($missio as $item): ?>
                         <strong><?= esc($item['nom']) ?></strong>

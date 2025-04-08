@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 
-    <title>Contacto</title>
+    <title><?=lang('contacte.Titol')?></title>
 </head>
 
 <body>

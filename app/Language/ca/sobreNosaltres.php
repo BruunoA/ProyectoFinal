@@ -1,17 +1,11 @@
 <?php 
 
 return [
-    "Titol" => "Història",
-    "TextHistoria" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam temporibus placeat doloribus
-                    eveniet cumque illum officia recusandae quas ut fuga esse nobis, optio reprehenderit possimus.
-                    Debitis exercitationem pariatur veniam dolore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reprehenderit at quas mollitia? Sit
-                    distinctio maxime nesciunt rem. Id vero ipsam ipsa delectus architecto similique laborum, labore
-                    quas incidunt ipsum?",
-    "Subtitol" => "Missio/Vissio/Valors",
-    "TitolMissio" => "Missio",
-    "Missio" => "Text de la missio",
-    "TitolVissio" => "Vissio",
-    "Vissio" => "Text de la vissio",
+    "Titol" => "Sobre nosaltres",
+    "TitolHistoria" => "Història",
+    "TextHistoria" => "El Club Esportiu Alpicat es va fundar l'any 1968, i des de llavors ha estat un pilar fonamental en la promoció de l'esport a la nostra comunitat. Amb una rica història d'èxits i un compromís ferm amb el desenvolupament dels nostres atletes, el club ha crescut i evolucionat al llarg dels anys.",
+    "Subtitol" => "La nostra missió, visió i valors",
+    "TitolMissio" => "Missió",
+    "TitolVissio" => "Visió",
     "TitolValors" => "Valors",
-    "Valors" => "Text dels valors"
 ];

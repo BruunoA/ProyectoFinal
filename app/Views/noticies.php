@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/noticies.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-    <title>Noticies</title>
+    <title><?=lang('noticies.Titol')?></title>
 </head>
 <body>
 <?= $this->include('general/menu'); ?>
 
 <div class="w3-container" style="margin-top: 2rem;">
     <div class="w3-container w3-teal" style="margin-bottom: 2rem">
-        <h1>Noticies</h1>
+        <h1><?=lang('noticies.Titol')?></h1>
     </div>
     <?php $counter = 0; ?>
     <?php foreach ($gestio as $noticia): ?>
