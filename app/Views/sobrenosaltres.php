@@ -30,16 +30,11 @@
                 <button class="w3-bar-item w3-button tablink w3-red"
                     onclick="openCity(event,'Missio')"><?= lang('sobreNosaltres.TitolMissio') ?></button>
                 <button class="w3-bar-item w3-button tablink"
-                    onclick="openCity(event,'Vissio')"><?= lang('sobreNosaltres.TitolVissio') ?></button>
+                    onclick="openCity(event,'Visio')"><?= lang('sobreNosaltres.TitolVissio') ?></button>
                 <button class="w3-bar-item w3-button tablink"
                     onclick="openCity(event,'Valors')"><?= lang('sobreNosaltres.TitolValors') ?></button>
             </div>
 
-            <!-- <div id="Missio" class="w3-container w3-border city">
-                <h2><?= lang('sobreNosaltres.TitolMissio') ?></h2>
-                <p><?= lang('sobreNosaltres.Missio') ?></p>
-            </div> -->
-            <a href="<?= base_url('sobre-nosaltres/missio') ?>">Ver Misión</a>
             <div id="Missio" class="w3-container w3-border city">
                 <?php if (!empty($missio)): ?>
                     <p><?= esc($missio['contingut']) ?></p>
@@ -48,7 +43,7 @@
                 <?php endif; ?>
             </div>
 
-            <div id="Visio" class="w3-container w3-border city">
+            <div id="Visio" class="w3-container w3-border city" style="display:none">
                 <?php if (!empty($visio)): ?>
                     <p><?= esc($visio['contingut']) ?></p>
                 <?php else: ?>
@@ -56,7 +51,7 @@
                 <?php endif; ?>
             </div>
 
-            <div id="Valors" class="w3-container w3-border city">
+            <div id="Valors" class="w3-container w3-border city" style="display:none">
                 <?php if (!empty($valors)): ?>
                     <p><?= esc($valors['contingut']) ?></p>
                 <?php else: ?>
@@ -80,8 +75,8 @@
                 }
             </script>
         </div>
-
-        <?= $this->include('general/footer'); ?>
+    </div>
+    <?= $this->include('general/footer'); ?>
 
 </body>
 

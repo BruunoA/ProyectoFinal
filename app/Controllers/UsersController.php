@@ -37,24 +37,29 @@ class UsersController extends BaseController
         $model = new UsersModel();
         $user = $model->where('nom', $name)->get()->getRow();
 
-        if (!password_verify($password, $user->password)) {
-            session()->setFlashdata('errorLogin', 'Error al intentar iniciar sessio, usuari o contrasenya no valids');
-            return redirect()->back()->withInput();
-        } else {    // en el cas de que el nom d'usuari no sigui el correcte, també torna a la vista de login amb el missatge d'error
             if ($user->nom !== $name) {
-                session()->setFlashdata('errorLogin', 'Error al intentar iniciar sessio, usuari o contrasenya no valids');
+                session()->setFlashdata('errorLogin', '<p style="background-color:red; color:black">Error al intentar iniciar sessio, usuari o contrasenya no valids</p>');
                 return redirect()->back()->withInput();
-            }
+            } else if (!password_verify($password, $user->password)) {
+                session()->setFlashdata('errorLogin', '<p style="background-color:red; color:black">Error al intentar iniciar sessio, usuari o contrasenya no valids</p>');
+                return redirect()->back()->withInput();
+            } else {
         }
 
         $userData = [
             'id' => $user->id,
             'nom' => $user->nom,
+            'rol' => $user->rol,
             'logged_in' => true,
         ];
 
         session()->set($userData);
-
         return redirect()->to(base_url('home'));
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to(base_url('/'));
     }
 }

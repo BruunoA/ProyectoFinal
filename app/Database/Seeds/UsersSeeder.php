@@ -20,5 +20,13 @@ class UsersSeeder extends Seeder
             ];
             $this->db->table('users')->insert($data);
         }
+
+        $data = [
+            'nom' => 'admin',
+            'password' => password_hash('admin', PASSWORD_DEFAULT),
+            'rol' => 'admin',
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        $this->db->table('users')->insert($data);
     }
 }

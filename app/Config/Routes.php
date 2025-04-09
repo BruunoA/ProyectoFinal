@@ -23,12 +23,12 @@ $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
 // GESTIO
-$routes->get('gestio', 'GestioController::gestio');
-$routes->get('wysiwyg', 'GestioController::index');
-$routes->post('create/add', 'GestioController::add');
-$routes->get('gestio/delete/(:num)', 'GestioController::delete/$1');
-$routes->get('gestio/modify/(:num)', 'GestioController::edit/$1');
-$routes->post('/modify/(:num)', 'GestioController::update/$1');
+$routes->get('gestio', 'GestioController::gestio', ['filter' => 'gestio:admin']);
+$routes->get('wysiwyg', 'GestioController::index' , ['filter' => 'gestio:admin']);
+$routes->post('create/add', 'GestioController::add' , ['filter' => 'gestio:admin']);
+$routes->get('gestio/delete/(:num)', 'GestioController::delete/$1' , ['filter' => 'gestio:admin']);
+$routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' , ['filter' => 'gestio:admin']);
+$routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'gestio:admin']);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');
@@ -41,6 +41,7 @@ $routes->get('ck','FileExplorerController::ckeditor');
 //USERS 
 $routes->get('login', 'UsersController::login');
 $routes->post('login', 'UsersController::loginVerify');
+$routes->get('logout', 'UsersController::logout');
 
 // Multi idioma
 // $routes->get('(:segment)/idioma/cambiar/(:segment)', 'Home::cambiar/$2');

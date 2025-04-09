@@ -17,7 +17,7 @@ class UsersMigration extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '150',
             ],
-            'role'         => [
+            'rol'         => [
                 'type'           => 'ENUM',
                 'constraint'     => ['admin', 'user'],
                 'default'        => 'user',
