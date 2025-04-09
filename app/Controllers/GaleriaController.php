@@ -10,7 +10,7 @@ class GaleriaController extends BaseController
 {
     public function index()
     {
-        return view('galeria');
+        return view('galeriaFotos/galeria');
     }
 
     public function getFotos(){
@@ -38,6 +38,26 @@ class GaleriaController extends BaseController
             'totalFotos' => count($fotos),
         ];
         
-        return view('galeria', $data);
+        return view('galeriaFotos/galeria', $data);
+    }
+
+    public function getAlbumFotos($albumId)
+    {
+        $fotosModel = new FotosModel();
+        $fotos = $fotosModel->where('id_album', $albumId)->findAll();
+        
+        if (empty($fotos)) {
+            return redirect()->to('/galeria')->with('error', 'Álbum no encontrado');
+        }
+        
+        $data = [
+            'album' => [
+                'id' => $albumId,
+                'titol' => $fotos[0]['titulo_album'] ?? 'Álbum '.$albumId,
+                'fotos' => $fotos
+            ]
+        ];
+        
+        return view('galeriaFotos/fotosAlbum', $data);
     }
 }

@@ -10,6 +10,7 @@ $routes->get('index', 'IndexController::index');
 $routes->get('classificacio', 'ClassificacioController::index');
 
 $routes->get('galeria', 'GaleriaController::getFotos');
+$routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
 
 $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:num)', 'NoticiesController::noticia/$1');

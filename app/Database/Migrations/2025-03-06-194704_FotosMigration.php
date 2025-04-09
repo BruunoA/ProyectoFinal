@@ -18,12 +18,12 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'descripcio'          => [
+            'ruta'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'img'          => [
+            'descripcio'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
