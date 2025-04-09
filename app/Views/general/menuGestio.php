@@ -16,8 +16,13 @@
                 <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
             </select>
             <li><a href="">Programes</a></li>
-            <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li>
-            <li><a href="">Galeria</a></li>
+            <!-- <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li> -->
+            <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
+                <option value="" style="font-weight: bold;">Noticies</option>
+                <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
+                <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
+            </select>
+            <li><a href="" onclick="filtrarSeccio('galeria'); return false;">Galeria</a></li>
             <li><a href="">Configuracio</a></li>
         </ul>
     </div>
