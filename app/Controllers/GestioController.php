@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 
@@ -35,6 +36,7 @@ class GestioController extends BaseController
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
+            'data' => $this->request->getPost('data'),
             'portada' => $this->request->getPost('portada'),
             'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
@@ -61,7 +63,15 @@ class GestioController extends BaseController
     public function gestio()
     {
         $model = new GestioModel();
-        $data['gestio'] = $model->findAll();
+        $dataGestio['gestio'] = $model->findAll();
+        $dataEvent =new EventsModel();
+        $modelEvent['events'] = $dataEvent->findAll();
+
+        $data = [
+            'gestio' => $dataGestio['gestio'],
+            'events' => $modelEvent['events'],
+        ];
+
         return view('gestio_pag/gestio', $data);
     }
 
@@ -99,12 +109,6 @@ class GestioController extends BaseController
         }
     }
 
-    // public function missio(){
-    //     $model = new GestioModel();
-    //     $data['missio'] = $model->where('seccio', 'missio')->first();
-    //     return view('sobreNosaltres', $data);
-    // }
-
     public function historia()
     {
         $model = new GestioModel();
@@ -112,17 +116,26 @@ class GestioController extends BaseController
         return view('sobreNosaltres', $data);
     }
 
-    public function visio()
+    public function addEvent()
     {
-        $model = new GestioModel();
-        $data['gestio'] = $model->where('seccio', 'visio')->findAll();
-        return view('sobreNosaltres', $data);
+        return view('gestio_pag/addEvents');
     }
 
-    public function valors()
+    public function addEvent_post()
     {
-        $model = new GestioModel();
-        $data['gestio'] = $model->where('seccio', 'valors')->findAll();
-        return view('sobreNosaltres', $data);
+        helper(["form"]);
+        $model = new EventsModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'data' => $this->request->getPost('data'),
+            'tipus_event' => $this->request->getPost('tipus_event'),
+        ];
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->insert($data);
+            return redirect()->to('/gestio');
+        }
     }
 }

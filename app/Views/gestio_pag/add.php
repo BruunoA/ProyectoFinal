@@ -65,6 +65,11 @@
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
+        <div id="event-container" class="w3-margin-bottom" style="display: none;">
+            <label for="data" class="w3-text-black"><b>Data Event</b></label>
+            <input class="w3-input w3-border" type="date" id="data" name="data">
+        </div>
+
         <!-- TODO: VEURE SI CANVIAR LA RUTA A PUBLIC O DEIXAR-LA A WRITABLE -->
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
@@ -84,11 +89,13 @@
         document.getElementById('seccio').addEventListener('change', function() {
             const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             const ckeditor = document.getElementById('ckeditor');
+            const dataEvent = document.getElementById('event-container');
 
 
             if (this.value === 'event') {
                 contenidorContingut.style.display = 'none';
                 ckeditor.removeAttribute('required');
+                dataEvent.style.display = 'block';
             } else {
                 contenidorContingut.style.display = 'block';
                 ckeditor.setAttribute('required', 'required');

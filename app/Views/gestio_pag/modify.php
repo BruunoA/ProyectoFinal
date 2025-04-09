@@ -51,19 +51,24 @@
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
             <option value="">Selecciona una opció</option>
-            <option value="#" disabled class="w3-bold">Noticies</option>
+            <option value="" disabled class="w3-bold">Noticies</option>
             <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="event" <?= old('seccio', $gestio['seccio']) === 'event' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Events</option>
-            <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
+            <option value="" disabled class="w3-bold">Sobre nosaltres</option>
             <option value="historia" <?= old('seccio', $gestio['seccio']) === 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
             <option value="missio" <?= old('seccio', $gestio['seccio']) === 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
             <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
             <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled class="w3-bold">Programes</option>
+            <option value="" disabled class="w3-bold">Programes</option>
             <option value="categories" <?= old('seccio', $gestio['seccio']) === 'categories' ? 'selected' : '' ?>>Categories</option>
-            <option value="#" disabled class="w3-bold">Configuració</option>
+            <option value="" disabled class="w3-bold">Configuració</option>
             <option value="banner" <?= old('seccio', $gestio['seccio']) === 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
+
+        <div id="event-container" class="w3-margin-bottom" style="display: none;">
+            <label for="data" class="w3-text-black"><b>Data Event</b></label>
+            <input class="w3-input w3-border" type="date" id="data" name="data">
+        </div>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
@@ -83,11 +88,12 @@
         document.getElementById('seccio').addEventListener('change', function() {
             const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             const ckeditor = document.getElementById('ckeditor');
-
+            const dataEvent = document.getElementById('event-container');
 
             if (this.value === 'event') {
                 contenidorContingut.style.display = 'none';
                 ckeditor.removeAttribute('required');
+                dataEvent.style.display = 'block';
             } else {
                 contenidorContingut.style.display = 'block';
                 ckeditor.setAttribute('required', 'required');

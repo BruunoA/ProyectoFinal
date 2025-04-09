@@ -18,8 +18,17 @@ class EventsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'data'         => [
+                'type'           => 'DATETIME',
+                'null'           => false,
+            ],
             'tipus_event'          => [
                 'type'           => 'int',
+            ],
+            'seccio'          => [
+                'type'           => 'ENUM',
+                'constraint'     => ['event'],
+                'null'           => false,
             ],
             'id_tag'          => [
                 'type'           => 'INT',

@@ -45,6 +45,9 @@
 <?= $this->include('general/menuGestio'); ?>
 
     <div class="w3-container">
+    <a href="<?= base_url('wysiwyg'); ?>" class="w3-button w3-black w3-margin w3-right">WYSIWYG</a>
+    <a href="<?= base_url('create/add/event'); ?>" class="w3-button w3-black w3-margin w3-right">Crear event</a>
+
         <h1 class="w3-center">Llista de gestio</h1>
 
         <div class="w3-center w3-margin-bottom">
@@ -67,6 +70,24 @@
                             <div class="w3-container w3-center">
                                 <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>">Editar</a>
                                 <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>">Esborrar</a>
+                            </div>
+                        </div>  
+                    </div>
+                <?php endforeach; ?>
+                
+                <?php foreach ($events as $event): ?>
+                    <div class="w3-col m6 s12 w3-padding gestio-item" data-seccio="<?= esc($event['seccio']) ?>">
+                        <div class="w3-card w3-white w3-round w3-padding">
+                            <header class="w3-container w3-blue">
+                                <h3><?= esc($event['nom']) ?></h3>
+                            </header>   
+                            <div class="w3-container">
+                                <p>Resum: <strong></strong> <?= $event['data'] ?></p>
+                                <!-- <p>Contingut: <strong></strong> <?= $event['tipus_event'] ?></p> -->
+                            </div>
+                            <div class="w3-container w3-center">
+                                <a href="<?= base_url('/gestio/modify/' . $event['id']) ?>">Editar</a>
+                                <a href="<?= base_url('/gestio/delete/' . $event['id']) ?>">Esborrar</a>
                             </div>
                         </div>  
                     </div>
