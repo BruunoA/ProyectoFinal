@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 
 <head>
     <meta charset="UTF-8">
@@ -8,32 +8,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/galeria.css'); ?>">
     <title><?= esc($album['titol']) ?> - Galería</title>
-    <style>
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 15px;
-        }
-        .photo-item {
-            overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .photo-item:hover {
-            transform: scale(1.03);
-        }
-        .photo-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        .back-button {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>

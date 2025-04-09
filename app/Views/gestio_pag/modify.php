@@ -4,72 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- include libraries(jQuery, bootstrap) -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Modificar Contingut</title>
+
+    <!-- W3.CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- jQuery y elFinder -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css">
 
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/css/elfinder.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/css/elfinder.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/elfinder/2.1.65/js/elfinder.min.js"></script>
 
-
+    <!-- CKEditor -->
     <script src="<?= base_url('ckeditor/ckeditor.js') ?>"></script>
-    <title>Document</title>
+
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 400px;
+        }
+    </style>
 </head>
-<style>
-    .note-editor.note-frame .note-editing-area .note-editable {
-        height: 200px;
-        /* width: 700px; */
-    }
-</style>
 
-<body>
+<body class="w3-container w3-padding">
+
     <?php if (session()->has('errors')): ?>
-        <ul>
-            <?php foreach (session('errors') as $error): ?>
-                <li><?= esc($error) ?></li>
-            <?php endforeach ?>
-        </ul>
-    <?php endif ?>
-    <form method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
-        <?= csrf_field() ?>
-        <label for="nom">Titol</label>
-        <input type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>"><br>
-        <label for="text">Resum</label>
-        <input type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>"><br>
-        <label for="seccio">Seccio</label>
-        <select name="seccio" id="seccio">
-            <option value="">Selecciona una opcio</option>
-            <option value="noticies" <?= old('seccio', $gestio['seccio']) == 'noticies' ? 'selected' : '' ?>>Noticies</option>
-            <option value="event" <?= old('seccio', $gestio['seccio']) == 'event' ? 'selected' : '' ?>>Events</option>
-            <option value="historia" <?= old('seccio', $gestio['seccio']) == 'historia' ? 'selected' : '' ?>>Historia</option>
-            <option value="missio" <?= old('seccio', $gestio['seccio']) == 'missio' ? 'selected' : '' ?>>Missio</option>
-            <option value="visio" <?= old('seccio', $gestio['seccio']) == 'visio' ? 'selected' : '' ?>>Visio</option>
-            <option value="valors" <?= old('seccio', $gestio['seccio']) == 'valors' ? 'selected' : '' ?>>Valors</option>
-            <option value="categories" <?= old('seccio', $gestio['seccio']) == 'categories' ? 'selected' : '' ?>>Categories</option>
-            <option value="banner" <?= old('seccio', $gestio['seccio']) == 'banner' ? 'selected' : '' ?>>Banner</option>
-        </select><br>
-
-        <label for="portada">Portada Notícia</label>
-        <input class="w3-input w3-border" type="text" name="portada" id="portada" value="<?= old('portada', $gestio['portada']) ?>" readonly>
-        <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button><br><br>
-
-        <div style="width:800px">
-            <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor', $gestio['contingut']) ?>
-            </textarea>
+        <div class="w3-panel w3-red w3-padding">
+            <ul>
+                <?php foreach (session('errors') as $error): ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach ?>
+            </ul>
         </div>
-        <button type="submit">Submit</button>
+    <?php endif ?>
+
+    <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
+        <?= csrf_field() ?>
+
+        <label for="nom" class="w3-text-black"><b>Títol</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>" required>
+
+        <label for="resum" class="w3-text-black"><b>Resum</b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>" required>
+
+        <label for="seccio" class="w3-text-black"><b>Secció</b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
+            <option value="">Selecciona una opció</option>
+            <option value="#" disabled class="w3-bold">Noticies</option>
+            <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
+            <option value="event" <?= old('seccio', $gestio['seccio']) === 'event' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Events</option>
+            <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
+            <option value="historia" <?= old('seccio', $gestio['seccio']) === 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
+            <option value="missio" <?= old('seccio', $gestio['seccio']) === 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
+            <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
+            <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
+            <option value="#" disabled class="w3-bold">Programes</option>
+            <option value="categories" <?= old('seccio', $gestio['seccio']) === 'categories' ? 'selected' : '' ?>>Categories</option>
+            <option value="#" disabled class="w3-bold">Configuració</option>
+            <option value="banner" <?= old('seccio', $gestio['seccio']) === 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
+        </select>
+
+        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
+            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
+            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
+        </div>
+
+        <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
+        <div class="w3-margin-bottom">
+            <textarea name="ckeditor" id="ckeditor" required><?= old('ckeditor', $gestio['ckeditor'] ?? '') ?></textarea>
+        </div>
+
+        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
         document.getElementById('seccio').addEventListener('change', function() {
+            const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
+            const ckeditor = document.getElementById('ckeditor');
+
+
+            if (this.value === 'event') {
+                contenidorContingut.style.display = 'none';
+                ckeditor.removeAttribute('required');
+            } else {
+                contenidorContingut.style.display = 'block';
+                ckeditor.setAttribute('required', 'required');
+            }
+
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {
                 portada.style.display = 'block';
@@ -77,6 +100,14 @@
                 portada.style.display = 'none';
             }
         });
+        // document.getElementById('seccio').addEventListener('change', function() {
+        //     const portada = document.getElementById('portada-container');
+        //     if (this.value === 'noticies') {
+        //         portada.style.display = 'block';
+        //     } else {
+        //         portada.style.display = 'none';
+        //     }
+        // });
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
 

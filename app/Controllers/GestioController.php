@@ -17,7 +17,7 @@ class GestioController extends BaseController
     {
         // $validation = \Config\Services::validation();
         helper(["form"]);
-        
+
         // $event = $this->request->getPost('seccio');
 
         // $rules = [
@@ -26,11 +26,11 @@ class GestioController extends BaseController
         //     'seccio' => 'required',
         //     'contingut' => 'required'   
         // ];
-        
+
         // if ($event === 'event') {
         //     unset($rules['contingut']);
         // }
-    
+
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
@@ -51,11 +51,11 @@ class GestioController extends BaseController
         // } 
 
         $model = new GestioModel();
-    if ($model->insert($data)) {
-        return redirect()->to('/gestio');
-    } else {
-        return redirect()->back()->withInput()->with('errors', $model->errors());
-    }
+        if ($model->insert($data)) {
+            return redirect()->to('/gestio');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        }
     }
 
     public function gestio()
@@ -89,8 +89,8 @@ class GestioController extends BaseController
             'seccio' => $this->request->getPost('seccio'),
             'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
-        ];  
-        
+        ];
+
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
@@ -105,19 +105,22 @@ class GestioController extends BaseController
     //     return view('sobreNosaltres', $data);
     // }
 
-    public function historia(){
+    public function historia()
+    {
         $model = new GestioModel();
         $data['historia'] = $model->where('seccio', 'historia')->findAll();
         return view('sobreNosaltres', $data);
     }
 
-    public function visio(){
+    public function visio()
+    {
         $model = new GestioModel();
         $data['gestio'] = $model->where('seccio', 'visio')->findAll();
         return view('sobreNosaltres', $data);
     }
 
-    public function valors(){
+    public function valors()
+    {
         $model = new GestioModel();
         $data['gestio'] = $model->where('seccio', 'valors')->findAll();
         return view('sobreNosaltres', $data);

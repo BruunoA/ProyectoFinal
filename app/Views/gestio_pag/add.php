@@ -43,13 +43,13 @@
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Nom</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>" required>
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>" required>
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
@@ -74,7 +74,7 @@
 
         <label class="w3-text-black"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor"></textarea>
+            <textarea name="ckeditor" id="ckeditor" required></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
@@ -82,6 +82,18 @@
 
     <script>
         document.getElementById('seccio').addEventListener('change', function() {
+            const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
+            const ckeditor = document.getElementById('ckeditor');
+
+
+            if (this.value === 'event') {
+                contenidorContingut.style.display = 'none';
+                ckeditor.removeAttribute('required');
+            } else {
+                contenidorContingut.style.display = 'block';
+                ckeditor.setAttribute('required', 'required');
+            }
+
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {
                 portada.style.display = 'block';
