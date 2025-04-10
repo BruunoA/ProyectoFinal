@@ -1,72 +1,66 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Commands;
 
-use App\Controllers\BaseController;
+use CodeIgniter\CLI\BaseCommand;
+use CodeIgniter\CLI\CLI;
 use App\Models\ClassificacioModel;
-use CodeIgniter\HTTP\ResponseInterface;
-
 use DOMDocument;
 use DOMXPath;
 
-class ClassificacioController extends BaseController
+
+class Cldades extends BaseCommand
 {
-    public function index()
+    /**
+     * The Command's Group
+     *
+     * @var string
+     */
+    protected $group = 'App';
+
+    /**
+     * The Command's Name
+     *
+     * @var string
+     */
+    protected $name = 'cldades';
+
+    /**
+     * The Command's Description
+     *
+     * @var string
+     */
+    protected $description = '';
+
+    /**
+     * The Command's Usage
+     *
+     * @var string
+     */
+    protected $usage = 'command:name [arguments] [options]';
+
+    /**
+     * The Command's Arguments
+     *
+     * @var array
+     */
+    protected $arguments = [];
+
+    /**
+     * The Command's Options
+     *
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * Actually execute a command.
+     *
+     * @param array $params
+     */
+    public function run(array $params)
     {
-        // Crear instancias de los modelos
-        $classificacioModel = new ClassificacioModel();
-        
-        // Obtener todas las categorías y grupos disponibles
-        $categorias = $classificacioModel->distinct()->select('categoria')->findAll();  // Obtén todas las categorías únicas
-        $grupos = $classificacioModel->distinct()->select('grup')->findAll();  // Obtén todos los grupos únicos
-        
-        // Obtener los resultados filtrados (si se seleccionan categoría y grupo)
-        $categoriaId = $this->request->getVar('categoria');
-        $grupoId = $this->request->getVar('grupo');
-        
-        if ($categoriaId && $grupoId) {
-            // Filtrar por categoría y grupo
-            $taula = $classificacioModel->where('categoria', $categoriaId)->where('grup', $grupoId)->findAll();
-        } else {
-            // Obtener todos los resultados si no hay filtros
-            $taula = $classificacioModel->findAll();
-        }
-    
-        // Datos a pasar a la vista
-        $data = [
-            'títol' => 'Classificació',
-            'taula' => $taula,
-            'categorias' => $categorias,
-            'grupos' => $grupos,
-        ];
-    
-        return view('classificacio', $data);
-    }
-    
-    public function filtrar()
-    {
-        // Obtener los filtros de categoría y grupo desde la solicitud
-        $categoriaId = $this->request->getVar('categoria');
-        $grupoId = $this->request->getVar('grupo');
-        
-        // Filtrar los datos según los valores seleccionados
-        $classificacioModel = new ClassificacioModel();
-        
-        if ($categoriaId && $grupoId) {
-            $taula = $classificacioModel->where('categoria', $categoriaId)->where('grup', $grupoId)->findAll();
-        } else {
-            $taula = $classificacioModel->findAll();  // Si no hay filtros, mostrar todos los resultados
-        }
-        
-        // Recargar la vista con los resultados filtrados
-        $data = [
-            'títol' => 'Classificació',
-            'taula' => $taula,
-            'categorias' => $classificacioModel->distinct()->select('categoria')->findAll(),
-            'grupos' => $classificacioModel->distinct()->select('grup')->findAll(),
-        ];
-        
-        return view('classificacio', $data);
+        $this->obtenirDades();
     }
 
     private function getCategoryAndGroup($url)
@@ -204,4 +198,5 @@ class ClassificacioController extends BaseController
             }
         }
     }
+
 }

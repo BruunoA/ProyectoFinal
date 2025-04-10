@@ -15,7 +15,10 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('home', 'IndexController::home');
 $routes->get('index', 'IndexController::index');
 
-$routes->get('classificacio', 'ClassificacioController::index');
+// $routes->get('classificacio', 'ClassificacioController::index');
+
+$routes->get('/classificacio', 'ClassificacioController::index');  // Ruta para la vista principal
+$routes->post('/classificacio/filtrar', 'ClassificacioController::filtrar');  // Ruta para  los filtros
 
 $routes->get('galeria', 'GaleriaController::getFotos');
 
