@@ -200,10 +200,13 @@ class GestioController extends BaseController
 
                     // Mover el archivo
                     // $img->move(WRITEPATH . 'uploads', $newName);
+                    $descripcio = $this->request->getPost('descripcio');
+                    $carpeta = $this->request->getPost('carpeta');
 
                     $fotoData = [
                         'titol' => $newName,
                         'nom_fitxer' => $newName,
+                        'descripcio' => $descripcio,
                         'ruta' => 'writable/uploads/' . $nom_fitxer,
                         'mime_type' => $img->getClientMimeType()
                     ];

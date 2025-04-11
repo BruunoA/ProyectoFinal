@@ -16,8 +16,8 @@ class zFotosSeeder extends Seeder
                 'titol' => $fake->sentence(4),
                 'descripcio' => $fake->text(100),
                 'ruta' => 'assets/img/camara.png',
-                // 'id_tag' => rand(1, 5),     // TODO: TREURE?    
-                // 'id_album' => rand(1, 3),
+                'id_tag' => rand(1, 5),     // TODO: TREURE?    
+                'id_album' => rand(1, 3),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

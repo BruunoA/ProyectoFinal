@@ -28,13 +28,15 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            // 'id_album'          => [
-            //     'type'           => 'INT',
-            //     'null'           => true,     
-            // ],
-            // 'id_tag'          => [
-            //     'type'           => 'INT',
-            // ],
+            'id_album'          => [
+                'type'           => 'INT',
+                'null'           => true,  
+                'default'        => 1,
+            ],
+            'id_tag'          => [
+                'type'           => 'INT',
+                'default'        => 1,
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -57,8 +59,8 @@ class TaulaFotosMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        // $this->forge->addForeignKey('id_album', 'albums', 'id');
-        // $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->addForeignKey('id_album', 'albums', 'id');
+        $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('taula_fotos');
     }
 

@@ -85,12 +85,16 @@
                 <option value="sobreNosaltres">Sobre Nosaltres</option>
             </select>
 
+            <div style="padding-top:10px">
+                <label for="descripcio" style="display:block; font-weight:bold; margin-bottom:5px;">Descripcio</label>
+                <input type="text" name="descripcio" id="descripcio" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+            </div>
+
             <div style='padding-top:10px'>
                 <input type="submit" value="upload" />
             </div>
 
             </form>
-
         </div>
 </body>
 
