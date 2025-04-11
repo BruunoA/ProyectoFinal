@@ -19,7 +19,6 @@
 
     <!-- CKEditor -->
     <script src="<?= base_url('ckeditor/ckeditor.js') ?>"></script>
-    
 
     <style>
         .ck-editor__editable[role="textbox"] {
@@ -52,18 +51,9 @@
         <label for="tipus_event" class="w3-text-black"><b>Tipus event</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="tipus_event" id="tipus_event" required>
             <option value="">Selecciona una opció</option>
-            <option value="#" disabled class="w3-bold">Noticies</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
-            <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled class="w3-bold">Programes</option>
-            <option value="categories">Categories</option>
-            <option value="#" disabled class="w3-bold">Configuració</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
+            <option value="competicio">&nbsp;&nbsp;&nbsp;Competicio</option>
+            <option value="entrenament">&nbsp;&nbsp;&nbsp;Entrenament</option>
+            <option value="activitat">&nbsp;&nbsp;&nbsp;Activitat</option>
         </select>
 
         <div id="event-container" class="w3-margin-bottom">

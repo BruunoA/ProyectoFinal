@@ -24,14 +24,16 @@ $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
 // GESTIO
-$routes->get('gestio', 'GestioController::gestio', ['filter' => 'gestio:admin']);
-$routes->get('wysiwyg', 'GestioController::index' , ['filter' => 'gestio:admin']);
-$routes->post('create/add', 'GestioController::add' , ['filter' => 'gestio:admin']);
+$routes->get('gestio', 'GestioController::gestio');
+$routes->get('wysiwyg', 'GestioController::index');
+$routes->post('create/add', 'GestioController::add');
 $routes->get('create/add/event', 'GestioController::addEvent' , ['filter' => 'gestio:admin']);
 $routes->post('create/add/event', 'GestioController::addEvent_post' , ['filter' => 'gestio:admin']);
 $routes->get('gestio/delete/(:num)', 'GestioController::delete/$1' , ['filter' => 'gestio:admin']);
 $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' , ['filter' => 'gestio:admin']);
 $routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'gestio:admin']);
+$routes->get('pujarArxiu', 'GestioController::upload_drag');
+$routes->post('pujarArxiu', 'GestioController::upload_drag_post');
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');

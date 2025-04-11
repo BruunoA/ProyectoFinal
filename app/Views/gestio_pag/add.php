@@ -65,41 +65,42 @@
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
-        <div id="event-container" class="w3-margin-bottom" style="display: none;">
+        <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">
             <label for="data" class="w3-text-black"><b>Data Event</b></label>
             <input class="w3-input w3-border" type="date" id="data" name="data">
-        </div>
+        </div> -->
 
         <!-- TODO: VEURE SI CANVIAR LA RUTA A PUBLIC O DEIXAR-LA A WRITABLE -->
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada">
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
         <label class="w3-text-black"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor" required></textarea>
+            <textarea name="ckeditor" id="ckeditor"></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
+
         document.getElementById('seccio').addEventListener('change', function() {
-            const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
-            const ckeditor = document.getElementById('ckeditor');
-            const dataEvent = document.getElementById('event-container');
+            // const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
+            // const ckeditor = document.getElementById('ckeditor');
+            // const dataEvent = document.getElementById('event-container');
 
 
-            if (this.value === 'event') {
-                contenidorContingut.style.display = 'none';
-                ckeditor.removeAttribute('required');
-                dataEvent.style.display = 'block';
-            } else {
-                contenidorContingut.style.display = 'block';
-                ckeditor.setAttribute('required', 'required');
-            }
+            // if (this.value === 'event') {
+            //     contenidorContingut.style.display = 'none';
+            //     ckeditor.removeAttribute('required');
+            //     dataEvent.style.display = 'block';
+            // } else {
+            //     contenidorContingut.style.display = 'block';
+            //     ckeditor.setAttribute('required', 'required');
+            // }
 
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {

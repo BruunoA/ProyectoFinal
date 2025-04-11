@@ -32,7 +32,7 @@ class GestioModel extends Model
         'nom' => 'required',
         'resum' => 'required',
         'seccio' => 'required',
-        // 'contingut' => 'required'
+        'contingut' => 'required'
     ];
     // TODO: Variable per gestionar si està actiu o no (true o false), INTENTAR ficar un if a la validationRules
     protected $validationMessages   = [
@@ -45,9 +45,9 @@ class GestioModel extends Model
         'seccio' => [
             'required' => 'La camp secció és obligatoria'
         ],
-        // 'contingut' => [
-        //     'required' => 'El camp contingut és obligatori'
-        // ]
+        'contingut' => [
+            'required' => 'El camp contingut és obligatori'
+        ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

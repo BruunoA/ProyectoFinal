@@ -23,7 +23,9 @@ class EventsMigration extends Migration
                 'null'           => false,
             ],
             'tipus_event'          => [
-                'type'           => 'int',
+                'type'           => 'ENUM',
+                'constraint'     => ['competicio', 'entrenament', 'activitat'],
+                'null'           => false,
             ],
             'seccio'          => [
                 'type'           => 'ENUM',

@@ -7,6 +7,9 @@ use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 
+use CodeIgniter\Files\File;
+
+
 class GestioController extends BaseController
 {
     public function index()
@@ -64,7 +67,7 @@ class GestioController extends BaseController
     {
         $model = new GestioModel();
         $dataGestio['gestio'] = $model->findAll();
-        $dataEvent =new EventsModel();
+        $dataEvent = new EventsModel();
         $modelEvent['events'] = $dataEvent->findAll();
 
         $data = [
@@ -125,17 +128,75 @@ class GestioController extends BaseController
     {
         helper(["form"]);
         $model = new EventsModel();
+
+        $date = $this->request->getPost('data');
+        $horaActual = date('H:i:s');
+        $dataCompleta = $date . ' ' . $horaActual;
+
         $data = [
             'nom' => $this->request->getPost('nom'),
-            'data' => $this->request->getPost('data'),
+            'data' => $dataCompleta,
             'tipus_event' => $this->request->getPost('tipus_event'),
         ];
+
+        // var_dump($date);
+        // die;
 
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
             $model->insert($data);
             return redirect()->to('/gestio');
+        }
+    }
+
+    public function upload_drag()
+    {
+        helper(["form"]);
+
+        $data['title'] = "Multiple file uploader drag drop";
+        $data['errors'] = [];
+
+        return view('gestio_pag/upload_form_drag', $data);
+    }
+
+    public function upload_drag_post()
+    {
+        $data['title'] = "Multiple file uploader";
+
+        $validationRule = [
+            'userfile' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[userfile]'
+                    . '|is_image[userfile]'
+                    . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                    . '|max_size[userfile,100]'
+                    . '|max_dims[userfile,1024,768]',
+            ],
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+
+            return view('gestio_pag/upload_form_drag', $data);
+        }
+
+        if ($imagefile = $this->request->getFiles()) {
+            $i = 0;
+            $files = [];
+            foreach ($imagefile['userfile'] as $img) {
+                if ($img->isValid() && !$img->hasMoved()) {
+                    $i++;
+
+                    $newName = $img->getClientName();
+                    $img->move(WRITEPATH . 'uploads', $newName);
+
+                    $files[$i] = new File(WRITEPATH . 'uploads/' . $newName);
+                }
+            }
+
+            $data['files'] = $files;
+            return view('gestio_pag/upload_ok', $data);
         }
     }
 }

@@ -4,8 +4,21 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+
+    public function __construct()
+    {
+        $model = new \App\Models\MenuModel();
+        $menu = $model->where('visibilitat', true)->orderBy('ordre', 'asc')->findAll();
+        $data = [
+            'menu' => $menu,
+        ];
+
+        service('renderer')->setVar('menu', $menu);
+    }
+
     public function index(): string
     {
+
         return view('welcome_message');
     }
 
@@ -14,7 +27,6 @@ class Home extends BaseController
         $session = session();
         $session->set('language', $lang);
         echo "Idioma es: " . $lang;
-        // die;
         return redirect()->back();
     }
 }
