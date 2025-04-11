@@ -11,7 +11,7 @@ class zFotosSeeder extends Seeder
     {
         $fake = Factory::create("ca_ES");
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data = [
                 'titol' => $fake->sentence(4),
                 'descripcio' => $fake->text(100),

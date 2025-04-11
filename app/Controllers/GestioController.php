@@ -196,13 +196,15 @@ class GestioController extends BaseController
 
                     // Crear el nuevo nombre: fecha_id.extensión
                     $newName = $currentDate . '_' . $proximID . '.' . $ext;
+                    $nom_fitxer = $img->getClientName();
 
                     // Mover el archivo
                     // $img->move(WRITEPATH . 'uploads', $newName);
 
                     $fotoData = [
+                        'titol' => $newName,
                         'nom_fitxer' => $newName,
-                        'ruta' => 'writable/uploads/' . $newName,
+                        'ruta' => 'writable/uploads/' . $nom_fitxer,
                         'mime_type' => $img->getClientMimeType()
                     ];
 
