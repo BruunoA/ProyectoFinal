@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
-
+use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
 
 
@@ -184,9 +184,31 @@ class GestioController extends BaseController
         if ($imagefile = $this->request->getFiles()) {
             $i = 0;
             $files = [];
+            $model = new TaulaFotosModel();
+
+            $proximID = $model->getNextID();
             foreach ($imagefile['userfile'] as $img) {
                 if ($img->isValid() && !$img->hasMoved()) {
                     $i++;
+                    // Afegit
+                    $currentDate = date('YmdHis');
+                    $ext = $img->getClientExtension();
+
+                    // Crear el nuevo nombre: fecha_id.extensión
+                    $newName = $currentDate . '_' . $proximID . '.' . $ext;
+
+                    // Mover el archivo
+                    // $img->move(WRITEPATH . 'uploads', $newName);
+
+                    $fotoData = [
+                        'nom_fitxer' => $newName,
+                        'ruta' => 'writable/uploads/' . $newName,
+                        'mime_type' => $img->getClientMimeType()
+                    ];
+
+                    $model->insert($fotoData);
+
+                    $proximID++;
 
                     $newName = $img->getClientName();
                     $img->move(WRITEPATH . 'uploads', $newName);

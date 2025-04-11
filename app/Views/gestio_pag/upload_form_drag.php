@@ -71,6 +71,8 @@
             Drop Here
         </div>
 
+        <?= form_open_multipart(base_url('pujarArxiu')) ?>
+
         <div id='files'>
             <input type="file" id="formFiles" name="userfile[]" style="visibility:hidden" />
         </div>
