@@ -34,6 +34,12 @@ $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' , ['filter' => 
 $routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'gestio:admin']);
 $routes->get('pujarArxiu', 'GestioController::upload_drag');
 $routes->post('pujarArxiu', 'GestioController::upload_drag_post');
+$routes->get('gestio/menu', 'GestioController::menu');
+$routes->get('gestio/menu/add', 'GestioController::menuAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menu/add', 'GestioController::menuAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menu/modify/(:num)', 'GestioController::menuModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menu/modify/(:num)', 'GestioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menu/delete/(:num)', 'GestioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');

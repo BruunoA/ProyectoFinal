@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
+use App\Models\MenuModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
 
@@ -130,16 +131,14 @@ class GestioController extends BaseController
         $model = new EventsModel();
 
         $date = $this->request->getPost('data');
-        $horaActual = date('H:i:s');
-        $dataCompleta = $date . ' ' . $horaActual;
 
         $data = [
             'nom' => $this->request->getPost('nom'),
-            'data' => $dataCompleta,
+            'data' => $date,
             'tipus_event' => $this->request->getPost('tipus_event'),
         ];
 
-        // var_dump($date);
+        // echo $date;
         // die;
 
         if (!$model->validate($data)) {
@@ -224,6 +223,71 @@ class GestioController extends BaseController
 
             $data['files'] = $files;
             return view('gestio_pag/upload_ok', $data);
+        }
+    }
+
+    public function menu(){
+        
+        $model = new MenuModel();
+
+        $data['menu'] = $model->findAll();
+        return view('gestio_pag/menu', $data);
+    }
+
+    public function menuModify($id)
+    {
+        $model = new MenuModel();
+        $data['menu'] = $model->find($id);
+        return view('gestio_pag/menuModify', $data);
+    }
+
+    public function menuModify_post($id)
+    {
+        $model = new MenuModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'enllaç' => $this->request->getPost('enllaç'),
+            'id_pare' => $this->request->getPost('id_pare'),
+            'visibilitat' => $this->request->getPost('visibilitat'),
+            'ordre' => $this->request->getPost('ordre')
+        ];
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->update($id, $data);
+            return redirect()->to('/gestio/menu');
+        }
+    }
+
+    public function menuDelete($id)
+    {
+        $model = new MenuModel();
+        $model->delete($id);
+        return redirect()->to('/gestio/menu');
+    }
+
+    public function menuAdd()
+    {
+        return view('gestio_pag/menuAdd');
+    }
+
+    public function menuAdd_post()
+    {
+        $model = new MenuModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'enllaç' => $this->request->getPost('enllaç'),
+            'id_pare' => $this->request->getPost('id_pare'),
+            'visibilitat' => $this->request->getPost('visibilitat'),
+            'ordre' => $this->request->getPost('ordre')
+        ];
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->insert($data);
+            return redirect()->to('/gestio/menu');
         }
     }
 }

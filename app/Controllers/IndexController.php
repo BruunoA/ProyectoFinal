@@ -7,6 +7,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class IndexController extends BaseController
 {
+
+    
+
     public function home()
     {
         

@@ -22,6 +22,10 @@ class Home extends BaseController
         return view('welcome_message');
     }
 
+    public function menu(){
+        return view('general/menu', $this->data);
+    }
+
     public function cambiar($lang)
     {
         $session = session();

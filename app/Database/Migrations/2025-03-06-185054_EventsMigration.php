@@ -19,7 +19,7 @@ class EventsMigration extends Migration
                 'null'           => false,
             ],
             'data'         => [
-                'type'           => 'DATETIME',
+                'type'           => 'DATE',
                 'null'           => false,
             ],
             'tipus_event'          => [
@@ -28,14 +28,14 @@ class EventsMigration extends Migration
                 'null'           => false,
             ],
             'seccio'          => [
-                'type'           => 'ENUM',
-                'constraint'     => ['event'],
-                'null'           => false,
+                'type'           => 'VARCHAR',
+                'constraint'     => '250',
+                'default'        => 'event',
             ],
-            'id_tag'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
+            // 'id_tag'          => [
+            //     'type'           => 'INT',
+            //     'null'           => false,
+            // ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
