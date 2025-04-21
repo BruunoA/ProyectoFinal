@@ -41,6 +41,10 @@ $routes->get('gestio/menu/modify/(:num)', 'GestioController::menuModify/$1' /*, 
 $routes->post('gestio/menu/modify/(:num)', 'GestioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/menu/delete/(:num)', 'GestioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');

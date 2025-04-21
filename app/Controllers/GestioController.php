@@ -300,4 +300,16 @@ class GestioController extends BaseController
 
         return view('gestio_pag/sobreNosaltres', $data);
     }
+
+    public function noticies(){
+
+        $model = new GestioModel();
+        $noticies = $model->where('seccio', 'noticies')->findAll();
+
+        $data = [
+            'noticies' => $noticies,
+        ];
+
+        return view('gestio_pag/noticies', $data);
+    }
 }
