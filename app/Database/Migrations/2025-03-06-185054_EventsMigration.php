@@ -32,6 +32,11 @@ class EventsMigration extends Migration
                 'constraint'     => '250',
                 'default'        => 'event',
             ],
+            'estat'          => [
+                'type'           => 'ENUM',
+                'constraint'     => ['publicat', 'no_publicat'],
+                'default'        => 'no_publicat',
+            ],
             // 'id_tag'          => [
             //     'type'           => 'INT',
             //     'null'           => false,

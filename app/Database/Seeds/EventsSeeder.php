@@ -17,6 +17,7 @@ class EventsSeeder extends Seeder
             'nom' => $nom = $fake->words(3, true),
             'tipus_event' => $fake->randomElement(['partit', 'entrenament', 'sortides']),
             'data' => $fake->dateTimeThisMonth()->format('Y-m-d'),
+            'estat' => $fake->randomElement(['publicat', 'no_publicat']),
             'created_at' => date('Y-m-d H:i:s'),
             ];
             $this->db->table('events')->insert($data);

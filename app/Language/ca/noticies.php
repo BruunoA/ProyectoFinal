@@ -13,4 +13,6 @@ return [
     "Veure" => "Veure",
     "Editar" => "Editar",
     "Eliminar" => "Eliminar",
+    "VeureEvents" => "Veure esdeveniments",
+    "Events" => "Esdeveniments",
 ];

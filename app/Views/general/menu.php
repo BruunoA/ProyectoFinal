@@ -18,6 +18,7 @@
                         <option value="">Acces privat</option>
                         <option value="<?= base_url('login') ?>">👤 Iniciar sessio</option>
                     <?php else: ?>
+                        <option value="">Acces privat</option>
                         <option value="<?= base_url('logout') ?>">🚪 Tancar sessio</option>
                     <?php endif; ?>
                     <?php if (session()->get('logged_in') && session()->get('rol') == 'admin'): ?>

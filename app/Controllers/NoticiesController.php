@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 
@@ -11,9 +12,12 @@ class NoticiesController extends BaseController
     public function index()
     {
         $model = new GestioModel();
-        // agafa tot lo que té com a secció noticies
-        $data['gestio'] = $model->where('seccio', 'noticies')->where('estat', 'publicat')->findAll();
-        // $data['gestio'] = $model->findAll();
+        $modelEvents = new EventsModel();
+
+        $data = [
+            'gestio' => $model->where('seccio', 'noticies')->where('estat', 'publicat')->findAll(),
+            'events' => $modelEvents->where('estat', 'publicat')->findAll(),
+        ];
         return view('noticies', $data);
     }
     
