@@ -5,20 +5,20 @@
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="menu-items">
-            <?php foreach ($menu as $item): ?>
+            <?php // foreach ($menu as $item): ?>
                 <li>
-                    <a href="<?= base_url($item['enllaç']) ?>"><?= $item['nom'] ?></a>
+                    <!-- <a href="<?php // base_url($item['enllaç']) ?>"><?php // $item['nom'] ?></a> -->
 
                     <!-- Mostrar submenú si tiene hijos -->
-                    <?php if (!empty($item['children'])): ?>
+                    <?php // if (!empty($item['children'])): ?>
                         <ul>
-                            <?php foreach ($item['children'] as $child): ?>
-                                <li><a href="<?= base_url($child['enllaç']) ?>"><?= $child['nom'] ?></a></li>
-                            <?php endforeach; ?>
+                            <?php //foreach ($item['children'] as $child): ?>
+                                <li><a href="<?php // base_url($child['enllaç']) ?>"><?php // $child['nom'] ?></a></li>
+                            <?php //endforeach; ?>
                         </ul>
-                    <?php endif; ?>
+                    <?php // endif; ?>
                 </li>
-            <?php endforeach; ?>
+            <?php // endforeach; ?>
         </ul>
     </div>
 </nav>
