@@ -4,17 +4,22 @@
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
+        <!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
         <ul class="menu-items">
             <li><a href="">Inici</a></li>
             <li><a href="">Contacte</a></li>
-            <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
+            <div class="w3-select">
+                <ul>
+                    <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
+                </ul>
+            </div>
+            <!-- <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
                 <option value="" style="font-weight: bold;">Sobre Nosaltres</option>
                 <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
                 <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
                 <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
                 <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            </select>
+            </select> -->
             <li><a href="">Programes</a></li>
             <!-- <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li> -->
             <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
@@ -22,6 +27,7 @@
                 <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
                 <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
             </select>
+            <li><a href="<?= base_url('/gestio/menu') ?>">Menu general</a></li>
             <li><a href="" onclick="filtrarSeccio('galeria'); return false;">Galeria</a></li>
             <li><a href="">Configuracio</a></li>
         </ul>

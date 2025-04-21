@@ -83,7 +83,7 @@ class GestioController extends BaseController
     {
         $model = new GestioModel();
         $model->delete($id);
-        return redirect()->to('/gestio');
+        return redirect()->back();
     }
 
     public function edit($id)
@@ -231,14 +231,14 @@ class GestioController extends BaseController
         $model = new MenuModel();
 
         $data['menu'] = $model->findAll();
-        return view('gestio_pag/menu', $data);
+        return view('config_pag/menu', $data);
     }
 
     public function menuModify($id)
     {
         $model = new MenuModel();
         $data['menu'] = $model->find($id);
-        return view('gestio_pag/menuModify', $data);
+        return view('config_pag/menuModify', $data);
     }
 
     public function menuModify_post($id)
@@ -269,7 +269,7 @@ class GestioController extends BaseController
 
     public function menuAdd()
     {
-        return view('gestio_pag/menuAdd');
+        return view('config_pag/menuAdd');
     }
 
     public function menuAdd_post()
@@ -289,5 +289,15 @@ class GestioController extends BaseController
             $model->insert($data);
             return redirect()->to('/gestio/menu');
         }
+    }
+
+    public function sobreNosaltres(){
+        $model = new GestioModel();
+        $data['historia'] = $model->where('seccio', 'historia')->where('estat', 'publicat')->first();
+        $data['missio'] = $model->where('seccio', 'missio')->where('estat', 'publicat')->first();
+        $data['visio'] = $model->where('seccio', 'visio')->where('estat', 'publicat')->first();
+        $data['valors'] = $model->where('seccio', 'valors')->where('estat', 'publicat')->first();
+
+        return view('gestio_pag/sobreNosaltres', $data);
     }
 }

@@ -5,20 +5,23 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use Faker\Factory;
 
-class ValorsSeeder extends Seeder
+class HistoriaSeeder extends Seeder
 {
     public function run()
     {
         $fake = Factory::create("ca_ES");
-        $nom = $fake->words(3, true);
+
+            $nom = $fake->sentence(3);
+
             $data = [
                 'nom' => $nom,
-                'contingut' => $fake->paragraph(2),
-                'seccio' => 'valors',
-                'url' => url_title($nom, '-', true),
+                'resum' => $fake->text(100),
+                'contingut' => $fake->paragraphs(20, true), 
+                'seccio' => 'historia',
                 'estat' => 'publicat',
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'), 
             ];
+
             $this->db->table('gestio')->insert($data);
     }
 }

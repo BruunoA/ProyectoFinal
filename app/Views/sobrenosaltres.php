@@ -16,8 +16,13 @@
         <h2 class="w3-center"><?= lang('sobreNosaltres.TitolHistoria') ?></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
-            <div class="w3-container historia-text">
-                <p><?= lang('sobreNosaltres.TextHistoria') ?></p>
+            <div id="historia" class="w3-container w3-border city">
+                <?php if (!empty($historia)): ?>
+                    <h3 class="w3-center"><?= esc($historia['nom']) ?></h3>
+                    <p><?= esc($historia['contingut']) ?></p>
+                <?php else: ?>
+                    <p>No s'ha carregat la historia</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -39,7 +44,7 @@
                 <?php if (!empty($missio)): ?>
                     <p><?= esc($missio['contingut']) ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat</p>
+                    <p>No s'ha carregat la missio</p>
                 <?php endif; ?>
             </div>
 
@@ -47,7 +52,7 @@
                 <?php if (!empty($visio)): ?>
                     <p><?= esc($visio['contingut']) ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat</p>
+                    <p>No s'ha carregat la visio</p>
                 <?php endif; ?>
             </div>
 
@@ -55,7 +60,7 @@
                 <?php if (!empty($valors)): ?>
                     <p><?= esc($valors['contingut']) ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat</p>
+                    <p>No s'han carregat els valors</p>
                 <?php endif; ?>
             </div>
 
@@ -67,7 +72,7 @@
                         x[i].style.display = "none";
                     }
                     tablinks = document.getElementsByClassName("tablink");
-                    for (i = 0; i < x.length; i++) {
+                    for (i = 0; i < tablinks.length; i++) {
                         tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
                     }
                     document.getElementById(cityName).style.display = "block";

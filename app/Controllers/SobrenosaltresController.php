@@ -12,9 +12,10 @@ class SobreNosaltresController extends BaseController
     {
         $model = new GestioModel();
         $data = [
-            'missio' => $model->where('seccio', 'missio')->first(),
-            'visio' => $model->where('seccio', 'visio')->first(),
-            'valors' => $model->where('seccio', 'valors')->first(),
+            'historia' => $model->where('seccio', 'historia')->where('estat', 'publicat')->first(),
+            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
+            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
+            'valors' => $model->where('seccio', 'valors')->where('estat', 'publicat')->first(),
         ];
         return view('sobreNosaltres', $data);
     }
