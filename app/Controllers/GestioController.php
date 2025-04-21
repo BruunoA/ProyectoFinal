@@ -312,4 +312,15 @@ class GestioController extends BaseController
 
         return view('gestio_pag/noticies', $data);
     }
+
+    public function events(){
+        $model = new EventsModel();
+        $events = $model->findAll();
+
+        $data = [
+            'events' => $events,
+        ];
+
+        return view('gestio_pag/events', $data);
+    }
 }

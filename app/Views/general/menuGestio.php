@@ -13,7 +13,7 @@
             <select id="seccio-select" class="w3-select">
                 <option value="">Noticies</option>
                 <option value="noticies">Notícies</option>
-                <option value="event">Events</option>
+                <option value="events">Events</option>
             </select>
             <li><a href="<?= base_url('/gestio/menu') ?>">Menu general</a></li>
             <li><a href="<?= base_url('/gestio/galeria') ?>">Galeria</a></li>
@@ -27,7 +27,7 @@
         const selected = this.value;
         if (selected === 'noticies') {
             window.location.href = "<?= base_url('gestio/noticies') ?>";
-        } else if (selected === 'event') {
+        } else if (selected === 'events') {
             window.location.href = "<?= base_url('gestio/events') ?>";
         }
     });
