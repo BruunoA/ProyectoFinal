@@ -323,4 +323,16 @@ class GestioController extends BaseController
 
         return view('gestio_pag/events', $data);
     }
+
+    public function programes(){
+        $model = new GestioModel();
+        $programes = $model->where('seccio', 'programes')->findAll();
+
+        $data = [
+            'programes' => $programes,
+        ];
+
+        return view('gestio_pag/programes', $data);
+    }
+    
 }
