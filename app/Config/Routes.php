@@ -42,12 +42,20 @@ $routes->post('gestio/menu/add', 'GestioController::menuAdd_post' /*, ['filter' 
 $routes->get('gestio/menu/modify/(:num)', 'GestioController::menuModify/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/menu/modify/(:num)', 'GestioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/menu/delete/(:num)', 'GestioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio', 'GestioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/add', 'GestioController::menuGestioAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menuGestio/add', 'GestioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/modify/(:num)', 'GestioController::menuGestioModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menuGestio/modify/(:num)', 'GestioController::menuGestioModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/delete/(:num)', 'GestioController::menuGestioDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+
+$routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');
