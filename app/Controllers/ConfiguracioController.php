@@ -26,6 +26,29 @@ class ConfiguracioController extends BaseController
         return view('configuracio/dadesContacteModify', $data);
     }
 
+    public function dades_contacteModify_post($id)
+    {
+        $model = new ConfiguracioModel();
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'valor' => $this->request->getPost('valor'),
+        ];
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->save($id, $data);
+            return redirect()->to('/configuracio/dades_contacte');
+        }
+    }
+
+    public function dades_contacteDelete($id)
+    {
+        $model = new ConfiguracioModel();
+        $model->delete($id);
+        return redirect()->to('/configuracio/dades_contacte');
+    }
+
     public function menu(){
         
         $model = new ConfiguracioModel();

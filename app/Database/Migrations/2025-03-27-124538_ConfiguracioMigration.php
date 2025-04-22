@@ -17,6 +17,11 @@ class ConfiguracioMigration extends Migration
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                         ],
+                        'icon' => [
+                                'type'       => 'VARCHAR',
+                                'constraint' => '250',
+                                'null'       => true,
+                        ],
                         'valor' => [
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
@@ -24,7 +29,7 @@ class ConfiguracioMigration extends Migration
                         ],
                         'tipus'          => [
                                 'type'           => 'ENUM',
-                                'constraint'     => ['dades_contacte', 'footer', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
+                                'constraint'     => ['dades_contacte', 'xarxes_socials', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
                                 'default'        => null,
                         ],
                         'id_pare' => [

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="<?= base_url('configuracio/dades_contacte/modify/' . $dades_contacte['id']) ?>">
+    <form action="<?= base_url('configuracio/dades_contacte/modify/' . $dades_contacte['id']) ?>" method="POST">
         <div class="w3-container w3-padding">
             <h1 class="w3-center w3-text-blue">Modificar Dades de Contacte</h1>
             <div class="w3-card w3-white w3-round w3-padding w3-margin">

@@ -27,7 +27,7 @@
                                 <td><?= esc($dada['valor']) ?></td>
                                 <td>
                                     <a href="/configuracio/dades_contacte/modify/<?= esc($dada['id']) ?>" class="w3-button w3-blue w3-round">Modificar</a>
-                                    <a href="/configuracio/eliminar/<?= esc($dada['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquesta dada?');">Eliminar</a>
+                                    <a href="/configuracio/dades_contacte/delete/<?= esc($dada['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquesta dada?');">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
