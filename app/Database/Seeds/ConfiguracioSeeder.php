@@ -11,77 +11,88 @@ class ConfiguracioSeeder extends Seeder
         $data = [
             [
                 'nom' => 'Inici',
-                'enllaç' => '/',
+                'valor' => '/',
+                'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Contacte',
-                'enllaç' => 'contacte',
+                'valor' => 'contacte',
+                'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Sobre Nosaltres',
-                'enllaç' => 'sobreNosaltres',
+                'valor' => 'sobreNosaltres',
+                'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Programes',
-                'enllaç' => 'programes',
+                'valor' => 'programes',
+                'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Noticies',
-                'enllaç' => 'noticies',
+                'valor' => 'noticies',
+                'tipus' => 'menu_general',
                 'ordre' => 5,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Galeria',
-                'enllaç' => 'galeria',
+                'valor' => 'galeria',
+                'tipus' => 'menu_general',
                 'ordre' => 6,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Classificacio',
-                'enllaç' => 'classificacio',
+                'valor' => 'classificacio',
+                'tipus' => 'menu_general',
                 'ordre' => 7,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Acces privat',
-                'enllaç' => '', // Dropdown, sin enlace directo
+                'valor' => '', // Dropdown, sin enlace directo
+                'tipus' => 'menu_general',
                 'ordre' => 8,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
                 'nom' => 'Iniciar sessio',
-                'enllaç' => 'login',
+                'valor' => 'login',
+                'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
                 'nom' => 'Tancar sessio',
-                'enllaç' => 'logout',
+                'valor' => 'logout',
+                'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
                 'nom' => 'Gestio',
-                'enllaç' => 'gestio',
+                'valor' => 'gestio',
+                'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
                 'id_pare' => 8

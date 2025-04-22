@@ -10,7 +10,7 @@
 
 <body class="w3-container">
 
-    <form class="w3-card w3-padding w3-margin-top w3-light-grey" action="<?= base_url('gestio/menu/add') ?>" method="POST">
+    <form class="w3-card w3-padding w3-margin-top w3-light-grey" action="<?= base_url('config/menu/add') ?>" method="POST">
         <h2 class="w3-center"><?= lang('gestioMenu.afegir') ?></h2>
 
         <div class="w3-section">

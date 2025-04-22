@@ -9,7 +9,7 @@
 </head>
 <body >
 <?= $this->include('general/menuGestio'); ?>
-    <a class="w3-button w3-blue w3-margin-top" href="<?= base_url('gestio/menu/add') ?>">Afegir menú</a><br><br>
+    <a class="w3-button w3-blue w3-margin-top" href="<?= base_url('config/menu/add') ?>">Afegir menú</a><br><br>
     <?php if (!empty($menu)): ?>
         <table class="w3-table w3-bordered w3-striped w3-hoverable">
             <thead>
@@ -26,13 +26,13 @@
                 <?php foreach ($menu as $item): ?>
                     <tr>
                         <td><?= esc($item['nom']) ?></td>
-                        <td><?= esc($item['enllaç']) ?></td>
+                        <td><?= esc($item['valor']) ?></td>
                         <td><?= esc($item['id_pare']) ?></td>
                         <td><?= esc($item['visibilitat']) ?></td>
                         <td><?= esc($item['ordre']) ?></td>
                         <td>
-                            <a href="<?= base_url('gestio/menu/modify/' . $item['id']) ?>" class="w3-button w3-blue w3-small"><?= lang('gestioMenu.modificar') ?></a>
-                            <a href="<?= base_url('gestio/menu/delete/' . $item['id']) ?>" class="w3-button w3-red w3-small"><?= lang('gestioMenu.eliminar') ?></a>
+                            <a href="<?= base_url('config/menu/modify/' . $item['id']) ?>" class="w3-button w3-blue w3-small"><?= lang('gestioMenu.modificar') ?></a>
+                            <a href="<?= base_url('config/menu/delete/' . $item['id']) ?>" class="w3-button w3-red w3-small"><?= lang('gestioMenu.eliminar') ?></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

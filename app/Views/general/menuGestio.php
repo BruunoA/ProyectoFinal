@@ -7,7 +7,6 @@
         <!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
         <ul class="menu-items">
             <li><a href="">Inici</a></li>
-            <!-- <li><a href="">Contacte</a></li> -->
             <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
             <li><a href="<?= base_url('gestio/programes') ?>">Programes</a></li>
             <select class="seccio-select w3-select">
@@ -15,9 +14,7 @@
                 <option value="noticies">Notícies</option>
                 <option value="events">Events</option>
             </select>
-            <li><a href="<?= base_url('/gestio/menu') ?>">Menu general</a></li>
             <li><a href="<?= base_url('/gestio/galeria') ?>">Galeria</a></li>
-            <!-- <li><a href="<?php // base_url('/gestio/configuracio') ?>">Configuracio</a></li> -->
             <select class="seccio-configuracio-select w3-select">
                 <option value="">Configuracio</option>
                 <option value="dades_contacte">Dades contacte</option>
@@ -47,9 +44,9 @@
             if (selected === 'dades_contacte') {
                 window.location.href = "<?= base_url('configuracio/dades_contacte') ?>";
             } else if (selected === 'menu_general') {
-                window.location.href = "<?= base_url('configuracio/menu_general') ?>";
+                window.location.href = "<?= base_url('config/menu_general') ?>";
             } else if (selected === 'menu_gestio') {
-                window.location.href = "<?= base_url('configuracio/menu_gestio') ?>";
+                window.location.href = "<?= base_url('config/menu_gestio') ?>";
             } else if (selected === 'footer') {
                 window.location.href = "<?= base_url('configuracio/footer') ?>";
             }

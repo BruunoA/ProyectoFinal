@@ -17,15 +17,15 @@ class ConfiguracioMigration extends Migration
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                         ],
-                        'tipus'          => [
-                                'type'           => 'ENUM',
-                                'constraint'     => ['dades_conacte', 'footer', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
-                                'default'        => null,
-                        ],
-                        'enllaç' => [
+                        'valor' => [
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                                 'null'       => false,
+                        ],
+                        'tipus'          => [
+                                'type'           => 'ENUM',
+                                'constraint'     => ['dades_contacte', 'footer', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
+                                'default'        => null,
                         ],
                         'id_pare' => [
                                 'type' => 'INT',

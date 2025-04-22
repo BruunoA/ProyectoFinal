@@ -17,7 +17,7 @@ class CorreuSeeder extends Seeder
         $data = [
             'nom' => $nom,
             'valor' => $correu_electronic,
-            'tipus' => 'dades_conacte',
+            'tipus' => 'dades_contacte',
             'created_at' => date('Y-m-d H:i:s'),
         ];
     

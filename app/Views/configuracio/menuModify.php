@@ -8,7 +8,7 @@
 </head>
 <body class="w3-container">
 
-    <form class="w3-card w3-padding w3-margin-top w3-light-grey" action="<?= base_url('/gestio/menu/modify/' . $menu['id']) ?>" method="POST">
+    <form class="w3-card w3-padding w3-margin-top w3-light-grey" action="<?= base_url('/config/menu/modify/' . $menu['id']) ?>" method="POST">
         <h2 class="w3-center"><?= lang('gestioMenu.titol')?></h2>
 
         <div class="w3-section">
