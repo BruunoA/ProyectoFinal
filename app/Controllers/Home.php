@@ -26,11 +26,11 @@ class Home extends BaseController
         return view('general/menu', $this->data);
     }
 
-    public function cambiar($lang)
-    {
-        $session = session();
-        $session->set('language', $lang);
-        echo "Idioma es: " . $lang;
-        return redirect()->back();
-    }
+    // public function cambiar($lang)
+    // {
+    //     $session = session();
+    //     $session->set('language', $lang);
+    //     echo "Idioma es: " . $lang;
+    //     return redirect()->back();
+    // }
 }

@@ -317,8 +317,11 @@ class GestioController extends BaseController
         $model = new EventsModel();
         $events = $model->findAll();
 
+        $pager = $model->pager;
+
         $data = [
             'events' => $events,
+            'pager' => $pager,
         ];
 
         return view('gestio_pag/events', $data);

@@ -22,6 +22,7 @@ class NoticiesSeeder extends Seeder
                 'nom' => $nom,
                 'resum' => $resum,
                 'contingut' => $contingut,
+                'destacat' => $fake->randomElement(['si', 'no']),
                 'seccio' => $seccio,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
