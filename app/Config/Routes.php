@@ -62,6 +62,7 @@ $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filte
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/programes', 'GestioController::programes' /*, ['filter' => 'gestio:admin']*/);
 
 
 // elFinder
