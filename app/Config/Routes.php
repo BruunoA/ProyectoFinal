@@ -32,20 +32,31 @@ $routes->post('create/add/event', 'GestioController::addEvent_post' , ['filter' 
 $routes->get('gestio/delete/(:num)', 'GestioController::delete/$1' , ['filter' => 'gestio:admin']);
 $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' , ['filter' => 'gestio:admin']);
 $routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'gestio:admin']);
+
 $routes->get('pujarArxiu', 'GestioController::upload_drag');
 $routes->post('pujarArxiu', 'GestioController::upload_drag_post');
+
 $routes->get('gestio/menu', 'GestioController::menu');
 $routes->get('gestio/menu/add', 'GestioController::menuAdd' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/menu/add', 'GestioController::menuAdd_post' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/menu/modify/(:num)', 'GestioController::menuModify/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/menu/modify/(:num)', 'GestioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/menu/delete/(:num)', 'GestioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio', 'GestioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/add', 'GestioController::menuGestioAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menuGestio/add', 'GestioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/modify/(:num)', 'GestioController::menuGestioModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/menuGestio/modify/(:num)', 'GestioController::menuGestioModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/menuGestio/delete/(:num)', 'GestioController::menuGestioDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/programes', 'GestioController::programes' /*, ['filter' => 'gestio:admin']*/);
+
+$routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');

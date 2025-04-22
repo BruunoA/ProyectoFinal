@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ConfiguracioModel;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
@@ -317,22 +318,21 @@ class GestioController extends BaseController
         $model = new EventsModel();
         $events = $model->findAll();
 
+        $pager = $model->pager;
+
         $data = [
             'events' => $events,
+            'pager' => $pager,
         ];
 
         return view('gestio_pag/events', $data);
     }
 
-    public function programes(){
-        $model = new GestioModel();
-        $programes = $model->where('seccio', 'programes')->findAll();
 
-        $data = [
-            'programes' => $programes,
-        ];
-
-        return view('gestio_pag/programes', $data);
+    public function menuGestio(){
+        $model = new ConfiguracioModel();
+        $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
+        return view('gestio_pag/menuGestio', $data);
     }
-    
+
 }

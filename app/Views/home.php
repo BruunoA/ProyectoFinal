@@ -53,7 +53,27 @@
         </div>
     </section>
 
-    <?= $this->include('general/footer'); ?>
+    <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <h2 class="w3-text-green"><?= lang('home.NoticiesDestacades') ?></h2>
+
+        <?php if (!empty($noticies)): ?>
+            <?php foreach ($noticies as $noticia): ?>
+                <div class="w3-card-4 w3-margin-bottom">
+                    <div class="w3-container w3-padding">
+                        <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 300px;">
+                        <h3><?= esc($noticia['nom']) ?></h3>
+                        <p><?= esc($noticia['resum']) ?></p>
+                        <a href="<?= lang_url('noticia/' . esc($noticia['id'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p><?= lang('home.NoHiHaNoticies') ?></p>
+        <?php endif; ?>
+    </div>
+
+    <?php // $this->include('general/footer'); 
+    ?>
 </body>
 
 </html>
