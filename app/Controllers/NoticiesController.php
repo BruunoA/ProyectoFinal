@@ -21,12 +21,12 @@ class NoticiesController extends BaseController
         return view('noticies', $data);
     }
     
-    public function noticia($id)
+    public function noticia($url)
     {
         $model = new GestioModel();
 
-        $data['noticia'] = $model->find($id);
-        $data['titol'] = $data['noticia']['nom'];
+        $data['noticia'] = $model->where('url', $url)->first();
+        // $data['titol'] = $data['noticia']['nom'];
         
         return view('noticiaGran', $data);
     }

@@ -96,7 +96,7 @@
                         <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 300px;">
                         <h3><?= esc($noticia['nom']) ?></h3>
                         <p><?= esc($noticia['resum']) ?></p>
-                        <a href="<?= lang_url('noticia/' . esc($noticia['id'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
+                        <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -110,10 +110,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
 <script>
     var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
-        interval: 4000, 
+        interval: 2000, 
         ride: 'carousel'
     });
 </script>

@@ -13,7 +13,7 @@ $routes->get('galeria', 'GaleriaController::getFotos');
 $routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
 
 $routes->get('noticies', 'NoticiesController::index');
-$routes->get('noticia/(:num)', 'NoticiesController::noticia/$1');
+$routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 
 $routes->get('programes', 'ProgramesController::index');
 

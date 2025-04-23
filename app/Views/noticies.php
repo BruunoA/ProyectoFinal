@@ -43,7 +43,7 @@
                 <?php endif; ?>
                 <div class="w3-col l4 m6 s12" style="margin-bottom: 1rem;">
                     <div class="w3-card news-card" style="display:flex; flex-direction: column;">
-                        <a href="<?= base_url('noticia/' . $noticia['id']); ?>">
+                        <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
                             <!-- <img src="<?php // base_url('assets/img/noticia.jpeg'); 
                                             ?>" style="width:100%"> -->
                             <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 300px;">
