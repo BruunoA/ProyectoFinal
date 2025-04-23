@@ -7,13 +7,46 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?= $this->include('general/menu'); ?>
     <?= session()->getFlashdata('error') ?>
-    <section class="w3-container w3-center w3-padding-32">
+    <!-- <section class="w3-container w3-center w3-padding-32">
         <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat" class="w3-image w3-round" style="max-width: 100%; width: 80%; height: 500px;">
+    </section> -->
+
+    <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Campo de fútbol Alpicat" style="height: 500px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Imagen 2" style="height: 500px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Imagen 3" style="height: 500px;">
+                </div>
+            </div>
+
+        
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button> -->
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
     </section>
 
     <section class="w3-row-padding w3-padding-32">
@@ -74,6 +107,16 @@
 
     <?php // $this->include('general/footer'); 
     ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
+        interval: 4000, 
+        ride: 'carousel'
+    });
+</script>
 </body>
 
 </html>
