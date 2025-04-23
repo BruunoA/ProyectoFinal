@@ -37,8 +37,9 @@ class ConfiguracioMigration extends Migration
                                 'null' => true,
                         ],
                         'visibilitat' => [
-                                'type' => 'BOOLEAN',
-                                'default' => false,
+                                'type' => 'ENUM',
+                                'constraint' => ['Si', 'No'],
+                                'default' => 'No',
                         ],
                         'ordre' => [
                                 'type' => 'INT',

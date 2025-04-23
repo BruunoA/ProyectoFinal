@@ -3,6 +3,7 @@
 return [
     "nom" => "Nom",
     "valor" => "Valor",
+    "tipus" => "Tipus",
     "id_pare" => "ID Pare",
     "visibilitat" => "Visibilitat",
     "ordre" => "Ordre",
@@ -15,4 +16,9 @@ return [
     "afegirGeneral" => "Afegir menú",
     "subtitolGeneral" => "Menú general",
     "subtitolGestio" => "Menú de gestió",
+    "afegir" => "Afegir",
+    "guardar" => "Guardar",
+    "selecciona" => "Selecciona un tipus",
+    "general" => "Menu general",
+    "gestio" => "Menu gestió",
 ];

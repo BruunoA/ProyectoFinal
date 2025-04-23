@@ -111,7 +111,8 @@ class ConfiguracioController extends BaseController
         $model = new ConfiguracioModel();
         $data = [
             'nom' => $this->request->getPost('nom'),
-            'enllaç' => $this->request->getPost('enllaç'),
+            'valor' => $this->request->getPost('valor'),
+            'tipus' => $this->request->getPost('tipus'),
             'id_pare' => $this->request->getPost('id_pare'),
             'visibilitat' => $this->request->getPost('visibilitat'),
             'ordre' => $this->request->getPost('ordre')

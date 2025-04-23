@@ -19,30 +19,38 @@
         </div>
 
         <div class="w3-section">
-            <label for="enllaç"><?= lang('gestioMenu.enllaç') ?></label>
-            <input class="w3-input w3-border" type="text" name="enllaç" id="enllaç" required>
+            <label for="valor"><?= lang('gestioMenu.valor') ?></label>
+            <input class="w3-input w3-border" type="text" name="valor" id="valor" required>
         </div>
 
         <div class="w3-section">
-            <label for="id_pare"><?= lang('gestioMenu.id_pare') ?></label>
-            <input class="w3-input w3-border" type="number" name="id_pare" id="id_pare">
-        </div>
+            <label for="tipus"><?= lang('gestioMenu.tipus') ?></label>
+            <select class="w3-select w3-border" name="tipus" id="tipus" required>
+                <option value=""><?= lang('gestioMenu.selecciona') ?></option>
+                <option value="general"><?= lang('gestioMenu.general') ?></option>
+                <option value="gestio"><?= lang('gestioMenu.gestio') ?></option>
+            </select>
 
-        <div class="w3-section">
-            <label for="visibilitat"><?= lang('gestioMenu.visibilitat') ?></label>
-            <input class="w3-input w3-border" type="text" name="visibilitat" id="visibilitat" required>
-        </div>
+            <div class="w3-section">
+                <label for="id_pare"><?= lang('gestioMenu.id_pare') ?></label>
+                <input class="w3-input w3-border" type="number" name="id_pare" id="id_pare">
+            </div>
 
-        <div class="w3-section">
-            <label for="ordre"><?= lang('gestioMenu.ordre') ?></label>
-            <input class="w3-input w3-border" type="number" name="ordre" id="ordre" required>
-        </div>
+            <div class="w3-section">
+                <label for="visibilitat"><?= lang('gestioMenu.visibilitat') ?></label>
+                <input class="w3-input w3-border" type="text" name="visibilitat" id="visibilitat" required>
+            </div>
 
-        <div class="w3-center">
-            <button class="w3-button w3-green w3-margin-top" type="submit">
-                <?= lang('gestioMenu.afegir') ?>
-            </button>
-        </div>
+            <div class="w3-section">
+                <label for="ordre"><?= lang('gestioMenu.ordre') ?></label>
+                <input class="w3-input w3-border" type="number" name="ordre" id="ordre" required>
+            </div>
+
+            <div class="w3-center">
+                <button class="w3-button w3-green w3-margin-top" type="submit">
+                    <?= lang('gestioMenu.guardar') ?>
+                </button>
+            </div>
     </form>
 
 </body>

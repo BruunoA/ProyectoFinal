@@ -28,7 +28,13 @@ class ConfiguracioModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'nom' => 'required',
+        'valor' => 'required',
+        'tipus' => 'required',
+        'id_pare' => 'required|integer',
+        'visibilitat' => 'required',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

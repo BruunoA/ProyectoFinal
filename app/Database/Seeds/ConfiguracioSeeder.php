@@ -14,7 +14,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '/',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -22,7 +22,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'contacte',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -30,7 +30,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'sobreNosaltres',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -38,7 +38,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -46,7 +46,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'noticies',
                 'tipus' => 'menu_general',
                 'ordre' => 5,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -54,7 +54,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'galeria',
                 'tipus' => 'menu_general',
                 'ordre' => 6,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -62,7 +62,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'classificacio',
                 'tipus' => 'menu_general',
                 'ordre' => 7,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -70,7 +70,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_general',
                 'ordre' => 8,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -78,7 +78,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'login',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
             [
@@ -86,7 +86,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'logout',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
             [
@@ -94,7 +94,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ]
         ];
@@ -108,7 +108,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '/',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -116,7 +116,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/sobreNosaltres',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -124,7 +124,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/programes',
                 'tipus' => 'menu_gestio',
                 'ordre' => 3,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -132,7 +132,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_gestio',
                 'ordre' => 4,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -140,7 +140,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/noticies',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
@@ -148,7 +148,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/events',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
@@ -156,7 +156,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/galeria',
                 'tipus' => 'menu_gestio',
                 'ordre' => 5,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -164,7 +164,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_gestio',
                 'ordre' => 6,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => null
             ],
             [
@@ -172,7 +172,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'configuracio/dades_contacte',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
             [
@@ -180,7 +180,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'config/menu_general',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
             [
@@ -188,7 +188,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'config/menu_gestio',
                 'tipus' => 'menu_gestio',
                 'ordre' => 3,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
             [
@@ -196,7 +196,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'configuracio/footer',
                 'tipus' => 'menu_gestio',
                 'ordre' => 4,
-                'visibilitat' => 1,
+                'visibilitat' => "Si",
                 'id_pare' => 8
             ],
         ];
