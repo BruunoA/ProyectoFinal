@@ -24,7 +24,7 @@ $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
 // ACCIONS GESTIO
-$routes->get('gestio', 'GestioController::gestio');
+$routes->get('gestio', 'GestioController::sobreNosaltres');
 $routes->get('wysiwyg', 'GestioController::index');
 $routes->post('create/add', 'GestioController::add');
 $routes->get('create/add/event', 'GestioController::addEvent' , ['filter' => 'gestio:admin']);

@@ -20,6 +20,28 @@
         </div>
 
         <div class="w3-responsive">
+            <h2 class="w3-text-teal">Tipus d'Esdeveniments</h2>
+            <table class="w3-table-all w3-hoverable w3-card-4" style="margin-top: 1rem;">
+                <thead>
+                    <tr class="w3-teal">
+                        <th>Tipus d'Esdeveniment</th>
+                        <th>Accions</th>
+                    </tr>
+                </thead>
+
+                    <?php foreach ($tipusEvents as $tipus): ?>
+                        <tr>
+                            <td><?= esc($tipus['tipus_event']); ?></td>
+                            <td>
+                                <!-- <a href="<?php // base_url('gestio/events/tipus/modify/' . $tipus['id']) ?>" class="w3-button w3-blue w3-small">Modificar</a>
+                                <a href="<?php // base_url('gestio/events/tipus/delete/' . $tipus['id']) ?>" class="w3-button w3-red w3-small" onclick="return confirm('Segur que vols eliminar aquest tipus d\'esdeveniment?')">Eliminar</a>
+                            </td> -->
+                        </tr>
+                    <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div class="w3-responsive">
             <table class="w3-table-all w3-hoverable w3-card-4" style="margin-top: 1rem;">
                 <thead>
                     <tr class="w3-teal">

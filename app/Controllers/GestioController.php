@@ -65,20 +65,20 @@ class GestioController extends BaseController
         }
     }
 
-    public function gestio()
-    {
-        $model = new GestioModel();
-        $dataGestio['gestio'] = $model->findAll();
-        $dataEvent = new EventsModel();
-        $modelEvent['events'] = $dataEvent->findAll();
+    // public function gestio()
+    // {
+    //     // $model = new GestioModel();
+    //     // $dataGestio['gestio'] = $model->findAll();
+    //     // $dataEvent = new EventsModel();
+    //     // $modelEvent['events'] = $dataEvent->findAll();
 
-        $data = [
-            'gestio' => $dataGestio['gestio'],
-            'events' => $modelEvent['events'],
-        ];
+    //     // $data = [
+    //     //     'gestio' => $dataGestio['gestio'],
+    //     //     'events' => $modelEvent['events'],
+    //     // ];
 
-        return view('gestio_pag/gestio', $data);
-    }
+    //     return view('gestio_pag/SobreNosaltres');
+    // }
 
     public function delete($id)
     {
@@ -282,12 +282,14 @@ class GestioController extends BaseController
     public function events(){
         $model = new EventsModel();
         $events = $model->findAll();
+        $tipusEvents = $model->distinct()->select('tipus_event')->findAll();
 
         $pager = $model->pager;
 
         $data = [
             'events' => $events,
             'pager' => $pager,
+            'tipusEvents' => $tipusEvents,
         ];
 
         return view('gestio_pag/events/events', $data);
