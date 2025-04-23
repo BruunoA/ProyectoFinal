@@ -57,6 +57,17 @@ class ConfiguracioController extends BaseController
         return view('configuracio/menu', $data);
     }
 
+    public function menuGestio(){
+
+        $model = new ConfiguracioModel();
+
+        $data = [
+            'menu' => $model->where('tipus', 'menu_gestio')->findAll(),
+        ];
+
+        return view('configuracio/menuGestio', $data);
+    }
+
     public function menuModify($id)
     {
         $model = new ConfiguracioModel();
@@ -69,7 +80,7 @@ class ConfiguracioController extends BaseController
         $model = new ConfiguracioModel();
         $data = [
             'nom' => $this->request->getPost('nom'),
-            'enllaç' => $this->request->getPost('enllaç'),
+            'valor' => $this->request->getPost('valor'),
             'id_pare' => $this->request->getPost('id_pare'),
             'visibilitat' => $this->request->getPost('visibilitat'),
             'ordre' => $this->request->getPost('ordre')

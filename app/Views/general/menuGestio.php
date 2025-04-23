@@ -52,17 +52,4 @@
             }
         });
     });
-    // function toggleMenu() {
-    //     document.querySelector(".menu-items").classList.toggle("show");
-    // }
-
-    // function filtrarSeccio(seccio) {
-    //     document.querySelectorAll(".gestio-item").forEach(item => {
-    //         if (item.getAttribute("data-seccio") === seccio) {
-    //             item.style.display = "block";
-    //         } else {
-    //             item.style.display = "none";
-    //         }
-    //     });
-    // }
 </script>

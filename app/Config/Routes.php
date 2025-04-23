@@ -53,13 +53,11 @@ $routes->post('config/menu/modify/(:num)', 'ConfiguracioController::menuModify_p
 $routes->get('config/menu/delete/(:num)', 'ConfiguracioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 // CONFIGURACIO MENU GESTIO
-// TODO: ELIMINAR MODIFCAR, ELIMINAR Y AFEGIR, JA EXISTEIXEN A MENU GENERAL
-$routes->get('config/menuGestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('config/menu_gestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('config/menuGestio/modify/(:num)', 'ConfiguracioController::menuGestioModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('config/menuGestio/modify/(:num)', 'ConfiguracioController::menuGestioModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('config/menuGestio/delete/(:num)', 'ConfiguracioController::menuGestioDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('config/menuGestio/modify/(:num)', 'ConfiguracioController::menuGestioModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('config/menuGestio/modify/(:num)', 'ConfiguracioController::menuGestioModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 
 // CONFIGURACIO DADES CONTACTE
 $routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);

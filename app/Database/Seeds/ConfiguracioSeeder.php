@@ -67,7 +67,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Acces privat',
-                'valor' => '', // Dropdown, sin enlace directo
+                'valor' => '',
                 'tipus' => 'menu_general',
                 'ordre' => 8,
                 'visibilitat' => 1,
@@ -100,5 +100,107 @@ class ConfiguracioSeeder extends Seeder
         ];
 
         $this->db->table('configuracio')->insertBatch($data); 
+
+
+        $data2 = [
+            [
+                'nom' => 'Inici',
+                'valor' => '/',
+                'tipus' => 'menu_gestio',
+                'ordre' => 1,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Sobre Nosaltres',
+                'valor' => 'gestio/sobreNosaltres',
+                'tipus' => 'menu_gestio',
+                'ordre' => 2,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Programes',
+                'valor' => 'gestio/programes',
+                'tipus' => 'menu_gestio',
+                'ordre' => 3,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Noticies/Events',
+                'valor' => '',
+                'tipus' => 'menu_gestio',
+                'ordre' => 4,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Notícies',
+                'valor' => 'gestio/noticies',
+                'tipus' => 'menu_gestio',
+                'ordre' => 1,
+                'visibilitat' => 1,
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Events',
+                'valor' => 'gestio/events',
+                'tipus' => 'menu_gestio',
+                'ordre' => 2,
+                'visibilitat' => 1,
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Galeria',
+                'valor' => 'gestio/galeria',
+                'tipus' => 'menu_gestio',
+                'ordre' => 5,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Configuracio',
+                'valor' => '',
+                'tipus' => 'menu_gestio',
+                'ordre' => 6,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+            [
+                'nom' => 'Dades contacte',
+                'valor' => 'configuracio/dades_contacte',
+                'tipus' => 'menu_gestio',
+                'ordre' => 1,
+                'visibilitat' => 1,
+                'id_pare' => 8
+            ],
+            [
+                'nom' => 'Menu general',
+                'valor' => 'config/menu_general',
+                'tipus' => 'menu_gestio',
+                'ordre' => 2,
+                'visibilitat' => 1,
+                'id_pare' => 8
+            ],
+            [
+                'nom' => 'Menu gestio',
+                'valor' => 'config/menu_gestio',
+                'tipus' => 'menu_gestio',
+                'ordre' => 3,
+                'visibilitat' => 1,
+                'id_pare' => 8
+            ],
+            [
+                'nom' => 'Footer',
+                'valor' => 'configuracio/footer',
+                'tipus' => 'menu_gestio',
+                'ordre' => 4,
+                'visibilitat' => 1,
+                'id_pare' => 8
+            ],
+        ];
+
+        $this->db->table('configuracio')->insertBatch($data2); 
     }
 }

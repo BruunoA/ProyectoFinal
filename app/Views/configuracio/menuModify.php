@@ -17,8 +17,8 @@
         </div>
 
         <div class="w3-section">
-            <label for="enllaç"><?= lang('gestioMenu.enllaç')?></label>
-            <input class="w3-input w3-border" type="text" name="enllaç" id="enllaç" value="<?= esc($menu['enllaç']) ?>" required>
+            <label for="valor"><?= lang('gestioMenu.valor')?></label>
+            <input class="w3-input w3-border" type="text" name="valor" id="enllaç" value="<?= esc($menu['valor']) ?>" required>
         </div>
 
         <div class="w3-section">
