@@ -21,4 +21,5 @@ return [
     "selecciona" => "Selecciona un tipus",
     "general" => "Menu general",
     "gestio" => "Menu gestió",
+    "noElements" => "No hi ha elements al menú.",
 ];

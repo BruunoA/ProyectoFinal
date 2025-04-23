@@ -86,11 +86,19 @@ class ConfiguracioController extends BaseController
             'ordre' => $this->request->getPost('ordre')
         ];
 
+        $tipus = $this->request->getPost('tipus');
+
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
             $model->update($id, $data);
-            return redirect()->to('/configuracio/menu');
+            // return redirect()->to('/configuracio/menu');
+        }
+
+        if($tipus == 'menu_gestio'){
+            return redirect()->to('config/menu_gestio');
+        }else{
+            return redirect()->to('config/menu_general');
         }
     }
 
@@ -98,7 +106,7 @@ class ConfiguracioController extends BaseController
     {
         $model = new ConfiguracioModel();
         $model->delete($id);
-        return redirect()->to('/configuracio/menu');
+        return redirect()->to('config/menu_general');
     }
 
     public function menuAdd()
@@ -118,11 +126,19 @@ class ConfiguracioController extends BaseController
             'ordre' => $this->request->getPost('ordre')
         ];
 
+        $tipus = $this->request->getPost('tipus');
+
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
             $model->insert($data);
-            return redirect()->to('/configuracio/menu');
+            // return redirect()->to('config/menu_general');
+        }
+
+        if($tipus == 'menu_gestio'){
+            return redirect()->to('config/menu_gestio');
+        }else{
+            return redirect()->to('config/menu_general');
         }
     }
 

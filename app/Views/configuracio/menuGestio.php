@@ -33,14 +33,14 @@
                         <td><?= esc($item['ordre']) ?></td>
                         <td>
                             <a href="<?= base_url('config/menu/modify/' . $item['id']) ?>" class="w3-button w3-blue w3-small"><?= lang('gestioMenu.modificar') ?></a>
-                            <a href="<?= base_url('config/menu/delete/' . $item['id']) ?>" class="w3-button w3-red w3-small"><?= lang('gestioMenu.eliminar') ?></a>
+                            <a href="<?= base_url('config/menu/delete/' . $item['id']) ?>" class="w3-button w3-red w3-small" onclick="return confirm('Estàs segur que vols eliminar aquest element?');"><?= lang('gestioMenu.eliminar') ?></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     <?php else: ?>
-        <p>No hi ha elements al menú.</p>
+        <p><?= lang('gestioMenu.noElements') ?></p>
     <?php endif; ?>
 
 </body>

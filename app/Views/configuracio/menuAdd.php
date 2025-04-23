@@ -27,8 +27,8 @@
             <label for="tipus"><?= lang('gestioMenu.tipus') ?></label>
             <select class="w3-select w3-border" name="tipus" id="tipus" required>
                 <option value=""><?= lang('gestioMenu.selecciona') ?></option>
-                <option value="general"><?= lang('gestioMenu.general') ?></option>
-                <option value="gestio"><?= lang('gestioMenu.gestio') ?></option>
+                <option value="menu_general"><?= lang('gestioMenu.general') ?></option>
+                <option value="menu_gestio"><?= lang('gestioMenu.gestio') ?></option>
             </select>
 
             <div class="w3-section">
@@ -38,7 +38,11 @@
 
             <div class="w3-section">
                 <label for="visibilitat"><?= lang('gestioMenu.visibilitat') ?></label>
-                <input class="w3-input w3-border" type="text" name="visibilitat" id="visibilitat" required>
+                <select class="w3-select w3-border" name="visibilitat" id="visibilitat" required>
+                    <option value=""><?= lang('gestioMenu.selecciona') ?></option>
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                </select>
             </div>
 
             <div class="w3-section">

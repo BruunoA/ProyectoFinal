@@ -28,7 +28,11 @@
 
         <div class="w3-section">
             <label for="visibilitat"><?= lang('gestioMenu.visibilitat')?></label>
-            <input class="w3-input w3-border" type="text" name="visibilitat" id="visibilitat" value="<?= esc($menu['visibilitat']) ?>" required>
+            <select class="w3-select w3-border" name="visibilitat" id="visibilitat" required>
+                <option value=""><?= lang('gestioMenu.selecciona')?></option>
+                <option value="si" <?= ($menu['visibilitat'] == 'si') ? 'selected' : '' ?>>Si</option>
+                <option value="no" <?= ($menu['visibilitat'] == 'no') ? 'selected' : '' ?>>No</option>
+            </select>
         </div>
 
         <div class="w3-section">

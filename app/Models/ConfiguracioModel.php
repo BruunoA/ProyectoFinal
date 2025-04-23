@@ -32,7 +32,7 @@ class ConfiguracioModel extends Model
         'nom' => 'required',
         'valor' => 'required',
         'tipus' => 'required',
-        'id_pare' => 'required|integer',
+        // 'id_pare' => 'required|integer',
         'visibilitat' => 'required',
     ];
     protected $validationMessages   = [];

@@ -35,15 +35,15 @@ class ConfiguracioMigration extends Migration
                         'id_pare' => [
                                 'type' => 'INT',
                                 'null' => true,
+                                'default' => null,
                         ],
                         'visibilitat' => [
                                 'type' => 'ENUM',
                                 'constraint' => ['Si', 'No'],
-                                'default' => 'No',
                         ],
                         'ordre' => [
                                 'type' => 'INT',
-                                'default' => 0,
+                                'null' => true,
                         ],
                         // 'id_tag' => [
                         //     'type' => 'INT',

@@ -8,6 +8,10 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class IndexController extends BaseController
 {
+    public function index()
+    {
+        return view("pagina_inicial");
+    }
 
     public function home()
     {
@@ -18,10 +22,5 @@ class IndexController extends BaseController
         ];
 
         return view("home", $data);
-    }
-
-    public function index()
-    {
-        return view("inici");
     }
 }
