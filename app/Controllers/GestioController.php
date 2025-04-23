@@ -123,7 +123,7 @@ class GestioController extends BaseController
 
     public function addEvent()
     {
-        return view('gestio_pag/addEvents');
+        return view('gestio_pag/events/addEvents');
     }
 
     public function addEvent_post()
@@ -139,15 +139,45 @@ class GestioController extends BaseController
             'tipus_event' => $this->request->getPost('tipus_event'),
         ];
 
-        // echo $date;
-        // die;
-
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
             $model->insert($data);
             return redirect()->to('/gestio');
         }
+    }
+
+    public function eventsModify($id)
+    {
+        $model = new EventsModel();
+        $data['events'] = $model->find($id);
+        return view('gestio_pag/events/modifyEvent', $data);
+    }
+
+    public function eventsModify_post($id)
+    {
+        helper(["form"]);
+        $model = new EventsModel();
+
+        $data = [
+            'nom' => $this->request->getPost('nom'),
+            'data' => $this->request->getPost('data'),
+            'tipus_event' => $this->request->getPost('tipus_event'),
+        ];
+
+        if (!$model->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        } else {
+            $model->update($id, $data);
+            return redirect()->to('gestio/events');
+        }
+    }
+
+    public function eventsDelete($id)
+    {
+        $model = new EventsModel();
+        $model->delete($id);
+        return redirect()->to('gestio/events');
     }
 
     public function upload_drag()
@@ -260,7 +290,7 @@ class GestioController extends BaseController
             'pager' => $pager,
         ];
 
-        return view('gestio_pag/events', $data);
+        return view('gestio_pag/events/events', $data);
     }
 
     public function menuGestio(){

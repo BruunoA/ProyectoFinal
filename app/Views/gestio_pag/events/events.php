@@ -37,14 +37,14 @@
                             <td><?= esc($event['data']); ?></td>
                             <td><?= esc($event['tipus_event']); ?></td>
                             <td>
-                                <?php if ($event['estat'] == 'active'): ?>
-                                    <span class="w3-text-green"><b><?= ucfirst(esc($event['estat'])); ?></b></span>
+                                <?php if ($event['estat'] == 'publicat'): ?>
+                                    <span class="w3-text-green"><b><?= esc($event['estat']); ?></b></span>
                                 <?php else: ?>
-                                    <span class="w3-text-red"><b><?= ucfirst(esc($event['estat'])); ?></b></span>
+                                    <span class="w3-text-red"><b><?= esc($event['estat']); ?></b></span>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= base_url('gestio/events/editar/' . $event['id']) ?>" class="w3-button w3-blue w3-small">Modificar</a>
+                                <a href="<?= base_url('gestio/events/modify/' . $event['id']) ?>" class="w3-button w3-blue w3-small">Modificar</a>
                                 <a href="<?= base_url('gestio/events/eliminar/' . $event['id']) ?>" class="w3-button w3-red w3-small" onclick="return confirm('Segur que vols eliminar aquest esdeveniment?')">Eliminar</a>
                             </td>
                         </tr>

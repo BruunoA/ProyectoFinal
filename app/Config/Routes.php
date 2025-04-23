@@ -37,8 +37,20 @@ $routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'ge
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+
+// GESTIO EVENTS
+$routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/modify/(:num)', 'GestioController::eventsModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/events/modify/(:num)', 'GestioController::eventsModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/eliminar/(:num)', 'GestioController::eventsDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/tipus', 'GestioController::eventsTipus' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/tipus/delete/(:num)', 'GestioController::eventsTipusDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/events/tipus/add', 'GestioController::eventsTipusAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/events/tipus/add', 'GestioController::eventsTipusAdd_post' /*, ['filter' => 'gestio:admin']*/);
+
 
 // UPLOAD
 $routes->get('pujarArxiu', 'GestioController::upload_drag');
