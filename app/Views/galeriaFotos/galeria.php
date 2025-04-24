@@ -37,7 +37,7 @@
                 <?php foreach ($albums as $albumId => $albumData): ?>
                     <div class="w3-col m4 w3-margin-bottom">
                         <div class="w3-card w3-padding album-card" 
-                             onclick="window.location.href='<?= base_url("galeria/album/$albumId") ?>'">
+                            onclick="window.location.href='<?= base_url("galeria/album/$albumId") ?>'">
                             <img src="<?= base_url('assets/img/camara.png'); ?>" style="width:100%; height:200px; object-fit:cover;">
                             <div class="w3-container w3-center">
                                 <span class="photo-count"><?= $albumData['count'] ?> fotos</span>

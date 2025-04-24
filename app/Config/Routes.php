@@ -53,7 +53,8 @@ $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['f
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria', 'GestioController::album' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria_fotos/(:num)', 'GestioController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/programes', 'GestioController::programes' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);

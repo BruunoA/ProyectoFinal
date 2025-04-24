@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <?= $this->include('general/menuGestio'); ?>
+    <div class="w3-container">
+        <h2>Galería de Álbumes</h2>
+        <?php if (!empty($albums) && is_array($albums)): ?>
+            <div class="w3-row-padding">
+                <?php foreach ($albums as $album): ?>
+                    <div class="w3-third w3-margin-bottom">
+                        <div class="w3-card-4">
+                        <a href="<?= base_url('gestio/galeria_fotos/' . $album['id']) ?>">
+                                <img src="" alt="<?= esc($album['titol']) ?>" style="width:100%">
+                                <div class="w3-container">
+                                    <h3><?= esc($album['titol']) ?></h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p>No hay álbumes disponibles.</p>
+        <?php endif; ?>
+    </div>
+</body>
+</html>

@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AlbumModel;
 use App\Models\ConfiguracioModel;
 use App\Models\EventsModel;
+use App\Models\FotosModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 use App\Models\MenuModel;
@@ -333,6 +335,33 @@ class GestioController extends BaseController
         $model = new ConfiguracioModel();
         $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
         return view('gestio_pag/menuGestio', $data);
+    }
+
+    public function album(){
+        $model = new AlbumModel();
+        $data['albums'] = $model->findAll();
+        return view('gestio_pag/album', $data);
+    }
+    public function albumFotos($albumId)
+    {
+        $albumModel = new AlbumModel();
+        $fotoModel = new TaulaFotosModel();
+
+        $data['album'] = $albumModel->find($albumId);
+        $data['fotos'] = $fotoModel->where('id_album', $albumId)->findAll();
+
+        return view('gestio_pag/galeria_fotos', $data);
+    }
+    public function deleteFoto(){
+        $fotoModel = new TaulaFotosModel();
+        $id_foto = $this->request->getVar('id_foto');
+        $id_album = $this->request->getVar('id_album');
+
+        // Eliminar la foto de la base de dades
+        $fotoModel->delete($id_foto);
+
+        // Redirigir a la pàgina de fotos de l'àlbum
+        return redirect()->to('/gestio/galeria_fotos/' . $id_album);
     }
 
 }
