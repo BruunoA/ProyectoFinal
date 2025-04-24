@@ -55,6 +55,7 @@ $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'g
 $routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioController::album' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria_fotos/(:num)', 'GestioController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/programes', 'GestioController::programes' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);

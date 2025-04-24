@@ -15,7 +15,7 @@
                     <img src="<?= htmlspecialchars($foto['ruta']) ?>" alt="Photo" style="max-width:200px; margin:10px;"> 
                     <p><?= htmlspecialchars($foto['titol']) ?></p>
                     <p><?= htmlspecialchars($foto['descripcio']) ?></p>
-                    <form action="/eliminar_foto" method="post" style="display:inline;">
+                    <form action="/gestio/eliminar_foto" method="post" style="display:inline;">
                         <input type="hidden" name="foto_id" value="<?= htmlspecialchars($foto['id']) ?>">
                         <button type="submit" class="w3-button w3-red">Eliminar</button>
                     </form>
