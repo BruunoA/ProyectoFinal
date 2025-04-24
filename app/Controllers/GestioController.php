@@ -357,10 +357,11 @@ class GestioController extends BaseController
         $id_foto = $this->request->getVar('id_foto');
         $id_album = $this->request->getVar('id_album');
 
-        // Eliminar la foto de la base de dades
-        $fotoModel->delete($id_foto);
+        if(!empty($id_foto)){
+            $fotoModel->where('id',$id_foto)->delete();
+            // $fotoModel->where('id_album',$id_album)->delete($id_foto);
+        }
 
-        // Redirigir a la pàgina de fotos de l'àlbum
         return redirect()->to('/gestio/galeria_fotos/' . $id_album);
     }
 

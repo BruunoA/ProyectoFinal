@@ -16,7 +16,8 @@
                     <p><?= htmlspecialchars($foto['titol']) ?></p>
                     <p><?= htmlspecialchars($foto['descripcio']) ?></p>
                     <form action="/gestio/eliminar_foto" method="post" style="display:inline;">
-                        <input type="hidden" name="foto_id" value="<?= htmlspecialchars($foto['id']) ?>">
+                        <input type="hidden" name="id_foto" value="<?= htmlspecialchars($foto['id']) ?>">
+                        <input type="hidden" name="id_album" value="<?= htmlspecialchars($album['id']) ?>">
                         <button type="submit" class="w3-button w3-red">Eliminar</button>
                     </form>
                 </div>
