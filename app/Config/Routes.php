@@ -20,12 +20,16 @@ $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 
 // PROGRAMES
 $routes->get('programes', 'ProgramesController::index');
+$routes->get('programes/juvenil_segona', 'ProgramesController::juvenil_segon_A');
 $routes->get('programes/amateur_segona', 'ProgramesController::amateur_segona');
-$routes->get('programes/juvenil_segona', 'ProgramesController::juvenil_segona');
-$routes->get('programes/cadet_primera', 'ProgramesController::cadet_primera');
+$routes->get('programes/amateur_tercera', 'ProgramesController::amateur_tercera');
+$routes->get('programes/cadet_primera', 'ProgramesController::cadet_primera_A');
+$routes->get('programes/cadet_segona', 'ProgramesController::cadet_primera_B');
 $routes->get('programes/cadet_segona', 'ProgramesController::cadet_segona');
 $routes->get('programes/infantil_segona_A', 'ProgramesController::infantil_segona_A');
 $routes->get('programes/infantil_segona_B', 'ProgramesController::infantil_segona_B');
+
+
 
 
 $routes->get('contacte', 'ContacteController::index');

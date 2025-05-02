@@ -91,37 +91,39 @@ class Cldades extends BaseCommand
     public function obtenirDades()
     {
         $urls = [
-            'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-46', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-primera-divisio/grup-14', 'A',
+            // JUVENIL
+            'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-46',
+            // 'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-22',
+
+            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-primera-divisio/grup-14',
 
             // AMATEUR
             'https://www.fcf.cat/classificacio/2425/futbol-11/tercera-catalana/grup-14',
             'https://www.fcf.cat/classificacio/2425/futbol-11/segona-catalana/grup-5',
 
-            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-segona-divisio/grup-55', 'B',
-            // 'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-22',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-segona-divisio/grup-55',
             // 'https://www.fcf.cat/classificacio/2425/futbol-11/primera-federacio/grup-1',
-            'https://www.fcf.cat/classificacio/2425/futbol-11/infantil-segona-divisio-s14/grup-28', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-11/infantil-segona-divisio-s14/grup-29', 'B',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/infantil-segona-divisio-s14/grup-28',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/infantil-segona-divisio-s14/grup-29',
             
             // ALEVI 
-            'https://www.fcf.cat/classificacio/2425/futbol-7/primera-divisio-alevi-s11/grup-9', 'A', 
-            'https://www.fcf.cat/classificacio/2425/futbol-7/segona-divisio-alevi-s12/grup-22', 'B',
-            'https://www.fcf.cat/classificacio/2425/futbol-7/segona-divisio-alevi-s11/grup-17', 'B',
-            'https://www.fcf.cat/classificacio/2425/futbol-7/preferent-alevi-s12/grup-5', 'A',
+            'https://www.fcf.cat/classificacio/2425/futbol-7/primera-divisio-alevi-s11/grup-9', 
+            'https://www.fcf.cat/classificacio/2425/futbol-7/segona-divisio-alevi-s12/grup-22',
+            'https://www.fcf.cat/classificacio/2425/futbol-7/segona-divisio-alevi-s11/grup-17', 
+            'https://www.fcf.cat/classificacio/2425/futbol-7/preferent-alevi-s12/grup-5',
 
             // BENJAMI
-            'https://www.fcf.cat/classificacio/2324/futbol-7/primera-divisio-benjami-s10/grup-13', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-7/primera-divisio-benjami-s9/grup-11', 'A',
+            'https://www.fcf.cat/classificacio/2324/futbol-7/primera-divisio-benjami-s10/grup-13', 
+            'https://www.fcf.cat/classificacio/2425/futbol-7/primera-divisio-benjami-s9/grup-11',
 
             // PREBENJAMI
-            'https://www.fcf.cat/classificacio/2425/futbol-7/prebenjami-s8/grup-25', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-7/prebenjami-s7/grup-14', 'A',
+            'https://www.fcf.cat/classificacio/2425/futbol-7/prebenjami-s8/grup-25',
+            'https://www.fcf.cat/classificacio/2425/futbol-7/prebenjami-s7/grup-14', 
 
-
-            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-juvenil/grup-11', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-infantil/grup-20', 'A',
-            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-alevi/grup-12', 'A',
+            // FEMENI
+            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-juvenil/grup-11',
+            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-infantil/grup-20', 
+            'https://www.fcf.cat/classificacio/2425/futbol-femeni/segona-divisio-femeni-alevi/grup-12', 
         ];
 
         foreach ($urls as $url) {
