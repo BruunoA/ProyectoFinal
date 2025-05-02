@@ -98,10 +98,18 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => 4
             ],
             [
+                'nom' => 'Amateur',
+                'valor' => 'programes/amateur',
+                'tipus' => 'menu_general',
+                'ordre' => 8,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
                 'nom' => 'Entrenaments especials',
                 'valor' => 'programes/entrenaments_especials',
                 'tipus' => 'menu_general',
-                'ordre' => 8,
+                'ordre' => 9,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],

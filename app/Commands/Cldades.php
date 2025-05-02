@@ -96,6 +96,9 @@ class Cldades extends BaseCommand
             'https://www.fcf.cat/classificacio/2425/futbol-11/juvenil-segona-divisio/grup-22',
             'https://www.fcf.cat/classificacio/2425/futbol-11/tercera-catalana/grup-14',
             'https://www.fcf.cat/classificacio/2425/futbol-11/primera-federacio/grup-1',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-primera-divisio/grup-14',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/cadet-segona-divisio/grup-55',
+            'https://www.fcf.cat/classificacio/2425/futbol-11/infantil-segona-divisio-s14/grup-28',
         ];
 
         foreach ($urls as $url) {

@@ -18,7 +18,9 @@ $routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
 $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 
+// PROGRAMES
 $routes->get('programes', 'ProgramesController::index');
+$routes->get('programes/amateur_segona', 'ProgramesController::amateur_segona');
 
 $routes->get('contacte', 'ContacteController::index');
 $routes->post('contacte/send', 'ContacteController::send');
