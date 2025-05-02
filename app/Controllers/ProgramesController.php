@@ -13,6 +13,35 @@ class ProgramesController extends BaseController
         return view('programes/programes');
     }
 
+    // SUB-19 JUVENIL
+    public function juvenil_segon_A()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Juvenil segona divisio')->where('grup', 'Grup 47')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/juvenil_segona', $data);
+    }
+
+        // public function juvenil_segona()
+    // {
+    //     $model = new ClassificacioModel();
+
+    //     $classificacio = $model->where('categoria', 'Juvenil segona divisio')->where('grup', 'Grup 46')->findAll();
+
+    //     $data = [
+    //         'classificacio' => $classificacio,
+    //     ];
+
+    //     return view('programes/juvenil_segona', $data);
+    // }
+
+
+    // AMATEUR
     public function amateur_segona()
     {
         $model = new ClassificacioModel();
@@ -26,20 +55,22 @@ class ProgramesController extends BaseController
         return view('programes/amateur_segona', $data);
     }
 
-    public function juvenil_segona()
+    public function amateur_tercera()
     {
         $model = new ClassificacioModel();
 
-        $classificacio = $model->where('categoria', 'Juvenil segona divisio')->where('grup', 'Grup 46')->findAll();
+        $classificacio = $model->where('categoria', 'Tercera catalana')->where('grup', 'Grup 14')->findAll();
 
         $data = [
             'classificacio' => $classificacio,
         ];
 
-        return view('programes/juvenil_segona', $data);
+        return view('programes/amateur_tercera', $data);
     }
 
-    public function cadet_primera()
+
+    // SUB-16 CADET
+    public function cadet_primera_A()
     {
         $model = new ClassificacioModel();
 
@@ -52,7 +83,7 @@ class ProgramesController extends BaseController
         return view('programes/cadet_primera', $data);
     }
 
-    public function cadet_segona()
+    public function cadet_segona_B()
     {
         $model = new ClassificacioModel();
 
@@ -65,6 +96,8 @@ class ProgramesController extends BaseController
         return view('programes/cadet_segona', $data);
     }
 
+
+    // SUB-14 INFANTIL
     public function infantil_segona_A()
     {
         $model = new ClassificacioModel();
@@ -91,5 +124,86 @@ class ProgramesController extends BaseController
         return view('programes/infantil_segona_B', $data);
     }
 
+
+    // SUB-12 ALEVÍ
+    public function alevi_primera_A()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Alevi primera divisio')->where('grup', 'Grup 9')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/alevi_primera_A', $data);
+    }
+
+    public function alevi_segona_S12_B()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Alevi segona divisio')->where('grup', 'Grup 22')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/alevi_segona_S12_B', $data);
+    }
+
+    public function alevi_segona_S11_B()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Alevi segona divisio')->where('grup', 'Grup 17')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/alevi_segona_S11_B', $data);
+    }
+
+    public function alevi_preferent_A()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Alevi preferent')->where('grup', 'Grup 5')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/alevi_preferent_A', $data);
+    }
+
+
+    // SUB-10 BENJAMÍ
+    public function benjami_primera_S10_A()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Benjami primera divisio')->where('grup', 'Grup 13')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/benjami_primera_S10_A', $data);
+    }
+
+    public function benjami_primera_S9_A()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Benjami primera divisio')->where('grup', 'Grup 11')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/benjami_primera_S9_A', $data);
+    }
 
 }
