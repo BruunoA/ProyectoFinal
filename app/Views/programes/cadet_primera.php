@@ -24,7 +24,7 @@
 <body>
     <?= $this->include('general/menu'); ?>
     <section id="Programes" class="w3-container w3-margin-bottom">
-        <h3 id="Programes" class="w3-center w3-text-dark-gray"><strong>Categoria :</strong><?= lang('programes.amateurSegona') ?></h3>
+        <h3 id="Programes" class="w3-center w3-text-dark-gray"><strong>Categoria :</strong><?= lang('programes.cadetPrimera') ?></h3>
 
         <div class="w3-row w3-center w3-padding-16">
             <div id="IMG" class="w3-col l4 m6 s12 w3-padding">

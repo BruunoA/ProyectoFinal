@@ -30,7 +30,7 @@ class ProgramesController extends BaseController
     {
         $model = new ClassificacioModel();
 
-        $classificacio = $model->where('categoria', 'Juvenil segona')->where('grup', 'Grup 46')->findAll();
+        $classificacio = $model->where('categoria', 'Juvenil segona divisio')->where('grup', 'Grup 46')->findAll();
 
         $data = [
             'classificacio' => $classificacio,
@@ -65,7 +65,7 @@ class ProgramesController extends BaseController
         return view('programes/cadet_segona', $data);
     }
 
-    public function infantil_segona()
+    public function infantil_segona_A()
     {
         $model = new ClassificacioModel();
 
@@ -75,7 +75,20 @@ class ProgramesController extends BaseController
             'classificacio' => $classificacio,
         ];
 
-        return view('programes/infantil_segona', $data);
+        return view('programes/infantil_segona_A', $data);
+    }
+
+    public function infantil_segona_B()
+    {
+        $model = new ClassificacioModel();
+
+        $classificacio = $model->where('categoria', 'Infantil segona divisio s14')->where('grup', 'Grup 29')->findAll();
+
+        $data = [
+            'classificacio' => $classificacio,
+        ];
+
+        return view('programes/infantil_segona_B', $data);
     }
 
 

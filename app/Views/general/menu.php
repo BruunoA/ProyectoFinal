@@ -14,7 +14,12 @@
                 <select onchange="location = this.value;" class="menu-select">
                     <option value="">Programes</option>
                     <option value="">Selecciona un programa</option>
-                    <option value="<?= base_url('programes/amateur_segona') ?>">Amateur Segona</option> <!-- Nueva opción -->
+                    <option value="<?= base_url('programes/amateur_segona') ?>">Amateur Segona</option> 
+                    <option value="<?= base_url('programes/juvenil_segona') ?>">Juvenil Segona</option> 
+                    <option value="<?= base_url('programes/cadet_primera') ?>">Cadet Primera</option>
+                    <option value="<?= base_url('programes/cadet_segona') ?>">Cadet Segona</option>
+                    <option value="<?= base_url('programes/infantil_segona_A') ?>">Infantil Segona A</option>
+                    <option value="<?= base_url('programes/infantil_segona_B') ?>">Infantil Segona B</option>
                     <!-- Agrega más opciones aquí si es necesario -->
                 </select>
             </li>
