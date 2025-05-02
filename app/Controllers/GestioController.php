@@ -353,18 +353,19 @@ class GestioController extends BaseController
 
         $crud->setColumns(['id', 'nom', 'data', 'estat']);
 
+        $dataActual = date('Y-m-d H:i:s');
+
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'data' => ['name' => 'data', 'type' => 'date', 'html_atts' => ["required"],],
+            'data' => ['name' => 'data', 'type' => 'date', 'default' => $dataActual, 'html_atts' => ["required"],],
             'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
         ]);
 
         // $crud->setConfig('onlyView');
-        // $crud->setConfig(["editable" => true,]);
+        $crud->setConfig(["editable" => true,]);
         $crud->setConfig('delete', true);
         $crud->setConfig('add', true);
-        $crud->setConfig('modify', true);
 
         $data['output'] = $crud->render();
 

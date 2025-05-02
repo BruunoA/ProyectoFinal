@@ -73,17 +73,17 @@ $routes->get('pujarArxiu', 'GestioController::upload_drag');
 $routes->post('pujarArxiu', 'GestioController::upload_drag_post');
 
 // CONFIGURACIO MENU GENERAL
-$routes->get('config/menu_general', 'ConfiguracioController::menu');
-$routes->get('config/menu/add', 'ConfiguracioController::menuAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('config/menu/add', 'ConfiguracioController::menuAdd_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('config/menu/modify/(:num)', 'ConfiguracioController::menuModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('config/menu/modify/(:num)', 'ConfiguracioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('config/menu/delete/(:num)', 'ConfiguracioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'config/menu_general', 'ConfiguracioController::menu');
+// $routes->get('config/menu/add', 'ConfiguracioController::menuAdd' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('config/menu/add', 'ConfiguracioController::menuAdd_post' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('config/menu/modify/(:num)', 'ConfiguracioController::menuModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('config/menu/modify/(:num)', 'ConfiguracioController::menuModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('config/menu/delete/(:num)', 'ConfiguracioController::menuDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 // CONFIGURACIO MENU GESTIO
-$routes->get('config/menu_gestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'config/menu_gestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 // CONFIGURACIO DADES CONTACTE
 $routes->match(['get', 'post'],'configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);

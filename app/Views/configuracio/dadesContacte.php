@@ -9,8 +9,9 @@
 <body class="w3-light-grey">
 <?= $this->include('general/menuGestio'); ?>
     <div class="w3-container w3-padding">
-    <?php echo $output; ?>
 
+    <?php echo $output; ?>
+    
     </div>
 </body>
 </html>
