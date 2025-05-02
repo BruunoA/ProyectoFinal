@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "657ac079313fab046eb8c29fe1d6992b",
+    "content-hash": "c7314dc595b743179e5510efadb565af",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -79,6 +79,65 @@
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
             "time": "2025-01-19T18:31:34+00:00"
+        },
+        {
+            "name": "ifsnop/mysqldump-php",
+            "version": "v2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ifsnop/mysqldump-php.git",
+                "reference": "2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3",
+                "reference": "2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ifsnop\\": "src/Ifsnop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Diego Torres",
+                    "homepage": "https://github.com/ifsnop",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP version of mysqldump cli that comes with MySQL",
+            "homepage": "https://github.com/ifsnop/mysqldump-php",
+            "keywords": [
+                "PHP7",
+                "database",
+                "hhvm",
+                "mariadb",
+                "mysql",
+                "mysql-backup",
+                "mysqldump",
+                "pdo",
+                "php",
+                "php5",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/ifsnop/mysqldump-php/issues",
+                "source": "https://github.com/ifsnop/mysqldump-php/tree/v2.12"
+            },
+            "time": "2023-04-12T07:43:14+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -190,6 +249,167 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
             "time": "2024-09-11T13:17:53+00:00"
+        },
+        {
+            "name": "siensis/cicmdtools",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SIENSIS/CICMDTools.git",
+                "reference": "3d41f7ea91bf2263b034c4c60d2405e036e08ce5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SIENSIS/CICMDTools/zipball/3d41f7ea91bf2263b034c4c60d2405e036e08ce5",
+                "reference": "3d41f7ea91bf2263b034c4c60d2405e036e08ce5",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4.0",
+                "ifsnop/mysqldump-php": "^2.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SIENSIS\\CICMDTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JmFxR",
+                    "email": "dev@siensis.com",
+                    "homepage": "http://siensis.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CICMDTools ara a Codeigniter command tool collection to simplify CI4 develope task",
+            "keywords": [
+                "codeigniter",
+                "tools"
+            ],
+            "support": {
+                "issues": "https://github.com/SIENSIS/CICMDTools/issues",
+                "source": "https://github.com/SIENSIS/CICMDTools/tree/main"
+            },
+            "time": "2025-04-01T13:33:07+00:00"
+        },
+        {
+            "name": "siensis/kpacrud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SIENSIS/KpaCrud.git",
+                "reference": "ad92de4b65b77ddfc039a3135fe3f3e42ae1eaa9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SIENSIS/KpaCrud/zipball/ad92de4b65b77ddfc039a3135fe3f3e42ae1eaa9",
+                "reference": "ad92de4b65b77ddfc039a3135fe3f3e42ae1eaa9",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SIENSIS\\KpaCrud\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JmFxR",
+                    "email": "dev@siensis.com",
+                    "homepage": "http://siensis.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "KpaCrud Library permits to generate automatically CRUD pages from a DB table",
+            "keywords": [
+                "codeigniter",
+                "crud",
+                "database"
+            ],
+            "support": {
+                "issues": "https://github.com/SIENSIS/KpaCrud/issues",
+                "source": "https://github.com/SIENSIS/KpaCrud/tree/master"
+            },
+            "time": "2025-03-21T15:41:35+00:00"
+        },
+        {
+            "name": "studio-42/elfinder",
+            "version": "2.1.65",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Studio-42/elFinder.git",
+                "reference": "5535a8677558c44a20c19ff9b97ec37702f9c44d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/5535a8677558c44a20c19ff9b97ec37702f9c44d",
+                "reference": "5535a8677558c44a20c19ff9b97ec37702f9c44d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "suggest": {
+                "barryvdh/elfinder-flysystem-driver": "VolumeDriver for elFinder to use Flysystem as a root.",
+                "google/apiclient": "VolumeDriver GoogleDrive require `google/apiclient:^2.0.",
+                "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",
+                "nao-pon/flysystem-google-drive": "require in GoogleDrive network volume mounting with Flysystem."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Levashov",
+                    "email": "dio@std42.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Troex Nevelin",
+                    "email": "troex@fury.scancode.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Naoki Sawada",
+                    "email": "hypweb+elfinder@gmail.com",
+                    "homepage": "http://xoops.hypweb.net"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Studio-42/elFinder/contributors"
+                }
+            ],
+            "description": "File manager for web",
+            "homepage": "http://elfinder.org",
+            "support": {
+                "issues": "https://github.com/Studio-42/elFinder/issues",
+                "source": "https://github.com/Studio-42/elFinder/tree/2.1.65"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/nao-pon",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-05T05:01:39+00:00"
         }
     ],
     "packages-dev": [
@@ -2055,7 +2275,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "siensis/cicmdtools": 20,
+        "siensis/kpacrud": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

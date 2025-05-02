@@ -1,0 +1,39 @@
+:root {
+    --fuente-principal: 'Montserrat', sans-serif;
+    --color-texto: inherit;
+    --sombra-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --transicion-rapida: 0.3s ease;
+    --escala-hover: 1.2;
+    --desplazamiento-hover: -5px;
+    --tamano-icono: 40px;
+    --margen-icono: 0 10px;
+}
+
+body {
+    font-family: var(--fuente-principal);
+}
+
+.team-card {
+    text-decoration: none;
+    color: var(--color-texto);
+}
+
+.w3-card {
+    transition: transform var(--transicion-rapida), box-shadow var(--transicion-rapida);
+}
+
+.w3-card:hover {
+    transform: translateY(var(--desplazamiento-hover));
+    box-shadow: var(--sombra-hover);
+}
+
+.social-icon {
+    width: var(--tamano-icono);
+    margin: var(--margen-icono);
+    transition: transform var(--transicion-rapida), opacity var(--transicion-rapida);
+}
+
+.social-icon:hover {
+    transform: scale(var(--escala-hover));
+    opacity: 0.8;
+}

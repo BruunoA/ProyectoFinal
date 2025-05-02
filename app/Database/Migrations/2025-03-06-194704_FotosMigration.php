@@ -18,24 +18,31 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'descripcio'          => [
+            'ruta'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'img'          => [
+            'descripcio'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'null'           => false,
             ],
             'id_album'          => [
                 'type'           => 'INT',
-                'null'           => true,     
+                'null'           => true,  
+                'default'        => 1,
             ],
             'id_tag'          => [
                 'type'           => 'INT',
+                'default'        => 1,
             ],
             'created_at'      =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
+            'updated_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
                 'default'    =>  null,

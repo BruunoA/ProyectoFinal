@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= esc($title) ?></title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .drag-over {
+            border: dashed 3px red !important;
+        }
+
+        #dropContainer {
+            height: 150px;
+            padding: 16px;
+            transition: border 0.3s;
+        }
+    </style>
+</head>
+
+<body class="w3-light-grey">
+
+    <div class="w3-container w3-padding">
+        <h2 class="w3-center"><?= esc($title) ?></h2>
+
+        <?php if (!empty($errors)) : ?>
+            <div class="w3-panel w3-red w3-padding">
+                <ul class="w3-ul">
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?= esc($error) ?></li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <div id="dropContainer" class="w3-border w3-white w3-center"
+            ondragover="dOver(event)" ondragenter="dEnter(event)"
+            ondrop="dDrop(event)" ondragleave="dLeave(event)">
+            <?= lang('upload.soltar') ?>
+        </div>
+
+        <?= form_open_multipart(base_url('pujarArxiu'), ['class' => 'w3-container w3-card w3-white w3-margin-top']) ?>
+
+            <input type="file" id="formFiles" name="userfile[]" style="display:none" />
+
+            <p>
+                <label for="carpeta"><?= lang('upload.selecciona') ?></label>
+                <select class="w3-select" name="carpeta" id="carpeta">
+                    <option value="galeria">Galeria</option>
+                    <option value="noticies">Noticies</option>
+                    <option value="programes">Programes</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="descripcio"><?= lang('upload.descripcio') ?></label>
+                <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
+            </p>
+
+            <p class="w3-center">
+                <input class="w3-button w3-green w3-round" type="submit" value=<?= lang('upload.submit') ?>>
+            </p>
+
+        </form>
+    </div>
+
+    <script>
+        function dOver(evt) {
+            evt.preventDefault();
+            evt.target.classList.add('drag-over');
+        }
+
+        function dEnter(evt) {
+            evt.preventDefault();
+            evt.target.classList.add('drag-over');
+            document.getElementById("dropContainer").textContent = 'Drop your files here';
+        }
+
+        function dLeave(e) {
+            e.target.classList.remove('drag-over');
+            document.getElementById("dropContainer").textContent = 'Drop Here';
+        }
+
+        function dDrop(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            evt.target.classList.remove('drag-over');
+            document.getElementById("dropContainer").textContent = '';
+
+            var dt = evt.dataTransfer;
+            var files = dt.files;
+
+            var count = files.length;
+            output("File Count: " + count + "\n");
+
+            for (var i = 0; i < files.length; i++) {
+                output(" File " + i + ":\n(" + (typeof files[i]) + ") : <" + files[i] + " > " +
+                    files[i].name + " " + files[i].size + "\n");
+            }
+
+            var fileInput = document.getElementById('formFiles');
+            fileInput.files = dt.files;
+        }
+
+        function output(text) {
+            document.getElementById("dropContainer").textContent += text;
+        }
+    </script>
+</body>
+
+</html>

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class EventsMigration extends Migration
+class UsersMigration extends Migration
 {
     public function up()
     {
@@ -15,15 +15,16 @@ class EventsMigration extends Migration
             ],
             'nom'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
+                'constraint'     => '150',
             ],
-            'tipus_event'          => [
-                'type'           => 'int',
+            'rol'         => [
+                'type'           => 'ENUM',
+                'constraint'     => ['admin', 'user'],
+                'default'        => 'user',
             ],
-            'id_tag'          => [
-                'type'           => 'INT',
-                'null'           => false,
+            'password'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '250',
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -35,24 +36,18 @@ class EventsMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
-            'deleted_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
+            'deleted_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        // $this->forge->addForeignKey('id_tag', 'tags', 'id');
-        $this->forge->createTable('events');
+        $this->forge->createTable('users');
     }
 
     public function down()
     {
-        $this->forge->dropTable('events');
+        $this->forge->dropTable('users');
     }
 }

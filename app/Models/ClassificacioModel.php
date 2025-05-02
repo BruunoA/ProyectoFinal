@@ -12,7 +12,7 @@ class ClassificacioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['logo', 'nom', 'punts', 'pp', 'pj', 'pg', 'pe', 'gf', 'gc','id_album'];
+    protected $allowedFields    = ['posicio', 'nom', 'punts', 'pp', 'pj', 'pg', 'pe', 'gf', 'gc', 'resultats','categoria','grup','id_album'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

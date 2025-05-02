@@ -13,10 +13,8 @@ class ClassificacioMigration extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'logo'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-                'null'           => false,
+            'posicio'          => [
+                'type'           => 'INT',
             ],
             'nom'          => [
                 'type'           => 'VARCHAR',
@@ -44,9 +42,20 @@ class ClassificacioMigration extends Migration
             'gc'          => [
                 'type'           => 'INT',
             ],
-            'id_album'         => [             // TODO: LOGOS? canviar id_album pero la taula de fotos (o la ruta de la carpta logos)
-                'type'           => 'int',
-                'null'           => true,
+            'resultats'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
+            ],
+            'categoria'         => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
+            ],
+            'grup'         => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+                'null'           => false,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -58,9 +67,13 @@ class ClassificacioMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
+            'deleted_at'     =>  [
+                'type'         =>  'DATETIME',
+                'null'         =>  true,
+                'default'    =>  null,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('id_album', 'albums', 'id');
         $this->forge->createTable('classificacio');
     }
 

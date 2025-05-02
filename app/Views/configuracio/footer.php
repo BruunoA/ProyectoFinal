@@ -6,11 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-<main class="w3-container" style="margin-top: 2rem;">
-        <?= $this->renderSection('menu') ?>
-    </main>
-
-    <?= $this->include('general/footer') ?>
-
+<?php echo $output; ?>
 </body>
 </html>
