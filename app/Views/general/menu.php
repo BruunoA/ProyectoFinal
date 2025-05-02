@@ -13,7 +13,7 @@
             <li class="menu-dropdown">
                 <select onchange="location = this.value;" class="menu-select">
                     <option value="">Programes</option>
-                    <option value="">Selecciona un programa</option>
+                    <option value="" disabled>Selecciona un programa</option>
                     <option value="<?= base_url('programes/juvenil_segona') ?>">Juvenil Segona</option> 
                     <option value="<?= base_url('programes/amateur_segona') ?>">Amateur Segona</option>
                     <option value="<?= base_url('programes/amateur_tercera') ?>">Amateur Tercera</option>
