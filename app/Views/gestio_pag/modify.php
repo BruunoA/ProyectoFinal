@@ -65,10 +65,17 @@
             <option value="banner" <?= old('seccio', $gestio['seccio']) === 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
-        <div id="event-container" class="w3-margin-bottom" style="display: none;">
+        <label for="estat" class="w3-text-black"><b>Estat</b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
+            <option value="">Selecciona una opció</option>
+            <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
+            <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
+        </select>
+
+        <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">
             <label for="data" class="w3-text-black"><b>Data Event</b></label>
             <input class="w3-input w3-border" type="date" id="data" name="data">
-        </div>
+        </div> -->
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
@@ -78,7 +85,7 @@
 
         <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor" required><?= old('ckeditor', $gestio['ckeditor'] ?? '') ?></textarea>
+        <textarea name="ckeditor" id="ckeditor" required><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
@@ -88,16 +95,16 @@
         document.getElementById('seccio').addEventListener('change', function() {
             const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             const ckeditor = document.getElementById('ckeditor');
-            const dataEvent = document.getElementById('event-container');
+            // const dataEvent = document.getElementById('event-container');
 
-            if (this.value === 'event') {
-                contenidorContingut.style.display = 'none';
-                ckeditor.removeAttribute('required');
-                dataEvent.style.display = 'block';
-            } else {
-                contenidorContingut.style.display = 'block';
-                ckeditor.setAttribute('required', 'required');
-            }
+            // if (this.value === 'event') {
+            //     contenidorContingut.style.display = 'none';
+            //     ckeditor.removeAttribute('required');
+            //     dataEvent.style.display = 'block';
+            // } else {
+            //     contenidorContingut.style.display = 'block';
+            //     ckeditor.setAttribute('required', 'required');
+            // }
 
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {

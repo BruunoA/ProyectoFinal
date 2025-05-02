@@ -22,47 +22,49 @@
 <body>
 <?= $this->include('general/menu'); ?>
 
-    <section id="Programes">
-        <h3 id="Programes" class="w3-center">Fisioterapeuta</h3> 
-        <div class="w3-cell-row w3-padding-16" style="height: 20rem;">
-            <div id="IMG" class="w3-container w3-cell">
-                <img src="<?= base_url('assets/img/equipo.jpg'); ?>">
+<section id="Programes" class="w3-container w3-margin-bottom"> 
+    <h3 id="Programes" class="w3-center w3-text-dark-gray">Fisioterapeuta</h3> 
+
+    <div class="w3-row w3-center w3-padding-16">
+        <div id="IMG" class="w3-col l4 m6 s12 w3-padding">
+            <img src="<?= base_url('assets/img/equipo.jpg'); ?>" class="w3-image" style="width:100%; height: auto;">
+        </div>
+        <div class="w3-col l8 m6 s12 w3-padding w3-light-grey w3-round">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis tempora iure quia magni explicabo
+                iste distinctio nesciunt ad dicta illo expedita cupiditate perspiciatis, saepe doloribus quae nisi
+                est optio fugiat nulla ullam rem.</p>
+            
+            <div id="Horario" class="w3-padding-16 w3-round">
+                <p><strong>Días:</strong> Dilluns, dimecres, divendres</p>
+                <p><strong>Horari:</strong> 9:00 am - 15:00 pm</p>
             </div>
-            <div class="w3-container w3-light-grey w3-cell"
-                style="width: 75%; display: flex; flex-direction: column; justify-content: space-between; padding: 16px;">
+        </div>
+    </div>
+</section>
+
+    <?php for ($i = 0; $i < 10; $i++): ?>  
+    <section id="Programes" class="w3-container w3-margin-bottom"> 
+        <h3 id="Programes" class="w3-center w3-text-dark-gray"><strong>Categoria :</strong>  Juvenil A</h3>
+        
+        <div class="w3-row w3-center w3-padding-16">
+            <div id="IMG" class="w3-col l4 m6 s12 w3-padding">
+                <img src="<?= base_url('assets/img/equipo.jpg'); ?>" class="w3-image" style="width:100%; height: auto;">
+            </div>
+
+            <div class="w3-col l8 m6 s12 w3-padding w3-light-grey w3-round">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis tempora iure quia magni explicabo
                     iste distinctio nesciunt ad dicta illo expedita cupiditate perspiciatis, saepe doloribus quae nisi
-                    est optio fugiat nulla ullam rem. Veniam laudantium nobis, in excepturi quas ex reiciendis
-                    cupiditate illo, ut ullam voluptate esse libero enim obcaecati?</p>
-                <div id="Horario" class="horario">
-                    <p>Dilluns, dimecres, divendres</p>
-                    <p>Horari: 9:00 am - 15:00 pm</p>
+                    est optio fugiat nulla ullam rem.</p>
+                
+                <div id="Horario" class="w3-padding-16  w3-round">
+                    <p><strong>Días:</strong> Lunes, Miércoles, Viernes</p>
+                    <p><strong>Horario:</strong> 9:00 am - 15:00 pm</p>
                 </div>
             </div>
         </div>
     </section>
+<?php endfor; ?>
 
-    <?php for ($i = 0; $i < 10; $i++): ?>  
-        <section id="Programes"> 
-            <h3 id="Programes" class="w3-center">Categoria : Juvenil A</h3>
-            <div class="w3-cell-row w3-padding-16" style="height: 20rem;">
-                <div id="IMG" class="w3-container w3-cell">
-                    <img src="<?= base_url('assets/img/equipo.jpg'); ?>">
-                </div>
-                <div class="w3-container w3-light-grey w3-cell"
-                    style="width: 75%; display: flex; flex-direction: column; justify-content: space-between; padding: 16px;">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis tempora iure quia magni explicabo
-                        iste distinctio nesciunt ad dicta illo expedita cupiditate perspiciatis, saepe doloribus quae nisi
-                        est optio fugiat nulla ullam rem. Veniam laudantium nobis, in excepturi quas ex reiciendis
-                        cupiditate illo, ut ullam voluptate esse libero enim obcaecati?</p>
-                    <div id="Horario" class="horario">
-                        <p>Lunes, miercoles, viernes</p>
-                        <p>Horario: 9:00 am - 15:00 pm</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <?php endfor; ?>
 
     <?= $this->include('general/footer'); ?>
 </body>

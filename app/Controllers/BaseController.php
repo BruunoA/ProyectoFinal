@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\MenuModel;
 
 /**
  * Class BaseController
@@ -21,6 +22,16 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+    protected $menuModel;
+    protected $data = [];
+
+    // public function __construct()
+    // {
+    //     $this->menuModel = new MenuModel();
+
+    //     $this->data['menu'] = $this->menuModel->getMenu(); 
+
+    // }
     /**
      * Instance of the main Request object.
      *
@@ -57,6 +68,8 @@ abstract class BaseController extends Controller
             $this->request->setlocale('ca');
         }
         // Preload any models, libraries, etc, here.
+        $this->menuModel = new MenuModel();
+        $this->data['menu'] = $this->menuModel->getMenu();
 
         // E.g.: $this->session = service('session');
     }

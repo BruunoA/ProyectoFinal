@@ -14,13 +14,15 @@ class FileExplorerController extends BaseController
     {
         return view('ckeditor/index');
     }
-    
-        public function getFile()
-    {
-        $varName=current_url(true)->setSegment(1,'')->getPath();
-        $file = new \CodeIgniter\Files\File(path: WRITEPATH . "/uploads/" . urldecode($varName));
 
-        if (!$file->isFile()){     // if (!is_file(WRITEPATH . "/uploads/" . $varName)){
+    public function getFile()
+    {
+        $varName = current_url(true)->setSegment(1, '')->getPath();
+        // $file = new \CodeIgniter\Files\File(path: WRITEPATH . "/uploads/" . urldecode($varName));
+        $file = new \CodeIgniter\Files\File(FCPATH . "uploads/" . urldecode($varName));
+
+
+        if (!$file->isFile()) {     // if (!is_file(WRITEPATH . "/uploads/" . $varName)){
             throw new \CodeIgniter\Exceptions\PageNotFoundException($varName . ' no found');
         }
 
@@ -48,8 +50,10 @@ class FileExplorerController extends BaseController
             'roots' => array(
                 array(
                     'driver'        => 'LocalFileSystem',
-                    'path'          => WRITEPATH . '/uploads',
+                    // 'path'          => WRITEPATH . '/uploads',
+                    'path' => FCPATH . 'uploads',
                     'URL'           => base_url('fileget'),
+                    // 'URL'  => base_url('uploads'),
                     // 'uploadDeny'    => array('all'),                  // All Mimetypes not allowed to upload
                     // 'uploadAllow'   => array('image', 'text/plain', 'application/pdf'), // Mimetype `image` and `text/plain` allowed to upload
                     // 'uploadOrder'   => array('deny', 'allow'),        // allowed Mimetype `image` and `text/plain` only

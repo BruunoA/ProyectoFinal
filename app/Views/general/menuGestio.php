@@ -4,42 +4,52 @@
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
+        <!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
         <ul class="menu-items">
             <li><a href="">Inici</a></li>
-            <li><a href="">Contacte</a></li>
-            <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
-                <option value="" style="font-weight: bold;">Sobre Nosaltres</option>
-                <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
-                <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
-                <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
-                <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
+            <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
+            <li><a href="<?= base_url('gestio/programes') ?>">Programes</a></li>
+            <select class="seccio-select w3-select">
+                <option value="">Noticies</option>
+                <option value="noticies">Notícies</option>
+                <option value="events">Events</option>
             </select>
-            <li><a href="">Programes</a></li>
-            <!-- <li><a href="#" onclick="filtrarSeccio('noticies'); return false;">Noticies</a></li> -->
-            <select id="seccio-select" class="w3-select" onchange="filtrarSeccio(this.value)">
-                <option value="" style="font-weight: bold;">Noticies</option>
-                <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-                <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
+            <li><a href="<?= base_url('/gestio/galeria') ?>">Galeria</a></li>
+            <select class="seccio-configuracio-select w3-select">
+                <option value="">Configuracio</option>
+                <option value="dades_contacte">Dades contacte</option>
+                <option value="menu_general">Menu general</option>
+                <option value="menu_gestio">Menu gestio</option>
+                <option value="xarxes_socials">Xarxes Socials</option>
             </select>
-            <li><a href="" onclick="filtrarSeccio('galeria'); return false;">Galeria</a></li>
-            <li><a href="">Configuracio</a></li>
         </ul>
     </div>
 </nav>
 
 <script>
-    function toggleMenu() {
-        document.querySelector(".menu-items").classList.toggle("show");
-    }
-
-    function filtrarSeccio(seccio) {
-        document.querySelectorAll(".gestio-item").forEach(item => {
-            if (item.getAttribute("data-seccio") === seccio) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
+    document.querySelectorAll('.seccio-select').forEach(select => {
+        select.addEventListener('change', function () {
+            const selected = this.value;
+            if (selected === 'noticies') {
+                window.location.href = "<?= base_url('gestio/noticies') ?>";
+            } else if (selected === 'events') {
+                window.location.href = "<?= base_url('gestio/events') ?>";
             }
         });
-    }
+    });
+
+    document.querySelectorAll('.seccio-configuracio-select').forEach(select => {
+        select.addEventListener('change', function () {
+            const selected = this.value;
+            if (selected === 'dades_contacte') {
+                window.location.href = "<?= base_url('configuracio/dades_contacte') ?>";
+            } else if (selected === 'menu_general') {
+                window.location.href = "<?= base_url('config/menu_general') ?>";
+            } else if (selected === 'menu_gestio') {
+                window.location.href = "<?= base_url('config/menu_gestio') ?>";
+            } else if (selected === 'xarxes_socials') {
+                window.location.href = "<?= base_url('xarxes_socials') ?>";
+            }
+        });
+    });
 </script>

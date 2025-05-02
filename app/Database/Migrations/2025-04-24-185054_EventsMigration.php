@@ -18,24 +18,28 @@ class EventsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'data'         => [
-                'type'           => 'DATETIME',
+            'data'         => [ 
+                'type'           => 'DATE',
                 'null'           => false,
             ],
-            'tipus_event'          => [
-                'type'           => 'ENUM',
-                'constraint'     => ['competicio', 'entrenament', 'activitat'],
-                'null'           => false,
-            ],
-            'seccio'          => [
-                'type'           => 'ENUM',
-                'constraint'     => ['event'],
-                'null'           => false,
-            ],
-            'id_tag'          => [
+            'id_tipus_event'          => [
                 'type'           => 'INT',
                 'null'           => false,
             ],
+            'seccio'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '250',
+                'default'        => 'event',
+            ],
+            'estat'          => [
+                'type'           => 'ENUM',
+                'constraint'     => ['publicat', 'no_publicat'],
+                'default'        => 'no_publicat',
+            ],
+            // 'id_tag'          => [
+            //     'type'           => 'INT',
+            //     'null'           => false,
+            // ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -58,6 +62,7 @@ class EventsMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_tipus_event', 'tipus_events', 'id');
         // $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('events');
     }

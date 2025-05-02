@@ -53,7 +53,7 @@
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="event">&nbsp;&nbsp;&nbsp;Events</option>
+            <!-- <option value="event">&nbsp;&nbsp;&nbsp;Events</option> -->
             <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
             <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
             <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
@@ -63,6 +63,13 @@
             <option value="categories">Categories</option>
             <option value="#" disabled class="w3-bold">Configuració</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
+        </select>
+
+        <label for="estat" class="w3-text-black"><b>Estat</b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
+            <option value="">Selecciona una opció</option>
+            <option value="no_publicat">No publicat</option>
+            <option value="publicat">Publicat</option>
         </select>
 
         <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">

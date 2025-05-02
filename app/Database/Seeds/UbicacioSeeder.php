@@ -17,6 +17,7 @@ class UbicacioSeeder extends Seeder
         $data = [
             'nom' => $nom,
             'valor' => $ubicacio,
+            'tipus' => 'dades_contacte',
             'created_at' => date('Y-m-d H:i:s'),
         ];
     

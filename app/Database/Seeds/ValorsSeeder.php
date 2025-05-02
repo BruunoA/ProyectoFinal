@@ -16,6 +16,7 @@ class ValorsSeeder extends Seeder
                 'contingut' => $fake->paragraph(2),
                 'seccio' => 'valors',
                 'url' => url_title($nom, '-', true),
+                'estat' => 'publicat',
                 'created_at' => date('Y-m-d H:i:s'),
             ];
             $this->db->table('gestio')->insert($data);

@@ -8,4 +8,12 @@ return [
     "TitolMissio" => "Missió",
     "TitolVissio" => "Visió",
     "TitolValors" => "Valors",
+    "Historia" => "Història",
+    "Missio" => "Missió",
+    "Visio" => "Visió",
+    "Valors" => "Valors",
+    "mssgHistoria" => "No hi ha contingut a la secció història.",
+    "mssgMissio" => "No hi ha contingut a la secció missió.",
+    "mssgVisio" => "No hi ha contingut a la secció visió.",
+    "mssgValors" => "No hi ha contingut a la secció valors.",
 ];

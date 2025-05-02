@@ -4,16 +4,55 @@
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
+<style>
+.w3-card-4 .w3-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+</style>
 <body>
     <?= $this->include('general/menu'); ?>
     <?= session()->getFlashdata('error') ?>
-    <section class="w3-container w3-center w3-padding-32">
-        <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat" class="w3-image w3-round" style="max-width: 100%; width: 80%; height: 500px;">
+    <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000">
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Campo de fútbol Alpicat" style="height: 500px;">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Imagen 2" style="height: 500px;">
+            </div>
+            <div class="carousel-item">
+                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded" alt="Imagen 3" style="height: 500px;">
+            </div>
+        </div>
+
+
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button> -->
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+    </div>
     </section>
 
     <section class="w3-row-padding w3-padding-32">
@@ -53,7 +92,44 @@
         </div>
     </section>
 
-    <?= $this->include('general/footer'); ?>
+    <div class="w3-margin-top">
+        <h2 class="w3-text-green"><?= lang('home.NoticiesDestacades') ?></h2>
+
+        <?php if (!empty($noticies)): ?>
+            <div class="w3-row-padding">
+                <?php foreach ($noticies as $index => $noticia): ?>
+                    <div class="w3-third w3-margin-bottom">
+                        <div class="w3-card-4">
+                            <div class="w3-container w3-padding">
+                                <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 200px; object-fit: cover;">
+                                <h3><?= esc($noticia['nom']) ?></h3>
+                                <p><?= esc($noticia['resum']) ?></p>
+                                <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php if (($index + 1) % 3 == 0): ?>
+                        <div class="w3-rest"></div> <!-- Para cerrar la fila visualmente cada 3 elementos -->
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p><?= lang('home.NoHiHaNoticies') ?></p>
+        <?php endif; ?>
+    </div>
+
+    <?php // $this->include('general/footer'); 
+    ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
+            interval: 2000,
+            ride: 'carousel'
+        });
+    </script>
 </body>
 
 </html>

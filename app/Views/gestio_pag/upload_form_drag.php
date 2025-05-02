@@ -4,20 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <h2><?= esc($title) ?></h2>
-    </title>
-</head>
-<style>
-    .drag-over {
-        border: dashed 3px red !important;
-    }
-</style>
+    <title><?= esc($title) ?></title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .drag-over {
+            border: dashed 3px red !important;
+        }
 
-<body>
-    <?php foreach ($errors as $error) : ?>
-        <li><?= esc($error) ?></li>
-    <?php endforeach ?>
+        #dropContainer {
+            height: 150px;
+            padding: 16px;
+            transition: border 0.3s;
+        }
+    </style>
+</head>
+
+<body class="w3-light-grey">
+
+    <div class="w3-container w3-padding">
+        <h2 class="w3-center"><?= esc($title) ?></h2>
+
+        <?php if (!empty($errors)) : ?>
+            <div class="w3-panel w3-red w3-padding">
+                <ul class="w3-ul">
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?= esc($error) ?></li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <div id="dropContainer" class="w3-border w3-white w3-center"
+            ondragover="dOver(event)" ondragenter="dEnter(event)"
+            ondrop="dDrop(event)" ondragleave="dLeave(event)">
+            <?= lang('upload.soltar') ?>
+        </div>
+
+        <?= form_open_multipart(base_url('pujarArxiu'), ['class' => 'w3-container w3-card w3-white w3-margin-top']) ?>
+
+            <input type="file" id="formFiles" name="userfile[]" style="display:none" />
+
+            <p>
+                <label for="carpeta"><?= lang('upload.selecciona') ?></label>
+                <select class="w3-select" name="carpeta" id="carpeta">
+                    <option value="galeria">Galeria</option>
+                    <option value="noticies">Noticies</option>
+                    <option value="programes">Programes</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="descripcio"><?= lang('upload.descripcio') ?></label>
+                <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
+            </p>
+
+            <p class="w3-center">
+                <input class="w3-button w3-green w3-round" type="submit" value=<?= lang('upload.submit') ?>>
+            </p>
+
+        </form>
+    </div>
 
     <script>
         function dOver(evt) {
@@ -41,10 +87,9 @@
             evt.preventDefault();
 
             evt.target.classList.remove('drag-over');
-
             document.getElementById("dropContainer").textContent = '';
 
-            var dt = event.dataTransfer;
+            var dt = evt.dataTransfer;
             var files = dt.files;
 
             var count = files.length;
@@ -63,39 +108,6 @@
             document.getElementById("dropContainer").textContent += text;
         }
     </script>
-
-    <div style='padding:25px'>
-
-        <div id="dropContainer" style="border:1px solid black;height:100px;" ondragover="dOver(event)"
-            ondragenter="dEnter(event)" ondrop="dDrop(event)" ondragleave="dLeave(event)">
-            Drop Here
-        </div>
-
-        <?= form_open_multipart(base_url('pujarArxiu')) ?>
-
-        <div id='files'>
-            <input type="file" id="formFiles" name="userfile[]" style="visibility:hidden" />
-        </div>
-
-        <div style='padding-top:10px'>
-            <select name="carpeta" id="carpeta">
-                <option value="galeria">Galeria</option>
-                <option value="noticies">Noticies</option>
-                <option value="programes">Programes</option>
-                <option value="sobreNosaltres">Sobre Nosaltres</option>
-            </select>
-
-            <div style="padding-top:10px">
-                <label for="descripcio" style="display:block; font-weight:bold; margin-bottom:5px;">Descripcio</label>
-                <input type="text" name="descripcio" id="descripcio" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
-            </div>
-
-            <div style='padding-top:10px'>
-                <input type="submit" value="upload" />
-            </div>
-
-            </form>
-        </div>
 </body>
 
 </html>

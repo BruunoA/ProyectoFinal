@@ -17,7 +17,7 @@ class MenuMigration extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '250',
             ],
-            'enllac' => [
+            'enllaç' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '250',
                 'null'       => false,
@@ -34,10 +34,10 @@ class MenuMigration extends Migration
                 'type' => 'INT',
                 'default' => 0,
             ],
-            'id_tag' => [
-                'type' => 'INT',
-                'null' => true,
-            ],
+            // 'id_tag' => [
+            //     'type' => 'INT',
+            //     'null' => true,
+            // ],
             'created_at' => [
                 'type'    => 'DATETIME',
                 'null'    => true,
@@ -55,6 +55,7 @@ class MenuMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
+        //     $this->forge->addForeignKey('id_tag', 'tags', 'id');
         $this->forge->createTable('menu');
     }
 

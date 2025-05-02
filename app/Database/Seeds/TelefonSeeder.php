@@ -17,6 +17,7 @@ class TelefonSeeder extends Seeder
         $data = [
             'nom' => $nom,
             'valor' => $telefon,
+            'tipus' => 'dades_contacte',
             'created_at' => date('Y-m-d H:i:s'),
         ];
     
