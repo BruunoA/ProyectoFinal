@@ -42,6 +42,70 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => null
             ],
             [
+                'nom' => 'Sub-9',
+                'valor' => 'programes/sub9',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Sub-10',
+                'valor' => 'programes/sub10',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Sub-11',
+                'valor' => 'programes/sub11',
+                'tipus' => 'menu_general',
+                'ordre' => 3,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Sub-12',
+                'valor' => 'programes/sub12',
+                'tipus' => 'menu_general',
+                'ordre' => 4,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Infantil',
+                'valor' => 'programes/infantil',
+                'tipus' => 'menu_general',
+                'ordre' => 5,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Cadet',
+                'valor' => 'programes/cadet',
+                'tipus' => 'menu_general',
+                'ordre' => 6,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Juvenil',
+                'valor' => 'programes/juvenil',
+                'tipus' => 'menu_general',
+                'ordre' => 7,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Entrenaments especials',
+                'valor' => 'programes/entrenaments_especials',
+                'tipus' => 'menu_general',
+                'ordre' => 8,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
                 'nom' => 'Noticies',
                 'valor' => 'noticies',
                 'tipus' => 'menu_general',
@@ -99,8 +163,7 @@ class ConfiguracioSeeder extends Seeder
             ]
         ];
 
-        $this->db->table('configuracio')->insertBatch($data); 
-
+        $this->db->table('configuracio')->insertBatch($data);
 
         $data2 = [
             [
@@ -201,6 +264,6 @@ class ConfiguracioSeeder extends Seeder
             ],
         ];
 
-        $this->db->table('configuracio')->insertBatch($data2); 
+        $this->db->table('configuracio')->insertBatch($data2);
     }
 }

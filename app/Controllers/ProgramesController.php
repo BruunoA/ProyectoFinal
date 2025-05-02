@@ -9,6 +9,6 @@ class ProgramesController extends BaseController
 {
     public function index()
     {
-        return view('programes');
+        return view('programes/programes');
     }
 }

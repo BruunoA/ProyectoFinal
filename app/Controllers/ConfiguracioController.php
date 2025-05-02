@@ -153,13 +153,13 @@ class ConfiguracioController extends BaseController
         $crud->setColumns(['id', 'nom', 'icon', 'valor', 'tipus', 'ordre', 'visibilitat', 'id_pare']);
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text'], 
-            'nom' => ['name' => 'nom', 'type' => 'text'],
+            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],], 
+            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
             'icon' => ['name' => 'icona', 'type' => 'text'],
-            'valor' => ['name' => 'valor', 'type' => 'text'],
-            'tipus' => ['name' => 'tipus', 'type' => 'text'],
-            'ordre' => ['name' => 'ordre', 'type' => 'text'],
-            'visibilitat' => ['name' => 'visibilitat', 'type' => 'text'],
+            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
+            'tipus' => ['name' => 'tipus', 'type' => 'text', 'html_atts' => ["required"],],
+            'ordre' => ['name' => 'ordre', 'type' => 'text', 'html_atts' => ["required"],],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => 'text', 'html_atts' => ["required"],],
             'id_pare' => ['name' => 'id_pare', 'type' => 'text'],
         ]);
 
@@ -173,7 +173,4 @@ class ConfiguracioController extends BaseController
 
         return view('configuracio/footer', $data);    
     }
-
-    public function 
-
 }

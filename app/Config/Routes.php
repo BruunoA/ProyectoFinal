@@ -2,8 +2,9 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-$routes->get('xarxes_socials', 'ConfiguracioController::xarxes_socials');
-
+// $routes->get('xarxes_socials', 'ConfiguracioController::xarxes_socials');
+$routes->match(['get', 'post'],'xarxes_socials', 'ConfiguracioController::xarxes_socials');
+ 
 $routes->get('/', 'IndexController::index');
 
 $routes->get('home', 'IndexController::home');
