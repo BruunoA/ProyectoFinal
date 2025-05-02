@@ -10,7 +10,7 @@ use App\Models\GestioModel;
 use App\Models\MenuModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
-
+use SIENSIS\KpaCrud\Config\KpaCrud;
 
 class GestioController extends BaseController
 {
@@ -228,7 +228,7 @@ class GestioController extends BaseController
             $ruta = FCPATH . 'uploads/' . $carpeta;
 
             if (!is_dir($ruta)) {
-                mkdir($ruta, 0777, true); 
+                mkdir($ruta, 0777, true);
             }
 
             foreach ($imagefile['userfile'] as $img) {
@@ -278,10 +278,40 @@ class GestioController extends BaseController
     public function sobreNosaltres()
     {
         $model = new GestioModel();
-        $data['historia'] = $model->where('seccio', 'historia')->where('estat', 'publicat')->first();
-        $data['missio'] = $model->where('seccio', 'missio')->where('estat', 'publicat')->first();
-        $data['visio'] = $model->where('seccio', 'visio')->where('estat', 'publicat')->first();
-        $data['valors'] = $model->where('seccio', 'valors')->where('estat', 'publicat')->first();
+
+        $data = [
+            'historia' => $model->where('seccio', 'historia')->where('estat', 'publicat')->first(),
+            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
+            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
+            'valors' => $model->where('seccio', 'valors')->where('estat', 'publicat')->first(),
+        ];
+
+        // $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        // $crud->setTable('gestio');
+        // $crud->setPrimaryKey('id');
+        // $crud->addWhere('seccio', 'historia');
+        // // $crud->addWhere('seccio', 'missio');
+        // // $crud->addWhere('seccio', 'visio');
+        // // $crud->addWhere('seccio', 'valors');
+
+        // $crud->setColumns(['id', 'nom', 'resum', 'contingut', 'estat']);
+
+        // $crud->setColumnsInfo([
+        //     'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
+        //     'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
+        //     'resum' => ['name' => 'resum', 'type' => 'text', 'html_atts' => ["required"],],
+        //     'contingut' => ['name' => 'contingut', 'type' => 'textarea', 'html_atts' => ["required"],],
+        //     'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
+        // ]);
+
+        // // $crud->setConfig('onlyView');
+        // // $crud->setConfig(["editable" => true,]);
+        // $crud->setConfig('delete', true);
+        // $crud->setConfig('add', true);
+        // $crud->setConfig('modify', true);
+
+        // $data['output'] = $crud->render();
 
         return view('gestio_pag/sobreNosaltres', $data);
     }
@@ -303,17 +333,40 @@ class GestioController extends BaseController
 
     public function events()
     {
-        $model = new EventsModel();
-        $events = $model->findAll();
-        // $tipusEvents = $model->distinct()->select('tipus_event')->findAll();
+        //     $model = new EventsModel();
+        //     $events = $model->findAll();
+        //     // $tipusEvents = $model->distinct()->select('tipus_event')->findAll();
 
-        $pager = $model->pager;
+        //     $pager = $model->pager;
 
-        $data = [
-            'events' => $events,
-            'pager' => $pager,
-            // 'tipusEvents' => $tipusEvents,
-        ];
+        //     $data = [
+        //         'events' => $events,
+        //         'pager' => $pager,
+        //         // 'tipusEvents' => $tipusEvents,
+        //     ];
+
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('events');
+        $crud->setPrimaryKey('id');
+        // $crud->addWhere('seccio', 'historia');
+
+        $crud->setColumns(['id', 'nom', 'data', 'estat']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
+            'data' => ['name' => 'data', 'type' => 'date', 'html_atts' => ["required"],],
+            'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
+        ]);
+
+        // $crud->setConfig('onlyView');
+        // $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+        $crud->setConfig('modify', true);
+
+        $data['output'] = $crud->render();
 
         return view('gestio_pag/events/events', $data);
     }

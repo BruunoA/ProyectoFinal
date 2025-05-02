@@ -11,10 +11,39 @@ class ConfiguracioController extends BaseController
 {
     public function dades_contacte()
     {
-        $model = new ConfiguracioModel();
-        $data = [
-            'dades_contacte' => $model->where('tipus', 'dades_contacte')->findAll(),
-        ];
+        // $model = new ConfiguracioModel();
+        // $data = [
+        //     'dades_contacte' => $model->where('tipus', 'dades_contacte')->findAll(),
+        // ];
+
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('configuracio');
+        $crud->setPrimaryKey('id');
+        $crud->addWhere('tipus', 'dades_contacte');
+        $crud->excludes = ['tipus', 'id_pare', 'ordre'];
+        // $crud->addWhere('seccio', 'missio');
+        // $crud->addWhere('seccio', 'visio');
+        // $crud->addWhere('seccio', 'valors');
+
+        $crud->setColumns(['id', 'nom', 'icon', 'valor', 'tipus', 'visibilitat']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
+            'icon' => ['name' => 'icona', 'type' => 'text'],
+            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
+            'tipus' => ['name' => 'tipus', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['dades_contacte' => 'Dades de contacte', 'missio' => 'Missió', 'visio' => 'Visió', 'valors' => 'Valors']],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
+        ]);
+
+        // $crud->setConfig('onlyView');
+        // $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+        $crud->setConfig('modify', true);
+
+        $data['output'] = $crud->render();
 
         return view('configuracio/dadesContacte', $data);
     }

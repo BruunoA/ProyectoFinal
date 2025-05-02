@@ -30,8 +30,6 @@ $routes->get('programes/infantil_segona_A', 'ProgramesController::infantil_segon
 $routes->get('programes/infantil_segona_B', 'ProgramesController::infantil_segona_B');
 
 
-
-
 $routes->get('contacte', 'ContacteController::index');
 $routes->post('contacte/send', 'ContacteController::send');
 $routes->get('contacte/(:any)', 'ContacteController::index/$1');
@@ -58,16 +56,16 @@ $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'g
 $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO EVENTS
-$routes->get('gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/modify/(:num)', 'GestioController::eventsModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/events/modify/(:num)', 'GestioController::eventsModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/eliminar/(:num)', 'GestioController::eventsDelete/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/tipus', 'GestioController::eventsTipus' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/tipus/delete/(:num)', 'GestioController::eventsTipusDelete/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/events/tipus/add', 'GestioController::eventsTipusAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/events/tipus/add', 'GestioController::eventsTipusAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/modify/(:num)', 'GestioController::eventsModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('gestio/events/modify/(:num)', 'GestioController::eventsModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/eliminar/(:num)', 'GestioController::eventsDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/tipus', 'GestioController::eventsTipus' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('gestio/events/tipus/modify/(:num)', 'GestioController::eventsTipusModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/tipus/delete/(:num)', 'GestioController::eventsTipusDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/events/tipus/add', 'GestioController::eventsTipusAdd' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('gestio/events/tipus/add', 'GestioController::eventsTipusAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 
 // UPLOAD
@@ -88,12 +86,12 @@ $routes->get('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd' /*
 $routes->post('config/menuGestio/add', 'ConfiguracioController::menuGestioAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 // CONFIGURACIO DADES CONTACTE
-$routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('configuracio/dades_contacte/add', 'ConfiguracioController::dades_contacteAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('configuracio/dades_contacte/add', 'ConfiguracioController::dades_contacteAdd_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('configuracio/dades_contacte/modify/(:num)', 'ConfiguracioController::dades_contacteModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('configuracio/dades_contacte/modify/(:num)', 'ConfiguracioController::dades_contacteModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('configuracio/dades_contacte/delete/(:num)', 'ConfiguracioController::dades_contacteDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('configuracio/dades_contacte/add', 'ConfiguracioController::dades_contacteAdd' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('configuracio/dades_contacte/add', 'ConfiguracioController::dades_contacteAdd_post' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('configuracio/dades_contacte/modify/(:num)', 'ConfiguracioController::dades_contacteModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('configuracio/dades_contacte/modify/(:num)', 'ConfiguracioController::dades_contacteModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('configuracio/dades_contacte/delete/(:num)', 'ConfiguracioController::dades_contacteDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 
 // elFinder
