@@ -291,12 +291,14 @@ class GestioController extends BaseController
         $data = [
             'titol' => $this->request->getPost('titol'),
             'portada' => $this->request->getPost('portada'),
+            'album' => $this->request->getPost('album'),
             'estat' => 'publicat',
         ];
 
         $validationRule = [
             'titol' => 'required',
             'portada' => 'required',
+            'album' => 'required',
             'estat' => 'required|in_list[publicat,no_publicat]',
         ];
 

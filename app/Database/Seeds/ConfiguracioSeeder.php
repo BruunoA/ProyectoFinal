@@ -199,7 +199,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 8
+                'id_pare' => 17
             ],
             [
                 'nom' => 'Tancar sessio',
@@ -207,7 +207,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => "Si",
-                'id_pare' => 8
+                'id_pare' => 17
             ],
             [
                 'nom' => 'Gestio',
@@ -215,7 +215,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => "Si",
-                'id_pare' => 8
+                'id_pare' => 17
             ]
         ];
 
