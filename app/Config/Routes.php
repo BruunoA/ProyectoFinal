@@ -53,7 +53,14 @@ $routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'ge
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+
+// GESTIO GALERIA
+// $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria', 'GestioController::album' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria_fotos/(:num)', 'GestioController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+
 
 // GESTIO EVENTS
 $routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);

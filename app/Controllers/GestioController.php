@@ -378,4 +378,35 @@ class GestioController extends BaseController
         $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
         return view('gestio_pag/menuGestio', $data);
     }
+
+    public function album(){
+        $model = new AlbumModel();
+        $data['albums'] = $model->findAll();
+        return view('gestio_pag/album', $data);
+    }
+
+    public function albumFotos($albumId)
+    {
+        $albumModel = new AlbumModel();
+        $fotoModel = new TaulaFotosModel();
+
+        $data['album'] = $albumModel->find($albumId);
+        $data['fotos'] = $fotoModel->where('id_album', $albumId)->findAll();
+
+        return view('gestio_pag/galeria_fotos', $data);
+    }
+    
+    public function deleteFoto(){
+        $fotoModel = new TaulaFotosModel();
+        $id_foto = $this->request->getVar('id_foto');
+        $id_album = $this->request->getVar('id_album');
+
+        if(!empty($id_foto)){
+            $fotoModel->where('id',$id_foto)->delete();
+            // $fotoModel->where('id_album',$id_album)->delete($id_foto);
+        }
+
+        return redirect()->to('/gestio/galeria_fotos/' . $id_album);
+    }
+
 }
