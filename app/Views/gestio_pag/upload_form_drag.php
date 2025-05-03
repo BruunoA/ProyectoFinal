@@ -50,6 +50,7 @@
                     <option value="galeria">Galeria</option>
                     <option value="noticies">Noticies</option>
                     <option value="programes">Programes</option>
+                    <option value="albums">Albums</option>
                 </select>
             </p>
 

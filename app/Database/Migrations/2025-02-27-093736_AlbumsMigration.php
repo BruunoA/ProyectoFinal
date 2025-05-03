@@ -18,6 +18,10 @@ class AlbumsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'portada'          => [
+                'type'           => 'text',
+                'null'           => false,
+            ],
             'estat'          => [
                 'type'           => 'ENUM',
                 'constraint'     => ['publicat', 'no_publicat'],

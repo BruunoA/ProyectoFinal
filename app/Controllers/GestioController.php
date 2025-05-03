@@ -211,8 +211,8 @@ class GestioController extends BaseController
                 'rules' => 'uploaded[userfile]'
                     . '|is_image[userfile]'
                     . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                    . '|max_size[userfile,600]'
-                    . '|max_dims[userfile,1024,768]',
+                    . '|max_size[userfile,3072]'
+                    . '|max_dims[userfile,2024,2024]',
             ],
         ];
 
@@ -241,16 +241,12 @@ class GestioController extends BaseController
             foreach ($imagefile['userfile'] as $img) {
                 if ($img->isValid() && !$img->hasMoved()) {
                     $i++;
-                    // Afegit
+
                     $currentDate = date('YmdHis');
                     $ext = $img->getClientExtension();
 
-                    // Crear el nuevo nombre: fecha_id.extensión
                     $newName = $currentDate . '_' . $proximID . '.' . $ext;
                     $nom_fitxer = $img->getClientName();
-
-                    // Mover el archivo 
-                    // $img->move(WRITEPATH . 'uploads', $newName);
                     $descripcio = $this->request->getPost('descripcio');
                     $carpeta = $this->request->getPost('carpeta');
 
@@ -258,22 +254,20 @@ class GestioController extends BaseController
                         'titol' => $newName,
                         'nom_fitxer' => $newName,
                         'descripcio' => $descripcio,
-                        // 'ruta' => 'writable/uploads/' . $newName,
                         'ruta' => 'uploads/' . $carpeta . '/' . $newName,
                         'mime_type' => $img->getClientMimeType(),
-                        'id_album' => $idAlbum,
                     ];
+
+                    if (!empty($idAlbum)) {
+                        $fotoData['id_album'] = $idAlbum;
+                    }
 
                     $model->insert($fotoData);
 
                     $proximID++;
 
-                    // $img->move(WRITEPATH . 'uploads', $newName);
-
-                    // $files[$i] = new File(WRITEPATH . 'uploads/' . $newName);
-                    // $img->move(FCPATH . 'uploads', $newName);
                     $img->move($ruta, $newName);
-                    // $files[$i] = new File(FCPATH . 'uploads/' . $newName);
+
                     $files[$i] = new File($ruta . '/' . $newName);
                 }
             }
@@ -283,24 +277,36 @@ class GestioController extends BaseController
         }
     }
 
-    public function crearAlbum(){
+    public function crearAlbum()
+    {
 
         return view('gestio_pag/crear_album');
     }
 
-    public function crearAlbum_post(){
-
+    public function crearAlbum_post()
+    {
+        helper(["form"]);
         $model = new AlbumModel();
+
         $data = [
             'titol' => $this->request->getPost('titol'),
+            'portada' => $this->request->getPost('portada'),
             'estat' => 'publicat',
         ];
 
-        if ($model->insert($data)) {
-            return redirect()->to('/gestio/galeria');
-        } else {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+        $validationRule = [
+            'titol' => 'required',
+            'portada' => 'required',
+            'estat' => 'required|in_list[publicat,no_publicat]',
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+            return view('gestio_pag/crear_album', $data);
         }
+
+        $model->insert($data);
+        return redirect()->to('/gestio/galeria');
     }
 
     public function sobreNosaltres()
@@ -407,7 +413,8 @@ class GestioController extends BaseController
     //     return view('gestio_pag/menuGestio', $data);
     // }
 
-    public function album(){
+    public function album()
+    {
         $model = new AlbumModel();
         $data['albums'] = $model->findAll();
         return view('gestio_pag/album', $data);
@@ -423,14 +430,15 @@ class GestioController extends BaseController
 
         return view('gestio_pag/galeria_fotos', $data);
     }
-    
-    public function deleteFoto(){
+
+    public function deleteFoto()
+    {
         $fotoModel = new TaulaFotosModel();
         $id_foto = $this->request->getVar('id_foto');
         $id_album = $this->request->getVar('id_album');
 
-        if(!empty($id_foto)){
-            $fotoModel->where('id',$id_foto)->delete();
+        if (!empty($id_foto)) {
+            $fotoModel->where('id', $id_foto)->delete();
             // $fotoModel->where('id_album',$id_album)->delete($id_foto);
         }
 
@@ -438,4 +446,15 @@ class GestioController extends BaseController
         return redirect()->back();
     }
 
+    public function eliminarAlbum($id)
+    {
+
+        $albumModel = new AlbumModel();
+        $fotoModel = new TaulaFotosModel();
+
+        $fotoModel->where('id_album', $id)->delete();
+        $albumModel->where('id', $id)->delete();
+
+        return redirect()->to('/gestio/galeria');
+    }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 
     <title>Document</title>
 </head>
+
 <body>
     <?= $this->include('general/menuGestio'); ?>
     <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin">Pujar imatges</a>
@@ -18,12 +20,13 @@
                 <?php foreach ($albums as $album): ?>
                     <div class="w3-third w3-margin-bottom">
                         <div class="w3-card-4">
-                        <a href="<?= base_url('gestio/galeria_fotos/' . $album['id']) ?>">
-                                <img src="" alt="<?= esc($album['titol']) ?>" style="width:100%">
+                            <a href="<?= base_url('gestio/galeria_fotos/' . $album['id']) ?>">
+                                <img src="<?= $album['portada'] ?>" alt="<?= esc($album['titol']) ?>" style="width:100%">
                                 <div class="w3-container">
                                     <h3><?= esc($album['titol']) ?></h3>
                                 </div>
                             </a>
+                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" style="margin:1rem;" onclick="return confirm('¿Estás seguro de que deseas eliminar este álbum?');">Eliminar galeria</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -33,4 +36,5 @@
         <?php endif; ?>
     </div>
 </body>
+
 </html>

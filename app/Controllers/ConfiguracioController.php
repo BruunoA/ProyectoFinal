@@ -16,7 +16,7 @@ class ConfiguracioController extends BaseController
         $model = new ConfiguracioModel();
 
         $data = [
-            'menu' => $model->where('tipus', 'menu_general')->findAll(),
+            'menu' => $model->where('tipus', 'menu_general')->where('visibilitat', 'Si')->findAll(),
         ];
 
         return view('general/provaMenu', $data);

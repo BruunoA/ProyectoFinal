@@ -66,6 +66,7 @@ $routes->get('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter
 $routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/crearAlbum', 'GestioController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/crearAlbum', 'GestioController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
 
 
 // GESTIO EVENTS

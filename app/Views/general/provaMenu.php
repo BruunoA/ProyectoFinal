@@ -11,13 +11,13 @@
             $fills = [];
 
             foreach ($menu as $item) {
-                if ($item['visibilitat'] === 'Si') {
+                // if ($item['visibilitat'] === 'Si') {
                     if (is_null($item['id_pare'])) {
                         $pares[$item['ordre']] = $item;
                     } else {
                         $fills[$item['id_pare']][] = $item;
                     }
-                }
+                // }
             }
 
             ksort($pares);
