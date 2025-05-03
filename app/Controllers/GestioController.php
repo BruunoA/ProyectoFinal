@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AlbumModel;
 use App\Models\ConfiguracioModel;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -406,7 +407,8 @@ class GestioController extends BaseController
             // $fotoModel->where('id_album',$id_album)->delete($id_foto);
         }
 
-        return redirect()->to('/gestio/galeria_fotos/' . $id_album);
+        // return redirect()->to('/gestio/galeria_fotos/' . $id_album);
+        return redirect()->back();
     }
 
 }
