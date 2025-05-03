@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/albumsGestio.css'); ?>">
 
-    <title>Document</title>
+    <title><?= lang('albumsGestio.titol') ?></title>
 </head>
-
 <body>
     <?= $this->include('general/menuGestio'); ?>
-    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin">Pujar imatges</a>
-    <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-button w3-black w3-margin">Crear album</a>
+    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
+    <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.crear') ?></a>
     <div class="w3-container">
         <?= session()->getFlashdata('success') ?>
-        <h2>Galería de Álbumes</h2>
+        <h2><?= lang('albumsGestio.subtitol') ?></h2>
         <?php if (!empty($albums) && is_array($albums)): ?>
-            <div class="w3-row-padding">
+            <div class="album-row">
                 <?php foreach ($albums as $album): ?>
-                    <div class="w3-third w3-margin-bottom">
+                    <div class="album-card">
                         <div class="w3-card-4">
                             <a href="<?= base_url('gestio/galeria_fotos/' . $album['id']) ?>">
                                 <img src="<?= $album['portada'] ?>" alt="<?= esc($album['titol']) ?>" style="width:100%">
@@ -33,7 +33,7 @@
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
-            <p>No hay álbumes disponibles.</p>
+            <p><?= lang('albumsGestio.null') ?></p>
         <?php endif; ?>
     </div>
 </body>

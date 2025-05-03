@@ -1,0 +1,23 @@
+.album-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.album-card {
+    flex: 1 1 calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.album-card .w3-card-4 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.album-card img {
+    height: 200px;
+    object-fit: cover;
+}

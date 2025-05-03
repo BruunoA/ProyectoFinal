@@ -275,7 +275,7 @@ class GestioController extends BaseController
 
             $data['files'] = $files;
             // return view('gestio_pag/upload_ok', $data);
-            session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px; border-radius: 5px;">Imatges pujades correctament</div>');
+            session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Imatges pujades correctament</div>');
             return redirect()->to('/gestio/galeria');
         }
     }
