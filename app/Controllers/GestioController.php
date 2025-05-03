@@ -12,6 +12,7 @@ use App\Models\GestioModel;
 use App\Models\MenuModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
+use App\Models\CategoriesModel;
 
 
 class GestioController extends BaseController
@@ -365,4 +366,40 @@ class GestioController extends BaseController
         return redirect()->to('/gestio/galeria_fotos/' . $id_album);
     }
 
+    public function programes(){
+        $categorieModel = new CategoriesModel(); 
+        $data['categories'] = $categorieModel->findAll(); 
+
+        return view('gestio_pag/programes', $data);
+    }
+    
+    public function delete_Programa($id){
+        $categorieModel = new CategoriesModel(); 
+        $categorieModel->delete($id); 
+
+        return redirect()->to('/gestio/programes');
+    }
+    public function modify_Programa($id){
+        $categorieModel = new CategoriesModel(); 
+        $data['categories'] = $categorieModel->find($id); 
+
+        return view('gestio_pag/modify_programes', $data);
+    }
+    public function modify_Programa_post($id){
+        $categorieModel = new CategoriesModel(); 
+        $data = [
+            'titol' => $this->request->getPost('titol'),
+            'descripcio' => $this->request->getPost('descripcio'),
+            'horari' => $this->request->getPost('horari'),
+            'id_equip' => $this->request->getPost('id_equip'),
+        ];
+
+        if (!$categorieModel->validate($data)) {
+            return redirect()->back()->withInput()->with('errors', $categorieModel->errors());
+        } else {
+            $categorieModel->update($id, $data);
+            return redirect()->to('/gestio/programes');
+        }
+    }
+    
 }
