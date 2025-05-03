@@ -18,6 +18,11 @@ class AlbumsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'estat'          => [
+                'type'           => 'ENUM',
+                'constraint'     => ['publicat', 'no_publicat'],
+                'default'        => 'no_publicat',
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,

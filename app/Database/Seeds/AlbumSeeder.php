@@ -14,6 +14,7 @@ class AlbumSeeder extends Seeder
         for ($i = 0; $i < 3; $i++) {
             $data = [
                 'titol' => $fake->sentence(4),
+                'estat' => 'publicat',
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

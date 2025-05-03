@@ -9,6 +9,8 @@
 </head>
 <body>
     <?= $this->include('general/menuGestio'); ?>
+    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin">Pujar imatges</a>
+    <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-button w3-black w3-margin">Crear album</a>
     <div class="w3-container">
         <h2>Galería de Álbumes</h2>
         <?php if (!empty($albums) && is_array($albums)): ?>

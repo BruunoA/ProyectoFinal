@@ -12,9 +12,11 @@ $routes->get('index', 'IndexController::index');
 
 $routes->get('classificacio', 'ClassificacioController::index');
 
+// GALERIA
 $routes->get('galeria', 'GaleriaController::getFotos');
 $routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
 
+// NOTICIES
 $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 
@@ -60,6 +62,8 @@ $routes->get('gestio/galeria', 'GestioController::album' /*, ['filter' => 'gesti
 $routes->get('gestio/galeria_fotos/(:num)', 'GestioController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/crearAlbum', 'GestioController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/crearAlbum', 'GestioController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
 
 
 // GESTIO EVENTS

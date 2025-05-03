@@ -58,6 +58,16 @@
                 <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
             </p>
 
+            <p>
+                <label for="album"><?= lang('upload.album') ?></label>
+                <select name="album" id="album">
+                    <option value=""><?= lang('upload.selecciona') ?></option>
+                    <?php foreach ($albums as $album) : ?>
+                        <option value="<?= esc($album['id']) ?>"><?= esc($album['titol']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </p>
+
             <p class="w3-center">
                 <input class="w3-button w3-green w3-round" type="submit" value=<?= lang('upload.submit') ?>>
             </p>

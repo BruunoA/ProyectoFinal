@@ -128,70 +128,74 @@ class GestioController extends BaseController
         return view('sobreNosaltres', $data);
     }
 
-    public function addEvent()
-    {
-        return view('gestio_pag/events/addEvents');
-    }
+    // public function addEvent()
+    // {
+    //     return view('gestio_pag/events/addEvents');
+    // }
 
-    public function addEvent_post()
-    {
-        helper(["form"]);
-        $model = new EventsModel();
+    // public function addEvent_post()
+    // {
+    //     helper(["form"]);
+    //     $model = new EventsModel();
 
-        $date = $this->request->getPost('data');
+    //     $date = $this->request->getPost('data');
 
-        $data = [
-            'nom' => $this->request->getPost('nom'),
-            'data' => $date,
-            'tipus_event' => $this->request->getPost('tipus_event'),
-        ];
+    //     $data = [
+    //         'nom' => $this->request->getPost('nom'),
+    //         'data' => $date,
+    //         'tipus_event' => $this->request->getPost('tipus_event'),
+    //     ];
 
-        if (!$model->validate($data)) {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        } else {
-            $model->insert($data);
-            return redirect()->to('/gestio');
-        }
-    }
+    //     if (!$model->validate($data)) {
+    //         return redirect()->back()->withInput()->with('errors', $model->errors());
+    //     } else {
+    //         $model->insert($data);
+    //         return redirect()->to('/gestio');
+    //     }
+    // }
 
-    public function eventsModify($id)
-    {
-        $model = new EventsModel();
-        $data['events'] = $model->find($id);
-        return view('gestio_pag/events/modifyEvent', $data);
-    }
+    // public function eventsModify($id)
+    // {
+    //     $model = new EventsModel();
+    //     $data['events'] = $model->find($id);
+    //     return view('gestio_pag/events/modifyEvent', $data);
+    // }
 
-    public function eventsModify_post($id)
-    {
-        helper(["form"]);
-        $model = new EventsModel();
+    // public function eventsModify_post($id)
+    // {
+    //     helper(["form"]);
+    //     $model = new EventsModel();
 
-        $data = [
-            'nom' => $this->request->getPost('nom'),
-            'data' => $this->request->getPost('data'),
-            'tipus_event' => $this->request->getPost('tipus_event'),
-        ];
+    //     $data = [
+    //         'nom' => $this->request->getPost('nom'),
+    //         'data' => $this->request->getPost('data'),
+    //         'tipus_event' => $this->request->getPost('tipus_event'),
+    //     ];
 
-        if (!$model->validate($data)) {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        } else {
-            $model->update($id, $data);
-            return redirect()->to('gestio/events');
-        }
-    }
+    //     if (!$model->validate($data)) {
+    //         return redirect()->back()->withInput()->with('errors', $model->errors());
+    //     } else {
+    //         $model->update($id, $data);
+    //         return redirect()->to('gestio/events');
+    //     }
+    // }
 
-    public function eventsDelete($id)
-    {
-        $model = new EventsModel();
-        $model->delete($id);
-        return redirect()->to('gestio/events');
-    }
+    // public function eventsDelete($id)
+    // {
+    //     $model = new EventsModel();
+    //     $model->delete($id);
+    //     return redirect()->to('gestio/events');
+    // }
 
     public function upload_drag()
     {
         helper(["form"]);
 
-        $data['title'] = lang('gestioGeneral.uploadTitol');
+        $model = new AlbumModel();
+        $data = [
+            'albums' => $model->findAll(),
+            'title' => lang('gestioGeneral.uploadTitol')
+        ];
         $data['errors'] = [];
 
         return view('gestio_pag/upload_form_drag', $data);
@@ -207,7 +211,7 @@ class GestioController extends BaseController
                 'rules' => 'uploaded[userfile]'
                     . '|is_image[userfile]'
                     . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                    . '|max_size[userfile,100]'
+                    . '|max_size[userfile,600]'
                     . '|max_dims[userfile,1024,768]',
             ],
         ];
@@ -232,6 +236,8 @@ class GestioController extends BaseController
                 mkdir($ruta, 0777, true);
             }
 
+            $idAlbum = $this->request->getPost('album');
+
             foreach ($imagefile['userfile'] as $img) {
                 if ($img->isValid() && !$img->hasMoved()) {
                     $i++;
@@ -254,7 +260,8 @@ class GestioController extends BaseController
                         'descripcio' => $descripcio,
                         // 'ruta' => 'writable/uploads/' . $newName,
                         'ruta' => 'uploads/' . $carpeta . '/' . $newName,
-                        'mime_type' => $img->getClientMimeType()
+                        'mime_type' => $img->getClientMimeType(),
+                        'id_album' => $idAlbum,
                     ];
 
                     $model->insert($fotoData);
@@ -273,6 +280,26 @@ class GestioController extends BaseController
 
             $data['files'] = $files;
             return view('gestio_pag/upload_ok', $data);
+        }
+    }
+
+    public function crearAlbum(){
+
+        return view('gestio_pag/crear_album');
+    }
+
+    public function crearAlbum_post(){
+
+        $model = new AlbumModel();
+        $data = [
+            'titol' => $this->request->getPost('titol'),
+            'estat' => 'publicat',
+        ];
+
+        if ($model->insert($data)) {
+            return redirect()->to('/gestio/galeria');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
         }
     }
 
@@ -373,12 +400,12 @@ class GestioController extends BaseController
         return view('gestio_pag/events/events', $data);
     }
 
-    public function menuGestio()
-    {
-        $model = new ConfiguracioModel();
-        $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
-        return view('gestio_pag/menuGestio', $data);
-    }
+    // public function menuGestio()
+    // {
+    //     $model = new ConfiguracioModel();
+    //     $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
+    //     return view('gestio_pag/menuGestio', $data);
+    // }
 
     public function album(){
         $model = new AlbumModel();

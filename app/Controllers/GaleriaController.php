@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AlbumModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\FotosModel;
 
@@ -17,13 +18,24 @@ class GaleriaController extends BaseController
 
         $fotosModel = new FotosModel();
         $fotos = $fotosModel->findAll();
+
+        $model = new AlbumModel();
+        $albumsInfo = $model->findAll();
         
         $albums = [];
         foreach ($fotos as $foto) {
             $albumId = $foto['id_album'];
-            
+
+            foreach ($albumsInfo as $album) {
+                if ($album['id'] == $albumId) {
+                    $albumTitle = $album['titol'];
+                    break;
+                }
+            }
+
             if (!isset($albums[$albumId])) {
                 $albums[$albumId] = [
+                    'titol' => $albumTitle,
                     'count' => 0,
                     'fotos' => []
                 ];
