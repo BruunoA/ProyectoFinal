@@ -41,7 +41,7 @@
                         <a href="<?= base_url("galeria/album/$albumId") ?>" class="w3-card w3-padding album-card w3-block w3-hover-shadow" style="text-decoration: none; color: inherit;">
                             <img src="<?= base_url('assets/img/camara.png'); ?>" style="width:100%; height:200px; object-fit:cover;">
                             <div class="w3-container w3-center">
-                                <h3><?php echo $albumData['titol']; ?></h3>
+                                <h3><?= $albumData['titol']; ?></h3>
                                 <span class="photo-count"><?= $albumData['count'] ?> fotos</span>
                             </div>
                         </a>

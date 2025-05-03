@@ -42,58 +42,18 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => null
             ],
             [
-                'nom' => 'Sub-9',
-                'valor' => 'programes/sub9',
+                'nom' => 'Sub-19',
+                'valor' => 'programes/sub-19',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
-                'nom' => 'Sub-10',
-                'valor' => 'programes/sub10',
+                'nom'=> 'Juvenil Segona',
+                'valor' => 'programes/juvenil_segona',
                 'tipus' => 'menu_general',
-                'ordre' => 2,
-                'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Sub-11',
-                'valor' => 'programes/sub11',
-                'tipus' => 'menu_general',
-                'ordre' => 3,
-                'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Sub-12',
-                'valor' => 'programes/sub12',
-                'tipus' => 'menu_general',
-                'ordre' => 4,
-                'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Infantil',
-                'valor' => 'programes/infantil',
-                'tipus' => 'menu_general',
-                'ordre' => 5,
-                'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Cadet',
-                'valor' => 'programes/cadet',
-                'tipus' => 'menu_general',
-                'ordre' => 6,
-                'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Juvenil',
-                'valor' => 'programes/juvenil',
-                'tipus' => 'menu_general',
-                'ordre' => 7,
+                'ordre' => 1,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
@@ -101,18 +61,106 @@ class ConfiguracioSeeder extends Seeder
                 'nom' => 'Amateur',
                 'valor' => 'programes/amateur',
                 'tipus' => 'menu_general',
-                'ordre' => 8,
+                'ordre' => 2,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
-                'nom' => 'Entrenaments especials',
-                'valor' => 'programes/entrenaments_especials',
+               'nom' => 'Amateur Segona',
+                'valor' => 'programes/amateur_segona',
                 'tipus' => 'menu_general',
-                'ordre' => 9,
+                'ordre' => 1,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
+            [
+                'nom' => 'Amateur Tercera',
+                'valor' => 'programes/amateur_tercera',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Sub-16',
+                'valor' => 'programes/sub16',
+                'tipus' => 'menu_general',
+                'ordre' => 3,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Cadet Primera A',
+                'valor' => 'programes/cadet_primera_A',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Cadet Segona B',
+                'valor' => 'programes/cadet_segona_B',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
+                'nom' => 'Sub-14',
+                'valor' => 'programes/sub16',
+                'tipus' => 'menu_general',
+                'ordre' => 4,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            // [
+            //     'nom' => 'Infantil',
+            //     'valor' => 'programes/infantil',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 5,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 4
+            // ],
+            // [
+            //     'nom' => 'Cadet',
+            //     'valor' => 'programes/cadet',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 6,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 4
+            // ],
+            // [
+            //     'nom' => 'Juvenil',
+            //     'valor' => 'programes/juvenil',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 7,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 4
+            // ],
+            // [
+            //     'nom' => 'Amateur',
+            //     'valor' => 'programes/amateur_segona',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 8,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 12
+            // ],
+            // [
+            //     'nom' => 'Veterans',
+            //     'valor' => 'programes/veterans',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 9,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 4
+            // ],
+            // [
+            //     'nom' => 'Entrenaments especials',
+            //     'valor' => 'programes/entrenaments_especials',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 9,
+            //     'visibilitat' => "Si",
+            //     'id_pare' => 4
+            // ],
             [
                 'nom' => 'Noticies',
                 'valor' => 'noticies',

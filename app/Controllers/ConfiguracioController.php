@@ -10,6 +10,18 @@ use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
 class ConfiguracioController extends BaseController
 {
+
+    public function menuProva(){
+
+        $model = new ConfiguracioModel();
+
+        $data = [
+            'menu' => $model->where('tipus', 'menu_general')->findAll(),
+        ];
+
+        return view('general/provaMenu', $data);
+    }
+
     public function dades_contacte()
     {
         // $model = new ConfiguracioModel();
