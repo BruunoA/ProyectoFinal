@@ -4,13 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\GestioModel;
+use App\Models\TagsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class IndexController extends BaseController
 {
     public function index()
     {
-        return view("pagina_inicial");
+        $model = new TagsModel();
+
+        $data = [
+            'tags' => $model->findAll(),
+        ];
+
+        return view("pagina_inicial", $data);
     }
 
     public function home()

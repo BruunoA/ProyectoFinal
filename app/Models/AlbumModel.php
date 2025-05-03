@@ -31,15 +31,15 @@ class AlbumModel extends Model
     protected $validationRules      = [];
 
     protected $validationMessages   = [
-        'titol' => [
-            'required' => 'El camp Títol és obligatori.',
-        ],
-        'portada' => [
-            'required' => 'El camp Portada és obligatori.',
-        ],
-        'estat' => [
-            'required' => 'El camp Estat és obligatori.',
-        ],
+        // 'titol' => [
+        //     'required' => 'El camp Títol és obligatori.',
+        // ],
+        // 'portada' => [
+        //     'required' => 'El camp Portada és obligatori.',
+        // ],
+        // 'estat' => [
+        //     'required' => 'El camp Estat és obligatori.',
+        // ],
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

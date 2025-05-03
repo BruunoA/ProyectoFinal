@@ -106,7 +106,7 @@ class ConfiguracioController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'icon' => ['name' => 'icona', 'type' => 'text'],
+            'icon' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
             'visibilitat' => ['name' => 'visibilitat', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],

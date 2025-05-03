@@ -31,14 +31,14 @@
             ['link' => 'equipo2/', 'img' => 'alpicatLogo.png', 'nombre' => 'Equipo ALPICAT 2'],
             ['link' => 'equipo3/', 'img' => 'alpicatLogo.png', 'nombre' => 'Equipo ALPICAT 3']
         ];
-        foreach ($equipos as $equipo): ?>
+        foreach ($tags as $tag): ?>
             <div class="w3-third">
-                <a href="<?= base_url($equipo['link']); ?>" class="team-card">
+                <a href="<?= base_url($tag['link']); ?>" class="team-card">
                     <div class="w3-card w3-hover-shadow w3-round-large">
-                        <img src="<?= base_url('assets/img/' . $equipo['img']); ?>" alt="<?= $equipo['nombre']; ?>"
+                        <img src="<?= base_url('assets/img/' . $tag['img']); ?>" alt="<?= $tag['nombre']; ?>"
                             class="w3-image" style="width:50%; padding-top: 20px;">
                         <div class="w3-container w3-padding">
-                            <h3><?= $equipo['nombre']; ?></h3>
+                            <h3><?= $tag['nombre']; ?></h3>
                         </div>
                     </div>
                 </a>

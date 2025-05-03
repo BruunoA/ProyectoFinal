@@ -293,22 +293,22 @@ class GestioController extends BaseController
 
         $data = [
             'titol' => $this->request->getPost('titol'),
-            'portada' => $this->request->getPost('portada'),
+            // 'portada' => $this->request->getPost('portada'),
             'album' => $this->request->getPost('album'),
-            'estat' => 'publicat',
+            'estat' => $this->request->getPost('estat'),
         ];
 
         $validationRule = [
             'titol' => 'required',
-            'portada' => 'required',
+            // 'portada' => 'required',
             'album' => 'required',
             'estat' => 'required|in_list[publicat,no_publicat]',
         ];
 
-        if (!$this->validate($validationRule)) {
-            $data['errors'] = $this->validator->getErrors();
-            return view('gestio_pag/crear_album', $data);
-        }
+        // if (!$this->validate($validationRule)) {
+        //     $data['errors'] = $this->validator->getErrors();
+        //     return view('gestio_pag/crear_album', $data);
+        // }
 
         $model->insert($data);
         return redirect()->to('/gestio/galeria');

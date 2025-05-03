@@ -45,7 +45,7 @@
             <input type="file" id="formFiles" name="userfile[]" style="display:none" />
 
             <p>
-                <label for="carpeta"><?= lang('upload.selecciona') ?></label>
+                <label for="carpeta">Selecciona la carpeta en la qual vols guardar la imatge</label>
                 <select class="w3-select" name="carpeta" id="carpeta">
                     <option value="galeria">Galeria</option>
                     <option value="noticies">Noticies</option>
@@ -55,14 +55,14 @@
             </p>
 
             <p>
-                <label for="descripcio"><?= lang('upload.descripcio') ?></label>
+                <label for="descripcio">Descripcio de la imatge</label>
                 <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
             </p>
 
             <p>
-                <label for="album"><?= lang('upload.album') ?></label>
+                <label for="album">Album:</label>
                 <select name="album" id="album">
-                    <option value=""><?= lang('upload.selecciona') ?></option>
+                    <option value="">Selecciona un album</option>
                     <?php foreach ($albums as $album) : ?>
                         <option value="<?= esc($album['id']) ?>"><?= esc($album['titol']) ?></option>
                     <?php endforeach; ?>
