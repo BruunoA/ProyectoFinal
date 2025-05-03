@@ -256,11 +256,12 @@ class GestioController extends BaseController
                         'descripcio' => $descripcio,
                         'ruta' => 'uploads/' . $carpeta . '/' . $newName,
                         'mime_type' => $img->getClientMimeType(),
+                        'id_album' => $idAlbum,
                     ];
 
-                    if (!empty($idAlbum)) {
-                        $fotoData['id_album'] = $idAlbum;
-                    }
+                    // if (!empty($idAlbum)) {
+                    //     $fotoData['id_album'] = $idAlbum;
+                    // }
 
                     $model->insert($fotoData);
 
@@ -273,7 +274,9 @@ class GestioController extends BaseController
             }
 
             $data['files'] = $files;
-            return view('gestio_pag/upload_ok', $data);
+            // return view('gestio_pag/upload_ok', $data);
+            session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px; border-radius: 5px;">Imatges pujades correctament</div>');
+            return redirect()->to('/gestio/galeria');
         }
     }
 
