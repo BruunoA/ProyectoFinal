@@ -16,12 +16,12 @@
         <h2 class="w3-center"><?= lang('sobreNosaltres.TitolHistoria') ?></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
-            <div id="historia" class="w3-container w3-border city">
+            <div id="historia" class="w3-container w3-border">
                 <?php if (!empty($historia)): ?>
                     <h3 class="w3-center"><?= esc($historia['nom']) ?></h3>
-                    <p><?= esc($historia['contingut']) ?></p>
+                    <p><?= $historia['contingut'] ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat la historia</p>
+                    <p><?= lang('errors.historia') ?></p>
                 <?php endif; ?>
             </div>
         </div>
@@ -40,31 +40,27 @@
                     onclick="openCity(event,'Valors')"><?= lang('sobreNosaltres.TitolValors') ?></button>
             </div>
 
-            <!-- <div id="Missio" class="w3-container w3-border city">
-                <h2><?= lang('sobreNosaltres.TitolMissio') ?></h2>
-                <p><?= lang('sobreNosaltres.Missio') ?></p>
-            </div> -->
             <div id="Missio" class="w3-container w3-border city">
                 <?php if (!empty($missio)): ?>
-                    <p><?= esc($missio['contingut']) ?></p>
+                    <p><?= $missio['contingut'] ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat la missio</p>
+                    <p><?= lang('errors.missio') ?></p>
                 <?php endif; ?>
             </div>
 
             <div id="Visio" class="w3-container w3-border city" style="display:none">
                 <?php if (!empty($visio)): ?>
-                    <p><?= esc($visio['contingut']) ?></p>
+                    <p><?= $visio['contingut'] ?></p>
                 <?php else: ?>
-                    <p>No s'ha carregat la visio</p>
+                    <p><?= lang('errors.visio') ?></p>
                 <?php endif; ?>
             </div>
 
             <div id="Valors" class="w3-container w3-border city" style="display:none">
                 <?php if (!empty($valors)): ?>
-                    <p><?= esc($valors['contingut']) ?></p>
+                    <p><?= $valors['contingut'] ?></p>
                 <?php else: ?>
-                    <p>No s'han carregat els valors</p>
+                    <p><?= lang('errors.valors') ?></p>
                 <?php endif; ?>
             </div>
 

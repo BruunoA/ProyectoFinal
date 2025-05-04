@@ -43,7 +43,8 @@
 
 <body class="w3-light-grey">
     <?= $this->include('general/menuGestio'); ?>
-
+    <?= session()->getFlashdata('success'); ?>
+    <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.afegir") ?></a>
     <div class="w3-container">
         <h1 class="w3-center"><?= lang("sobreNosaltres.Titol") ?></h1>
 

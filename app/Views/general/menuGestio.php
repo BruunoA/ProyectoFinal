@@ -6,7 +6,7 @@
 
         <!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
         <ul class="menu-items">
-            <li><a href="">Inici</a></li>
+            <li><a href="<?= base_url('gestio/banner') ?>">Inici</a></li>
             <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
             <li><a href="<?= base_url('gestio/programes') ?>">Programes</a></li>
             <select class="seccio-select w3-select">

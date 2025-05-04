@@ -67,6 +67,10 @@ $routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filte
 $routes->get('gestio/galeria/crearAlbum', 'GestioController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/crearAlbum', 'GestioController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 
 // GESTIO EVENTS

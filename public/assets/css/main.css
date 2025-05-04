@@ -71,6 +71,59 @@ a:active {
     cursor: pointer;
 }
 
+.w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.w3-third {
+    flex: 1 1 calc(33.333% - 20px); 
+    min-width: 280px;
+    max-width: calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.noticies {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.w3-container {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.w3-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.w3-margin-top h2 {
+    margin-bottom: 20px;
+}
+
+.w3-button {
+    padding: 8px 12px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.w3-button:hover {
+    background: #388E3C;
+}
+
 @media (max-width: 768px) {
     .menu-items {
         display: none;

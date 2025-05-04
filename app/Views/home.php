@@ -102,23 +102,19 @@
                 <div class="w3-row-padding">
                     <?php foreach ($noticies as $index => $noticia): ?>
                         <div class="w3-third w3-margin-bottom">
-                            <div class="w3-card-4">
+                            <div class="w3-card-4 noticies">
                                 <div class="w3-container w3-padding">
                                     <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 200px; object-fit: cover;">
                                     <h3><?= esc($noticia['nom']) ?></h3>
                                     <p><?= esc($noticia['resum']) ?></p>
-                                    <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
+                                        <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
                                 </div>
                             </div>
                         </div>
-
-                        <?php if (($index + 1) % 3 == 0): ?>
-                            <div class="w3-rest"></div>
-                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             <?php else: ?>
-                <p><?= lang('home.NoHiHaNoticies') ?></p>
+                <p style="background-color: red; color: white; padding: 10px;"><?= lang('errors.noNews') ?></p>
             <?php endif; ?>
         </div>
     </div>

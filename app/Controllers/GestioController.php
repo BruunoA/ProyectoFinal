@@ -37,7 +37,7 @@ class GestioController extends BaseController
         $validation = \Config\Services::validation();
 
         helper(["form"]);
-        
+
         $seccio = $this->request->getPost('seccio');
 
         $rules = [
@@ -51,7 +51,7 @@ class GestioController extends BaseController
 
         if ($seccio === 'noticies') {
             $rules['portada'] = 'required';
-        } 
+        }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
@@ -67,13 +67,13 @@ class GestioController extends BaseController
 
         // $validation->setRules($rules);
 
-         if($this->validate($rules)){
+        if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->insert($data);
             return redirect()->to('/gestio');
-        }else {
+        } else {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        } 
+        }
 
         // $model = new GestioModel();
         // if ($model->insert($data)) {
@@ -87,6 +87,7 @@ class GestioController extends BaseController
     {
         $model = new GestioModel();
         $model->delete($id);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre esborrat correctament</div>');
         return redirect()->back();
     }
 
@@ -115,8 +116,8 @@ class GestioController extends BaseController
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
-        $model->save($data);
-        return redirect()->to('/gestio');
+            $model->save($data);
+            return redirect()->to('/gestio');
         }
     }
 
@@ -126,65 +127,6 @@ class GestioController extends BaseController
         $data['historia'] = $model->where('seccio', 'historia')->findAll();
         return view('sobreNosaltres', $data);
     }
-
-    // public function addEvent()
-    // {
-    //     return view('gestio_pag/events/addEvents');
-    // }
-
-    // public function addEvent_post()
-    // {
-    //     helper(["form"]);
-    //     $model = new EventsModel();
-
-    //     $date = $this->request->getPost('data');
-
-    //     $data = [
-    //         'nom' => $this->request->getPost('nom'),
-    //         'data' => $date,
-    //         'tipus_event' => $this->request->getPost('tipus_event'),
-    //     ];
-
-    //     if (!$model->validate($data)) {
-    //         return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     } else {
-    //         $model->insert($data);
-    //         return redirect()->to('/gestio');
-    //     }
-    // }
-
-    // public function eventsModify($id)
-    // {
-    //     $model = new EventsModel();
-    //     $data['events'] = $model->find($id);
-    //     return view('gestio_pag/events/modifyEvent', $data);
-    // }
-
-    // public function eventsModify_post($id)
-    // {
-    //     helper(["form"]);
-    //     $model = new EventsModel();
-
-    //     $data = [
-    //         'nom' => $this->request->getPost('nom'),
-    //         'data' => $this->request->getPost('data'),
-    //         'tipus_event' => $this->request->getPost('tipus_event'),
-    //     ];
-
-    //     if (!$model->validate($data)) {
-    //         return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     } else {
-    //         $model->update($id, $data);
-    //         return redirect()->to('gestio/events');
-    //     }
-    // }
-
-    // public function eventsDelete($id)
-    // {
-    //     $model = new EventsModel();
-    //     $model->delete($id);
-    //     return redirect()->to('gestio/events');
-    // }
 
     public function upload_drag()
     {
@@ -197,7 +139,7 @@ class GestioController extends BaseController
         ];
         $data['errors'] = [];
 
-        return view('gestio_pag/upload_form_drag', $data);
+        return view('gestio_pag/fotos/upload_form_drag', $data);
     }
 
     public function upload_drag_post()
@@ -226,16 +168,22 @@ class GestioController extends BaseController
             $files = [];
             $model = new TaulaFotosModel();
 
+            // agafar el proxim id
             $proximID = $model->getNextID();
 
-            $carpeta = $this->request->getPost('carpeta');
+            // nom de la carpeta a crear, on es guardara la imatge
+            $carpeta = $this->request->getPost('album');
             $ruta = FCPATH . 'uploads/' . $carpeta;
 
             if (!is_dir($ruta)) {
                 mkdir($ruta, 0777, true);
             }
 
-            $idAlbum = $this->request->getPost('album');
+            // agafer id del album, pel nom que s'ha seleccionat al formulari
+            $albumModel = new AlbumModel();
+            $album = $albumModel->where('titol', $this->request->getPost('album'))->first();
+            $idAlbum = $album['id'];
+
 
             foreach ($imagefile['userfile'] as $img) {
                 if ($img->isValid() && !$img->hasMoved()) {
@@ -247,7 +195,6 @@ class GestioController extends BaseController
                     $newName = $currentDate . '_' . $proximID . '.' . $ext;
                     $nom_fitxer = $img->getClientName();
                     $descripcio = $this->request->getPost('descripcio');
-                    $carpeta = $this->request->getPost('carpeta');
 
                     $fotoData = [
                         'titol' => $newName,
@@ -282,7 +229,7 @@ class GestioController extends BaseController
     public function crearAlbum()
     {
 
-        return view('gestio_pag/crear_album');
+        return view('gestio_pag/fotos/crear_album');
     }
 
     public function crearAlbum_post()
@@ -335,35 +282,6 @@ class GestioController extends BaseController
             'valors' => $model->where('seccio', 'valors')->findAll(),
         ];
 
-        // dd($data);
-
-        // $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
-
-        // $crud->setTable('gestio');
-        // $crud->setPrimaryKey('id');
-        // $crud->addWhere('seccio', 'historia');
-        // // $crud->addWhere('seccio', 'missio');
-        // // $crud->addWhere('seccio', 'visio');
-        // // $crud->addWhere('seccio', 'valors');
-
-        // $crud->setColumns(['id', 'nom', 'resum', 'contingut', 'estat']);
-
-        // $crud->setColumnsInfo([
-        //     'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-        //     'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-        //     'resum' => ['name' => 'resum', 'type' => 'text', 'html_atts' => ["required"],],
-        //     'contingut' => ['name' => 'contingut', 'type' => 'textarea', 'html_atts' => ["required"],],
-        //     'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
-        // ]);
-
-        // // $crud->setConfig('onlyView');
-        // // $crud->setConfig(["editable" => true,]);
-        // $crud->setConfig('delete', true);
-        // $crud->setConfig('add', true);
-        // $crud->setConfig('modify', true);
-
-        // $data['output'] = $crud->render();
-
         return view('gestio_pag/sobreNosaltres', $data);
     }
 
@@ -386,23 +304,10 @@ class GestioController extends BaseController
 
     public function events()
     {
-        //     $model = new EventsModel();
-        //     $events = $model->findAll();
-        //     // $tipusEvents = $model->distinct()->select('tipus_event')->findAll();
-
-        //     $pager = $model->pager;
-
-        //     $data = [
-        //         'events' => $events,
-        //         'pager' => $pager,
-        //         // 'tipusEvents' => $tipusEvents,
-        //     ];
-
         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 
         $crud->setTable('events');
         $crud->setPrimaryKey('id');
-        // $crud->addWhere('seccio', 'historia');
 
         $crud->setColumns(['id', 'nom', 'data', 'estat']);
 
@@ -425,18 +330,11 @@ class GestioController extends BaseController
         return view('gestio_pag/events/events', $data);
     }
 
-    // public function menuGestio()
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
-    //     return view('gestio_pag/menuGestio', $data);
-    // }
-
     public function album()
     {
         $model = new AlbumModel();
         $data['albums'] = $model->findAll();
-        return view('gestio_pag/album', $data);
+        return view('gestio_pag/fotos/album', $data);
     }
 
     public function albumFotos($albumId)
@@ -447,7 +345,7 @@ class GestioController extends BaseController
         $data['album'] = $albumModel->find($albumId);
         $data['fotos'] = $fotoModel->where('id_album', $albumId)->findAll();
 
-        return view('gestio_pag/galeria_fotos', $data);
+        return view('gestio_pag/fotos/galeria_fotos', $data);
     }
 
     public function deleteFoto()
@@ -476,4 +374,59 @@ class GestioController extends BaseController
 
         return redirect()->to('/gestio/galeria');
     }
+
+    public function banner(){
+
+        $model = new TaulaFotosModel();
+
+        $data =[
+            'banner' => $model->where('banner', 'si')->findAll(),
+        ];
+
+        return view('gestio_pag/banner/banner', $data);
+    }
+
+    public function bannerDelete($id){
+
+        $model = new TaulaFotosModel();
+        $model->where('id', $id)->delete();
+
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner esborrat correctament</div>');
+        return redirect()->to('/gestio/banner');
+    }
+
+    public function bannerModify($id){
+
+        $model = new TaulaFotosModel();
+        $data['banner'] = $model->find($id);
+
+        return view('gestio_pag/banner/banner_modify', $data);
+    }
+
+    public function bannerModify_post($id){
+
+        helper(["form"]);
+
+        $validationRule = [
+            'titol' => 'required',
+            'descripcio' => 'required',
+            'ruta' => 'required',
+        ];
+
+        $model = new TaulaFotosModel();
+        $data = [
+            'id' => $id,
+            'titol' => $this->request->getPost('titol'),
+            'descripcio' => $this->request->getPost('descripcio'),
+            'ruta' => $this->request->getPost('ruta'),
+        ];
+
+        if ($model->save($data)) {
+            session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
+            return redirect()->to('/gestio/banner');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $model->errors());
+        }
+    }
+
 }

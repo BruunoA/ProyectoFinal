@@ -44,7 +44,14 @@ class BAlbumSeeder extends Seeder
                 'portada' => 'http://localhost/fileget/album.jpg',
                 'estat' => 'no_publicat',
                 'created_at' => date('Y-m-d H:i:s'),
-            ]
+            ],
+            [
+                'titol' => 'Banner',
+                'id_club' => random_int(1, 3),
+                'portada' => 'http://localhost/fileget/album.jpg',
+                'estat' => 'no_publicat',
+                'created_at' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         $this->db->table('albums')->insertBatch($data);

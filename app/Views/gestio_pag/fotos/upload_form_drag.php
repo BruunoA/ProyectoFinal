@@ -42,9 +42,9 @@
 
         <?= form_open_multipart(base_url('pujarArxiu'), ['class' => 'w3-container w3-card w3-white w3-margin-top']) ?>
 
-            <input type="file" id="formFiles" name="userfile[]" style="display:none" />
+        <input type="file" id="formFiles" name="userfile[]" style="display:none" />
 
-            <p>
+        <!-- <p>
                 <label for="carpeta">Selecciona la carpeta en la qual vols guardar la imatge</label>
                 <select class="w3-select" name="carpeta" id="carpeta">
                     <option value="galeria">Galeria</option>
@@ -52,26 +52,34 @@
                     <option value="programes">Programes</option>
                     <option value="albums">Albums</option>
                 </select>
-            </p>
+            </p> -->
 
-            <p>
-                <label for="descripcio">Descripcio de la imatge</label>
-                <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
-            </p>
+        <p>
+            <label for="banner">Destacat banner</label>
+            <select class="w3-select w3-border" name="banner" id="banner">
+            <option value="no">No</option>
+            <option value="si">Si</option>
+            </select>
+        </p>
 
-            <p>
-                <label for="album">Album:</label>
-                <select name="album" id="album">
-                    <option value="">Selecciona un album</option>
-                    <?php foreach ($albums as $album) : ?>
-                        <option value="<?= esc($album['id']) ?>"><?= esc($album['titol']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </p>
+        <p>
+            <label for="descripcio">Descripcio de la imatge</label>
+            <input class="w3-input w3-border" type="text" name="descripcio" id="descripcio">
+        </p>
 
-            <p class="w3-center">
-                <input class="w3-button w3-green w3-round" type="submit" value=<?= lang('upload.submit') ?>>
-            </p>
+        <p>
+            <label for="album" class="w3-text">Album:</label>
+            <select name="album" id="album" class="w3-select w3-border">
+            <option value="">Selecciona un album</option>
+            <?php foreach ($albums as $album) : ?>
+                <option value="<?= esc($album['titol']) ?>"><?= esc($album['titol']) ?></option>
+            <?php endforeach; ?>
+            </select>
+        </p>
+
+        <p class="w3-center">
+            <input class="w3-button w3-green w3-round" type="submit" value=<?= lang('upload.submit') ?>>
+        </p>
 
         </form>
     </div>
