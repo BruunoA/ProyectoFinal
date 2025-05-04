@@ -53,16 +53,11 @@
             <option value="">Selecciona una opció</option>
             <option value="" disabled class="w3-bold">Noticies</option>
             <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="event" <?= old('seccio', $gestio['seccio']) === 'event' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Events</option>
             <option value="" disabled class="w3-bold">Sobre nosaltres</option>
             <option value="historia" <?= old('seccio', $gestio['seccio']) === 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
             <option value="missio" <?= old('seccio', $gestio['seccio']) === 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
             <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
             <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="" disabled class="w3-bold">Programes</option>
-            <option value="categories" <?= old('seccio', $gestio['seccio']) === 'categories' ? 'selected' : '' ?>>Categories</option>
-            <option value="" disabled class="w3-bold">Configuració</option>
-            <option value="banner" <?= old('seccio', $gestio['seccio']) === 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
         </select>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
@@ -79,7 +74,7 @@
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" disabled value="<?= old('portada', $gestio['portada']) ?>">
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
@@ -341,6 +336,24 @@
         $(document).ready(function() {
             $('#summernote').summernote();
         });
+
+        function openFileManager() {
+            $('<div/>').dialogelfinder({
+                url: '<?= base_url("fileconnector") ?>',
+                width: '80%',
+                height: '80%',
+                commandsOptions: {
+                    getfile: {
+                        oncomplete: 'close',
+                        multiple: false
+                    }
+                },
+                getFileCallback: function(file) {
+                    console.log(file);
+                    $('#portada').val(file.url);
+                }
+            });
+        }
     </script>
 </body>
 

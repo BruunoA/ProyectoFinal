@@ -4,14 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\GestioModel;
-use App\Models\TagsModel;
+use App\Models\ClubsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class IndexController extends BaseController
 {
     public function index()
     {
-        $model = new TagsModel();
+        $model = new ClubsModel();
 
         $data = [
             'tags' => $model->findAll(),

@@ -28,7 +28,7 @@ class TaulaVideosMigration extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('id_album', 'albums', 'id');
-        $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->addForeignKey('id_tag', 'clubs', 'id');
         $this->forge->createTable('taula_videos');
     }
 

@@ -9,21 +9,28 @@ use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 use App\Models\MenuModel;
+use App\Models\ClubsModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
 use SIENSIS\KpaCrud\Config\KpaCrud;
 
 class GestioController extends BaseController
 {
-    // public function index()
-    // {
-    //     // $model = new ConfiguracioModel();
-    //     // $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
+    public function index()
+    {
+        // $model = new ConfiguracioModel();
+        // $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
 
-    //     $data = $this->data;
+        // $data = $this->data;
 
-    //     return view('gestio_pag/add', $data);
-    // }
+        $model = new ClubsModel();
+
+        $data = [
+            'clubs' => $model->findAll(),
+        ];
+
+        return view('gestio_pag/add', $data);
+    }
 
     public function add()
     {
@@ -46,6 +53,7 @@ class GestioController extends BaseController
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
+            'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
             'portada' => $this->request->getPost('portada'),
@@ -71,21 +79,6 @@ class GestioController extends BaseController
         }
     }
 
-    // public function gestio()
-    // {
-    //     // $model = new GestioModel();
-    //     // $dataGestio['gestio'] = $model->findAll();
-    //     // $dataEvent = new EventsModel();
-    //     // $modelEvent['events'] = $dataEvent->findAll();
-
-    //     // $data = [
-    //     //     'gestio' => $dataGestio['gestio'],
-    //     //     'events' => $modelEvent['events'],
-    //     // ];
-
-    //     return view('gestio_pag/SobreNosaltres');
-    // }
-
     public function delete($id)
     {
         $model = new GestioModel();
@@ -105,7 +98,9 @@ class GestioController extends BaseController
         helper(["form"]);
         $model = new GestioModel();
         $data = [
+            'id'  => $id,
             'nom' => $this->request->getPost('nom'),
+            'portada' => $this->request->getPost('portada'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
             'estat' => $this->request->getPost('estat'),
@@ -113,11 +108,13 @@ class GestioController extends BaseController
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
+        // dd($data);
+
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
-            $model->update($id, $data);
-            return redirect()->to('/gestio');
+        $model->save($data);
+        return redirect()->to('/gestio');
         }
     }
 
@@ -370,7 +367,9 @@ class GestioController extends BaseController
     {
 
         $model = new GestioModel();
-        $noticies = $model->where('seccio', 'noticies')->findAll();
+        // $noticies = $model->where('seccio', 'noticies')->findAll();
+        $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
+
         $pager = $model->pager;
 
         $data = [

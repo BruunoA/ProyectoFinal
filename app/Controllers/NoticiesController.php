@@ -42,6 +42,8 @@ class NoticiesController extends BaseController
 
         $data['noticia'] = $model->where('url', $url)->first();
 
+        // dd($data['noticia']);
+
         return view('noticiaGran', $data);
     }
 }

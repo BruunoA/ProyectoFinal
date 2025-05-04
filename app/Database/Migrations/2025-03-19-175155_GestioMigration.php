@@ -69,7 +69,7 @@ class GestioMigration extends Migration
                         ],
                 ]);
                 $this->forge->addPrimaryKey('id');
-                $this->forge->addForeignKey('id_club', 'tags', 'id');
+                $this->forge->addForeignKey('id_club', 'clubs', 'id');
                 $this->forge->createTable('gestio');
         }
 

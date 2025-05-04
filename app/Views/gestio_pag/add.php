@@ -53,16 +53,19 @@
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <!-- <option value="event">&nbsp;&nbsp;&nbsp;Events</option> -->
             <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
             <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
             <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
             <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
             <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled class="w3-bold">Programes</option>
-            <option value="categories">Categories</option>
-            <option value="#" disabled class="w3-bold">Configuració</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
+        </select>
+
+        <label for="id_club" class="w3-text-black">ID del club</label>
+        <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
+            <option value="">Selecciona un club</option>
+            <?php foreach ($clubs as $club): ?>
+                <option value="<?= esc($club['id']) ?>"><?= esc($club['nom']) ?></option>
+            <?php endforeach; ?>
         </select>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
@@ -72,15 +75,9 @@
             <option value="publicat">Publicat</option>
         </select>
 
-        <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">
-            <label for="data" class="w3-text-black"><b>Data Event</b></label>
-            <input class="w3-input w3-border" type="date" id="data" name="data">
-        </div> -->
-
-        <!-- TODO: VEURE SI CANVIAR LA RUTA A PUBLIC O DEIXAR-LA A WRITABLE -->
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada">
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
@@ -97,17 +94,6 @@
         document.getElementById('seccio').addEventListener('change', function() {
             // const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             // const ckeditor = document.getElementById('ckeditor');
-            // const dataEvent = document.getElementById('event-container');
-
-
-            // if (this.value === 'event') {
-            //     contenidorContingut.style.display = 'none';
-            //     ckeditor.removeAttribute('required');
-            //     dataEvent.style.display = 'block';
-            // } else {
-            //     contenidorContingut.style.display = 'block';
-            //     ckeditor.setAttribute('required', 'required');
-            // }
 
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {

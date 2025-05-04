@@ -16,7 +16,7 @@
         <h1><?= $noticia['nom'] ?></h1>
     </div>
     <div class="w3-card news-card" style="display:flex; flex-direction: column;">
-        <img src="<?= base_url('assets/img/noticia.jpeg'); ?>" style="height: 50%px; width:50%">
+        <img src="<?= $noticia['portada'] ?>" style="height: 50%px; width:50%">
         <div class="w3-container news-container">
             <p><?= $noticia['contingut'] ?></p>
         </div>

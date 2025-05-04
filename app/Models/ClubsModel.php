@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TagsModel extends Model
+class ClubsModel extends Model
 {
-    protected $table            = 'tags';
+    protected $table            = 'clubs';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom_tag'];
+    protected $allowedFields    = ['nom', 'foto_club'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

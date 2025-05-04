@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class TagMigration extends Migration
+class ClubsMigration extends Migration
 {
     public function up()
     {
@@ -13,7 +13,7 @@ class TagMigration extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'nom_tag'          => [
+            'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 
                 'null'           => false,
@@ -39,11 +39,11 @@ class TagMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('tags');
+        $this->forge->createTable('clubs');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tags');
+        $this->forge->dropTable('clubs');
     }
 }
