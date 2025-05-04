@@ -8,4 +8,5 @@ return [
     "Calendari"  => "Calendari",
     "NoticiesDestacades" => "Notícies destacades",
     "LlegirMes"  => "Llegir més",
+    'titolClubs' => 'FUTBOL CLUB ALPICAT',
 ];

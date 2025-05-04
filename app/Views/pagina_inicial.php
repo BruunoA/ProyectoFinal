@@ -13,7 +13,7 @@
 <body>
     <header class="w3-container w3-center w3-padding-32"
         style="background: linear-gradient(to right, #000, #d32f2f); color: white;">
-        <h1 style="margin: 0;">FUTBOL CLUB ALPICAT</h1>
+        <h1 style="margin: 0;"><?= lang('home.titolClubs') ?></h1>
     </header>
     <?= session()->getFlashdata('error'); ?>
     <div class="w3-row-padding w3-center w3-margin-top">
