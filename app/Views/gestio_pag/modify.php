@@ -60,23 +60,18 @@
             <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
         </select>
 
+        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
+            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly value="<?= old('portada', $gestio['portada']) ?>">
+            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
+        </div>
+
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
             <option value="">Selecciona una opció</option>
             <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
             <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
         </select>
-
-        <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">
-            <label for="data" class="w3-text-black"><b>Data Event</b></label>
-            <input class="w3-input w3-border" type="date" id="data" name="data">
-        </div> -->
-
-        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
-            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" disabled value="<?= old('portada', $gestio['portada']) ?>">
-            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
-        </div>
 
         <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
@@ -87,19 +82,19 @@
     </form>
 
     <script>
+
+        function mostrarPortada() {
+            const seccio = document.getElementById('seccio').value;
+            const portadaContainer = document.getElementById('portada-container');
+            if (seccio === 'noticies') {
+                portadaContainer.style.display = 'block';
+            } else {
+                portadaContainer.style.display = 'none';
+            }
+        }
         document.getElementById('seccio').addEventListener('change', function() {
             const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             const ckeditor = document.getElementById('ckeditor');
-            // const dataEvent = document.getElementById('event-container');
-
-            // if (this.value === 'event') {
-            //     contenidorContingut.style.display = 'none';
-            //     ckeditor.removeAttribute('required');
-            //     dataEvent.style.display = 'block';
-            // } else {
-            //     contenidorContingut.style.display = 'block';
-            //     ckeditor.setAttribute('required', 'required');
-            // }
 
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {
@@ -108,14 +103,7 @@
                 portada.style.display = 'none';
             }
         });
-        // document.getElementById('seccio').addEventListener('change', function() {
-        //     const portada = document.getElementById('portada-container');
-        //     if (this.value === 'noticies') {
-        //         portada.style.display = 'block';
-        //     } else {
-        //         portada.style.display = 'none';
-        //     }
-        // });
+
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
 

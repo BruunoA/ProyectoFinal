@@ -34,20 +34,24 @@ class GestioController extends BaseController
 
     public function add()
     {
-        // $validation = \Config\Services::validation();
+        $validation = \Config\Services::validation();
+
         helper(["form"]);
-        // $event = $this->request->getPost('seccio');
+        
+        $seccio = $this->request->getPost('seccio');
 
-        // $rules = [
-        //     'nom' => 'required',
-        //     'resum' => 'required',
-        //     'seccio' => 'required',
-        //     'contingut' => 'required'   
-        // ];
+        $rules = [
+            'nom' => 'required',
+            'resum' => 'required',
+            'seccio' => 'required',
+            'id_club' => 'required',
+            'estat' => 'required',
+            'ckeditor' => 'required',
+        ];
 
-        // if ($event === 'event') {
-        //     unset($rules['contingut']);
-        // }
+        if ($seccio === 'noticies') {
+            $rules['portada'] = 'required';
+        } 
 
         $data = [
             'nom' => $this->request->getPost('nom'),
@@ -63,20 +67,20 @@ class GestioController extends BaseController
 
         // $validation->setRules($rules);
 
-        //  if($this->validate($rules)){
-        //     $model = new GestioModel();
-        //     $model->insert($data);
-        //     return redirect()->to('/gestio');
-        // }else {
-        //     return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        // } 
-
-        $model = new GestioModel();
-        if ($model->insert($data)) {
+         if($this->validate($rules)){
+            $model = new GestioModel();
+            $model->insert($data);
             return redirect()->to('/gestio');
-        } else {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        }
+        }else {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        } 
+
+        // $model = new GestioModel();
+        // if ($model->insert($data)) {
+        //     return redirect()->to('/gestio');
+        // } else {
+        //     return redirect()->back()->withInput()->with('errors', $model->errors());
+        // }
     }
 
     public function delete($id)
@@ -107,8 +111,6 @@ class GestioController extends BaseController
             'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
-
-        // dd($data);
 
         if (!$model->validate($data)) {
             return redirect()->back()->withInput()->with('errors', $model->errors());
@@ -327,11 +329,13 @@ class GestioController extends BaseController
         $model = new GestioModel();
 
         $data = [
-            'historia' => $model->where('seccio', 'historia')->where('estat', 'publicat')->first(),
-            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
-            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
-            'valors' => $model->where('seccio', 'valors')->where('estat', 'publicat')->first(),
+            'historia' => $model->where('seccio', 'historia')->findAll(),
+            'missio' => $model->where('seccio', 'missio')->findAll(),
+            'visio' => $model->where('seccio', 'visio')->findAll(),
+            'valors' => $model->where('seccio', 'valors')->findAll(),
         ];
+
+        // dd($data);
 
         // $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 

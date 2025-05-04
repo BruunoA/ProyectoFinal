@@ -52,38 +52,38 @@
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
+            <option value="noticies" <?= old('seccio') == 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
+            <option value="historia" <?= old('seccio') == 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
+            <option value="missio" <?= old('seccio') == 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
+            <option value="visio" <?= old('seccio') == 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
+            <option value="valors" <?= old('seccio') == 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
         </select>
+
+        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
+            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" value="<?= old('portada') ?>" readonly>
+            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
+        </div>
 
         <label for="id_club" class="w3-text-black">ID del club</label>
         <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
             <option value="">Selecciona un club</option>
             <?php foreach ($clubs as $club): ?>
-                <option value="<?= esc($club['id']) ?>"><?= esc($club['nom']) ?></option>
+            <option value="<?= esc($club['id']) ?>" <?= old('id_club') == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
             <?php endforeach; ?>
         </select>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
             <option value="">Selecciona una opció</option>
-            <option value="no_publicat">No publicat</option>
-            <option value="publicat">Publicat</option>
+            <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>>No publicat</option>
+            <option value="publicat" <?= old('estat') == 'publicat' ? 'selected' : '' ?>>Publicat</option>
         </select>
-
-        <div id="portada-container" class="w3-margin-bottom" style="display: none;">
-            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly>
-            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
-        </div>
 
         <label class="w3-text-black"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor"></textarea>
+            <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor') ?></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
