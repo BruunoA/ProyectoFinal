@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Programa</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body>
     <div class="w3-container w3-padding">
         <h2 class="w3-center w3-text-blue">Modificar Programa</h2>
-    <div class="w3-margin-bottom">
-        <a href="javascript:history.back()" class="w3-button w3-light-gray w3-round w3-hover-dark-gray">Volver Atrás</a>
-    </div>
+        <div class="w3-margin-bottom">
+            <a href="javascript:history.back()" class="w3-button w3-light-gray w3-round w3-hover-dark-gray">Volver Atrás</a>
+        </div>
+
         <?php if (session()->getFlashdata('msg')): ?>
             <div class="w3-panel w3-<?= session()->getFlashdata('msg_type') ?> w3-display-container w3-animate-opacity">
                 <span onclick="this.parentElement.style.display='none'"
@@ -20,11 +23,8 @@
             </div>
         <?php endif; ?>
 
-        <form method="post" action="<?= base_url('gestio/programes/modify/' . $categories['id']) ?>" enctype="multipart/form-data" class="w3-card w3-padding w3-round-large w3-light-grey">
+        <form method="post" action="<?= base_url('gestio/modify/programa/' . $categories['id']) ?>" enctype="multipart/form-data" class="w3-card w3-padding w3-round-large w3-light-grey">
             <?= csrf_field() ?>
-
-            <!-- Campo oculto para método PUT si tu backend lo soporta -->
-            <form method="post" action="<?= base_url('gestio/modify/programa/'.$categories['id']) ?>">
 
             <div class="w3-row-padding w3-margin-bottom">
                 <div class="w3-col m6">
@@ -43,8 +43,8 @@
             <div class="w3-margin-bottom">
                 <label class="w3-text-blue"><b>Descripció</b></label>
                 <textarea class="w3-input w3-border w3-round" name="descripcio" rows="5" required><?=
-                                                                                            old('descripcio', $categories['descripcio'] ?? '')
-                                                                                            ?></textarea>
+                                                                                                    old('descripcio', $categories['descripcio'] ?? '')
+                                                                                                    ?></textarea>
             </div>
 
             <div class="w3-row-padding w3-margin-bottom">
@@ -82,4 +82,5 @@
         </form>
     </div>
 </body>
+
 </html>

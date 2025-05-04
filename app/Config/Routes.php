@@ -63,7 +63,7 @@ $routes->get('gestio/programes', 'GestioController::programes' /*, ['filter' => 
 $routes->get('gestio/eliminar/(:num)', 'GestioController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/eliminar/(:num)', 'GestioController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/modify/programa/(:num)', 'GestioController::modify_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/modify/programa/(:num)', 'GestioController::modify_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/modify/programa/(:num)', 'GestioController::modify_Programa_post/$1' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
 

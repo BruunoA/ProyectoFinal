@@ -230,8 +230,9 @@ class GestioController extends BaseController
         }
     }
 
-    public function menu(){
-        
+    public function menu()
+    {
+
         $model = new MenuModel();
 
         $data['menu'] = $model->findAll();
@@ -295,7 +296,8 @@ class GestioController extends BaseController
         }
     }
 
-    public function sobreNosaltres(){
+    public function sobreNosaltres()
+    {
         $model = new GestioModel();
         $data['historia'] = $model->where('seccio', 'historia')->where('estat', 'publicat')->first();
         $data['missio'] = $model->where('seccio', 'missio')->where('estat', 'publicat')->first();
@@ -305,7 +307,8 @@ class GestioController extends BaseController
         return view('gestio_pag/sobreNosaltres', $data);
     }
 
-    public function noticies(){
+    public function noticies()
+    {
 
         $model = new GestioModel();
         $noticies = $model->where('seccio', 'noticies')->findAll();
@@ -317,7 +320,8 @@ class GestioController extends BaseController
         return view('gestio_pag/noticies', $data);
     }
 
-    public function events(){
+    public function events()
+    {
         $model = new EventsModel();
         $events = $model->findAll();
 
@@ -332,13 +336,15 @@ class GestioController extends BaseController
     }
 
 
-    public function menuGestio(){
+    public function menuGestio()
+    {
         $model = new ConfiguracioModel();
         $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
         return view('gestio_pag/menuGestio', $data);
     }
 
-    public function album(){
+    public function album()
+    {
         $model = new AlbumModel();
         $data['albums'] = $model->findAll();
         return view('gestio_pag/album', $data);
@@ -353,40 +359,45 @@ class GestioController extends BaseController
 
         return view('gestio_pag/galeria_fotos', $data);
     }
-    public function deleteFoto(){
+    public function deleteFoto()
+    {
         $fotoModel = new TaulaFotosModel();
         $id_foto = $this->request->getVar('id_foto');
         $id_album = $this->request->getVar('id_album');
 
-        if(!empty($id_foto)){
-            $fotoModel->where('id',$id_foto)->delete();
+        if (!empty($id_foto)) {
+            $fotoModel->where('id', $id_foto)->delete();
             // $fotoModel->where('id_album',$id_album)->delete($id_foto);
         }
 
         return redirect()->to('/gestio/galeria_fotos/' . $id_album);
     }
 
-    public function programes(){
-        $categorieModel = new CategoriesModel(); 
-        $data['categories'] = $categorieModel->findAll(); 
+    public function programes()
+    {
+        $categorieModel = new CategoriesModel();
+        $data['categories'] = $categorieModel->findAll();
 
         return view('gestio_pag/programes', $data);
     }
-    
-    public function delete_Programa($id){
-        $categorieModel = new CategoriesModel(); 
-        $categorieModel->delete($id); 
+
+    public function delete_Programa($id)
+    {
+        $categorieModel = new CategoriesModel();
+        $categorieModel->delete($id);
 
         return redirect()->to('/gestio/programes');
     }
-    public function modify_Programa($id){
-        $categorieModel = new CategoriesModel(); 
-        $data['categories'] = $categorieModel->find($id); 
+    public function modify_Programa($id)
+    {
+        $categorieModel = new CategoriesModel();
+        $data['categories'] = $categorieModel->find($id);
 
         return view('gestio_pag/modify_programes', $data);
     }
-    public function modify_Programa_post($id){
-        $categorieModel = new CategoriesModel(); 
+    public function modify_Programa_post($id)
+    {
+        $categorieModel = new CategoriesModel();
         $data = [
             'titol' => $this->request->getPost('titol'),
             'descripcio' => $this->request->getPost('descripcio'),
@@ -394,12 +405,29 @@ class GestioController extends BaseController
             'id_equip' => $this->request->getPost('id_equip'),
         ];
 
-        if (!$categorieModel->validate($data)) {
-            return redirect()->back()->withInput()->with('errors', $categorieModel->errors());
-        } else {
-            $categorieModel->update($id, $data);
-            return redirect()->to('/gestio/programes');
-        }
+        // //  eliminación de imagen
+        // if ($this->request->getPost('remove_image')) {
+        //     $data['img'] = null;
+        // }
+
+        // // subida de nueva imagen
+        // $img = $this->request->getFile('img');
+        // if ($img && $img->isValid() && !$img->hasMoved()) {
+        //     $newName = $img->getRandomName();
+        //     $img->move(WRITEPATH . 'uploads', $newName);
+        //     $data['img'] = 'uploads/' . $newName;
+        // }
+
+        // if (!$categorieModel->validate($data)) {
+        //     return redirect()->back()
+        //         ->withInput()
+        //         ->with('errors', $categorieModel->errors())
+        //         ->with('msg_type', 'red');
+        // } else {
+        //     $categorieModel->update($id, $data);
+        //     return redirect()->to('/gestio/programes')
+        //         ->with('msg', 'Programa actualizado correctamente')
+        //         ->with('msg_type', 'green');
+        // }
     }
-    
 }
