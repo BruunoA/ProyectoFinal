@@ -18,6 +18,10 @@ class GestioMigration extends Migration
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '250',
                         ],
+                        'id_club'          => [
+                                'type'           => 'INT',
+                                'null'           => false,
+                        ],
                         'resum'          => [
                                 'type'           => 'VARCHAR',
                                 'constraint'     => '250',
@@ -65,6 +69,7 @@ class GestioMigration extends Migration
                         ],
                 ]);
                 $this->forge->addPrimaryKey('id');
+                $this->forge->addForeignKey('id_club', 'tags', 'id');
                 $this->forge->createTable('gestio');
         }
 

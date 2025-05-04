@@ -22,10 +22,17 @@ class IndexController extends BaseController
 
     public function home()
     {
+
+        $id_club = $this->request->getGet('id_club');
+
+        if($id_club){
+            session()->set('id_club', $id_club);
+        }
+        
         $model = new GestioModel();
 
         $data = [
-            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->orderBy('created_at', 'desc')->findAll(),
+            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->where('id_club', $id_club)->orderBy('created_at', 'desc')->findAll(),
         ];
 
         return view("home", $data);

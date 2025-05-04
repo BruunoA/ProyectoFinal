@@ -14,6 +14,7 @@ class VisioSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
+                'id_club' => random_int(1, 3),
                 'contingut' => $fake->paragraph(3),
                 'seccio' => 'visio',
                 'url' => url_title($nom, '-', true),

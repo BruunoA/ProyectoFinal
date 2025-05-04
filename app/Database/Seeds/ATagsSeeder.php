@@ -5,7 +5,7 @@ namespace App\Database\Seeds;
 use CodeIgniter\Database\Seeder;
 use Faker\Factory;
 
-class TagsSeeder extends Seeder
+class ATagsSeeder extends Seeder
 {
     public function run()
     {
@@ -21,14 +21,17 @@ class TagsSeeder extends Seeder
         $data= [
             [
                 'nom_tag'    => 'Amateur', 
+                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
             [
                 'nom_tag'    => 'Juvenil', 
+                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
             [
                 'nom_tag'    => 'Cadet', 
+                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
         ];

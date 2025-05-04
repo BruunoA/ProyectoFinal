@@ -17,10 +17,19 @@ class GaleriaController extends BaseController
     public function getFotos(){
 
         $fotosModel = new FotosModel();
-        $fotos = $fotosModel->findAll();
+        $id_club = session()->get('id_club');
+
+        // missatge d'error si no hi ha id_club a la sessio
+        if (!$id_club) {
+            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
+            return redirect()->to('/');
+        }
+
+        // inner join per a agafar solament les fotos que tenen un album amb le id del club
+        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->where('albums.id_club', $id_club)->findAll();
 
         $model = new AlbumModel();
-        $albumsInfo = $model->findAll();
+        $albumsInfo = $model->where('id_club', $id_club)->findAll();
         
         $albums = [];
         foreach ($fotos as $foto) {
@@ -29,7 +38,7 @@ class GaleriaController extends BaseController
             foreach ($albumsInfo as $album) {
                 if ($album['id'] == $albumId) {
                     $albumTitle = $album['titol'];
-                    break;
+                    // break;
                 }
             }
 
@@ -59,7 +68,7 @@ class GaleriaController extends BaseController
         $fotos = $fotosModel->where('id_album', $albumId)->findAll();
         
         if (empty($fotos)) {
-            return redirect()->to('/galeria')->with('error', 'Álbum no encontrado');
+            return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
         }
         
         $data = [
@@ -72,32 +81,4 @@ class GaleriaController extends BaseController
         
         return view('galeriaFotos/fotosAlbum', $data);
     }
-
-    // public function getFotos(){
-
-    //     $fotosModel = new FotosModel();
-    //     $fotos = $fotosModel->findAll();
-        
-    //     $albums = [];
-    //     foreach ($fotos as $foto) {
-    //         $albumId = $foto['id_album'];
-            
-    //         if (!isset($albums[$albumId])) {
-    //             $albums[$albumId] = [
-    //                 'count' => 0,
-    //                 'fotos' => []
-    //             ];
-    //         }
-            
-    //         $albums[$albumId]['count']++;
-    //         $albums[$albumId]['fotos'][] = $foto;
-    //     }
-        
-    //     $data = [
-    //         'albums' => $albums,
-    //         'totalFotos' => count($fotos),
-    //     ];
-        
-    //     return view('galeria', $data);
-    // }
 }

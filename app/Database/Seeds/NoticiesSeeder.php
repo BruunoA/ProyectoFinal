@@ -11,7 +11,7 @@ class NoticiesSeeder extends Seeder
     {
         $fake = Factory::create("es_ES");
 
-        for ($i = 0; $i < 6; $i++) { 
+        for ($i = 0; $i < 30; $i++) { 
             $nom = $fake->sentence(6); 
             $resum = $fake->text(100); 
             $contingut = $fake->paragraphs(20, true); 
@@ -20,6 +20,7 @@ class NoticiesSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
+                'id_club' => random_int(1, 3),
                 'resum' => $resum,
                 'contingut' => $contingut,
                 'destacat' => $fake->randomElement(['si', 'no']),

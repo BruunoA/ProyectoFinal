@@ -15,15 +15,15 @@ use SIENSIS\KpaCrud\Config\KpaCrud;
 
 class GestioController extends BaseController
 {
-    public function index()
-    {
-        // $model = new ConfiguracioModel();
-        // $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
+    // public function index()
+    // {
+    //     // $model = new ConfiguracioModel();
+    //     // $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
 
-        $data = $this->data;
+    //     $data = $this->data;
 
-        return view('gestio_pag/add', $data);
-    }
+    //     return view('gestio_pag/add', $data);
+    // }
 
     public function add()
     {
@@ -291,9 +291,20 @@ class GestioController extends BaseController
         helper(["form"]);
         $model = new AlbumModel();
 
+        $portada = $this->request->getFile('portada');
+        $titolPortada = $this->request->getPost('titol');
+
+        if ($portada) {
+            $newName = $titolPortada;
+            $portada->move(FCPATH . 'uploads/portades', $newName);
+            $data['portada'] = 'uploads/portades/' . $newName;
+        } else {
+            $data['portada'] = 'http://localhost/fileget/album.jpg';
+        }
+
         $data = [
             'titol' => $this->request->getPost('titol'),
-            // 'portada' => $this->request->getPost('portada'),
+            'portada' => $this->request->getPost('portada'),
             'album' => $this->request->getPost('album'),
             'estat' => $this->request->getPost('estat'),
         ];

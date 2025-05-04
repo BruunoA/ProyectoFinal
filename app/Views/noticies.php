@@ -28,7 +28,7 @@
                     <ul>
                         <?php foreach ($events as $event): ?>
                             <li>
-                                <?= $event['nom']; ?> -- 
+                                <?= $event['nom']; ?> --
                                 <span style="font-weight: bold; color: teal;"><?= $event['data']; ?></span>
                             </li>
                         <?php endforeach; ?>
@@ -38,15 +38,13 @@
         </div>
         <?php $counter = 0; ?>
         <?php foreach ($gestio as $noticia): ?>
-            <?php if ($counter % 3 == 0): ?>
+            <?php if ($counter % 3 == 0): ?>  <!-- Mostrara les noticies de 3 en 3 sempre que el modul doni 0 -->  
                 <div class="w3-row-padding">
                 <?php endif; ?>
                 <div class="w3-col l4 m6 s12" style="margin-bottom: 1rem;">
                     <div class="w3-card news-card" style="display:flex; flex-direction: column;">
                         <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
-                            <!-- <img src="<?php // base_url('assets/img/noticia.jpeg'); 
-                                            ?>" style="width:100%"> -->
-                            <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 300px;">
+                            <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 250px;">
                         </a>
                         <div class="w3-container news-container">
                             <h5><strong><?= $noticia['nom'] ?></strong></h5>
@@ -62,8 +60,12 @@
         <?php if ($counter % 3 != 0): ?>
     </div>
 <?php endif; ?>
+<div class="paginador w3-center w3-red" style="color:black">
+    <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
+</div>
 </div>
 
 <?= $this->include('general/footer'); ?>
 </body>
+
 </html>

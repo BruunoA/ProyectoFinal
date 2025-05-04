@@ -15,48 +15,24 @@
         style="background: linear-gradient(to right, #000, #d32f2f); color: white;">
         <h1 style="margin: 0;">FUTBOL CLUB ALPICAT</h1>
     </header>
-
-    <section class="w3-display-container w3-center">
-        <div>
-            <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" alt="Campo de fútbol Alpicat"
-                class="w3-image w3-margin-top"
-                style="width: 100%; height: 400px; object-fit: cover; border-radius: 10px;">
-        </div>
-    </section>
-
+    <?= session()->getFlashdata('error'); ?>
     <div class="w3-row-padding w3-center w3-margin-top">
         <?php
-        $equipos = [
-            ['link' => 'home/', 'img' => 'alpicatLogo.png', 'nombre' => 'Equipo ALPICAT 1'],
-            ['link' => 'equipo2/', 'img' => 'alpicatLogo.png', 'nombre' => 'Equipo ALPICAT 2'],
-            ['link' => 'equipo3/', 'img' => 'alpicatLogo.png', 'nombre' => 'Equipo ALPICAT 3']
-        ];
         foreach ($tags as $tag): ?>
             <div class="w3-third">
-                <a href="<?= base_url($tag['link']); ?>" class="team-card">
+                <a href="<?= base_url('home?id_club=' . $tag['id']); ?>" class="team-card">
                     <div class="w3-card w3-hover-shadow w3-round-large">
-                        <img src="<?= base_url('assets/img/' . $tag['img']); ?>" alt="<?= $tag['nombre']; ?>"
+                        <img src="<?= $tag['foto_club'] ?>" alt="<?= $tag['nom_tag']; ?>"
                             class="w3-image" style="width:50%; padding-top: 20px;">
                         <div class="w3-container w3-padding">
-                            <h3><?= $tag['nombre']; ?></h3>
+                            <h3><?= $tag['nom_tag']; ?></h3>
                         </div>
                     </div>
                 </a>
             </div>
         <?php endforeach; ?>
     </div>
-
     <br>
-    <footer class="w3-padding-32 w3-center" style="background: #000; color: white;">
-        <div>
-            <a href="https://x.com/" target="_blank"><img src="<?= base_url('assets/img/x.jpg'); ?>" class="social-icon"
-                    alt="Twitter"></a>
-            <a href="https://facebook.com/" target="_blank"><img src="<?= base_url('assets/img/facebook.png'); ?>"
-                    class="social-icon" alt="Facebook"></a>
-            <a href="https://instagram.com/" target="_blank"><img src="<?= base_url('assets/img/instagram.png'); ?>"
-                    class="social-icon" alt="Instagram"></a>
-        </div>
-    </footer>
 </body>
 
 </html>
