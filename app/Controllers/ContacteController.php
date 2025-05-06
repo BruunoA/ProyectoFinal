@@ -25,6 +25,9 @@ class ContacteController extends BaseController
     public function send()
     {
         $contacteModel = new contacteModel();
+        $email = \Config\Services::email();
+        $cfg = config('Email');
+        $email->initialize($cfg);
 
         $data = [
             'nom' => $this->request->getPost('nom'),
@@ -34,7 +37,20 @@ class ContacteController extends BaseController
         ];
 
         if ($contacteModel->insert($data)) {
-            return view('contacte_enviat');
+            $email->setTo($this->request->getPost('from_email')); //saber a que correo enviar el missatge
+            $email->setSubject('Nou missatge de contacte');
+            $email->setMessage("Nom: " . $this->request->getPost('nom') . "\n" .
+                                "Email: " . $this->request->getPost('from_email') . "\n" .
+                                "Assumpte: " . $this->request->getPost('assumpte') . "\n\n" .
+                                $this->request->getPost('text'));
+
+            if ($email->send()) {
+                return redirect()->to('/contacte')->with('success', 'Missatge enviat correctament!');
+            } else {
+                echo $email->printDebugger();
+                die;
+                return redirect()->to('/contacte')->with('error', 'Error en enviar el missatge.');
+            }
         } else {
             return view('contacte', [
                 'validation' => $contacteModel->errors(),
