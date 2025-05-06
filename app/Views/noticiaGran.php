@@ -12,12 +12,12 @@
 <?= $this->include('general/menu'); ?>
 
 <div class="w3-container" style="margin-top: 2rem;">
-    <div class="w3-container w3-teal" style="margin-bottom: 2rem">
+    <div class="w3-container w3-teal w3-center" style="margin-bottom: 2rem">
         <h1><?= $noticia['nom'] ?></h1>
     </div>
-    <div class="w3-card news-card" style="display:flex; flex-direction: column;">
-        <img src="<?= $noticia['portada'] ?>" style="height: 50%px; width:50%">
-        <div class="w3-container news-container">
+    <div class="w3-card w3-round-large w3-margin" style="overflow: hidden;">
+        <img src="<?= $noticia['portada'] ?>" class="w3-image" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+        <div class="w3-container w3-padding">
             <p><?= $noticia['contingut'] ?></p>
         </div>
     </div>
