@@ -396,38 +396,56 @@ class GestioController extends BaseController
         return view('gestio_pag/modify_programes', $data);
     }
     public function modify_Programa_post($id)
-    {
-        $categorieModel = new CategoriesModel();
-        $data = [
-            'titol' => $this->request->getPost('titol'),
-            'descripcio' => $this->request->getPost('descripcio'),
-            'horari' => $this->request->getPost('horari'),
-            'id_equip' => $this->request->getPost('id_equip'),
-        ];
-
-        // //  eliminación de imagen
-        // if ($this->request->getPost('remove_image')) {
-        //     $data['img'] = null;
-        // }
-
-        // // subida de nueva imagen
-        // $img = $this->request->getFile('img');
-        // if ($img && $img->isValid() && !$img->hasMoved()) {
-        //     $newName = $img->getRandomName();
-        //     $img->move(WRITEPATH . 'uploads', $newName);
-        //     $data['img'] = 'uploads/' . $newName;
-        // }
-
-        // if (!$categorieModel->validate($data)) {
-        //     return redirect()->back()
-        //         ->withInput()
-        //         ->with('errors', $categorieModel->errors())
-        //         ->with('msg_type', 'red');
-        // } else {
-        //     $categorieModel->update($id, $data);
-        //     return redirect()->to('/gestio/programes')
-        //         ->with('msg', 'Programa actualizado correctamente')
-        //         ->with('msg_type', 'green');
-        // }
+{
+    $categorieModel = new CategoriesModel();
+    
+    // Validación
+    $validation = \Config\Services::validation();
+    $validation->setRules([
+        'titol' => 'required',
+        'descripcio' => 'required',
+        'hora_inici' => 'required',
+        'hora_fi' => 'required',
+        'dias' => 'required'
+    ]);
+    
+    if (!$validation->withRequest($this->request)->run()) {
+        return redirect()->back()
+            ->withInput()
+            ->with('errors', $validation->getErrors())
+            ->with('msg_type', 'red');
     }
+    
+    $diasSeleccionados = $this->request->getPost('dias') ?? [];
+    $horaInici = $this->request->getPost('hora_inici');
+    $horaFi = $this->request->getPost('hora_fi');
+    
+    if (strtotime($horaFi) <= strtotime($horaInici)) {
+        return redirect()->back()
+            ->withInput()
+            ->with('msg', 'L\'hora de fi ha de ser posterior a l\'hora d\'inici')
+            ->with('msg_type', 'red');
+    }
+    
+    $horarioPlano = implode(',', $diasSeleccionados) . ' - ' . $horaInici . ' - ' . $horaFi;
+    
+    $data = [
+        'titol' => $this->request->getPost('titol'),
+        'descripcio' => $this->request->getPost('descripcio'),
+        'horari' => $horarioPlano, // Guardamos como string plano
+    ];
+
+    // Actualizar en base de datos
+    try {
+        $categorieModel->update($id, $data);
+        return redirect()->to('/gestio/programes')
+            ->with('msg', 'Programa actualizado correctament')
+            ->with('msg_type', 'green');
+    } catch (\Exception $e) {
+        return redirect()->back()
+            ->withInput()
+            ->with('msg', 'Error en actualitzar: ' . $e->getMessage())
+            ->with('msg_type', 'red');
+    }
+}
 }

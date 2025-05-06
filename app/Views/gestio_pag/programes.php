@@ -56,7 +56,6 @@
                         <td><?= $category['descripcio'] ?></td>
                         <td><img src="<?= base_url($category['img']) ?>" alt="<?= $category['titol'] ?>" width="100"></td>
                         <td><?= $category['horari'] ?></td>
-                        <td><?= $category['id_equip'] ?></td>
                         <td>
                         <a href="<?= base_url('gestio/modify/programa/' . $category['id']) ?>" class="w3-button w3-green w3-round">Modificar</a>                        
                         </td>

@@ -21,7 +21,6 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => $faker->sentence(10),
                 'img' => 'assets/img/categoria-default.jpg',
                 'horari' => $faker->paragraph(2),
-                'id_equip' => 4, 
                 'created_at' => date('Y-m-d H:i:s')
             ];
         }
