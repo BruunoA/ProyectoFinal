@@ -60,17 +60,18 @@ $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'g
 
 // GESTIO GALERIA
 // $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria', 'GestioController::album' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria_fotos/(:num)', 'GestioController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/eliminar_foto', 'GestioController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria/crearAlbum', 'GestioController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/galeria/crearAlbum', 'GestioController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria', 'GestioGaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria_fotos/(:num)', 'GestioGaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioGaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
+
+$routes->get('gestio/banner', 'GestioGaleriaController::banner' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/modify/(:num)', 'GestioGaleriaController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/banner/modify/(:num)', 'GestioGaleriaController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/delete/(:num)', 'GestioGaleriaController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO PROGRAMES
 $routes->get('gestio/programes', 'GestioProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);

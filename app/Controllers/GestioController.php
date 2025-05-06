@@ -227,51 +227,6 @@ class GestioController extends BaseController
         }
     }
 
-    public function crearAlbum()
-    {
-
-        return view('gestio_pag/fotos/crear_album');
-    }
-
-    public function crearAlbum_post()
-    {
-        helper(["form"]);
-        $model = new AlbumModel();
-
-        $portada = $this->request->getFile('portada');
-        $titolPortada = $this->request->getPost('titol');
-
-        if ($portada) {
-            $newName = $titolPortada;
-            $portada->move(FCPATH . 'uploads/portades', $newName);
-            $data['portada'] = 'uploads/portades/' . $newName;
-        } else {
-            $data['portada'] = 'http://localhost/fileget/album.jpg';
-        }
-
-        $data = [
-            'titol' => $this->request->getPost('titol'),
-            'portada' => $this->request->getPost('portada'),
-            'album' => $this->request->getPost('album'),
-            'estat' => $this->request->getPost('estat'),
-        ];
-
-        $validationRule = [
-            'titol' => 'required',
-            // 'portada' => 'required',
-            'album' => 'required',
-            'estat' => 'required|in_list[publicat,no_publicat]',
-        ];
-
-        // if (!$this->validate($validationRule)) {
-        //     $data['errors'] = $this->validator->getErrors();
-        //     return view('gestio_pag/crear_album', $data);
-        // }
-
-        $model->insert($data);
-        return redirect()->to('/gestio/galeria');
-    }
-
     public function sobreNosaltres()
     {
         $model = new GestioModel();
@@ -329,51 +284,6 @@ class GestioController extends BaseController
         $data['output'] = $crud->render();
 
         return view('gestio_pag/events/events', $data);
-    }
-
-    public function album()
-    {
-        $model = new AlbumModel();
-        $data['albums'] = $model->findAll();
-        return view('gestio_pag/fotos/album', $data);
-    }
-
-    public function albumFotos($albumId)
-    {
-        $albumModel = new AlbumModel();
-        $fotoModel = new TaulaFotosModel();
-
-        $data['album'] = $albumModel->find($albumId);
-        $data['fotos'] = $fotoModel->where('id_album', $albumId)->findAll();
-
-        return view('gestio_pag/fotos/galeria_fotos', $data);
-    }
-
-    public function deleteFoto()
-    {
-        $fotoModel = new TaulaFotosModel();
-        $id_foto = $this->request->getVar('id_foto');
-        $id_album = $this->request->getVar('id_album');
-
-        if (!empty($id_foto)) {
-            $fotoModel->where('id', $id_foto)->delete();
-            // $fotoModel->where('id_album',$id_album)->delete($id_foto);
-        }
-
-        // return redirect()->to('/gestio/galeria_fotos/' . $id_album);
-        return redirect()->back();
-    }
-
-    public function eliminarAlbum($id)
-    {
-
-        $albumModel = new AlbumModel();
-        $fotoModel = new TaulaFotosModel();
-
-        $fotoModel->where('id_album', $id)->delete();
-        $albumModel->where('id', $id)->delete();
-
-        return redirect()->to('/gestio/galeria');
     }
 
     public function banner(){

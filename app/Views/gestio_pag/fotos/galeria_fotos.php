@@ -9,6 +9,7 @@
 <body class="w3-light-grey">
     <a href="<?= base_url('gestio/galeria') ?>" class="w3-button w3-black w3-margin">Tornar a la galeria</a>
     <div class="w3-container w3-padding-32">
+       <?= session()->getFlashdata('success') ?>
         <?php if (!empty($album)): ?>
             <h1 class="w3-center"><?= esc($album['titol']) ?></h1>
 

@@ -12,7 +12,7 @@ class AlbumModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['titol'/*,'descripcio'*/];   // TODO: VEURE si cal afegir 'descripcio'
+    protected $allowedFields    = ['titol', 'portada', 'id_club', 'estat'/*,'descripcio'*/];   // TODO: VEURE si cal afegir 'descripcio'
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
