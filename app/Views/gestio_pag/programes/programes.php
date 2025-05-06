@@ -32,7 +32,7 @@
 <body class="w3-container">
 
     <?= $this->include('general/menuGestio'); ?>
-        <h1>Gestió de Programes</h1>
+    <h1>Gestió de Programes</h1>
     <?= session()->getFlashdata('success'); ?>
     <div class="w3-section">
         <a href="<?= base_url('gestio/programes/add') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Afegir programa</a>
@@ -55,19 +55,22 @@
                     <tr>
                         <td><?= $category['titol'] ?></td>
                         <td><?= $category['descripcio'] ?></td>
-                        <td><img src="<?= base_url($category['img']) ?>" alt="<?= $category['titol'] ?>" width="100"></td>
+                        <td><img src="<?= $category['img'] ?>" alt="<?= $category['titol'] ?>" width="100"></td>
                         <td><?= $category['horari'] ?></td>
                         <td><?= $category['id_equip'] ?></td>
                         <td>
-                        <a href="<?= base_url('gestio/modify/programa/' . $category['id']) ?>" class="w3-button w3-green w3-round">Modificar</a>                        
+                            <a href="<?= base_url('gestio/modify/programa/' . $category['id']) ?>" class="w3-button w3-green w3-round">Modificar</a>
                         </td>
                         <td>
-                        <a href="<?= base_url('gestio/eliminar/' . $category['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquest programa?');">Eliminar</a>                        
+                            <a href="<?= base_url('gestio/eliminar/' . $category['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquest programa?');">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="paginador w3-center w3-red" style="color:black">
+            <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
+        </div>
     </div>
 </body>
 

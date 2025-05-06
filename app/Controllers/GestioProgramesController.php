@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\CategoriesModel;
+use App\Models\EquipsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class GestioProgramesController extends BaseController
@@ -11,9 +12,16 @@ class GestioProgramesController extends BaseController
     public function programes()
     {
         $categorieModel = new CategoriesModel();
-        $data['categories'] = $categorieModel->findAll();
+        $programes= $categorieModel->orderBy('created_at', 'DESC')->paginate(4);
 
-        return view('gestio_pag/programes', $data);
+        $pager = $categorieModel->pager;
+
+        $data = [
+            'categories' => $programes,
+            'pager' => $pager,
+        ];
+
+        return view('gestio_pag/programes/programes', $data);
     }
 
     public function delete_Programa($id)
@@ -28,45 +36,63 @@ class GestioProgramesController extends BaseController
     public function modify_Programa($id)
     {
         $categorieModel = new CategoriesModel();
-        $data['categories'] = $categorieModel->find($id);
+        $modelEquips = new EquipsModel();
 
-        return view('gestio_pag/modify_programes', $data);
+        $data = [
+            'categories' => $categorieModel->find($id),
+            'equips' => $modelEquips->findAll(),
+        ];
+
+        return view('gestio_pag/programes/modify_programes', $data);
     }
 
     public function modify_Programa_post($id)
     {
         $categorieModel = new CategoriesModel();
-        
+
         $data = [
+            'id' => $id,
             'titol' => $this->request->getPost('titol'),
-            'descripcio' => $this->request->getPost('descripcio'),
             'horari' => $this->request->getPost('horari'),
+            'descripcio' => $this->request->getPost('descripcio'),
             'id_equip' => $this->request->getPost('id_equip'),
+            'img' => $this->request->getPost('img'),
         ];
 
-        // //  eliminación de imagen
-        // if ($this->request->getPost('remove_image')) {
-        //     $data['img'] = null;
-        // }
+        dd($data);
 
-        // // subida de nueva imagen
-        // $img = $this->request->getFile('img');
-        // if ($img && $img->isValid() && !$img->hasMoved()) {
-        //     $newName = $img->getRandomName();
-        //     $img->move(WRITEPATH . 'uploads', $newName);
-        //     $data['img'] = 'uploads/' . $newName;
-        // }
+        $categorieModel->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Programa modificat correctament</div>');
+        return redirect()->to('/gestio/programes');
+    }
 
-        // if (!$categorieModel->validate($data)) {
-        //     return redirect()->back()
-        //         ->withInput()
-        //         ->with('errors', $categorieModel->errors())
-        //         ->with('msg_type', 'red');
-        // } else {
-        //     $categorieModel->update($id, $data);
-        //     return redirect()->to('/gestio/programes')
-        //         ->with('msg', 'Programa actualizado correctamente')
-        //         ->with('msg_type', 'green');
-        // }
+    public function add()
+    {
+        $modelEquips = new EquipsModel();
+
+        $equips = $modelEquips->findAll();
+
+        $data = [
+            'equips' => $equips,
+        ];
+
+        return view('gestio_pag/programes/add_programes', $data);
+    }
+
+    public function add_post()
+    {
+        $categorieModel = new CategoriesModel();
+
+        $data = [
+            'titol' => $this->request->getPost('titol'),
+            'horari' => $this->request->getPost('horari'),
+            'descripcio' => $this->request->getPost('descripcio'),
+            'id_equip' => $this->request->getPost('id_equip'),
+            'img' => $this->request->getPost('img'),
+        ];
+
+        $categorieModel->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Programa afegit correctament</div>');
+        return redirect()->to('/gestio/programes');
     }
 }
