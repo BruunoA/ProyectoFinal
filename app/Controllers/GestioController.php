@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AlbumModel;
+use App\Models\CategoriesModel;
 use App\Models\ConfiguracioModel;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -428,5 +429,4 @@ class GestioController extends BaseController
             return redirect()->back()->withInput()->with('errors', $model->errors());
         }
     }
-
 }

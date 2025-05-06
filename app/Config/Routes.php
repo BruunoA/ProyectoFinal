@@ -72,6 +72,15 @@ $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' 
 $routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 
+// GESTIO PROGRAMES
+$routes->get('gestio/programes', 'GestioProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/eliminar/(:num)', 'GestioProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar/(:num)', 'GestioProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/modify/programa/(:num)', 'GestioProgramesController::modify_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/modify/programa/(:num)', 'GestioProgramesController::modify_Programa_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/programes/add', 'GestioProgramesController::add' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/programes/add', 'GestioProgramesController::add_post' /*, ['filter' => 'gestio:admin']*/);
+
 
 // GESTIO EVENTS
 $routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
