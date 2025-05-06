@@ -20,7 +20,7 @@
         <?php
         foreach ($tags as $tag): ?>
             <div class="w3-third">
-                <a href="<?= base_url('home?id_club=' . $tag['id']); ?>" class="team-card">
+                <a href="<?= base_url('home?club=' . $tag['nom']); ?>" class="team-card">
                     <div class="w3-card w3-hover-shadow w3-round-large">
                         <img src="<?= $tag['foto_club'] ?>" alt="<?= $tag['nom']; ?>"
                             class="w3-image" style="width:50%; padding-top: 20px;">

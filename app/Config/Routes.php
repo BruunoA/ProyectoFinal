@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('xarxes_socials', 'ConfiguracioController::xarxes_socials');
 $routes->match(['get', 'post'],'xarxes_socials', 'ConfiguracioController::xarxes_socials');
 
-$routes->get('menuProva', 'ConfiguracioController::menuProva');
+// $routes->get('menuProva', 'ConfiguracioController::menuProva');
  
 $routes->get('/', 'IndexController::index');
 

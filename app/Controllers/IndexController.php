@@ -23,7 +23,10 @@ class IndexController extends BaseController
     public function home()
     {
 
-        $id_club = $this->request->getGet('id_club');
+        $model = new ClubsModel();
+        $club = $this->request->getGet('club');
+
+        $id_club = $model->where('nom', $club)->first()['id'];
 
         if($id_club){
             session()->set('id_club', $id_club);
@@ -32,17 +35,9 @@ class IndexController extends BaseController
         $model = new GestioModel();
 
         $data = [
-            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->where('id_club', $id_club)->orderBy('created_at', 'desc')->findAll(),
+            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->where('id_club', $id_club)->orderBy('created_at', 'desc')->findAll(6),
         ];
 
         return view("home", $data);
-    }
-
-    public function equipo2(){
-        return view("equipo2");
-    }
-
-    public function equipo3(){
-        return view("equipo3");
     }
 }
