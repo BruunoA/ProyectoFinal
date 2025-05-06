@@ -28,7 +28,7 @@
                                     <h3><?= esc($album['titol']) ?></h3>
                                 </div>
                             </a>
-                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" style="margin:1rem;" onclick="return confirm('¿Estás seguro de que deseas eliminar este álbum?');">Eliminar galeria</a>
+                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-button w3-red w3-margin" onclick="return confirm('Vols eliminar aquest album?');">Eliminar album</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -36,7 +36,7 @@
         <?php else: ?>
             <p><?= lang('albumsGestio.null') ?></p>
         <?php endif; ?>
-        <div class="paginador w3-center w3-red" style="color:black">
+        <div class="paginador w3-center w3-black" style="color:black">
             <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
         </div>
     </div>

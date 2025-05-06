@@ -243,16 +243,34 @@ class GestioController extends BaseController
 
     public function noticies()
     {
+        $search = $this->request->getGet('q') ?? '';
 
+        // if (isset($search) && isset($search['q'])) {
+        //     $search = $search["q"];
+        // } else
+        //     $search = "";
+ 
         $model = new GestioModel();
+
+        if ($search==''){
+            $paginateData=$model->getAllPaged(5);
+        } else {
+            $paginateData=$model->getByTitleOrText($search)->paginate(5);
+        }
+
+            if($search==''){
+                $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
+            } else {
+                $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
+            }
         // $noticies = $model->where('seccio', 'noticies')->findAll();
-        $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
 
         $pager = $model->pager;
 
         $data = [
             'noticies' => $noticies,
             'pager' => $pager,
+            'search' => $search,
         ];
 
         return view('gestio_pag/noticies', $data);

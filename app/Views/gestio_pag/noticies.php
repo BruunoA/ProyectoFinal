@@ -11,10 +11,14 @@
 
 <body class="w3-light-grey">
     <?= $this->include('general/menuGestio'); ?>
-    <div class="w3-container w3-teal">
+    <div class="w3-container">
         <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.afegir") ?></a>
     </div>
     <div class="w3-container">
+    <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm">
+        <input type='text' name='q' value='<?= $search ?>' placeholder="Search here...">
+        <input type='button' id='btnsearch' value='Cercar' onclick='document.getElementById("searchForm").submit();'>
+    </form>
         <h1 class="w3-center"><?= lang("noticies.Titol") ?></h1>
         <?php if (!empty($noticies)): ?>
             <div class="cards-container">
