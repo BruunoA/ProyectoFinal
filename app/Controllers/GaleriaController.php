@@ -21,13 +21,13 @@ class GaleriaController extends BaseController
         $id_club = session()->get('id_club');
 
         // missatge d'error si no hi ha id_club a la sessio
-        if (!$id_club) {
-            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
-            return redirect()->to('/');
-        }
+        // if (!$id_club) {
+        //     session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
+        //     return redirect()->to('/');
+        // }
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
-        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->where('albums.id_club', $id_club)->findAll();
+        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')/*->where('albums.id_club', $id_club)*/->findAll();
 
 
         // if($search !== '') {

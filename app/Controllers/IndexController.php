@@ -26,16 +26,16 @@ class IndexController extends BaseController
         $model = new ClubsModel();
         $club = $this->request->getGet('club');
 
-        $id_club = $model->where('nom', $club)->first()['id'];
+        // $id_club = $model->where('nom', $club)->first()['id'];
 
-        if($id_club){
-            session()->set('id_club', $id_club);
-        }
+        // if($id_club){
+        //     session()->set('id_club', $id_club);
+        // }
         
         $model = new GestioModel();
 
         $data = [
-            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->where('id_club', $id_club)->orderBy('created_at', 'desc')->findAll(6),
+            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')/*->where('id_club', $id_club)*/->orderBy('created_at', 'desc')->findAll(6),
         ];
 
         return view("home", $data);
