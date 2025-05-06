@@ -47,11 +47,11 @@ $routes->get('dades', 'ClassificacioController::obtenirDades');
 $routes->get('gestio', 'GestioController::sobreNosaltres');
 $routes->get('wysiwyg', 'GestioController::index');
 $routes->post('create/add', 'GestioController::add');
-$routes->get('create/add/event', 'GestioController::addEvent' , ['filter' => 'gestio:admin']);
-$routes->post('create/add/event', 'GestioController::addEvent_post' , ['filter' => 'gestio:admin']);
-$routes->get('gestio/delete/(:num)', 'GestioController::delete/$1' , ['filter' => 'gestio:admin']);
-$routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' , ['filter' => 'gestio:admin']);
-$routes->post('/modify/(:num)', 'GestioController::update/$1' , ['filter' => 'gestio:admin']);
+$routes->get('create/add/event', 'GestioController::addEvent' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('create/add/event', 'GestioController::addEvent_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/delete/(:num)', 'GestioController::delete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('/modify/(:num)', 'GestioController::update/$1'/* , ['filter' => 'gestio:admin']*/);
 
 // VISTES GESTIO
 $routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
@@ -71,11 +71,11 @@ $routes->get('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify/$1
 $routes->post('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/banner/add', 'GestioController::bannerAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/banner/add', 'GestioController::bannerAdd' /*, ['filter' => 'gestio:admin']*/);
+// $routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO PROGRAMES
 $routes->get('gestio/programes', 'GestioProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);

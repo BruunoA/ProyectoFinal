@@ -23,8 +23,8 @@ class IndexController extends BaseController
     public function home()
     {
 
-        $model = new ClubsModel();
-        $club = $this->request->getGet('club');
+        // $model = new ClubsModel();
+        // $club = $this->request->getGet('club');
 
         // $id_club = $model->where('nom', $club)->first()['id'];
 
@@ -36,7 +36,14 @@ class IndexController extends BaseController
 
         $data = [
             'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')/*->where('id_club', $id_club)*/->orderBy('created_at', 'desc')->findAll(6),
+            'banners' => $model->where('seccio', 'banner')->where('estat', 'publicat')->findAll(4),
+            'historia' => $model->where('seccio', 'historia')->where('estat', 'publicat')->first(),
+            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
+            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
+            'valors' => $model->where('seccio', 'valors')->where('estat', 'publicat')->first(),
         ];
+
+        // dd($data['banners']);
 
         return view("home", $data);
     }

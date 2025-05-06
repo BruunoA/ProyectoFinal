@@ -13,7 +13,8 @@ class ValorsSeeder extends Seeder
         $nom = $fake->words(3, true);
             $data = [
                 'nom' => $nom,
-                'id_club' => random_int(1, 3),
+                // 'id_club' => random_int(1, 3),
+                'resum' => $fake->sentence(20),
                 'contingut' => $fake->paragraph(2),
                 'seccio' => 'valors',
                 'url' => url_title($nom, '-', true),

@@ -9,4 +9,8 @@ return [
     "NoticiesDestacades" => "Notícies destacades",
     "LlegirMes"  => "Llegir més",
     'titolClubs' => 'FUTBOL CLUB ALPICAT',
+    'Historia' => 'Història',
+    'Missio' => 'Missió',
+    'Visio' => 'Visió',
+    'Valors' => 'Valors',
 ];

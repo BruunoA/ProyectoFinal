@@ -11,29 +11,37 @@
 <?= $this->include('general/menuGestio'); ?>
 <?= session()->getFlashdata('success') ?>
     <div class="w3-container">
-    <a href="<?= base_url('gestio/banner/add') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
+    <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
         <table class="w3-table w3-bordered w3-striped">
             <h1 class="w3-center">Gestió de Banners</h1>
             <thead>
                 <tr class="w3-light-grey">
-                    <th>Títol</th>
+                    <th>Nom</th>
                     <th>Descripció</th>
                     <th>Imatge</th>
                     <th>Accions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($banner as $item): ?>
+                <?php if (!empty($banner)): ?>
+                    <?php foreach ($banner as $item): ?>
+                        <tr>
+                            <td><?= $item['nom']; ?></td>
+                            <td><?= $item['resum']; ?></td>
+                            <td><img src="<?= $item['contingut']; ?>" alt="Banner Image" style="width:100px;height:auto;"></td>
+                            <td>
+                                <a href="<?= base_url('gestio/modify/' . $item['id']); ?>" class="w3-button w3-blue">Editar</a>
+                                <a href="<?= base_url('gestio/delete/' . $item['id']); ?>" class="w3-button w3-red" onclick="return confirm('Estas seguro de que deseas eliminar aquest banner?');">Eliminar</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
                     <tr>
-                        <td><?= $item['titol']; ?></td>
-                        <td><?= $item['descripcio']; ?></td>
-                        <td><img src="<?= $item['ruta']; ?>" alt="Banner Image" style="width:100px;height:auto;"></td>
-                        <td>
-                            <a href="<?= base_url('gestio/banner/modify/' . $item['id']); ?>" class="w3-button w3-blue">Editar</a>
-                            <a href="<?= base_url('gestio/banner/delete/' . $item['id']); ?>" class="w3-button w3-red" onclick="return confirm('Estas seguro de que deseas eliminar aquest banner?');">Eliminar</a>
+                        <td colspan="4" class="w3-center">
+                            <p class="w3-text-red">No hi ha banners disponibles</p>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

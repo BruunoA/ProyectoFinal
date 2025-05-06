@@ -72,13 +72,13 @@ class GestioController extends BaseController
                     'required' => 'El camp Secció és obligatori.',
                 ]
             ],
-            'id_club' => [
-                'label' => 'Club',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Club és obligatori.',
-                ]
-            ],
+            // 'id_club' => [
+            //     'label' => 'Club',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'El camp Club és obligatori.',
+            //     ]
+            // ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
@@ -103,13 +103,16 @@ class GestioController extends BaseController
                     'required' => 'El camp Portada és obligatori.',
                 ]
             ];
+        }else if($seccio === 'banner'){
+            $rules['resum']['rules'] = 'permit_empty';
+            $rules['id_club']['rules'] = 'permit_empty';
         }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            'id_club' => $this->request->getPost('id_club'),
+            // 'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
             'portada' => $this->request->getPost('portada'),
@@ -356,10 +359,21 @@ class GestioController extends BaseController
     public function banner()
     {
 
-        $model = new TaulaFotosModel();
+        // $model = new TaulaFotosModel();
+
+        // $data = [
+        //     'banner' => $model->where('banner', 'si')->findAll(),
+        // ];
+
+        $model = new GestioModel();
+
+        $banners = $model->where('seccio', 'banner')->orderBy('created_at', 'DESC')->paginate(6);
+
+        $pager = $model->pager;
 
         $data = [
-            'banner' => $model->where('banner', 'si')->findAll(),
+            'banner' => $banners,
+            'pager' => $model->pager,
         ];
 
         return view('gestio_pag/banner/banner', $data);

@@ -14,7 +14,8 @@ class GaleriaController extends BaseController
         return view('galeriaFotos/galeria');
     }
 
-    public function getFotos(){
+    public function getFotos()
+    {
 
         // $search = $this->request->getGet('q');
         $fotosModel = new FotosModel();
@@ -27,15 +28,16 @@ class GaleriaController extends BaseController
         // }
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
-        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')/*->where('albums.id_club', $id_club)*/->findAll();
 
 
         // if($search !== '') {
-            // $fotosModel->like('taula_fotos.titol', $search)->orLike('taula_fotos.descripcio', $search);
+        // $fotosModel->like('taula_fotos.titol', $search)->orLike('taula_fotos.descripcio', $search);
         // }
 
         $model = new AlbumModel();
-        $albumsInfo = $model->where('id_club', $id_club)->findAll();
+        $albumsInfo = $model->where('estat', 'publicat')->findAll();
+
+        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')/*->where('albums.id_club', $id_club)*/->findAll();
         
         $albums = [];
         foreach ($fotos as $foto) {
@@ -55,17 +57,17 @@ class GaleriaController extends BaseController
                     'fotos' => []
                 ];
             }
-            
+
             $albums[$albumId]['count']++;
             $albums[$albumId]['fotos'][] = $foto;
         }
-        
+
         $data = [
             'albums' => $albums,
             'totalFotos' => count($fotos),
             // 'search' => $search,
         ];
-        
+
         return view('galeriaFotos/galeria', $data);
     }
 
@@ -73,19 +75,19 @@ class GaleriaController extends BaseController
     {
         $fotosModel = new FotosModel();
         $fotos = $fotosModel->where('id_album', $albumId)->findAll();
-        
+
         if (empty($fotos)) {
             return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
         }
-        
+
         $data = [
             'album' => [
                 'id' => $albumId,
-                'titol' => $fotos[0]['titulo_album'] ?? 'Álbum '.$albumId,
+                'titol' => $fotos[0]['titulo_album'] ?? 'Álbum ' . $albumId,
                 'fotos' => $fotos
             ]
         ];
-        
+
         return view('galeriaFotos/fotosAlbum', $data);
     }
 }
