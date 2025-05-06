@@ -43,13 +43,13 @@
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Nom</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies" <?= old('seccio') == 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
@@ -75,7 +75,7 @@
         </select>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
             <option value="">Selecciona una opció</option>
             <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>>No publicat</option>
             <option value="publicat" <?= old('estat') == 'publicat' ? 'selected' : '' ?>>Publicat</option>

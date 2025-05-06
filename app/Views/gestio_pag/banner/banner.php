@@ -11,7 +11,7 @@
 <?= $this->include('general/menuGestio'); ?>
 <?= session()->getFlashdata('success') ?>
     <div class="w3-container">
-    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
+    <a href="<?= base_url('gestio/banner/add') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
         <table class="w3-table w3-bordered w3-striped">
             <h1 class="w3-center">Gestió de Banners</h1>
             <thead>

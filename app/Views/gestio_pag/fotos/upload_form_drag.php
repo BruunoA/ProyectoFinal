@@ -44,23 +44,19 @@
 
         <input type="file" id="formFiles" name="userfile[]" style="display:none" />
 
-        <!-- <p>
-                <label for="carpeta">Selecciona la carpeta en la qual vols guardar la imatge</label>
-                <select class="w3-select" name="carpeta" id="carpeta">
-                    <option value="galeria">Galeria</option>
-                    <option value="noticies">Noticies</option>
-                    <option value="programes">Programes</option>
-                    <option value="albums">Albums</option>
-                </select>
-            </p> -->
 
         <p>
+            <label for="titol">Titol de la imatge</label>
+            <input class="w3-input w3-border" type="text" name="titol" id="titol" >
+        </p>
+
+        <!-- <p>
             <label for="banner">Destacat banner</label>
             <select class="w3-select w3-border" name="banner" id="banner">
             <option value="no">No</option>
             <option value="si">Si</option>
             </select>
-        </p>
+        </p> -->
 
         <p>
             <label for="descripcio">Descripcio de la imatge</label>

@@ -41,17 +41,68 @@ class GestioController extends BaseController
 
         $seccio = $this->request->getPost('seccio');
 
+        // $rules = [
+        //     'nom' => 'required',
+        //     'resum' => 'required',
+        //     'seccio' => 'required',
+        //     'id_club' => 'required',
+        //     'estat' => 'required',
+        //     'ckeditor' => 'required',
+        // ];
+
         $rules = [
-            'nom' => 'required',
-            'resum' => 'required',
-            'seccio' => 'required',
-            'id_club' => 'required',
-            'estat' => 'required',
-            'ckeditor' => 'required',
+            'nom' => [
+                'label' => 'Nom',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Nom és obligatori.',
+                ]
+            ],
+            'resum' => [
+                'label' => 'Resum',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Resum és obligatori.',
+                ]
+            ],
+            'seccio' => [
+                'label' => 'Secció',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Secció és obligatori.',
+                ]
+            ],
+            'id_club' => [
+                'label' => 'Club',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Club és obligatori.',
+                ]
+            ],
+            'estat' => [
+                'label' => 'Estat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Estat és obligatori.',
+                ]
+            ],
+            'ckeditor' => [
+                'label' => 'Contingut',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Contingut és obligatori.',
+                ]
+            ],
         ];
 
         if ($seccio === 'noticies') {
-            $rules['portada'] = 'required';
+            $rules['portada'] = [
+                'label' => 'Portada',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Portada és obligatori.',
+                ]
+            ];
         }
 
         $data = [
@@ -118,6 +169,15 @@ class GestioController extends BaseController
             return redirect()->back()->withInput()->with('errors', $model->errors());
         } else {
             $model->save($data);
+            // return redirect()->to('/gestio');
+        }
+
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
+
+        $seccio = $this->request->getPost('seccio');
+        if($seccio == 'noticies'){
+            return redirect()->to('/gestio/noticies');
+        } else {
             return redirect()->to('/gestio');
         }
     }
@@ -194,11 +254,12 @@ class GestioController extends BaseController
                     $ext = $img->getClientExtension();
 
                     $newName = $currentDate . '_' . $proximID . '.' . $ext;
+                    $titol = $this->request->getPost('titol');
                     $nom_fitxer = $img->getClientName();
                     $descripcio = $this->request->getPost('descripcio');
 
                     $fotoData = [
-                        'titol' => $newName,
+                        'titol' => $titol,
                         'nom_fitxer' => $newName,
                         'descripcio' => $descripcio,
                         'ruta' => 'uploads/' . $carpeta . '/' . $newName,
@@ -245,25 +306,13 @@ class GestioController extends BaseController
     {
         $search = $this->request->getGet('q') ?? '';
 
-        // if (isset($search) && isset($search['q'])) {
-        //     $search = $search["q"];
-        // } else
-        //     $search = "";
- 
         $model = new GestioModel();
 
-        if ($search==''){
-            $paginateData=$model->getAllPaged(5);
+        if ($search == '') {
+            $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
         } else {
-            $paginateData=$model->getByTitleOrText($search)->paginate(5);
+            $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
         }
-
-            if($search==''){
-                $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
-            } else {
-                $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
-            }
-        // $noticies = $model->where('seccio', 'noticies')->findAll();
 
         $pager = $model->pager;
 
@@ -304,18 +353,20 @@ class GestioController extends BaseController
         return view('gestio_pag/events/events', $data);
     }
 
-    public function banner(){
+    public function banner()
+    {
 
         $model = new TaulaFotosModel();
 
-        $data =[
+        $data = [
             'banner' => $model->where('banner', 'si')->findAll(),
         ];
 
         return view('gestio_pag/banner/banner', $data);
     }
 
-    public function bannerDelete($id){
+    public function bannerDelete($id)
+    {
 
         $model = new TaulaFotosModel();
         $model->where('id', $id)->delete();
@@ -324,7 +375,8 @@ class GestioController extends BaseController
         return redirect()->to('/gestio/banner');
     }
 
-    public function bannerModify($id){
+    public function bannerModify($id)
+    {
 
         $model = new TaulaFotosModel();
         $data['banner'] = $model->find($id);
@@ -332,14 +384,36 @@ class GestioController extends BaseController
         return view('gestio_pag/banner/banner_modify', $data);
     }
 
-    public function bannerModify_post($id){
+    public function bannerModify_post($id)
+    {
 
         helper(["form"]);
 
         $validationRule = [
-            'titol' => 'required',
-            'descripcio' => 'required',
-            'ruta' => 'required',
+            'titol' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ]
+            ],
+            'descripcio' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Descripció és obligatori.',
+                ]
+            ],
+            'ruta' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Imatge és obligatori.',
+                ]
+            ],
+            'banner' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Destacat banner és obligatori.',
+                ]
+            ],
         ];
 
         $model = new TaulaFotosModel();
@@ -348,13 +422,74 @@ class GestioController extends BaseController
             'titol' => $this->request->getPost('titol'),
             'descripcio' => $this->request->getPost('descripcio'),
             'ruta' => $this->request->getPost('ruta'),
+            'banner' => $this->request->getPost('banner'),
         ];
 
-        if ($model->save($data)) {
-            session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
-            return redirect()->to('/gestio/banner');
-        } else {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
+
+        $model->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
+        return redirect()->to('/gestio/banner');
+
+        // if ($model->save($data)) {
+        //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
+        //     return redirect()->to('/gestio/banner');
+        // } else {
+        //     return redirect()->back()->withInput()->with('errors', $model->errors());
+        // }
+    }
+
+    public function bannerAdd()
+    {
+        return view('gestio_pag/banner/banner_create');
+    }
+
+    public function bannerAdd_post()
+    {
+        helper(["form"]);
+
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ]
+            ],
+            'ruta' => [
+                'label' => 'Imatge',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Imatge és obligatori.',
+                ]
+            ],
+            'banner' => [
+                'label' => 'Destacat banner',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Destacat banner és obligatori.',
+                ]
+            ],
+        ];
+
+
+        $model = new TaulaFotosModel();
+
+        $data = [
+            'titol' => $this->request->getPost('titol'),
+            'descripcio' => $this->request->getPost('descripcio'),
+            'ruta' => $this->request->getPost('ruta'),
+            'banner' => $this->request->getPost('banner'),
+        ];
+
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $model->insert($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner creat correctament</div>');
+        return redirect()->to('/gestio/banner');
     }
 }

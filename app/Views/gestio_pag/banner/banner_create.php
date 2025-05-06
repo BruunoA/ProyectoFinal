@@ -14,10 +14,8 @@
 
     <!-- CKEditor -->
     <script src="<?= base_url('ckeditor/ckeditor.js') ?>"></script>
-    <title>Modificar banner</title>
+    <title>Afegir banner</title>
 </head>
-
-<body>
 <?php if (session()->has('errors')) : ?>
     <div class="w3-container w3-red w3-round w3-margin">
         <ul>
@@ -27,31 +25,32 @@
         </ul>
     </div>
 <?php endif; ?>
-    <form action="<?= base_url('gestio/banner/modify/' . $banner['id']) ?>" method="POST">
+<body>
+    <form action="<?= base_url('gestio/banner/add') ?>" method="POST">
         <div class="w3-container w3-card w3-white w3-padding w3-margin w3-round-large" style="max-width: 500px; margin: auto;">
-            <h2 class="w3-center">Modificar Banner</h2>
+            <h2 class="w3-center">Afegir Banner</h2>
 
             <p>
                 <label for="titol" class="w3-text-grey">Títol</label>
-                <input class="w3-input w3-border w3-round" type="text" id="titol" name="titol" value="<?= $banner['titol'] ?>">
+                <input class="w3-input w3-border w3-round" type="text" id="titol" name="titol" value="<?= old('titol') ?>">
             </p>
 
             <p>
                 <label for="descripcio" class="w3-text-grey">Descripció</label>
-                <input class="w3-input w3-border w3-round" type="text" id="descripcio" name="descripcio" value="<?= $banner['descripcio'] ?>">
+                <input class="w3-input w3-border w3-round" type="text" id="descripcio" name="descripcio" value="<?= old('descripcio') ?>">
             </p>
 
             <p>
                 <label for="ruta" class="w3-text-black"><b>Imatge</b></label>
-                <input class="w3-input w3-border ruta" type="text" id="ruta" name="ruta" value="<?= $banner['ruta'] ?>" readonly>
+                <input class="w3-input w3-border ruta" type="text" id="ruta" name="ruta" value="<?= old('ruta') ?>" readonly>
                 <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
             </p>
 
             <p>
                 <label for="banner">Destacat banner</label>
-                <select class="w3-select w3-border" name="banner" id="banner">
-                    <option value="no">No</option>
-                    <option value="si">Si</option>
+                <select class="w3-select w3-border" name="banner" id="banner" required>
+                    <option value="no" <?= old('banner') === 'no' ? 'selected' : '' ?>>No</option>
+                    <option value="si" <?= old('banner') === 'si' ? 'selected' : '' ?>>Si</option>
                 </select>
             </p>
 
