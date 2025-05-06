@@ -75,23 +75,7 @@
                     </div>
                 <?php endforeach; ?>
                 
-                <?php foreach ($events as $event): ?>
-                    <div class="w3-col m6 s12 w3-padding gestio-item" data-seccio="<?= esc($event['seccio']) ?>">
-                        <div class="w3-card w3-white w3-round w3-padding">
-                            <header class="w3-container w3-blue">
-                                <h3><?= esc($event['nom']) ?></h3>
-                            </header>   
-                            <div class="w3-container">
-                                <p>Resum: <strong></strong> <?= $event['data'] ?></p>
-                                <!-- <p>Contingut: <strong></strong> <?= $event['tipus_event'] ?></p> -->
-                            </div>
-                            <div class="w3-container w3-center">
-                                <a href="<?= base_url('/gestio/modify/' . $event['id']) ?>">Editar</a>
-                                <a href="<?= base_url('/gestio/delete/' . $event['id']) ?>">Esborrar</a>
-                            </div>
-                        </div>  
-                    </div>
-                <?php endforeach; ?>
+                
             </div>
         <?php else: ?>
             <p class="w3-panel w3-yellow w3-padding">No hi ha contingut</p>
