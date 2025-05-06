@@ -4,21 +4,30 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AlbumModel;
+use App\Models\ClubsModel;
 use App\Models\TaulaFotosModel;
+use CodeIgniter\HTTP\Exceptions\RedirectException;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class GestioGaleriaController extends BaseController
 {
     public function album()
     {
+        $search = $this->request->getGet('q');
         $model = new AlbumModel();
-        $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
+
+        if($search !== '') {
+            $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
+        }else {
+            $albums = $model->like('titol', $search)->orderBy('created_at', 'DESC')->paginate(6);
+        }
 
         $pager = $model->pager;
 
         $data = [
             'albums' => $albums,
             'pager' => $pager,
+            'search' => $search,
         ];
 
         return view('gestio_pag/fotos/album', $data);
@@ -64,8 +73,14 @@ class GestioGaleriaController extends BaseController
 
     public function crearAlbum()
     {
+        $model = new ClubsModel();
+        $club = $model->findAll();
 
-        return view('gestio_pag/fotos/crear_album');
+        $data = [
+            'clubs' => $club,
+        ];
+
+        return view('gestio_pag/fotos/crear_album', $data);
     }
 
     public function crearAlbum_post()
@@ -73,39 +88,122 @@ class GestioGaleriaController extends BaseController
         helper(["form"]);
         $model = new AlbumModel();
 
-        $portada = $this->request->getFile('portada');
-        $titolPortada = $this->request->getPost('titol');
-
-        if ($portada) {
-            $newName = $titolPortada;
-            $portada->move(FCPATH . 'uploads/portades', $newName);
-            $data['portada'] = 'uploads/portades/' . $newName;
-        } else {
-            $data['portada'] = 'http://localhost/fileget/album.jpg';
-        }
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+            'portada' => [
+                'label' => 'Portada',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Portada és obligatori.',
+                ],
+            ],
+            'club' => [
+                'label' => 'Club',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Club és obligatori.',
+                ],
+            ],
+            'estat' => [
+                'label' => 'Estat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Estat és obligatori.',
+                ],
+            ]
+        ];
 
         $data = [
             'titol' => $this->request->getPost('titol'),
             'portada' => $this->request->getPost('portada'),
-            'album' => $this->request->getPost('album'),
+            'club' => $this->request->getPost('club'),
             'estat' => $this->request->getPost('estat'),
         ];
 
         // dd($data);
 
-        $validationRule = [
-            'titol' => 'required',
-            // 'portada' => 'required',
-            'album' => 'required',
-            'estat' => 'required|in_list[publicat,no_publicat]',
-        ];
-
-        // if (!$this->validate($validationRule)) {
-        //     $data['errors'] = $this->validator->getErrors();
-        //     return view('gestio_pag/crear_album', $data);
-        // }
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+            return redirect()->back()->withInput()->with('errors', $data['errors']);
+        }
 
         $model->insert($data);
+        return redirect()->to('/gestio/galeria');
+    }
+
+    public function modify($id)
+    {
+        $model = new AlbumModel();
+        $clubs = new ClubsModel();
+        $club = $clubs->findAll();
+        $album = $model->find($id);
+
+        $data = [
+            'album' => $album,
+            'clubs' => $club,
+        ];
+
+        return view('gestio_pag/fotos/modify_album', $data);
+    }
+
+    public function modify_post($id)
+    {
+        $model = new AlbumModel();
+
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+            'portada' => [
+                'label' => 'Portada',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Portada és obligatori.',
+                ],
+            ],
+            'club' => [
+                'label' => 'Club',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Club és obligatori.',
+                ],
+            ],
+            'estat' => [
+                'label' => 'Estat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Estat és obligatori.',
+                ],
+            ]
+        ];
+
+        $data = [
+            'id' => $id,
+            'titol' => $this->request->getPost('titol'),
+            'portada' => $this->request->getPost('portada'),
+            'club' => $this->request->getPost('club'),
+            'estat' => $this->request->getPost('estat'),
+        ];
+
+        // dd($data);
+
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+            return redirect()->back()->withInput()->with('errors', $data['errors']);
+        }
+
+        $model->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Album modificat correctament</div>');
         return redirect()->to('/gestio/galeria');
     }
 }

@@ -16,6 +16,7 @@ class GaleriaController extends BaseController
 
     public function getFotos(){
 
+        $search = $this->request->getGet('q');
         $fotosModel = new FotosModel();
         $id_club = session()->get('id_club');
 
@@ -27,6 +28,11 @@ class GaleriaController extends BaseController
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
         $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->where('albums.id_club', $id_club)->findAll();
+
+
+        if($search !== '') {
+            $fotosModel->like('taula_fotos.titol', $search)->orLike('taula_fotos.descripcio', $search);
+        }
 
         $model = new AlbumModel();
         $albumsInfo = $model->where('id_club', $id_club)->findAll();
@@ -57,6 +63,7 @@ class GaleriaController extends BaseController
         $data = [
             'albums' => $albums,
             'totalFotos' => count($fotos),
+            'search' => $search,
         ];
         
         return view('galeriaFotos/galeria', $data);

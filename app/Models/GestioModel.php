@@ -63,16 +63,16 @@ class GestioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
-    public function getByTitleOrText ($search) {
-                   
-        return $this->select(['id','nom','contingut'])->orLike('nom',$search,'both',true)->orLike('contingut',$search,'both',true);
+
+    public function getByTitleOrText($search)
+    {
+
+        return $this->select(['id', 'nom', 'contingut'])->orLike('nom', $search, 'both', true)->orLike('contingut', $search, 'both', true);
     }
 
-    public function getAllPaged ($nElements) {
-       
-        return $this->select(['id','nom','contingut'])->paginate($nElements);
-}
-}
+    public function getAllPaged($nElements)
+    {
 
-
+        return $this->select(['id', 'nom', 'contingut'])->paginate($nElements);
+    }
+}

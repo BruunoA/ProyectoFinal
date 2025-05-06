@@ -12,11 +12,15 @@
 
 <body>
     <?= $this->include('general/menuGestio'); ?>
-    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
+    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.imatges') ?></a>
     <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.crear') ?></a>
     <div class="w3-container">
         <?= session()->getFlashdata('success') ?>
         <h2><?= lang('albumsGestio.subtitol') ?></h2>
+        <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm">
+            <input type='text' name='q' value='<?= $search ?>' placeholder="Buscar aqui...">
+            <input type='button' id='btnsearch' value='Cercar' onclick='document.getElementById("searchForm").submit();'>
+        </form><br>
         <?php if (!empty($albums) && is_array($albums)): ?>
             <div class="album-row">
                 <?php foreach ($albums as $album): ?>
@@ -28,7 +32,10 @@
                                     <h3><?= esc($album['titol']) ?></h3>
                                 </div>
                             </a>
-                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-button w3-red w3-margin" onclick="return confirm('Vols eliminar aquest album?');">Eliminar album</a>
+                            <div class="w3-bar">
+                                <a href="<?= base_url('gestio/galeria/modify/' . $album['id']) ?>" class="w3-bar-item w3-button w3-blue w3-margin-right">Modificar album</a>
+                                <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-bar-item w3-button w3-red" onclick="return confirm('Vols eliminar aquest album?');">Eliminar album</a>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>

@@ -54,4 +54,16 @@ class AlbumModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // public function getByTitleOrText($search)
+    // {
+
+    //     return $this->select(['id', 'titol'])->orLike('titol', $search, 'both', true);
+    // }
+
+    // public function getAllPaged($nElements)
+    // {
+
+    //     return $this->select(['id', 'titol'])->paginate($nElements);
+    // }
 }
