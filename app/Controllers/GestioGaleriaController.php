@@ -13,7 +13,7 @@ class GestioGaleriaController extends BaseController
 {
     public function album()
     {
-        $search = $this->request->getGet('q');
+        $search = $this->request->getGet('q') ?? '';
         $model = new AlbumModel();
 
         if($search !== '') {

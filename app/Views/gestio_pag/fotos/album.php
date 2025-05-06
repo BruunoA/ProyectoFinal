@@ -17,7 +17,7 @@
     <div class="w3-container">
         <?= session()->getFlashdata('success') ?>
         <h2><?= lang('albumsGestio.subtitol') ?></h2>
-        <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm">
+        <form method='get' action="<?= base_url('gestio/galeria'); ?>" id="searchForm">
             <input type='text' name='q' value='<?= $search ?>' placeholder="Buscar aqui...">
             <input type='button' id='btnsearch' value='Cercar' onclick='document.getElementById("searchForm").submit();'>
         </form><br>
