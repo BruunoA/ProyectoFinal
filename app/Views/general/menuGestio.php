@@ -22,6 +22,7 @@
                 <option value="menu_gestio">Menu gestio</option>
                 <option value="xarxes_socials">Xarxes Socials</option>
             </select>
+            <li><a href="<?= base_url('gestio/mail') ?>">Correu </a></li>
         </ul>
     </div>
 </nav>

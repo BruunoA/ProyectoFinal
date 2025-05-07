@@ -12,7 +12,9 @@ use App\Models\MenuModel;
 use App\Models\ClubsModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
+use Config\App;
 use SIENSIS\KpaCrud\Config\KpaCrud;
+use App\Models\ContacteModel;
 
 class GestioController extends BaseController
 {
@@ -427,6 +429,13 @@ class GestioController extends BaseController
         } else {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         }
+    }
+
+    public function mail() {
+        $contacteModel = new ContacteModel();
+        $data['contactes'] = $contacteModel->findAll(); 
+        
+        return view('gestio_pag/Email', $data); 
     }
 
 }
