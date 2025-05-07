@@ -9,7 +9,6 @@
 </head>
 <body >
 <?= $this->include('general/menuGestio'); ?>
-    <a class="w3-button w3-blue w3-margin-top" href="<?= base_url('config/menu/add') ?>"><?= lang('gestioMenu.afegirGeneral') ?></a><br><br>
     <h2 class="w3-center"><?= lang('gestioMenu.subtitolGestio') ?></h2>
 
     <?php echo $output; ?>

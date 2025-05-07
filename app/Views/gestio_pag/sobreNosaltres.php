@@ -18,7 +18,7 @@
     .w3-card {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        /* height: 100%; */
     }
 
     .w3-card .w3-container.w3-center {
