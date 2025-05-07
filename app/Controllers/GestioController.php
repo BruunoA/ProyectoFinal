@@ -42,15 +42,6 @@ class GestioController extends BaseController
 
         $seccio = $this->request->getPost('seccio');
 
-        // $rules = [
-        //     'nom' => 'required',
-        //     'resum' => 'required',
-        //     'seccio' => 'required',
-        //     'id_club' => 'required',
-        //     'estat' => 'required',
-        //     'ckeditor' => 'required',
-        // ];
-
         $rules = [
             'nom' => [
                 'label' => 'Nom',
@@ -129,11 +120,23 @@ class GestioController extends BaseController
         if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->insert($data);
-            return redirect()->to('/gestio');
+            // return redirect()->to('/gestio');
         } else {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
+
+        if($seccio == 'noticies'){
+            return redirect()->to('/gestio/noticies');
+        } else if ($seccio == 'banner' || $seccio == 'logo') {
+            return redirect()->to('/gestio/banner');
+        } else if ($seccio == 'historia' || $seccio == 'missio' || $seccio == 'visio' || $seccio == 'valors') {
+            return redirect()->to('/gestio/sobreNosaltres');
+        } else {
+            return redirect()->to('/gestio');
+        }
+        
         // $model = new GestioModel();
         // if ($model->insert($data)) {
         //     return redirect()->to('/gestio');
@@ -184,15 +187,6 @@ class GestioController extends BaseController
         helper(["form"]);
 
         $seccio = $this->request->getPost('seccio');
-
-        // $rules = [
-        //     'nom' => 'required',
-        //     'resum' => 'required',
-        //     'seccio' => 'required',
-        //     'id_club' => 'required',
-        //     'estat' => 'required',
-        //     'ckeditor' => 'required',
-        // ];
 
         $rules = [
             'nom' => [
@@ -277,7 +271,6 @@ class GestioController extends BaseController
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
 
-        $seccio = $this->request->getPost('seccio');
         if($seccio == 'noticies'){
             return redirect()->to('/gestio/noticies');
         } else if ($seccio == 'banner' || $seccio == 'logo') {
