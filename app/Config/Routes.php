@@ -25,14 +25,14 @@ $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 // PROGRAMES
 // $routes->get('programes', 'ProgramesController::index');
 $routes->get('programes/(:segment)', 'ProgramesController::categoria/$1');
-$routes->get('programes/juvenil_segona', 'ProgramesController::juvenil_segon_A');
-$routes->get('programes/amateur_segona', 'ProgramesController::amateur_segona');
-$routes->get('programes/amateur_tercera', 'ProgramesController::amateur_tercera');
-$routes->get('programes/cadet_primera_A', 'ProgramesController::cadet_primera_A');
-$routes->get('programes/cadet_segona_B', 'ProgramesController::cadet_segona_B');
-// $routes->get('programes/cadet_segona', 'ProgramesController::cadet_segona');
-$routes->get('programes/infantil_segona_A', 'ProgramesController::infantil_segona_A');
-$routes->get('programes/infantil_segona_B', 'ProgramesController::infantil_segona_B');
+// $routes->get('programes/juvenil_segona', 'ProgramesController::juvenil_segon_A');
+// $routes->get('programes/amateur_segona', 'ProgramesController::amateur_segona');
+// $routes->get('programes/amateur_tercera', 'ProgramesController::amateur_tercera');
+// $routes->get('programes/cadet_primera_A', 'ProgramesController::cadet_primera_A');
+// $routes->get('programes/cadet_segona_B', 'ProgramesController::cadet_segona_B');
+// // $routes->get('programes/cadet_segona', 'ProgramesController::cadet_segona');
+// $routes->get('programes/infantil_segona_A', 'ProgramesController::infantil_segona_A');
+// $routes->get('programes/infantil_segona_B', 'ProgramesController::infantil_segona_B');
 
 
 $routes->get('contacte', 'ContacteController::index');
@@ -86,6 +86,7 @@ $routes->get('gestio/modify/programa/(:num)', 'GestioProgramesController::modify
 $routes->post('gestio/modify/programa/(:num)', 'GestioProgramesController::modify_Programa_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/programes/add', 'GestioProgramesController::add' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/programes/add', 'GestioProgramesController::add_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/equips', 'GestioProgramesController::equips' /*, ['filter' => 'gestio:admin']*/);
 
 
 // GESTIO EVENTS

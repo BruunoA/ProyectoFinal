@@ -6,13 +6,15 @@ use App\Controllers\BaseController;
 use App\Models\CategoriesModel;
 use App\Models\EquipsModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use SIENSIS\KpaCrud\Libraries\KpaCrud;
+
 
 class GestioProgramesController extends BaseController
 {
     public function programes()
     {
         $categorieModel = new CategoriesModel();
-        $programes= $categorieModel->orderBy('created_at', 'DESC')->paginate(4);
+        $programes = $categorieModel->orderBy('created_at', 'DESC')->paginate(4);
 
         $pager = $categorieModel->pager;
 
@@ -94,5 +96,29 @@ class GestioProgramesController extends BaseController
         $categorieModel->save($data);
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Programa afegit correctament</div>');
         return redirect()->to('/gestio/programes');
+    }
+
+    public function equips()
+    {
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('equips');
+        $crud->setPrimaryKey('id');
+
+        $crud->setColumns(['id', 'nom']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+        ]);
+
+        // $crud->setConfig('onlyView');
+        $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+
+        $data['output'] = $crud->render();
+
+        return view('gestio_pag/programes/equips', $data);
     }
 }

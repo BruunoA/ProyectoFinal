@@ -33,9 +33,9 @@ class CategoriesMigration extends Migration
                 'constraint'     => '400',
                 'null'           => false,
             ],
-            // 'id_equip'          => [
-            //     'type'           => 'int',
-            // ],
+            'id_equip'          => [
+                'type'           => 'int',
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -58,7 +58,7 @@ class CategoriesMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        // $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->addForeignKey('id_equip', 'equips', 'id');
         $this->forge->createTable('categories');
     }
 

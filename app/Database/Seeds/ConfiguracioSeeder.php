@@ -42,16 +42,48 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => null
             ],
             [
-                'nom' => 'Juvenil segona divisio',
-                'valor' => 'programes/juvenil-segona-divisio',
+                'nom' => 'Juvenil',
+                'valor' => 'programes/sub-19',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
+                'nom' => 'Juvenil segona divisio',
+                'valor' => 'programes/juvenil-segona-divisio',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => "Si",
+                'id_pare' => 5
+            ],
+            [
+                'nom' => 'Cadet',
+                'valor' => 'programes/cadet',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [
                 'nom' => 'Cadet primera divisio',
                 'valor' => 'programes/cadet-primera-divisio',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => "Si",
+                'id_pare' => 8
+            ],
+            [
+                'nom' => 'Cadet segona divisio',
+                'valor' => 'programes/cadet-segona-divisio',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 8
+            ],
+            [
+                'nom' => 'Amateur',
+                'valor' => 'programes/amateur',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => "Si",
@@ -61,63 +93,87 @@ class ConfiguracioSeeder extends Seeder
                 'nom' => 'Tercera catalana',
                 'valor' => 'programes/tercera-catalana',
                 'tipus' => 'menu_general',
-                'ordre' => 3,
+                'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 10
             ],
             [
                 'nom' => 'Segona catalana',
                 'valor' => 'programes/segona-catalana',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => "Si",
+                'id_pare' => 10
+            ],
+            [
+                'nom' => 'Infantil',
+                'valor' => 'programes/infantil',
+                'tipus' => 'menu_general',
+                'ordre' => 3,
+                'visibilitat' => "Si",
+                'id_pare' => 4
+            ],
+            [   // ni ha dos
+                'nom' => 'Infantil segona divisio S14',
+                'valor' => 'programes/infantil-segona-divisio-s14',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => "Si",
+                'id_pare' => 13
+            ],
+            [
+                'nom' => 'Alevi',
+                'valor' => 'programes/alevi',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
             [
-                'nom' => 'Cadet segona divisio',
-                'valor' => 'programes/cadet-segona-divisio',
+                'nom' => 'Primera divisio alevi S12',
+                'valor' => 'programes/primera-divisio-alevi-s12',
                 'tipus' => 'menu_general',
-                'ordre' => 5,
+                'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 4
-            ],
-            [
-                'nom' => 'Infantil segona divisio S14',
-                'valor' => 'programes/infantil-segona-divisio-s14',
-                'tipus' => 'menu_general',
-                'ordre' => 6,
-                'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 15
             ],
             [
                 'nom' => 'Primera divisio alevi S11',
                 'valor' => 'programes/primera-divisio-alevi-s11',
                 'tipus' => 'menu_general',
-                'ordre' => 7,
+                'ordre' => 2,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 15
             ],
             [
                 'nom' => 'Segona divisio alevi S12',
                 'valor' => 'programes/segona-divisio-alevi-s12',
                 'tipus' => 'menu_general',
-                'ordre' => 8,
+                'ordre' => 3,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 15
             ],
             [
                 'nom' => 'Segona divisio alevi S11',
                 'valor' => 'programes/segona-divisio-alevi-s11',
                 'tipus' => 'menu_general',
-                'ordre' => 9,
+                'ordre' => 4,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 15
             ],
             [
                 'nom' => 'Preferent alevi S12',
                 'valor' => 'programes/preferent-alevi-s12',
                 'tipus' => 'menu_general',
-                'ordre' => 10,
+                'ordre' => 5,
+                'visibilitat' => "Si",
+                'id_pare' => 15
+            ],
+            [
+                'nom' => 'Benjamins',
+                'valor' => 'programes/benjamins',
+                'tipus' => 'menu_general',
+                'ordre' => 12,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
@@ -125,31 +181,39 @@ class ConfiguracioSeeder extends Seeder
                 'nom' => 'Primera divisio benjamins S10',
                 'valor' => 'programes/primera-divisio-benjamins-s10',
                 'tipus' => 'menu_general',
-                'ordre' => 11,
+                'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 21
             ],
             [
                 'nom' => 'Primera divisio benjamins S9',
                 'valor' => 'programes/primera-divisio-benjamins-s9',
                 'tipus' => 'menu_general',
-                'ordre' => 12,
+                'ordre' => 2,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 21
             ],
             [
                 'nom' => 'Prebenjami S8',
                 'valor' => 'programes/prebenjami-s8',
                 'tipus' => 'menu_general',
-                'ordre' => 13,
+                'ordre' => 3,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 21
             ],
             [
                 'nom' => 'Prebenjami S7',
                 'valor' => 'programes/prebenjami-s7',
                 'tipus' => 'menu_general',
-                'ordre' => 14,
+                'ordre' => 4,
+                'visibilitat' => "Si",
+                'id_pare' => 21
+            ],
+            [
+                'nom' => 'Femeni',
+                'valor' => 'programes/femeni',
+                'tipus' => 'menu_general',
+                'ordre' => 15,
                 'visibilitat' => "Si",
                 'id_pare' => 4
             ],
@@ -157,25 +221,25 @@ class ConfiguracioSeeder extends Seeder
                 'nom' => 'Segona divisio femeni juvenil',
                 'valor' => 'programes/segona-divisio-femeni-juvenil',
                 'tipus' => 'menu_general',
-                'ordre' => 15,
+                'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 26
             ],
             [
                 'nom' => 'Segona divisio femeni infantil',
                 'valor' => 'programes/segona-divisio-femeni-infantil',
                 'tipus' => 'menu_general',
-                'ordre' => 16,
+                'ordre' => 2,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 26
             ],
             [
                 'nom' => 'Segona divisio femeni alevi',
                 'valor' => 'programes/segona-divisio-femeni-alevi',
                 'tipus' => 'menu_general',
-                'ordre' => 17,
+                'ordre' => 3,
                 'visibilitat' => "Si",
-                'id_pare' => 4
+                'id_pare' => 26
             ],
             // [
             //     'nom' => 'Sub-19',
@@ -287,7 +351,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => "Si",
-                'id_pare' => 17
+                'id_pare' => 33
             ],
             [
                 'nom' => 'Tancar sessio',
@@ -295,7 +359,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => "Si",
-                'id_pare' => 17
+                'id_pare' => 33
             ],
             [
                 'nom' => 'Gestio',
@@ -303,7 +367,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => "Si",
-                'id_pare' => 17
+                'id_pare' => 33
             ]
         ];
 

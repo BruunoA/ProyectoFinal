@@ -36,6 +36,7 @@
     <?= session()->getFlashdata('success'); ?>
     <div class="w3-section">
         <a href="<?= base_url('gestio/programes/add') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Afegir programa</a>
+        <a href="<?= base_url('gestio/crear/equip') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Crear equip</a>
     </div>
 
     <div class="">

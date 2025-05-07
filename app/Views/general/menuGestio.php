@@ -8,7 +8,11 @@
         <ul class="menu-items">
             <li><a href="<?= base_url('gestio/banner') ?>">Inici</a></li>
             <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
-            <li><a href="<?= base_url('gestio/programes') ?>">Programes</a></li>
+            <select class="seccio-select w3-select">
+                <option value="">Programes</option>
+                <option value="programes">Programes</option>
+                <option value="equips">Equips</option>
+            </select>
             <select class="seccio-select w3-select">
                 <option value="">Noticies</option>
                 <option value="noticies">Notícies</option>
@@ -34,6 +38,10 @@
                 window.location.href = "<?= base_url('gestio/noticies') ?>";
             } else if (selected === 'events') {
                 window.location.href = "<?= base_url('gestio/events') ?>";
+            }else if(selected === 'programes') {
+                window.location.href = "<?= base_url('gestio/programes') ?>";
+            } else if (selected === 'equips') {
+                window.location.href = "<?= base_url('gestio/equips') ?>";
             }
         });
     });

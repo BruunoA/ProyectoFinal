@@ -31,7 +31,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 1,
+                'id_equip' => 1,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -39,7 +39,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 2,
+                'id_equip' => 2,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -47,7 +47,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 3,
+                'id_equip' => 3,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -55,7 +55,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 4,
+                'id_equip' => 4,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -63,7 +63,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 5,
+                'id_equip' => 5,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -71,7 +71,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 6,
+                'id_equip' => 6,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             // [
@@ -87,7 +87,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 8,
+                'id_equip' => 7,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -95,7 +95,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 9,
+                'id_equip' => 8,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -103,7 +103,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 10,
+                'id_equip' => 9,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -111,7 +111,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 11,
+                'id_equip' => 10,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -119,7 +119,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 12,
+                'id_equip' => 11,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -127,7 +127,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 13,
+                'id_equip' => 12,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -135,7 +135,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 14,
+                'id_equip' => 13,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -143,7 +143,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 15,
+                'id_equip' => 14,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -151,7 +151,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
-                // 'id_equip' => 16,
+                'id_equip' => 15,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -159,7 +159,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 17,
+                'id_equip' => 16,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -167,7 +167,7 @@ class CategoriesSeeder extends Seeder
                 'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
-                // 'id_equip' => 17,
+                'id_equip' => 17,
                 'created_at' => date('Y-m-d H:i:s')
             ],
                 // ['titol'] = > $faker->words(

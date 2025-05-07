@@ -4,7 +4,6 @@
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-        <!-- Mostrar el árbol de categorías -->
         <ul class="menu-items">
         <?php foreach (mostrar_tree() as $menu): ?>
         <?php if (isset($menu['children'])): ?>
