@@ -64,13 +64,13 @@ class GestioController extends BaseController
                     'required' => 'El camp Secció és obligatori.',
                 ]
             ],
-            // 'id_club' => [
-            //     'label' => 'Club',
-            //     'rules' => 'required',
-            //     'errors' => [
-            //         'required' => 'El camp Club és obligatori.',
-            //     ]
-            // ],
+            'id_club' => [
+                'label' => 'Club',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Club és obligatori.',
+                ]
+            ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
@@ -97,17 +97,17 @@ class GestioController extends BaseController
             ];
         }else if($seccio === 'banner'){
             $rules['resum']['rules'] = 'permit_empty';
-            // $rules['id_club']['rules'] = 'permit_empty';
+            $rules['id_club']['rules'] = 'permit_empty';
         }else if($seccio === 'logo'){
             $rules['resum']['rules'] = 'permit_empty';
-            // $rules['id_club']['rules'] = 'permit_empty';
+            $rules['id_club']['rules'] = 'permit_empty';
         }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            // 'id_club' => $this->request->getPost('id_club'),
+            'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
             'portada' => $this->request->getPost('portada'),
@@ -156,7 +156,14 @@ class GestioController extends BaseController
     public function edit($id)
     {
         $model = new GestioModel();
-        $data['gestio'] = $model->find($id);
+
+        $modelClubs = new ClubsModel();
+
+        $data = [
+            'gestio' => $model->find($id),
+            'clubs' => $modelClubs->findAll(),
+        ];
+        
         return view('gestio_pag/modify', $data);
     }
 
@@ -210,13 +217,13 @@ class GestioController extends BaseController
                     'required' => 'El camp Secció és obligatori.',
                 ]
             ],
-            // 'id_club' => [
-            //     'label' => 'Club',
-            //     'rules' => 'required',
-            //     'errors' => [
-            //         'required' => 'El camp Club és obligatori.',
-            //     ]
-            // ],
+            'id_club' => [
+                'label' => 'Club',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Club és obligatori.',
+                ]
+            ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
@@ -243,17 +250,17 @@ class GestioController extends BaseController
             ];
         }else if($seccio === 'banner'){
             $rules['resum']['rules'] = 'permit_empty';
-            // $rules['id_club']['rules'] = 'permit_empty';
+            $rules['id_club']['rules'] = 'permit_empty';
         }else if($seccio === 'logo'){
             $rules['resum']['rules'] = 'permit_empty';
-            // $rules['id_club']['rules'] = 'permit_empty';
+            $rules['id_club']['rules'] = 'permit_empty';
         }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
-            // 'id_club' => $this->request->getPost('id_club'),
+            'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
             'portada' => $this->request->getPost('portada'),

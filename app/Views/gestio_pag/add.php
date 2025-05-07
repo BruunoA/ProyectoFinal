@@ -69,13 +69,13 @@
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
-        <!-- <label for="id_club" class="w3-text-black">ID del club</label>
+        <label for="id_club" class="w3-text-black">Club</label>
         <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
             <option value="">Selecciona un club</option>
-            <?php // foreach ($clubs as $club): ?>
-                <option value="<?php // esc($club['id']) ?>" <?php // old('id_club') == $club['id'] ? 'selected' : '' ?>><?php // esc($club['nom']) ?></option>
-            <?php // endforeach; ?>
-        </select> -->
+            <?php  foreach ($clubs as $club): ?>
+                <option value="<?= esc($club['id']) ?>" <?= old('id_club') == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
+            <?php endforeach; ?>
+        </select>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">

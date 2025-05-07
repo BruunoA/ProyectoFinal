@@ -7,7 +7,7 @@
 
     <title>Gestio inici</title>
 </head>
-<body>
+<body class="w3-margin">
 <?= $this->include('general/menuGestio'); ?>
 <?= session()->getFlashdata('success') ?>
     <div class="w3-container">

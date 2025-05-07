@@ -73,14 +73,6 @@
             </div> -->
 
             <div class="w3-container w3-card w3-padding w3-round-large w3-light-grey w3-margin-top">
-
-                <div class="w3-center w3-margin-bottom">
-                    <div class="w3-card w3-padding-16 w3-green" style="max-width: 600px; margin: 0 auto;">
-                        <h3 class="w3-text-white"><?= lang('home.Historia') ?></h3>
-                        <p class="w3-text-white"><?= $historia['resum'] ?? '' ?></p>
-                    </div>
-                </div>
-
                 <div class="w3-row-padding w3-center">
                     <div class="w3-third w3-padding">
                         <div class="w3-card w3-padding-16 w3-amber">
@@ -93,13 +85,6 @@
                         <div class="w3-card w3-padding-16 w3-blue">
                             <h4 class="w3-text-white"><?= lang('home.Visio') ?></h4>
                             <p class="w3-text-white"><?= $visio['resum'] ?? '' ?></p>
-                        </div>
-                    </div>
-
-                    <div class="w3-third w3-padding">
-                        <div class="w3-card w3-padding-16 w3-deep-orange">
-                            <h4 class="w3-text-white"><?= lang('home.Valors') ?></h4>
-                            <p class="w3-text-white"><?= $valors['resum'] ?? '' ?></p>
                         </div>
                     </div>
                 </div>

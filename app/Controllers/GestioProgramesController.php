@@ -16,6 +16,8 @@ class GestioProgramesController extends BaseController
         $categorieModel = new CategoriesModel();
         $programes = $categorieModel->orderBy('created_at', 'DESC')->paginate(4);
 
+        $programes = $categorieModel->join('equips', 'categories.id_equip = equips.id', 'left')->orderBy('categories.created_at', 'DESC')->paginate(4);
+
         $pager = $categorieModel->pager;
 
         $data = [
@@ -52,13 +54,23 @@ class GestioProgramesController extends BaseController
     {
         $categorieModel = new CategoriesModel();
 
+        $img = $this->request->getPost('img');
+
+        $imgCategoria = $categorieModel->find($id);
+
+        if(empty($img)) {
+            $img = $imgCategoria['img'];
+        } else {
+            $img = $this->request->getPost('img');
+        }
+
         $data = [
             'id' => $id,
             'titol' => $this->request->getPost('titol'),
             'horari' => $this->request->getPost('horari'),
             'descripcio' => $this->request->getPost('descripcio'),
             'id_equip' => $this->request->getPost('id_equip'),
-            'img' => $this->request->getPost('img'),
+            'img' => $img,
         ];
 
         // dd($data);

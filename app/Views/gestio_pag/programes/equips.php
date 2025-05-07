@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Crear un equip</title>
 </head>
-<body>
+<body class="w3-margin">
 <?= $this->include('general/menuGestio'); ?>
 <?php echo $output; ?>
 </body>

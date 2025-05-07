@@ -29,17 +29,16 @@
     </style>
 </head>
 
-<body class="">
+<body class="w3-margin">
 
     <?= $this->include('general/menuGestio'); ?>
     <h1>Gestió de Programes</h1>
     <?= session()->getFlashdata('success'); ?>
     <div class="w3-section">
         <a href="<?= base_url('gestio/programes/add') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Afegir programa</a>
-        <a href="<?= base_url('gestio/crear/equip') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Crear equip</a>
     </div>
 
-    <div class="">
+    <div class="w3-responsive w3-card-4 w3-light-grey">
         <table class="w3-table-all w3-hoverable w3-card-4">
             <thead>
                 <tr class="w3-light-grey">
@@ -52,18 +51,18 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($categories as $category): ?>
+                <?php foreach ($categories as $categoria): ?>
                     <tr>
-                        <td><?= $category['titol'] ?></td>
-                        <td><?= $category['descripcio'] ?></td>
-                        <td><img src="<?= $category['img'] ?>" alt="<?= $category['titol'] ?>" width="100"></td>
-                        <td><?= $category['horari'] ?></td>
-                        <td><?= $category['id_equip'] ?></td>
+                        <td><?= $categoria['titol'] ?></td>
+                        <td><?= $categoria['descripcio'] ?></td>
+                        <td><img src="<?= $categoria['img'] ?>" alt="<?= $categoria['titol'] ?>" width="100"></td>
+                        <td><?= $categoria['horari'] ?></td>
+                        <td><?= $categoria['nom'] ?></td>
                         <td>
-                            <a href="<?= base_url('gestio/modify/programa/' . $category['id']) ?>" class="w3-button w3-green w3-round">Modificar</a>
+                            <a href="<?= base_url('gestio/modify/programa/' . $categoria['id']) ?>" class="w3-button w3-green w3-round">Modificar</a>
                         </td>
                         <td>
-                            <a href="<?= base_url('gestio/eliminar/' . $category['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquest programa?');">Eliminar</a>
+                            <a href="<?= base_url('gestio/eliminar/' . $categoria['id']) ?>" class="w3-button w3-red w3-round" onclick="return confirm('Estàs segur que vols eliminar aquest programa?');">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

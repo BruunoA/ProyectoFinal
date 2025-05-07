@@ -41,7 +41,7 @@
     }
 </style>
 
-<body class="w3-light-grey">
+<body class="w3-light-grey w3-margin">
     <?= $this->include('general/menuGestio'); ?>
     <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.afegir") ?></a>
     <div class="w3-container">

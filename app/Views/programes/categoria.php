@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/classificacio.css'); ?>">
-    <title>Categoria - <?= esc($titol) ?></title>
+    <title><?= lang('programes.categoria') . esc($titol) ?></title>
 </head>
 
 <body class="w3-light-grey">
@@ -15,7 +15,7 @@
 
     <section id="Programes" class="w3-container w3-margin-bottom w3-padding-large w3-white w3-card-4 w3-round-large">
         <h3 class="w3-center w3-text-dark-grey">
-            <strong>Categoria:</strong> <?= esc($titol) ?>
+            <strong><?= lang('programes.categoria') ?></strong> <?= esc($titol) ?>
         </h3>
 
         <div class="w3-row-padding w3-padding-16">
@@ -29,8 +29,11 @@
                     <p class="w3-justify"><?= $categoria['descripcio'] ?></p>
 
                     <div class="w3-padding-16">
-                        <p><strong>Dies:</strong> Dilluns, dimarts, dimecres</p>
-                        <p><strong>Horari:</strong> 9:00 - 15:00</p>
+                        <!-- <p><strong>Dies:</strong> Dilluns, dimarts, dimecres</p>
+                        <p><strong>Horari:</strong> 9:00 - 15:00</p> -->
+                    <p>
+                        <?= $categoria['horari'] ?>
+                    </p>
                     </div>
                 </div>
             </div>
@@ -39,7 +42,7 @@
 
     <section class="w3-container w3-margin-bottom w3-padding">
         <?php if (empty($classificacio)) : ?>
-            <p class="w3-center w3-text-grey">No hi ha resultats.</p>
+            <p class="w3-center w3-text-red"><?= lang('programes.noResultats') ?><a href="https://www.fcf.cat/club/2425/alpicat-club-de-futbol-ue/pb7"><?= lang('programes.enllaç') ?></a></p>
         <?php else : ?>
             <div class="w3-responsive">
                 <table class="w3-table w3-striped w3-bordered w3-hoverable w3-white w3-card-4">

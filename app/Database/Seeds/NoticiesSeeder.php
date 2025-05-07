@@ -20,7 +20,7 @@ class NoticiesSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
-                // 'id_club' => random_int(1, 3),
+                'id_club' => random_int(1, 3),
                 'resum' => $resum,
                 'contingut' => $contingut,
                 'destacat' => $fake->randomElement(['si', 'no']),
@@ -43,7 +43,7 @@ class NoticiesSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
-                // 'id_club' => random_int(1, 3),
+                'id_club' => random_int(1, 3),
                 // 'resum' => $resum,
                 'contingut' => 'http://localhost/fileget/campoAlpicat.jpg',
                 'destacat' => 'no',

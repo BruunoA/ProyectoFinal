@@ -22,10 +22,10 @@ class GaleriaController extends BaseController
         $id_club = session()->get('id_club');
 
         // missatge d'error si no hi ha id_club a la sessio
-        // if (!$id_club) {
-        //     session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
-        //     return redirect()->to('/');
-        // }
+        if (!$id_club) {
+            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
+            return redirect()->to('/');
+        }
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
 
@@ -35,31 +35,34 @@ class GaleriaController extends BaseController
         // }
 
         $model = new AlbumModel();
-        $albumsInfo = $model->where('estat', 'publicat')->findAll();
+        $albumsInfo = $model->where('estat', 'publicat')->findAll(); // agafa els albums publicats
 
-        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')/*->where('albums.id_club', $id_club)*/->findAll();
+        $pager = $fotosModel->pager;
+
+        // agafa totes les fotos 
+        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->where('albums.id_club', $id_club)->findAll();
         
         $albums = [];
         foreach ($fotos as $foto) {
-            $albumId = $foto['id_album'];
+            $albumId = $foto['id_album'];   // agafa l'id de l'album de la foto
 
             foreach ($albumsInfo as $album) {
-                if ($album['id'] == $albumId) {
-                    $albumTitle = $album['titol'];
+                if ($album['id'] == $albumId) {  // mira si l'id de l'album de la foto es el mateix que l'id de l'album publicat
+                    $albumTitle = $album['titol']; // agafa el titol de l'album 
                     // break;
                 }
             }
 
-            if (!isset($albums[$albumId])) {
-                $albums[$albumId] = [
+            if (!isset($albums[$albumId])) {    // si no existeix l'album, el crea
+                $albums[$albumId] = [   // crea un array amb l'id de l'album, el titol, un count i un array per a les fotos
                     'titol' => $albumTitle,
                     'count' => 0,
                     'fotos' => []
                 ];
             }
 
-            $albums[$albumId]['count']++;
-            $albums[$albumId]['fotos'][] = $foto;
+            $albums[$albumId]['count']++;   // incrementa el count de l'album
+            $albums[$albumId]['fotos'][] = $foto;  // afegeix la foto a l'array de fotos de l'album
         }
 
         $data = [

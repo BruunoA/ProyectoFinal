@@ -66,19 +66,27 @@
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
-        <label for="estat" class="w3-text-black"><b>Estat</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
+        <label for="id_club" class="w3-text-black">Club</label>
+        <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
             <option value="">Selecciona una opció</option>
-            <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
-            <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
+            <?php foreach ($clubs as $club): ?>
+                <option value="<?= $club['id'] ?>" <?= old('id_club', $gestio['id_club']) == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
+            <?php endforeach ?>
         </select>
 
-        <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
-        <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
-        </div>
+            <label for="estat" class="w3-text-black"><b>Estat</b></label>
+            <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
+                <option value="">Selecciona una opció</option>
+                <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
+                <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
+            </select>
 
-        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
+            <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
+            <div class="w3-margin-bottom">
+                <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
+            </div>
+
+            <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>

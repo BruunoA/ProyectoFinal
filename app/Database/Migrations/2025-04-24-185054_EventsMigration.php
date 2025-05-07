@@ -40,10 +40,10 @@ class EventsMigration extends Migration
                 'constraint'     => ['publicat', 'no_publicat'],
                 'default'        => 'no_publicat',
             ],
-            // 'id_tag'          => [
-            //     'type'           => 'INT',
-            //     'null'           => false,
-            // ],
+            'id_club'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -67,7 +67,7 @@ class EventsMigration extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         // $this->forge->addForeignKey('id_tipus_event', 'tipus_events', 'id');
-        // $this->forge->addForeignKey('id_tag', 'tags', 'id');
+        $this->forge->addForeignKey('id_club', 'clubs', 'id');
         $this->forge->createTable('events');
     }
 

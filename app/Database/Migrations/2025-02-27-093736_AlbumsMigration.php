@@ -18,10 +18,10 @@ class AlbumsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            // 'id_club'          => [
-            //     'type'           => 'INT',
-            //     'null'           => false,
-            // ],
+            'id_club'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
             'portada'          => [
                 'type'           => 'text',
                 'null'           => false,
@@ -53,6 +53,7 @@ class AlbumsMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_club', 'clubs', 'id');
         $this->forge->createTable('albums');
     }
 
