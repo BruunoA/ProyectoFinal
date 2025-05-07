@@ -30,9 +30,10 @@ class NoticiesController extends BaseController
 
         $data = [
             'gestio' => $gestio,
-            'events' => $modelEvents->where('estat', 'publicat')->findAll(),
+            'events' => $modelEvents->where('estat', 'publicat')->where('data >=', date('Y-m-d'))->findAll(),
             'pager' => $pager,
         ];
+
         return view('noticies', $data);
     }
 

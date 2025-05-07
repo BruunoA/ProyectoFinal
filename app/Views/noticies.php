@@ -25,47 +25,51 @@
                 <span onclick="document.getElementById('eventModal').style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
                 <div class="w3-container">
                     <h2><?= lang('noticies.Events') ?></h2>
-                    <ul>
-                        <?php foreach ($events as $event): ?>
-                            <li>
-                                <?= $event['nom']; ?> --
-                                <span style="font-weight: bold; color: teal;"><?= $event['data']; ?></span>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <div class="w3-responsive">
+                        <table class="w3-table-all w3-hoverable w3-small">
+                            <thead>
+                                <tr class="w3-teal">
+                                    <th><?= lang('noticies.nomEvent') ?></th>
+                                    <th><?= lang('noticies.descripcioEvent') ?></th>
+                                    <th><?= lang('noticies.dataEvent') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($events as $event): ?>
+                                    <tr>
+                                        <td><?= esc($event['nom']); ?></td>
+                                        <td><?= esc($event['descripcio']); ?></td>
+                                        <td><?= esc($event['data']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <?php $counter = 0; ?>
-        <?php foreach ($gestio as $noticia): ?>
-            <?php if ($counter % 3 == 0): ?>  <!-- Mostrara les noticies de 3 en 3 sempre que el modul doni 0 -->  
-                <div class="w3-row-padding">
-                <?php endif; ?>
-                <div class="w3-col l4 m6 s12" style="margin-bottom: 1rem;">
-                    <div class="w3-card news-card" style="display:flex; flex-direction: column;">
+        <div class="w3-row-padding w3-margin-top">
+            <?php foreach ($gestio as $noticia): ?>
+                <div class="w3-col l3 m6 s12 w3-margin-bottom">
+                    <!-- <div class="w3-third w3-margin-bottom"> -->
+                    <div class="w3-card w3-hover-shadow w3-round-large" style="display:flex; flex-direction: column; height:100%;">
                         <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
-                            <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 250px;">
+                            <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" style="width:100%; height: 250px; object-fit:cover;" class="w3-round-top">
                         </a>
                         <div class="w3-container news-container">
-                            <h5><strong><?= $noticia['nom'] ?></strong></h5>
-                            <p><?= $noticia['resum'] ?></p>
+                            <h5><strong><?= esc($noticia['nom']) ?></strong></h5>
+                            <p><?= esc($noticia['resum']) ?></p>
                         </div>
                     </div>
                 </div>
-                <?php $counter++; ?>
-                <?php if ($counter % 3 == 0): ?>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
-        <?php if ($counter % 3 != 0): ?>
+            <?php endforeach; ?>
+        </div>
+        <div class="paginador w3-center w3-red" style="color:black">
+            <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
+        </div>
     </div>
-<?php endif; ?>
-<div class="paginador w3-center w3-red" style="color:black">
-    <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
-</div>
-</div>
-
-<?= $this->include('general/footer'); ?>
+    <?= $this->include('general/footer'); ?>
 </body>
 
 </html>

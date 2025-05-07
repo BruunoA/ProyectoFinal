@@ -38,7 +38,7 @@
         <a href="<?= base_url('gestio/programes/add') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Afegir programa</a>
     </div>
 
-    <div class="w3-responsive">
+    <div class="">
         <table class="w3-table-all w3-hoverable w3-card-4">
             <thead>
                 <tr class="w3-light-grey">

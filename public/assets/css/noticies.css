@@ -33,19 +33,19 @@ div.absolute {
     height: 100%;
   }
 
-  .news-grid {
+  /* .news-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: space-between;
-  }
+  } */
   
-  .news-item {
+  /* .news-item {
     flex: 1 1 calc(33.333% - 1rem);
     box-sizing: border-box;
-  }
+  } */
 
-  @media screen and (max-width: 992px) {
+  /* @media screen and (max-width: 992px) {
     .news-item {
       flex: 1 1 calc(50% - 1rem);
     }
@@ -55,7 +55,7 @@ div.absolute {
     .news-item {
       flex: 1 1 100%;
     }
-  }
+  } */
 
   /* .news-grid {
     display: flex;

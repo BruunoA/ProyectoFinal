@@ -60,6 +60,7 @@
             <option value="valors" <?= old('seccio') == 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
             <option value="#" disabled class="w3-bold">Inici</option>
             <option value="banner" <?= old('seccio') == 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
+            <option value="logo" <?= old('seccio') == 'logo' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Logo</option>
         </select>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">

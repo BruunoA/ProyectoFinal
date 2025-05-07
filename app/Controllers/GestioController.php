@@ -13,7 +13,8 @@ use App\Models\MenuModel;
 use App\Models\ClubsModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
-use SIENSIS\KpaCrud\Config\KpaCrud;
+use SIENSIS\KpaCrud\Libraries\KpaCrud;
+
 
 class GestioController extends BaseController
 {
@@ -105,7 +106,10 @@ class GestioController extends BaseController
             ];
         }else if($seccio === 'banner'){
             $rules['resum']['rules'] = 'permit_empty';
-            $rules['id_club']['rules'] = 'permit_empty';
+            // $rules['id_club']['rules'] = 'permit_empty';
+        }else if($seccio === 'logo'){
+            $rules['resum']['rules'] = 'permit_empty';
+            // $rules['id_club']['rules'] = 'permit_empty';
         }
 
         $data = [
@@ -342,7 +346,9 @@ class GestioController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'data' => ['name' => 'data', 'type' => 'date', 'default' => $dataActual, 'html_atts' => ["required"],],
+            'descripcio' => ['name' => 'descripcio', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'publicated_at' => ['name' => 'publicated_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+            'data' => ['name' => 'data', 'type' => KpaCrud::DATE_FIELD_TYPE, 'default' => $dataActual, 'html_atts' => ["required"],],
             'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
         ]);
 
@@ -368,142 +374,146 @@ class GestioController extends BaseController
         $model = new GestioModel();
 
         $banners = $model->where('seccio', 'banner')->orderBy('created_at', 'DESC')->paginate(6);
+        $logos = $model->where('seccio', 'logo')->orderBy('created_at', 'DESC')->paginate(6);
 
         $pager = $model->pager;
 
         $data = [
             'banner' => $banners,
+            'logo' => $logos,
             'pager' => $model->pager,
         ];
+
+        // dd($data);
 
         return view('gestio_pag/banner/banner', $data);
     }
 
-    public function bannerDelete($id)
-    {
+    // public function bannerDelete($id)
+    // {
 
-        $model = new TaulaFotosModel();
-        $model->where('id', $id)->delete();
+    //     $model = new TaulaFotosModel();
+    //     $model->where('id', $id)->delete();
 
-        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner esborrat correctament</div>');
-        return redirect()->to('/gestio/banner');
-    }
+    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner esborrat correctament</div>');
+    //     return redirect()->to('/gestio/banner');
+    // }
 
-    public function bannerModify($id)
-    {
+    // public function bannerModify($id)
+    // {
 
-        $model = new TaulaFotosModel();
-        $data['banner'] = $model->find($id);
+    //     $model = new TaulaFotosModel();
+    //     $data['banner'] = $model->find($id);
 
-        return view('gestio_pag/banner/banner_modify', $data);
-    }
+    //     return view('gestio_pag/banner/banner_modify', $data);
+    // }
 
-    public function bannerModify_post($id)
-    {
+    // public function bannerModify_post($id)
+    // {
 
-        helper(["form"]);
+    //     helper(["form"]);
 
-        $validationRule = [
-            'titol' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Títol és obligatori.',
-                ]
-            ],
-            'descripcio' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Descripció és obligatori.',
-                ]
-            ],
-            'ruta' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Imatge és obligatori.',
-                ]
-            ],
-            'banner' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Destacat banner és obligatori.',
-                ]
-            ],
-        ];
+    //     $validationRule = [
+    //         'titol' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Títol és obligatori.',
+    //             ]
+    //         ],
+    //         'descripcio' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Descripció és obligatori.',
+    //             ]
+    //         ],
+    //         'ruta' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Imatge és obligatori.',
+    //             ]
+    //         ],
+    //         'banner' => [
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Destacat banner és obligatori.',
+    //             ]
+    //         ],
+    //     ];
 
-        $model = new TaulaFotosModel();
-        $data = [
-            'id' => $id,
-            'titol' => $this->request->getPost('titol'),
-            'descripcio' => $this->request->getPost('descripcio'),
-            'ruta' => $this->request->getPost('ruta'),
-            'banner' => $this->request->getPost('banner'),
-        ];
+    //     $model = new TaulaFotosModel();
+    //     $data = [
+    //         'id' => $id,
+    //         'titol' => $this->request->getPost('titol'),
+    //         'descripcio' => $this->request->getPost('descripcio'),
+    //         'ruta' => $this->request->getPost('ruta'),
+    //         'banner' => $this->request->getPost('banner'),
+    //     ];
 
-        if (!$this->validate($validationRule)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
+    //     if (!$this->validate($validationRule)) {
+    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //     }
 
-        $model->save($data);
-        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
-        return redirect()->to('/gestio/banner');
+    //     $model->save($data);
+    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
+    //     return redirect()->to('/gestio/banner');
 
-        // if ($model->save($data)) {
-        //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
-        //     return redirect()->to('/gestio/banner');
-        // } else {
-        //     return redirect()->back()->withInput()->with('errors', $model->errors());
-        // }
-    }
+    //     // if ($model->save($data)) {
+    //     //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
+    //     //     return redirect()->to('/gestio/banner');
+    //     // } else {
+    //     //     return redirect()->back()->withInput()->with('errors', $model->errors());
+    //     // }
+    // }
 
-    public function bannerAdd()
-    {
-        return view('gestio_pag/banner/banner_create');
-    }
+    // public function bannerAdd()
+    // {
+    //     return view('gestio_pag/banner/banner_create');
+    // }
 
-    public function bannerAdd_post()
-    {
-        helper(["form"]);
+    // public function bannerAdd_post()
+    // {
+    //     helper(["form"]);
 
-        $validationRule = [
-            'titol' => [
-                'label' => 'Títol',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Títol és obligatori.',
-                ]
-            ],
-            'ruta' => [
-                'label' => 'Imatge',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Imatge és obligatori.',
-                ]
-            ],
-            'banner' => [
-                'label' => 'Destacat banner',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'El camp Destacat banner és obligatori.',
-                ]
-            ],
-        ];
+    //     $validationRule = [
+    //         'titol' => [
+    //             'label' => 'Títol',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Títol és obligatori.',
+    //             ]
+    //         ],
+    //         'ruta' => [
+    //             'label' => 'Imatge',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Imatge és obligatori.',
+    //             ]
+    //         ],
+    //         'banner' => [
+    //             'label' => 'Destacat banner',
+    //             'rules' => 'required',
+    //             'errors' => [
+    //                 'required' => 'El camp Destacat banner és obligatori.',
+    //             ]
+    //         ],
+    //     ];
 
 
-        $model = new TaulaFotosModel();
+    //     $model = new TaulaFotosModel();
 
-        $data = [
-            'titol' => $this->request->getPost('titol'),
-            'descripcio' => $this->request->getPost('descripcio'),
-            'ruta' => $this->request->getPost('ruta'),
-            'banner' => $this->request->getPost('banner'),
-        ];
+    //     $data = [
+    //         'titol' => $this->request->getPost('titol'),
+    //         'descripcio' => $this->request->getPost('descripcio'),
+    //         'ruta' => $this->request->getPost('ruta'),
+    //         'banner' => $this->request->getPost('banner'),
+    //     ];
 
-        if (!$this->validate($validationRule)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
+    //     if (!$this->validate($validationRule)) {
+    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    //     }
 
-        $model->insert($data);
-        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner creat correctament</div>');
-        return redirect()->to('/gestio/banner');
-    }
+    //     $model->insert($data);
+    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner creat correctament</div>');
+    //     return redirect()->to('/gestio/banner');
+    // }
 }

@@ -23,7 +23,8 @@ $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 
 // PROGRAMES
-$routes->get('programes', 'ProgramesController::index');
+// $routes->get('programes', 'ProgramesController::index');
+$routes->get('programes/(:segment)', 'ProgramesController::categoria/$1');
 $routes->get('programes/juvenil_segona', 'ProgramesController::juvenil_segon_A');
 $routes->get('programes/amateur_segona', 'ProgramesController::amateur_segona');
 $routes->get('programes/amateur_tercera', 'ProgramesController::amateur_tercera');

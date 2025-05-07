@@ -18,6 +18,10 @@ class EventsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'descripcio'   => [
+                'type'           => 'TEXT',
+                'null'           => true,
+            ],
             'data'         => [ 
                 'type'           => 'DATE',
                 'null'           => false,
