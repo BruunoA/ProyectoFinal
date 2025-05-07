@@ -35,7 +35,7 @@
                 <label for="club" class="w3-text-grey">Selecciona club</label>
                 <select class="w3-select w3-border w3-round" name="club" id="club">
                     <?php foreach ($clubs as $club): ?>
-                        <option value="<?= $club['id'] ?>" <?= $album['titol'] == $club['id'] ? 'selected' : '' ?>><?= $club['nom'] ?></option>
+                        <option value="<?= $club['id'] ?>" <?= $album['id_club'] == $club['id'] ? 'selected' : '' ?>><?= $club['nom'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </p>

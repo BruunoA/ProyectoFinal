@@ -32,7 +32,7 @@
                                     <h3><?= esc($album['titol']) ?></h3>
                                 </div>
                             </a>
-                            <div class="w3-bar">
+                            <div class="w3-bar w3-margin-bottom w3-margin-left">
                                 <a href="<?= base_url('gestio/galeria/modify/' . $album['id']) ?>" class="w3-bar-item w3-button w3-blue w3-margin-right">Modificar album</a>
                                 <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-bar-item w3-button w3-red" onclick="return confirm('Vols eliminar aquest album?');">Eliminar album</a>
                             </div>

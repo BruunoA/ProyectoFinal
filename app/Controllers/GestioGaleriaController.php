@@ -122,11 +122,9 @@ class GestioGaleriaController extends BaseController
         $data = [
             'titol' => $this->request->getPost('titol'),
             'portada' => $this->request->getPost('portada'),
-            'club' => $this->request->getPost('club'),
+            'id_club' => $this->request->getPost('club'),
             'estat' => $this->request->getPost('estat'),
         ];
-
-        // dd($data);
 
         if (!$this->validate($validationRule)) {
             $data['errors'] = $this->validator->getErrors();
@@ -134,6 +132,7 @@ class GestioGaleriaController extends BaseController
         }
 
         $model->insert($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Album creat correctament</div>');
         return redirect()->to('/gestio/galeria');
     }
 
@@ -191,7 +190,7 @@ class GestioGaleriaController extends BaseController
             'id' => $id,
             'titol' => $this->request->getPost('titol'),
             'portada' => $this->request->getPost('portada'),
-            'club' => $this->request->getPost('club'),
+            'id_club' => $this->request->getPost('club'),
             'estat' => $this->request->getPost('estat'),
         ];
 
