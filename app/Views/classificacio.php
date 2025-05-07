@@ -26,14 +26,14 @@
                     </select>
                 </div>
         
-                <div class="w3-col l2 m6 s12">
+                <!-- <div class="w3-col l2 m6 s12">
                     <select name="grupo" id="grupo" class="w3-select w3-border w3-small">
                         <option value="">Selecciona un grupo</option>
                         <?php foreach ($grupos as $grupo): ?>
                             <option value="<?= esc($grupo['grup']) ?>"><?= esc($grupo['grup']) ?></option>
                         <?php endforeach; ?>
                     </select>
-                </div>
+                </div> -->
             </div>
         
             <div class=" w3-margin-top">

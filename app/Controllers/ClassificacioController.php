@@ -47,13 +47,13 @@ class ClassificacioController extends BaseController
     {
         // Obtener los filtros de categoría y grupo desde la solicitud
         $categoriaId = $this->request->getVar('categoria');
-        $grupoId = $this->request->getVar('grupo');
+        // $grupoId = $this->request->getVar('grupo');
         
         // Filtrar los datos según los valores seleccionados
         $classificacioModel = new ClassificacioModel();
         
-        if ($categoriaId && $grupoId) {
-            $taula = $classificacioModel->where('categoria', $categoriaId)->where('grup', $grupoId)->findAll();
+        if ($categoriaId) {
+            $taula = $classificacioModel->where('categoria', $categoriaId)->findAll();
         } else {
             $taula = $classificacioModel->findAll();  // Si no hay filtros, mostrar todos los resultados
         }
