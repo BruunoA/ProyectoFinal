@@ -163,7 +163,7 @@ class GestioController extends BaseController
             'gestio' => $model->find($id),
             'clubs' => $modelClubs->findAll(),
         ];
-        
+
         return view('gestio_pag/modify', $data);
     }
 
@@ -488,6 +488,37 @@ class GestioController extends BaseController
 
         return view('gestio_pag/banner/banner', $data);
     }
+
+    public function clubs(){
+        $model = new ClubsModel();
+
+        $data = [
+            'clubs' => $model->findAll(),
+        ];
+
+        return view('gestio_pag/clubs/clubs', $data);
+    }
+
+    public function clubsDelete($id)
+    {
+        $model = new ClubsModel();
+        $model->delete($id);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre esborrat correctament</div>');
+        return redirect()->back();
+    }
+
+    public function clubsAdd()
+    {
+        $model = new ClubsModel();
+
+        $data = [
+            'clubs' => $model->findAll(),
+        ];
+
+        return view('gestio_pag/clubs/club_add', $data);
+    }
+
+
 
     // public function bannerDelete($id)
     // {

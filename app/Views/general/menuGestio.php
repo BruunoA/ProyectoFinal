@@ -26,6 +26,7 @@
                 <option value="menu_gestio">Menu gestio</option>
                 <option value="xarxes_socials">Xarxes Socials</option>
             </select>
+            <li><a href="<?= base_url('gestio/clubs') ?>">Clubs</a></li>
         </ul>
     </div>
 </nav>
