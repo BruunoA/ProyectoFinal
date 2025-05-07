@@ -43,13 +43,13 @@
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Títol</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>">
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>">
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value="">Selecciona una opció</option>
             <option value="" disabled class="w3-bold">Noticies</option>
             <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
@@ -67,7 +67,7 @@
         </div>
 
         <label for="estat" class="w3-text-black"><b>Estat</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
             <option value="">Selecciona una opció</option>
             <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
             <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
@@ -75,23 +75,23 @@
 
         <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-        <textarea name="ckeditor" id="ckeditor" required><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
+            <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
-
         function mostrarPortada() {
             const seccio = document.getElementById('seccio').value;
             const portadaContainer = document.getElementById('portada-container');
-            if (seccio === 'noticies') {
-                portadaContainer.style.display = 'block';
-            } else {
-                portadaContainer.style.display = 'none';
-            }
+            portadaContainer.style.display = (seccio === 'noticies') ? 'block' : 'none';
         }
+
+        document.getElementById('seccio').addEventListener('change', mostrarPortada);
+
+        window.addEventListener('DOMContentLoaded', mostrarPortada);
+
         document.getElementById('seccio').addEventListener('change', function() {
             const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             const ckeditor = document.getElementById('ckeditor');

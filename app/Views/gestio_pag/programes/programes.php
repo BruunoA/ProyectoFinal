@@ -29,7 +29,7 @@
     </style>
 </head>
 
-<body class="w3-container">
+<body class="">
 
     <?= $this->include('general/menuGestio'); ?>
     <h1>Gestió de Programes</h1>

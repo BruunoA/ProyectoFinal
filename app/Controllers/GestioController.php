@@ -159,24 +159,120 @@ class GestioController extends BaseController
 
     public function update($id)
     {
+        // helper(["form"]);
+        // $model = new GestioModel();
+        // $data = [
+        //     'id'  => $id,
+        //     'nom' => $this->request->getPost('nom'),
+        //     'portada' => $this->request->getPost('portada'),
+        //     'resum' => $this->request->getPost('resum'),
+        //     'seccio' => $this->request->getPost('seccio'),
+        //     'estat' => $this->request->getPost('estat'),
+        //     'contingut' => $this->request->getPost('ckeditor'),
+        //     'url' => mb_url_title($this->request->getPost('nom'), '-', true)
+        // ];
+
+        // if (!$model->validate($data)) {
+        //     return redirect()->back()->withInput()->with('errors', $model->errors());
+        // } else {
+        //     $model->save($data);
+        //     // return redirect()->to('/gestio');
+        // }
+
+        $validation = \Config\Services::validation();
+
         helper(["form"]);
-        $model = new GestioModel();
+
+        $seccio = $this->request->getPost('seccio');
+
+        // $rules = [
+        //     'nom' => 'required',
+        //     'resum' => 'required',
+        //     'seccio' => 'required',
+        //     'id_club' => 'required',
+        //     'estat' => 'required',
+        //     'ckeditor' => 'required',
+        // ];
+
+        $rules = [
+            'nom' => [
+                'label' => 'Nom',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Nom és obligatori.',
+                ]
+            ],
+            'resum' => [
+                'label' => 'Resum',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Resum és obligatori.',
+                ]
+            ],
+            'seccio' => [
+                'label' => 'Secció',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Secció és obligatori.',
+                ]
+            ],
+            // 'id_club' => [
+            //     'label' => 'Club',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'El camp Club és obligatori.',
+            //     ]
+            // ],
+            'estat' => [
+                'label' => 'Estat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Estat és obligatori.',
+                ]
+            ],
+            'ckeditor' => [
+                'label' => 'Contingut',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Contingut és obligatori.',
+                ]
+            ],
+        ];
+
+        if ($seccio === 'noticies') {
+            $rules['portada'] = [
+                'label' => 'Portada',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Portada és obligatori.',
+                ]
+            ];
+        }else if($seccio === 'banner'){
+            $rules['resum']['rules'] = 'permit_empty';
+            // $rules['id_club']['rules'] = 'permit_empty';
+        }else if($seccio === 'logo'){
+            $rules['resum']['rules'] = 'permit_empty';
+            // $rules['id_club']['rules'] = 'permit_empty';
+        }
+
         $data = [
-            'id'  => $id,
             'nom' => $this->request->getPost('nom'),
-            'portada' => $this->request->getPost('portada'),
             'resum' => $this->request->getPost('resum'),
             'seccio' => $this->request->getPost('seccio'),
+            // 'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
+            'data' => $this->request->getPost('data'),
+            'portada' => $this->request->getPost('portada'),
             'contingut' => $this->request->getPost('ckeditor'),
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
-        if (!$model->validate($data)) {
-            return redirect()->back()->withInput()->with('errors', $model->errors());
-        } else {
-            $model->save($data);
+        if($this->validate($rules)) {
+            $model = new GestioModel();
+            $model->update($id, $data);
             // return redirect()->to('/gestio');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
@@ -184,6 +280,10 @@ class GestioController extends BaseController
         $seccio = $this->request->getPost('seccio');
         if($seccio == 'noticies'){
             return redirect()->to('/gestio/noticies');
+        } else if ($seccio == 'banner' || $seccio == 'logo') {
+            return redirect()->to('/gestio/banner');
+        } else if ($seccio == 'historia' || $seccio == 'missio' || $seccio == 'visio' || $seccio == 'valors') {
+            return redirect()->to('/gestio/sobreNosaltres');
         } else {
             return redirect()->to('/gestio');
         }
@@ -344,8 +444,8 @@ class GestioController extends BaseController
         $dataActual = date('Y-m-d H:i:s');
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'descripcio' => ['name' => 'descripcio', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'publicated_at' => ['name' => 'publicated_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'data' => ['name' => 'data', 'type' => KpaCrud::DATE_FIELD_TYPE, 'default' => $dataActual, 'html_atts' => ["required"],],
