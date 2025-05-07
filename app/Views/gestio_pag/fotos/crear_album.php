@@ -36,7 +36,7 @@
             </p>
 
             <p>
-                <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+                <label for="portada" class="w3-text-black"><b>Portada Album</b></label>
                 <input class="w3-input w3-border" type="text" id="portada" name="portada" value="<?= old('portada') ?>" readonly>
                 <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
             </p>

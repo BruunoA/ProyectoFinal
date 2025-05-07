@@ -19,4 +19,5 @@ return [
     'nomEvent' => 'Nom',
     'descripcioEvent' => 'Descripció',
     'dataEvent' => 'Data de l\'esdeveniment',
+    'Data' => 'Data creació',
 ];
