@@ -11,7 +11,7 @@ class NoticiesSeeder extends Seeder
     {
         $fake = Factory::create("es_ES");
 
-        for ($i = 0; $i < 10; $i++) { 
+        for ($i = 0; $i < 20; $i++) { 
             $nom = $fake->sentence(6); 
             $resum = $fake->text(100); 
             $contingut = $fake->paragraphs(20, true); 

@@ -49,15 +49,14 @@
                 </div>
             </div>
         </div>
-        <div class="w3-row-padding w3-margin-top">
+        <div class="w3-row-padding">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="w3-col l3 m6 s12 w3-margin-bottom">
-                    <!-- <div class="w3-third w3-margin-bottom"> -->
-                    <div class="w3-card w3-hover-shadow w3-round-large" style="display:flex; flex-direction: column; height:100%;">
+                <div class="w3-col s12 l3 m3 w3-container w3-margin-top">
+                    <div class="" >
                         <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
                             <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" style="width:100%; height: 250px; object-fit:cover;" class="w3-round-top">
                         </a>
-                        <div class="w3-container news-container">
+                        <div class="">
                             <h5><strong><?= esc($noticia['nom']) ?></strong></h5>
                             <p><?= esc($noticia['resum']) ?></p>
                         </div>
