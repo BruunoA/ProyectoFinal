@@ -72,19 +72,19 @@
                 <p class="w3-justify"><?= lang('home.DescripcioBanner') ?></p>
             </div> -->
 
-            <div class="w3-container w3-card w3-padding w3-round-large w3-light-grey w3-margin-top">
-                <div class="w3-row-padding w3-center">
+            <div class="w3-container w3-round-large">
+                <div class="w3-row-padding w3-center w3-large">
                     <div class="w3-third w3-padding">
-                        <div class="w3-card w3-padding-16 w3-amber">
-                            <h4 class="w3-text-white"><?= lang('home.Missio') ?></h4>
-                            <p class="w3-text-white"><?= $missio['resum'] ?? '' ?></p>
+                        <div class="w3-card w3-padding-32 w3-red w3-hover-shadow w3-text-black" style="height: 100%;">
+                            <h3 class="w3-text-white w3-border-bottom w3-border-white w3-padding-small"><?= lang('home.Missio') ?></h3>
+                            <p class="w3-text-white w3-medium"><?= $missio['resum'] ?? '' ?></p>
                         </div>
                     </div>
 
                     <div class="w3-third w3-padding">
-                        <div class="w3-card w3-padding-16 w3-blue">
-                            <h4 class="w3-text-white"><?= lang('home.Visio') ?></h4>
-                            <p class="w3-text-white"><?= $visio['resum'] ?? '' ?></p>
+                        <div class="w3-card w3-padding-32 w3-black w3-hover-shadow w3-text-black" style="height: 100%;">
+                            <h3 class="w3-text-white w3-border-bottom w3-border-white w3-padding-small"><?= lang('home.Visio') ?></h3>
+                            <p class="w3-text-white w3-medium"><?= $visio['resum'] ?? '' ?></p>
                         </div>
                     </div>
                 </div>
