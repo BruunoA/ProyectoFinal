@@ -17,9 +17,9 @@ class GestioGaleriaController extends BaseController
         $model = new AlbumModel();
 
         if($search !== '') {
-            $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
-        }else {
             $albums = $model->like('titol', $search)->orderBy('created_at', 'DESC')->paginate(6);
+        }else {
+            $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
         }
 
         $pager = $model->pager;
