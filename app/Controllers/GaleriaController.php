@@ -25,7 +25,8 @@ class GaleriaController extends BaseController
             session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
             return redirect()->to('/');
         }
-
+        // dd($id_club);
+        
         $model = new AlbumModel();
         $albumsInfo = $model->where('estat', 'publicat')->where('id_club', $id_club)->findAll(); // agafa els albums publicats
 
