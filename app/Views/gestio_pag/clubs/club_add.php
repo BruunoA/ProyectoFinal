@@ -23,6 +23,7 @@
             </ul>
         </div>
     <?php endif ?>
+    <a href="<?= base_url('gestio/clubs') ?>" class="w3-button w3-blue w3-margin">Tornar Enrere</a>
     <form action="<?= base_url('gestio/clubs/add')?>" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
         <?= csrf_field() ?>
 

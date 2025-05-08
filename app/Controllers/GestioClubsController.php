@@ -73,4 +73,52 @@ class GestioClubsController extends BaseController
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
         return redirect()->to(base_url('gestio/clubs'));
     }
+
+    public function clubsModify($id)
+    {
+        $model = new ClubsModel();
+        $club = $model->find($id);
+
+        $data = [
+            'club' => $club,
+        ];
+
+        return view('gestio_pag/clubs/club_modify', $data);
+    }
+
+    public function clubsModify_post($id)
+    {
+        $model = new ClubsModel();
+
+        $rules = [
+            'nom' => [
+                'label' => 'Nom',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Nom és obligatori.',
+                ],
+            ],
+            'foto' => [
+                'label' => 'Foto',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Foto és obligatori.',
+                ],
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $data = [
+            'id' => $id,
+            'nom' => $this->request->getPost('nom'),
+            'foto_club' => $this->request->getPost('foto'),
+        ];
+
+        $model->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
+        return redirect()->to(base_url('gestio/clubs'));
+    }
 }
