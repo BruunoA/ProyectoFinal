@@ -69,12 +69,12 @@ $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gesti
 // $routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO CLUBS
-$routes->get('gestio/clubs', 'GestioController::clubs' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/clubs/modify/(:num)', 'GestioController::clubsModify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/clubs/modify/(:num)', 'GestioController::clubsModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/clubs/delete/(:num)', 'GestioController::clubsDelete/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/clubs/add', 'GestioController::clubsAdd' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/clubs/add', 'GestioController::clubsAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/clubs', 'GestioClubsController::clubs' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/clubs/modify/(:num)', 'GestioClubsController::clubsModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/clubs/modify/(:num)', 'GestioClubsController::clubsModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/clubs/delete/(:num)', 'GestioClubsController::clubsDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/clubs/add', 'GestioClubsController::clubsAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/clubs/add', 'GestioClubsController::clubsAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO PROGRAMES
 $routes->get('gestio/programes', 'GestioProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);

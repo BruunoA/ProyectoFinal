@@ -12,6 +12,7 @@
     <?= session()->getFlashdata('success') ?>
     <div class="w3-container w3-margin-top">
         <h2>Gestió Clubs</h2>
+        <a href="<?= base_url('gestio/clubs/add') ?>" class="w3-button w3-black w3-margin">Crear Club</a>
         <?php if (!empty($clubs)): ?>
             <table class="w3-table w3-bordered w3-striped">
                 <thead class="w3-dark-grey">

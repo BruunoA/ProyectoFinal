@@ -7,10 +7,10 @@
 
     <title>Gestio inici</title>
 </head>
-<body class="w3-margin">
+<body>
 <?= $this->include('general/menuGestio'); ?>
 <?= session()->getFlashdata('success') ?>
-    <div class="w3-container">
+    <div class="w3-container w3-margin">
     <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.pujar') ?></a>
         <table class="w3-table w3-bordered w3-striped">
             <h1 class="w3-center">Gestió inici</h1>
