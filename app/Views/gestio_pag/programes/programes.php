@@ -29,16 +29,16 @@
     </style>
 </head>
 
-<body class="w3-margin">
+<body>
 
     <?= $this->include('general/menuGestio'); ?>
-    <h1>Gestió de Programes</h1>
+    <h1 class="w3-center">Gestió de Programes</h1>
     <?= session()->getFlashdata('success'); ?>
-    <div class="w3-section">
+    <div class="w3-section w3-margin">
         <a href="<?= base_url('gestio/programes/add') ?>" class="w3-button w3-blue w3-round w3-margin-bottom">Afegir programa</a>
     </div>
 
-    <div class="w3-responsive w3-card-4 w3-light-grey">
+    <div class="w3-responsive w3-card-4 w3-light-grey w3-margin">
         <table class="w3-table-all w3-hoverable w3-card-4">
             <thead>
                 <tr class="w3-light-grey">
