@@ -86,6 +86,9 @@ $routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, [
 // $routes->post('gestio/events/tipus/add', 'GestioController::eventsTipusAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('gestio/mail', 'GestioController::mail' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/mail/send/(:num)', 'GestioController::mailSend/$1');
+$routes->get('gestio/mail/delete/(:num)', 'GestioController::deleteMail/$1' /*, ['filter' => 'gestio:admin']*/);
+
 
 // UPLOAD
 $routes->get('pujarArxiu', 'GestioController::upload_drag');

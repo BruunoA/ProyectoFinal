@@ -435,7 +435,17 @@ class GestioController extends BaseController
         $contacteModel = new ContacteModel();
         $data['contactes'] = $contacteModel->findAll(); 
         
-        return view('gestio_pag/Email', $data); 
+        return view('gestio_pag/email', $data); 
     }
-
+    public function mailSend($id) {
+        $contacteModel = new ContacteModel();
+        $contacte = $contacteModel->find($id); 
+        return view ('gestio_pag/email_view');
+    }
+    public function deleteMail($id) {
+        $contacteModel = new ContacteModel();
+        $contacteModel->delete($id); 
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Email esborrat correctament</div>');
+        return redirect()->to('/gestio/email');
+    }
 }

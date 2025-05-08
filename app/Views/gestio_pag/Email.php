@@ -33,8 +33,8 @@
                                 <td><?= $contacte['text'] ?? '' ?></td>
                                 <td><?= $contacte['created_at'] ?? '' ?></td>
                                 <td>
-                                    <a href="<?= base_url('responder/' . $contacte['id']); ?>" class="w3-button w3-green">Responder</a>
-                                    <a href="<?= base_url('eliminar/' . $contacte['id']); ?>" class="w3-button w3-red" onclick="return confirm('¿Estás seguro de que deseas eliminar este contacto?');">Eliminar</a>
+                                    <a href="<?= base_url('gestio/mail/send/' . $contacte['id']); ?>" class="w3-button w3-green">Responder</a>
+                                    <a href="<?= base_url('gestio/mail/delete/' . $contacte['id']); ?>" class="w3-button w3-red" onclick="return confirm('¿Estás seguro de que deseas eliminar este contacto?');">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
