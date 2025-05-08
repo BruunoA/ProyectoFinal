@@ -17,29 +17,37 @@
         <div class="w3-margin-bottom">
             <a href="<?= base_url('gestio/programes') ?>" class="w3-button w3-light-gray w3-round w3-hover-dark-gray">Tornar a programes</a>
         </div>
-
+        <?php if (session()->has('errors')): ?>
+            <div class="w3-panel w3-red w3-padding">
+                <ul>
+                    <?php foreach (session('errors') as $error): ?>
+                        <li><?= esc($error) ?></li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+        <?php endif ?>
         <form method="post" action="" class="w3-card w3-padding w3-round-large w3-light-grey">
             <div class="w3-row-padding w3-margin-bottom">
                 <div class="w3-col m6">
                     <label class="w3-text-blue"><b>Títol</b></label>
-                    <input class="w3-input w3-border w3-round" type="text" id="titol" name="titol" required>
+                    <input class="w3-input w3-border w3-round" type="text" id="titol" name="titol">
                 </div>
 
                 <div class="w3-col m6">
                     <label class="w3-text-blue"><b>Horari</b></label>
-                    <input class="w3-input w3-border w3-round" type="text" id="horari" name="horari" required>
+                    <input class="w3-input w3-border w3-round" type="text" id="horari" name="horari">
                 </div>
             </div>
 
             <div class="w3-margin-bottom">
                 <label class="w3-text-blue"><b>Descripció</b></label>
-                <textarea class="w3-input w3-border w3-round" id="descripcio" name="descripcio" rows="5" required></textarea>
+                <textarea class="w3-input w3-border w3-round" id="descripcio" name="descripcio" rows="5"></textarea>
             </div>
 
             <div class="w3-row-padding w3-margin-bottom">
                 <div class="w3-col m6">
                     <label class="w3-text-blue"><b>ID Equip</b></label>
-                    <select class="w3-select w3-border w3-round" id="id_equip" name="id_equip" required>
+                    <select class="w3-select w3-border w3-round" id="id_equip" name="id_equip">
                         <option value="" disabled selected>Selecciona un equip</option>
                         <?php foreach ($equips as $equip): ?>
                             <option value="<?= $equip['id'] ?>"><?= $equip['nom'] ?></option>
@@ -56,7 +64,7 @@
 
             <div class="w3-center">
                 <button type="submit" class="w3-button w3-blue w3-round w3-margin-right w3-hover-light-blue">Afegir Programa</button>
-                <a href="javascript:history.back()" class="w3-button w3-gray w3-round w3-hover-dark-gray">Cancel·lar</a>
+                <a href="<?= base_url('gestio/programes') ?>" class="w3-button w3-gray w3-round w3-hover-dark-gray">Cancel·lar</a>
             </div>
         </form>
     </div>

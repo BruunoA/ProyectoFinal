@@ -64,6 +64,37 @@ class GestioProgramesController extends BaseController
             $img = $this->request->getPost('img');
         }
 
+        $validation = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+            'horari' => [
+                'label' => 'Horari',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Horari és obligatori.',
+                ],
+            ],
+            'descripcio' => [
+                'label' => 'Descripció',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Descripció és obligatori.',
+                ],
+            ],
+            'id_equip' => [
+                'label' => 'ID Equip',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Equip és obligatori.',
+                ],
+            ],
+        ];
+
         $data = [
             'id' => $id,
             'titol' => $this->request->getPost('titol'),
@@ -72,6 +103,10 @@ class GestioProgramesController extends BaseController
             'id_equip' => $this->request->getPost('id_equip'),
             'img' => $img,
         ];
+
+        if(!$this->validate($validation)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
 
         // dd($data);
 
@@ -104,6 +139,48 @@ class GestioProgramesController extends BaseController
             'id_equip' => $this->request->getPost('id_equip'),
             'img' => $this->request->getPost('img'),
         ];
+
+        $validation = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+            'horari' => [
+                'label' => 'Horari',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Horari és obligatori.',
+                ],
+            ],
+            'descripcio' => [
+                'label' => 'Descripció',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Descripció és obligatori.',
+                ],
+            ],
+            'id_equip' => [
+                'label' => 'ID Equip',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Equip és obligatori.',
+                ],
+            ],
+            'img' => [
+                'label' => 'Imatge',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Imatge és obligatori.',
+                ],
+            ],
+        ];
+
+        if(!$this->validate($validation)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
 
         $categorieModel->save($data);
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Programa afegit correctament</div>');
