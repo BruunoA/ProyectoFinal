@@ -57,7 +57,8 @@
                             <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" style="width:100%; height: 250px; object-fit:cover;" class="w3-round-top">
                         </a>
                         <div class="w3-container" style="flex-grow: 1; display: flex; flex-direction: column;">
-                            <h5><strong><?= esc($noticia['nom']) ?></strong></h5>
+                            <!-- <h5><strong><?= esc($noticia['nom']) ?></strong></h5> -->
+                            <h5><strong><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></strong></h5>
                             <p style="flex-grow: 1"><?= esc($noticia['resum']) ?></p>
                         </div>
                     </div>
