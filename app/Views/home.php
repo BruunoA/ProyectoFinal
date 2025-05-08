@@ -28,16 +28,16 @@
     <?= session()->getFlashdata('error') ?>
     <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000">
 
-        <div class="carousel-inner">
-            <?php foreach ($banners as $banner): ?>
-                <div class="carousel-item">
-                    <img src="<?= $banner['contingut']; ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-
         <!-- <div class="carousel-inner">
+            <?php // foreach ($banners as $banner): ?>
+                <div class="carousel-item">
+                    <img src="<?php // $banner['contingut']; ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
+                </div>
+            <?php // endforeach; ?>
+        </div> -->
+
+
+        <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Campo de fútbol Alpicat" style="height: 500px; object-fit:cover">
             </div>
@@ -47,7 +47,7 @@
             <div class="carousel-item">
                 <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Imagen 3" style="height: 500px; object-fit:cover">
             </div>
-        </div> -->
+        </div>
 
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
