@@ -27,13 +27,13 @@ class GestioMigration extends Migration
                                 'constraint'     => '250',
                         ],
                         'destacat'         => [
-                                'type'           => 'ENUM',
-                                'constraint'     => ['si', 'no'],
-                                'default'        => 'no',
+                                'type'           => 'TINYINT',
+                                'constraint'     => 1,
+                                'default'        => 0,
                         ],
                         'contingut' => [
                                 'type'           => 'TEXT',
-                                'null'           => true,
+                                'null'           => false,
                         ],
                         'seccio'          => [
                                 'type'           => 'VARCHAR',
@@ -48,9 +48,9 @@ class GestioMigration extends Migration
                                 'constraint'     => '150',
                         ],
                         'estat'         =>  [
-                                'type'           => 'ENUM',
-                                'constraint'     => ['publicat', 'no_publicat'],
-                                'default'        => 'no_publicat',
+                                'type'           => 'TINYINT',
+                                'constraint'     => 1,
+                                'default'        => 0,
                         ],
                         'created_at'      =>  [
                                 'type'         =>  'DATETIME',

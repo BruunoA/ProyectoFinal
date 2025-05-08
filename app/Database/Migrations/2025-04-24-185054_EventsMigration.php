@@ -36,9 +36,9 @@ class EventsMigration extends Migration
             //     'default'        => 'event',
             // ],
             'estat'          => [
-                'type'           => 'ENUM',
-                'constraint'     => ['publicat', 'no_publicat'],
-                'default'        => 'no_publicat',
+                'type'           => 'TINYINT',
+                'constraint'     => 1,
+                'default'        => 0,
             ],
             'id_club'          => [
                 'type'           => 'INT',
@@ -54,11 +54,11 @@ class EventsMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
+            // 'publicated_at'          => [
+            //     'type'           => 'TIMESTAMP',
+            //     'null'           => true,
+            //     'default'        => null,
+            // ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,

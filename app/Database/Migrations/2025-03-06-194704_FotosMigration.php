@@ -23,10 +23,10 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
-            'banner'          => [
-                'type'           => 'ENUM',
-                'constraint'     => ['si', 'no'],
-            ],
+            // 'banner'          => [
+            //     'type'           => 'ENUM',
+            //     'constraint'     => ['si', 'no'],
+            // ],
             'descripcio'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
@@ -35,7 +35,6 @@ class TaulaFotosMigration extends Migration
             'id_album'          => [
                 'type'           => 'INT',
                 'null'           => true,  
-                'default'        => 1,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -47,11 +46,11 @@ class TaulaFotosMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
+            // 'publicated_at'          => [
+            //     'type'           => 'TIMESTAMP',
+            //     'null'           => true,
+            //     'default'        => null,
+            // ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,

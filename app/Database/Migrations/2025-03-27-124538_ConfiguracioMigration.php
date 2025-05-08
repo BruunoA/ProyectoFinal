@@ -17,7 +17,7 @@ class ConfiguracioMigration extends Migration
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                         ],
-                        'icon' => [
+                        'icona' => [
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                                 'null'       => true,
@@ -38,8 +38,9 @@ class ConfiguracioMigration extends Migration
                                 'default' => null,
                         ],
                         'visibilitat' => [
-                                'type' => 'ENUM',
-                                'constraint' => ['Si', 'No'],
+                                'type' => 'TINYINT',
+                                'constraint' => 1,
+                                'default' => 0,
                         ],
                         'ordre' => [
                                 'type' => 'INT',

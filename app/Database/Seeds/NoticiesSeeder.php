@@ -23,11 +23,11 @@ class NoticiesSeeder extends Seeder
                 'id_club' => random_int(1, 3),
                 'resum' => $resum,
                 'contingut' => $contingut,
-                'destacat' => $fake->randomElement(['si', 'no']),
+                'destacat' => $fake->numberBetween(0, 1),
                 'seccio' => $seccio,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
-                'estat' => $fake->randomElement(['publicat', 'no_publicat']),
+                'estat' => $fake->numberBetween(0, 1),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
@@ -50,7 +50,7 @@ class NoticiesSeeder extends Seeder
                 'seccio' => $seccio,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
-                'estat' => 'publicat',
+                'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

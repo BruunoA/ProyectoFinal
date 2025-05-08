@@ -14,7 +14,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '/home',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -22,7 +22,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'contacte',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -30,7 +30,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'sobreNosaltres',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -38,7 +38,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -46,7 +46,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/sub-19',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -54,7 +54,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/juvenil-segona-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 5
             ],
             [
@@ -62,7 +62,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/cadet',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -70,7 +70,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/cadet-primera-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
@@ -78,7 +78,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/cadet-segona-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
@@ -86,7 +86,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/amateur',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -94,7 +94,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/tercera-catalana',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 10
             ],
             [
@@ -102,7 +102,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-catalana',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 10
             ],
             [
@@ -110,7 +110,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/infantil',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [   // ni ha dos
@@ -118,7 +118,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/infantil-segona-divisio-s14',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 13
             ],
             [
@@ -126,7 +126,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/alevi',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -134,7 +134,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/primera-divisio-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 15
             ],
             [
@@ -142,7 +142,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/primera-divisio-alevi-s11',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 15
             ],
             [
@@ -150,7 +150,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-divisio-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 15
             ],
             [
@@ -158,7 +158,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-divisio-alevi-s11',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 15
             ],
             [
@@ -166,7 +166,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/preferent-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 5,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 15
             ],
             [
@@ -174,7 +174,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/benjamins',
                 'tipus' => 'menu_general',
                 'ordre' => 12,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -182,7 +182,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/primera-divisio-benjamins-s10',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 21
             ],
             [
@@ -190,7 +190,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/primera-divisio-benjamins-s9',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 21
             ],
             [
@@ -198,7 +198,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/prebenjami-s8',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 21
             ],
             [
@@ -206,7 +206,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/prebenjami-s7',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 21
             ],
             [
@@ -214,7 +214,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/femeni',
                 'tipus' => 'menu_general',
                 'ordre' => 15,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -222,7 +222,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-divisio-femeni-juvenil',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 26
             ],
             [
@@ -230,7 +230,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-divisio-femeni-infantil',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 26
             ],
             [
@@ -238,7 +238,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'programes/segona-divisio-femeni-alevi',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 26
             ],
             [
@@ -246,7 +246,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'noticies',
                 'tipus' => 'menu_general',
                 'ordre' => 5,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -254,7 +254,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'galeria',
                 'tipus' => 'menu_general',
                 'ordre' => 6,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -262,7 +262,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'classificacio',
                 'tipus' => 'menu_general',
                 'ordre' => 7,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -270,7 +270,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_general',
                 'ordre' => 8,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -278,7 +278,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'login',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 33
             ],
             [
@@ -286,7 +286,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'logout',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 33
             ],
             [
@@ -294,7 +294,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 33
             ]
         ];
@@ -307,7 +307,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '/',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -315,7 +315,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/sobreNosaltres',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -323,7 +323,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/programes',
                 'tipus' => 'menu_gestio',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -331,7 +331,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_gestio',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -339,7 +339,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/noticies',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -347,7 +347,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/events',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 4
             ],
             [
@@ -355,7 +355,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'gestio/galeria',
                 'tipus' => 'menu_gestio',
                 'ordre' => 5,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -363,7 +363,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => '',
                 'tipus' => 'menu_gestio',
                 'ordre' => 6,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => null
             ],
             [
@@ -371,7 +371,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'configuracio/dades_contacte',
                 'tipus' => 'menu_gestio',
                 'ordre' => 1,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
@@ -379,7 +379,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'config/menu_general',
                 'tipus' => 'menu_gestio',
                 'ordre' => 2,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
@@ -387,7 +387,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'config/menu_gestio',
                 'tipus' => 'menu_gestio',
                 'ordre' => 3,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
             [
@@ -395,7 +395,7 @@ class ConfiguracioSeeder extends Seeder
                 'valor' => 'configuracio/footer',
                 'tipus' => 'menu_gestio',
                 'ordre' => 4,
-                'visibilitat' => "Si",
+                'visibilitat' => 1,
                 'id_pare' => 8
             ],
         ];

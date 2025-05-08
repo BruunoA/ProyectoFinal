@@ -16,7 +16,7 @@ class BAlbumSeeder extends Seeder
                 'titol' => $fake->sentence(4),
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
-                'estat' => 'publicat',
+                'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 
@@ -28,28 +28,28 @@ class BAlbumSeeder extends Seeder
                 'titol' => 'Tags',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/alpicatLogo.png',
-                'estat' => 'no_publicat',
+                'estat' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'titol' => 'Noticies',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
-                'estat' => 'no_publicat',
+                'estat' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'titol' => 'Programes',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
-                'estat' => 'no_publicat',
+                'estat' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'titol' => 'Banner',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
-                'estat' => 'no_publicat',
+                'estat' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
         ];

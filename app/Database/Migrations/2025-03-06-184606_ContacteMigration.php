@@ -24,8 +24,7 @@ class ContacteMigration extends Migration
                 'null'           => false,
             ],
             'text'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'type'           => 'TEXT',
                 'null'           => false,
             ],
             'from_email'          => [
@@ -60,7 +59,7 @@ class ContacteMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'updated_at'     =>  [      // TODO: FA FALTA?
+            'updated_at'     =>  [     
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
                 'default'    =>  null,

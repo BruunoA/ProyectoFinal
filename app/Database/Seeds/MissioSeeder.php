@@ -18,7 +18,7 @@ class MissioSeeder extends Seeder
                 'resum' => $fake->paragraph(2),
                 'seccio' => 'missio',
                 'url' => url_title($nom, '-', true),
-                'estat' => 'publicat',
+                'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
             $this->db->table('gestio')->insert($data);

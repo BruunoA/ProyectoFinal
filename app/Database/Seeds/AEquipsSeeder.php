@@ -8,27 +8,6 @@ class AEquipsSeeder extends Seeder
 {
     public function run()
     {
-        // $data = [
-        //     [
-        //         'nom' => 'Juvenil A',
-        //     ],
-        //     [
-        //         'nom' => 'Juvenil B',
-        //     ],
-        //     [
-        //         'nom' => 'Cadet A',
-        //     ],
-        //     [
-        //         'nom' => 'Cadet B',
-        //     ],
-        //     [
-        //         'nom' => 'Infantil A',
-        //     ],
-        //     [
-        //         'nom' => 'Infantil B',
-        //     ],
-        // ];
-
         $data = [
             [
                 'nom' => 'juvenil-segona-divisio',

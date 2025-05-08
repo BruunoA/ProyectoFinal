@@ -19,7 +19,7 @@ class HistoriaSeeder extends Seeder
                 'resum' => $fake->sentence(30),
                 'contingut' => $fake->paragraphs(20, true), 
                 'seccio' => 'historia',
-                'estat' => 'publicat',
+                'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'), 
             ];
 

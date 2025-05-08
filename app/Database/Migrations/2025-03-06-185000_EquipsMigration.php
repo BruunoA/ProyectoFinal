@@ -32,11 +32,11 @@ class EquipsMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
+            // 'publicated_at'          => [
+            //     'type'           => 'TIMESTAMP',
+            //     'null'           => true,
+            //     'default'        => null,
+            // ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,
