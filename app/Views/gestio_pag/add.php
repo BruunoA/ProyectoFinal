@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con W3.CSS</title>
+    <title>Crear contingut</title>
 
     <!-- W3.CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -43,71 +43,59 @@
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Nom</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>" required>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio" required>
+        <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value="">Selecciona una opció</option>
             <option value="#" disabled class="w3-bold">Noticies</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Noticies</option>
-            <!-- <option value="event">&nbsp;&nbsp;&nbsp;Events</option> -->
+            <option value="noticies" <?= old('seccio') == 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia">&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio">&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio">&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors">&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled class="w3-bold">Programes</option>
-            <option value="categories">Categories</option>
-            <option value="#" disabled class="w3-bold">Configuració</option>
-            <option value="noticies">&nbsp;&nbsp;&nbsp;Banner</option>
+            <option value="historia" <?= old('seccio') == 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
+            <option value="missio" <?= old('seccio') == 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
+            <option value="visio" <?= old('seccio') == 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
+            <option value="valors" <?= old('seccio') == 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
+            <option value="#" disabled class="w3-bold">Inici</option>
+            <option value="banner" <?= old('seccio') == 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
+            <option value="logo" <?= old('seccio') == 'logo' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Logo</option>
         </select>
 
-        <label for="estat" class="w3-text-black"><b>Estat</b></label>
-        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat" required>
-            <option value="">Selecciona una opció</option>
-            <option value="no_publicat">No publicat</option>
-            <option value="publicat">Publicat</option>
-        </select>
-
-        <!-- <div id="event-container" class="w3-margin-bottom" style="display: none;">
-            <label for="data" class="w3-text-black"><b>Data Event</b></label>
-            <input class="w3-input w3-border" type="date" id="data" name="data">
-        </div> -->
-
-        <!-- TODO: VEURE SI CANVIAR LA RUTA A PUBLIC O DEIXAR-LA A WRITABLE -->
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada">
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" value="<?= old('portada') ?>" readonly>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
+        <label for="id_club" class="w3-text-black">Club</label>
+        <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
+            <option value="">Selecciona un club</option>
+            <?php  foreach ($clubs as $club): ?>
+                <option value="<?= esc($club['id']) ?>" <?= old('id_club') == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <label for="estat" class="w3-text-black"><b>Estat</b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
+            <option value="">Selecciona una opció</option>
+            <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>>No publicat</option>
+            <option value="publicat" <?= old('estat') == 'publicat' ? 'selected' : '' ?>>Publicat</option>
+        </select>
+
         <label class="w3-text-black"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor"></textarea>
+            <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor') ?></textarea>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
-
         document.getElementById('seccio').addEventListener('change', function() {
             // const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             // const ckeditor = document.getElementById('ckeditor');
-            // const dataEvent = document.getElementById('event-container');
-
-
-            // if (this.value === 'event') {
-            //     contenidorContingut.style.display = 'none';
-            //     ckeditor.removeAttribute('required');
-            //     dataEvent.style.display = 'block';
-            // } else {
-            //     contenidorContingut.style.display = 'block';
-            //     ckeditor.setAttribute('required', 'required');
-            // }
 
             const portada = document.getElementById('portada-container');
             if (this.value === 'noticies') {

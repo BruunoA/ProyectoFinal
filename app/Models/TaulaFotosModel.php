@@ -12,7 +12,7 @@ class TaulaFotosModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['titol', 'ruta', 'descripcio', 'id_album', 'id_tag'];
+    protected $allowedFields    = ['titol', 'ruta', 'descripcio', 'banner', 'id_album'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -1,4 +1,3 @@
-css /* Contenedor principal */
  .calendario-container {
     display: flex;
     justify-content: center;
@@ -8,7 +7,6 @@ css /* Contenedor principal */
     padding: 10px;
 }
 
-/* Estilos del calendario */
 .calendario {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -21,7 +19,6 @@ css /* Contenedor principal */
     max-width: 400px;
 }
 
-/* dia de la semana */
 .calendario-header {
     font-weight: bold;
     background-color: #f0f0f0;
@@ -30,7 +27,6 @@ css /* Contenedor principal */
     border-radius: 5px;
 }
 
-/* Estilos para los dias*/ 
 .calendario-dia {
     padding: 12px;
     text-align: center;
@@ -46,7 +42,6 @@ css /* Contenedor principal */
     cursor: pointer;
 }
 
-/* Día actual  */
 .hoy {
     background-color: yellow !important;
     font-weight: bold;

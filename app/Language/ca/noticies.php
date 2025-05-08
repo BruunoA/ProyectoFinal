@@ -16,4 +16,8 @@ return [
     "VeureEvents" => "Veure esdeveniments",
     "Events" => "Esdeveniments",
     'afegir' => 'Crear contingut',
+    'nomEvent' => 'Nom',
+    'descripcioEvent' => 'Descripció',
+    'dataEvent' => 'Data de l\'esdeveniment',
+    'Data' => 'Data creació',
 ];

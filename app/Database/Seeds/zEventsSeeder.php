@@ -15,8 +15,9 @@ class zEventsSeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
             $data = [
             'nom' => $nom = $fake->words(3, true),
-            'id_tipus_event' => rand(1, 3),
-            'data' => $fake->dateTimeThisMonth()->format('Y-m-d'),
+            'descripcio' => $fake->text(200),
+            'id_club' => random_int(1, 3),
+            'data' => $fake->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
             'estat' => $fake->randomElement(['publicat', 'no_publicat']),
             'created_at' => date('Y-m-d H:i:s'),
             ];

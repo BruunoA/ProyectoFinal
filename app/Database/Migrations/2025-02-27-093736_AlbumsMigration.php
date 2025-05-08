@@ -18,6 +18,19 @@ class AlbumsMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'id_club'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
+            'portada'          => [
+                'type'           => 'text',
+                'null'           => false,
+            ],
+            'estat'          => [
+                'type'           => 'ENUM',
+                'constraint'     => ['publicat', 'no_publicat'],
+                'default'        => 'no_publicat',
+            ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -40,6 +53,7 @@ class AlbumsMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('id_club', 'clubs', 'id');
         $this->forge->createTable('albums');
     }
 

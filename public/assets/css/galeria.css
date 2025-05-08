@@ -38,3 +38,44 @@
 .back-button {
     margin-bottom: 20px;
 }
+
+.album-card {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    /* cursor: pointer; */
+    /* transition: transform 0.3s; */
+    height: 400px;  /* Altura fija para uniformidad */
+    /* border-radius: 5px; */
+}
+
+.album-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.album-card .w3-container {
+    flex-grow: 1;  /* Asegura que el título y el contador de fotos se expandan */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.album-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.w3-col {
+    flex: 1 0 30%; /* Asegura que los elementos ocupen el 30% del ancho (ajustable) */
+    min-width: 250px; /* Mantén un tamaño mínimo para las tarjetas */
+}

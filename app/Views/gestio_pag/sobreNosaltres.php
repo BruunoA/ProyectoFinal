@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,17 @@
     .w3-row-padding {
         display: flex;
         flex-wrap: wrap;
-        align-items: stretch; 
+        align-items: stretch;
     }
 
     .w3-card {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        /* height: 100%; */
     }
 
     .w3-card .w3-container.w3-center {
-        margin-top: auto; 
+        margin-top: auto;
     }
 
     .w3-card div a {
@@ -39,67 +40,82 @@
         background: #0056b3;
     }
 </style>
+
 <body class="w3-light-grey">
-<?= $this->include('general/menuGestio'); ?>
+    <?= $this->include('general/menuGestio'); ?>
+    <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.afegir") ?></a>
+    <div class="w3-container  w3-margin">
+        <?= session()->getFlashdata('success'); ?>
+        <h1 class="w3-center"><?= lang("sobreNosaltres.Titol") ?></h1>
 
-<div class="w3-container">
-    <h1 class="w3-center"><?= lang("sobreNosaltres.Titol") ?></h1>
-
-    <?php if (!empty($historia)): ?>
-        <h2 class="w3-center"><?= lang("sobreNosaltres.Historia") ?></h2>
-            <div class="w3-card w3-white w3-round w3-margin w3-padding">
-                <h3><?= esc($historia['nom']) ?></h3>
-                <p><?= esc($historia['resum']) ?></p>
-                <div class="w3-container w3-center">
-                    <a href="<?= base_url('/gestio/modify/' . $historia['id']) ?>" class="w3-button w3-blue">Editar</a>
-                    <a href="<?= base_url('/gestio/delete/' . $historia['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+        <?php if (!empty($historia)): ?>
+            <h2 class="w3-center"><?= lang("sobreNosaltres.Historia") ?></h2>
+            <?php foreach ($historia as $item): ?>
+                <div class="w3-card w3-white w3-round w3-margin w3-padding">
+                    <h3><strong>Nom:</strong><?= esc($item['nom']) ?></h3>
+                    <p><strong>Resum:</strong> <?= esc($item['resum']) ?></p>
+                    <p><strong>Estat:</strong> <?= esc($item['estat']) ?></p>
+                    <div class="w3-container w3-center">
+                        <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>" class="w3-button w3-blue">Editar</a>
+                        <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+                    </div>
                 </div>
-            </div>
-    <?php else: ?>
-        <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgHistoria") ?></p>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgHistoria") ?></p>
+        <?php endif; ?>
 
-    <?php if (!empty($missio)): ?>
-        <h2 class="w3-center"><?= lang("sobreNosaltres.Missio") ?></h2>
-            <div class="w3-card w3-white w3-round w3-margin w3-padding">
-                <h3><?= esc($missio['nom']) ?></h3>
-                <p><?= esc($missio['contingut']) ?></p>
-                <div class="w3-container w3-center">
-                    <a href="<?= base_url('/gestio/modify/' . $missio['id']) ?>" class="w3-button w3-blue">Editar</a>
-                    <a href="<?= base_url('/gestio/delete/' . $missio['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+        <?php if (!empty($missio)): ?>
+            <h2 class="w3-center"><?= lang("sobreNosaltres.Missio") ?></h2>
+            <?php foreach ($missio as $item): ?>
+                <div class="w3-card w3-white w3-round w3-margin w3-padding">
+                    <h3><strong>Nom:</strong><?= esc($item['nom']) ?></h3>
+                    <p><strong>Resum:</strong> <?= esc($item['resum']) ?></p>
+                    <p><strong>Estat:</strong> <?= esc($item['estat']) ?></p>
+                    <div class="w3-container w3-center">
+                        <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>" class="w3-button w3-blue">Editar</a>
+                        <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+                    </div>
                 </div>
-            </div>
-    <?php else: ?>
-        <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgMissio") ?></p>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgMissio") ?></p>
+        <?php endif; ?>
 
-    <?php if (!empty($visio)): ?>
-        <h2 class="w3-center"><?= lang("sobreNosaltres.Visio") ?></h2>
-            <div class="w3-card w3-white w3-round w3-margin w3-padding">
-                <h3><?= esc($visio['nom']) ?></h3>
-                <p><?= esc($visio['contingut']) ?></p>
-                <div class="w3-container w3-center">
-                    <a href="<?= base_url('/gestio/modify/' . $visio['id']) ?>" class="w3-button w3-blue">Editar</a>
-                    <a href="<?= base_url('/gestio/delete/' . $visio['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+        <?php if (!empty($visio)): ?>
+            <h2 class="w3-center"><?= lang("sobreNosaltres.Visio") ?></h2>
+            <?php foreach ($visio as $item): ?>
+                <div class="w3-card w3-white w3-round w3-margin w3-padding">
+                    <h3><strong>Nom:</strong><?= esc($item['nom']) ?></h3>
+                    <p><strong>Resum:</strong> <?= esc($item['resum']) ?></p>
+                    <p><strong>Estat:</strong> <?= esc($item['estat']) ?></p>
+                    <div class="w3-container w3-center">
+                        <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>" class="w3-button w3-blue">Editar</a>
+                        <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+                    </div>
                 </div>
-            </div>
-    <?php else: ?>
-        <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgVisio") ?></p>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgVisio") ?></p>
+        <?php endif; ?>
 
-    <?php if (!empty($valors)): ?>
-        <h2 class="w3-center"><?= lang("sobreNosaltres.Valors") ?></h2>
-            <div class="w3-card w3-white w3-round w3-margin w3-padding">
-                <h3><?= esc($valors['nom']) ?></h3>
-                <p><?= esc($valors['contingut']) ?></p>
-                <div class="w3-container w3-center">
-                    <a href="<?= base_url('/gestio/modify/' . $valors['id']) ?>" class="w3-button w3-blue">Editar</a>
-                    <a href="<?= base_url('/gestio/delete/' . $valors['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+        <?php if (!empty($valors)): ?>
+            <h2 class="w3-center"><?= lang("sobreNosaltres.Valors") ?></h2>
+            <?php foreach ($valors as $valor): ?>
+                <div class="w3-card w3-white w3-round w3-margin w3-padding">
+                    <h3><strong>Nom:</strong><?= esc($item['nom']) ?></h3>
+                    <p><strong>Resum:</strong> <?= esc($item['resum']) ?></p>
+                    <p><strong>Estat:</strong> <?= esc($item['estat']) ?></p>
+                    <div class="w3-container w3-center">
+                        <a href="<?= base_url('/gestio/modify/' . $valor['id']) ?>" class="w3-button w3-blue">Editar</a>
+                        <a href="<?= base_url('/gestio/delete/' . $valor['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+                    </div>
                 </div>
-            </div>
-    <?php else: ?>
-        <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgValors") ?></p>
-    <?php endif; ?>
-</div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgValors") ?></p>
+        <?php endif; ?>
+    </div>
 </body>
+
 </html>

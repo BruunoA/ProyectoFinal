@@ -1,9 +1,22 @@
+html, body {
+    height: 100%;  
+    margin: 0;     
+    display: flex; 
+    flex-direction: column; 
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+}
+
+main {
+    flex-grow: 1; 
+}
+
 footer {
     background-color: #000;
     color: white;
     padding: 2rem 0;
     text-align: center;
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 footer div {
@@ -27,7 +40,6 @@ a:active {
 
 
 .menu {
-    /* background: white; */
     background: linear-gradient(to right, #d32f2f, #000);
     border-bottom: 2px solid #ddd;
     padding: 10px 20px;
@@ -71,6 +83,59 @@ a:active {
     cursor: pointer;
 }
 
+.w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.w3-third {
+    flex: 1 1 calc(33.333% - 20px); 
+    min-width: 280px;
+    max-width: calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.noticies {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.w3-container {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.w3-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.w3-margin-top h2 {
+    margin-bottom: 20px;
+}
+
+.w3-button {
+    padding: 8px 12px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.w3-button:hover {
+    background: #388E3C;
+}
+
 @media (max-width: 768px) {
     .menu-items {
         display: none;
@@ -78,9 +143,9 @@ a:active {
         position: absolute;
         top: 50px;
         right: 0;
-        background: white;
+        background: red;
         width: 100%;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
     }
 
     .menu-items.show {
@@ -94,27 +159,29 @@ a:active {
 
 /* RESPONSIVE TABLET */
 @media (max-width: 1007px) {
-    footer {
-        background-color: black;
+    /* footer {
+        background-color: white;
         position: absolute;
         bottom: 10;
         width: 100%;
-        /* height: 40px; */
-        color: white;
-    }
-
-    /* .resultats-container{
-        height: 15rem;
-    }
-
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
+        height: 40px;
+        color: red;
     } */
 }
+
+.noticies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.noticies-card {
+    flex: 1 1 calc(33.333% - 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
 
 

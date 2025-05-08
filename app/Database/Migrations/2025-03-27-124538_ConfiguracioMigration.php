@@ -66,6 +66,7 @@ class ConfiguracioMigration extends Migration
                         ],
                 ]);
                 $this->forge->addPrimaryKey('id');
+                // $this->forge->addForeignKey('id_pare', 'configuracio', 'id');
                 $this->forge->createTable('configuracio');
         }
 

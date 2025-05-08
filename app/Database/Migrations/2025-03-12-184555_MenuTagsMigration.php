@@ -33,7 +33,7 @@ class MenuTagsMigration extends Migration
         ]);
         $this->forge->addPrimaryKey('id_menu', 'id_tags');
         $this->forge->addForeignKey('id_menu', 'menu', 'id');
-        $this->forge->addForeignKey('id_tags', 'tags', 'id');
+        $this->forge->addForeignKey('id_tags', 'clubs', 'id');
         $this->forge->createTable('menu_tags');
     }
 

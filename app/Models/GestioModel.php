@@ -12,7 +12,7 @@ class GestioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'resum', 'contingut', 'seccio', 'portada', 'url'];
+    protected $allowedFields    = ['nom', 'resum', 'contingut', 'seccio', 'portada', 'url', 'estat', 'id_club'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -29,25 +29,26 @@ class GestioModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'nom' => 'required',
-        'resum' => 'required',
-        'seccio' => 'required',
-        'contingut' => 'required'
+        // 'nom' => 'required',
+        // 'resum' => 'required',
+        // 'seccio' => 'required',
+        // 'id_club' => 'required',
+        // 'contingut' => 'required'
     ];
     // TODO: Variable per gestionar si està actiu o no (true o false), INTENTAR ficar un if a la validationRules
     protected $validationMessages   = [
-        'nom' => [
-            'required' => 'El camp nom és obligatori'
-        ],
-        'resum' => [
-            'required' => 'El camp resum és obligatori'
-        ],
-        'seccio' => [
-            'required' => 'La camp secció és obligatoria'
-        ],
-        'contingut' => [
-            'required' => 'El camp contingut és obligatori'
-        ]
+        // 'nom' => [
+        //     'required' => 'El camp nom és obligatori'
+        // ],
+        // 'resum' => [
+        //     'required' => 'El camp resum és obligatori'
+        // ],
+        // 'seccio' => [
+        //     'required' => 'La camp secció és obligatoria'
+        // ],
+        // 'contingut' => [
+        //     'required' => 'El camp contingut és obligatori'
+        // ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -62,7 +63,16 @@ class GestioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    
+
+    public function getByTitleOrText($search)
+    {
+
+        return $this->select(['id', 'nom', 'contingut'])->orLike('nom', $search, 'both', true)->orLike('contingut', $search, 'both', true);
+    }
+
+    public function getAllPaged($nElements)
+    {
+
+        return $this->select(['id', 'nom', 'contingut'])->paginate($nElements);
+    }
 }
-
-

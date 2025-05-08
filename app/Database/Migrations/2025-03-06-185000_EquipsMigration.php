@@ -18,10 +18,10 @@ class EquipsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'id_classificacio'          => [
-                'type'           => 'INT',
-                'null'           => false,
-            ],
+            // 'id_classificacio'          => [
+            //     'type'           => 'INT',
+            //     'null'           => false,
+            // ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
@@ -44,7 +44,7 @@ class EquipsMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('id_classificacio', 'classificacio', 'id');
+        // $this->forge->addForeignKey('id_classificacio', 'classificacio', 'id');
         $this->forge->createTable('equips');
     }
 

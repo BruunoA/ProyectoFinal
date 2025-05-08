@@ -15,7 +15,8 @@ class HistoriaSeeder extends Seeder
 
             $data = [
                 'nom' => $nom,
-                'resum' => $fake->text(100),
+                'id_club' => random_int(1, 3),
+                'resum' => $fake->sentence(30),
                 'contingut' => $fake->paragraphs(20, true), 
                 'seccio' => 'historia',
                 'estat' => 'publicat',

@@ -14,4 +14,9 @@ return [
     "CampTelefon" => "Telefon:",
     "CampCorreu" => "Correu electronic:",
     "Correu" => " contacte@ejemple.com",
+    'Missatge_enviat' => 'Missatge enviat correctament.',
+    'camp_nom' => 'El camp Nom és obligatori.',
+    'camp_correu' => 'El camp Correu electrònic és obligatori.',
+    'camp_assumpte' => 'El camp Assumpte és obligatori.',
+    'camp_motiu' => 'El camp Motiu és obligatori.',
 ];
