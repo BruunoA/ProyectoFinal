@@ -18,11 +18,11 @@ class IndexController extends BaseController
         $model = new GestioModel();
 
         $data = [
-            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->orderBy('created_at', 'desc')->findAll(6),
-            'banners' => $model->where('seccio', 'banner')->where('estat', 'publicat')->findAll(4),
-            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
-            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
-            'banners' => $modelBanners->where('seccio', 'banner')->where('estat', 'publicat')->findAll(3),
+            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 1)->orderBy('created_at', 'desc')->findAll(6),
+            'banners' => $model->where('seccio', 'banner')->where('estat', 1)->findAll(4),
+            'missio' => $model->where('seccio', 'missio')->where('estat', 1)->first(),
+            'visio' => $model->where('seccio', 'visio')->where('estat', 1)->first(),
+            'banners' => $modelBanners->where('seccio', 'banner')->where('estat', 1)->findAll(3),
         ];
 
         // dd($data['banners']);

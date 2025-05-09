@@ -59,57 +59,34 @@ class ConfiguracioController extends BaseController
         return view('configuracio/dadesContacte', $data);
     }
 
-    // public function dades_contacteModify($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data['dades_contacte'] = $model->find($id);
-    //     return view('configuracio/dadesContacteModify', $data);
-    // }
-
-    // public function dades_contacteModify_post($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data = [
-    //         'nom' => $this->request->getPost('nom'),
-    //         'valor' => $this->request->getPost('valor'),
-    //     ];
-
-    //     if (!$model->validate($data)) {
-    //         return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     } else {
-    //         $model->save($id, $data);
-    //         return redirect()->to('/configuracio/dades_contacte');
-    //     }
-    // }
-
-    // public function dades_contacteDelete($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $model->delete($id);
-    //     return redirect()->to('/configuracio/dades_contacte');
-    // }
 
     public function menu()
     {
-
-        // $model = new ConfiguracioModel();
-
-        // $data['menu'] = $model->where('tipus', 'menu_general')->findAll();
         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 
         $crud->setTable('configuracio');
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'menu_general');
 
-        $crud->setColumns(['id', 'nom', 'icon', 'valor', 'tipus', 'visibilitat', 'ordre', 'id_pare']);
+        $crud->setColumns(['nom', 'valor', 'visibilitat', 'ordre', 'id_pare']);
+
+        $id_pares = new ConfiguracioModel();
+
+        $pares = $id_pares->where('tipus', 'menu_general')->where('id_pare', null)->findAll();
+        $nomsPares = [];
+        
+        foreach ($pares as $pare) {
+            $nomsPares[$pare['id']] = $pare['nom'];
+        }
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'icon' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
-            'tipus' => ['name' => 'tipus', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
-            'visibilitat' => ['name' => 'visibilitat', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'icona' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+            'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
+            'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'options' => $nomsPares],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required"],],
         ]);
 
@@ -152,80 +129,6 @@ class ConfiguracioController extends BaseController
 
         return view('configuracio/menuGestio', $data);
     }
-
-    // public function menuModify($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data['menu'] = $model->find($id);
-    //     return view('configuracio/menuModify', $data);
-    // }
-
-    // public function menuModify_post($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data = [
-    //         'nom' => $this->request->getPost('nom'),
-    //         'valor' => $this->request->getPost('valor'),
-    //         'id_pare' => $this->request->getPost('id_pare'),
-    //         'visibilitat' => $this->request->getPost('visibilitat'),
-    //         'ordre' => $this->request->getPost('ordre')
-    //     ];
-
-    //     $tipus = $this->request->getPost('tipus');
-
-    //     if (!$model->validate($data)) {
-    //         return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     } else {
-    //         $model->update($id, $data);
-    //         // return redirect()->to('/configuracio/menu');
-    //     }
-
-    //     if($tipus == 'menu_gestio'){
-    //         return redirect()->to('config/menu_gestio');
-    //     }else{
-    //         return redirect()->to('config/menu_general');
-    //     }
-    // }
-
-    // public function menuDelete($id)
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $model->delete($id);
-    //     return redirect()->to('config/menu_general');
-    // }
-
-    // public function menuAdd()
-    // {
-    //     return view('configuracio/menuAdd');
-    // }
-
-    // public function menuAdd_post()
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $data = [
-    //         'nom' => $this->request->getPost('nom'),
-    //         'valor' => $this->request->getPost('valor'),
-    //         'tipus' => $this->request->getPost('tipus'),
-    //         'id_pare' => $this->request->getPost('id_pare'),
-    //         'visibilitat' => $this->request->getPost('visibilitat'),
-    //         'ordre' => $this->request->getPost('ordre')
-    //     ];
-
-    //     $tipus = $this->request->getPost('tipus');
-
-    //     if (!$model->validate($data)) {
-    //         return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     } else {
-    //         $model->insert($data);
-    //         // return redirect()->to('config/menu_general');
-    //     }
-
-    //     if($tipus == 'menu_gestio'){
-    //         return redirect()->to('config/menu_gestio');
-    //     }else{
-    //         return redirect()->to('config/menu_general');
-    //     }
-    // }
 
     public function xarxes_socials()
     {

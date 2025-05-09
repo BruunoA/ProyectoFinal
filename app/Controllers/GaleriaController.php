@@ -18,17 +18,9 @@ class GaleriaController extends BaseController
     {
 
         $fotosModel = new FotosModel();
-        $id_club = session()->get('id_club');
-
-        // missatge d'error si no hi ha id_club a la sessio
-        if (!$id_club) {
-            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
-            return redirect()->to('/');
-        }
-        // dd($id_club);
         
         $model = new AlbumModel();
-        $albumsInfo = $model->where('estat', 'publicat')->where('id_club', $id_club)->findAll(); // agafa els albums publicats
+        $albumsInfo = $model->where('estat', 1)->findAll(); // agafa els albums publicats
 
         $albumMap = [];     // array per a guardar els albums publicats
         foreach ($albumsInfo as $album) {
@@ -36,7 +28,7 @@ class GaleriaController extends BaseController
         }
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
-        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->where('albums.id_club', $id_club)->findAll();
+        $fotos = $fotosModel->join('albums', 'taula_fotos.id_album = albums.id')->findAll();
 
         $pager = $fotosModel->pager;
 

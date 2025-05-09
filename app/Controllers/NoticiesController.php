@@ -13,25 +13,17 @@ class NoticiesController extends BaseController
     public function index()
     {
 
-        $id_club = session()->get('id_club');
-
-        // missatge d'error si no hi ha id_club a la sessio
-        if (!$id_club) {
-            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
-            return redirect()->to('/');
-        }
-
         $model = new GestioModel();
         $modelEvents = new EventsModel();
 
-        // aga de gestio on seccio = noticies, estat = publicat i el id del club es el mateix que el de la sessio
-        $gestio = $model->where('seccio', 'noticies')->where('estat', 'publicat')->where('id_club', $id_club)->paginate(6);
+        // agafa totes les noticies on el seu estat es 1 (publicat)
+        $gestio = $model->where('seccio', 'noticies')->where('estat', 1)->paginate(6);
         $pager = $model->pager;
-
 
         $data = [
             'gestio' => $gestio,
-            'events' => $modelEvents->where('estat', 'publicat')->where('data >=', date('Y-m-d'))->findAll(),
+            // agafem solament els events on la data de event sigui mes gran o igual a la data actual
+            'events' => $modelEvents->where('estat', 1)->where('data >=', date('Y-m-d'))->findAll(),
             'pager' => $pager,
         ];
 
