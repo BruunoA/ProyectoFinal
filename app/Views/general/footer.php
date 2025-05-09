@@ -7,7 +7,7 @@
         $xarxes_socials = mostrar_footer(); 
         foreach ($xarxes_socials as $xarxa): ?>
             <a href="<?= $xarxa['valor']; ?>" target="_blank">
-            <i class="<?= esc($xarxa['icon']); ?>" style="font-size: 40px; color: white; margin: 0 10px;"></i>
+            <i class="<?= esc($xarxa['icona']); ?>" style="font-size: 40px; color: white; margin: 0 10px;"></i>
             </a>
         <?php endforeach; ?>
     </div>

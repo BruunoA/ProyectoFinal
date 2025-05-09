@@ -2,18 +2,13 @@
 <html>
 
 <head>
-    <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <title>Home</title>
 </head>
 <style>
     .w3-card-4 .w3-container {
@@ -21,23 +16,57 @@
         display: flex;
         flex-direction: column;
     }
+
+    .mySlides {
+        display: none;
+    }
 </style>
 
 <body>
     <?= $this->include('general/menu'); ?>
     <?= session()->getFlashdata('error') ?>
-    <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000">
 
-        <!-- <div class="carousel-inner">
-            <?php // foreach ($banners as $banner): ?>
-                <div class="carousel-item">
-                    <img src="<?php // $banner['contingut']; ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
+    <div class="w3-content w3-display-container">
+        <!-- <div class="w3-content w3-display-container"> -->
+            <div class="w3-display-container mySlides" style="display: block;">
+                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+                <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                    French Alps
                 </div>
-            <?php // endforeach; ?>
+            </div>
+
+            <div class="w3-display-container mySlides">
+                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                    French Alps
+                </div>
+            </div>
+
+            <div class="w3-display-container mySlides">
+                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                    French Alps
+                </div>
+            </div>
+            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+        <!-- </div> -->
+    </div>
+    <!-- <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000"> -->
+
+    <!-- <div class="carousel-inner">
+            <?php // foreach ($banners as $banner): 
+            ?>
+                <div class="carousel-item">
+                    <img src="<?php // $banner['contingut']; 
+                                ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
+                </div>
+            <?php // endforeach; 
+            ?>
         </div> -->
 
 
-        <div class="carousel-inner">
+    <!-- <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Campo de fútbol Alpicat" style="height: 500px; object-fit:cover">
             </div>
@@ -54,7 +83,7 @@
             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-    </div>
+    </div> -->
     </section>
 
     <div class="w3-content w3-padding-32" style="max-width:1200px">
@@ -139,6 +168,28 @@
             interval: 2000,
             ride: 'carousel'
         });
+
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
     </script>
 </body>
 
