@@ -16,7 +16,10 @@
     </div>
     <?= session()->getFlashdata('success') ?>
     <div class="w3-container">
-        <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm" class="w3-container w3-padding w3-card">
+
+        <h1 class="w3-center"><?= lang("noticies.Titol") ?></h1>
+
+        <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm" class="w3-container w3-padding w3-card w3-margin-bottom">
 
             <div class="w3-row w3-margin-bottom">
                 <input type='text' name='q' value='<?= $search ?>' class="w3-input" placeholder="<?= lang('noticies.Buscar') ?>">
@@ -38,11 +41,6 @@
             </div>
         </form>
 
-        <!-- <div class="w3-container"> -->
-
-        <!-- </div> -->
-
-        <h1 class="w3-center"><?= lang("noticies.Titol") ?></h1>
         <?php if (!empty($noticies)): ?>
             <div class="cards-container">
                 <?php foreach ($noticies as $noticia): ?>
@@ -51,7 +49,7 @@
                             <!-- <h3><?= esc($noticia['nom']) ?></h3> -->
                             <h3><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></h3>
                             <img src="<?= esc($noticia['portada']) ?>" alt="<?= esc($noticia['nom']) ?>" class="w3-image">
-                            <p><strong><?= lang("noticies.Resum") ?>:</strong> <?= $noticia['resum'] ?></p>
+                            <p><strong><?= lang("noticies.Resum") ?>:</strong> <?= esc(strlen($noticia['resum']) > 70 ? substr($noticia['resum'], 0, 70) . '...' : $noticia['resum']) ?></p>
                         </div>
                         <div class="w3-container card-footer">
                             <strong><?= lang("noticies.Data") ?>:</strong> <?= $noticia['created_at'] ?>

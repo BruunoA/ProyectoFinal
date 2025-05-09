@@ -14,18 +14,27 @@ class GestioGaleriaController extends BaseController
     public function album()
     {
         $search = $this->request->getGet('q') ?? '';
-        $model = new AlbumModel();
+        $buscarClub = $this->request->getGet('club') ?? '';
 
-        if($search !== '') {
+        $model = new AlbumModel();
+        $modelClubs = new ClubsModel();
+        $clubs = $modelClubs->findAll();
+
+        if ($search !== '') {
             $albums = $model->like('titol', $search)->orderBy('created_at', 'DESC')->paginate(6);
-        }else {
+        } else {
             $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
+        }
+
+        if ($buscarClub !== '') {
+            $albums = $model->where('id_club', $buscarClub)->orderBy('created_at', 'DESC')->paginate(6);
         }
 
         $pager = $model->pager;
 
         $data = [
             'albums' => $albums,
+            'clubs' => $clubs,
             'pager' => $pager,
             'search' => $search,
         ];
