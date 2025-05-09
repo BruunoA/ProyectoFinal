@@ -35,7 +35,7 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'dades_contacte');
 
-        $crud->setColumns(['id', 'nom', 'valor', 'tipus', 'visibilitat']);
+        $crud->setColumns(['nom','visibilitat']);
 
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
@@ -43,9 +43,8 @@ class ConfiguracioController extends BaseController
             'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'icon' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'tipus' => ['name' => 'tipus', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['dades_contacte' => 'Dades de contacte',]],
-            'visibilitat' => ['name' => 'visibilitat', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
+            'icona' => ['name' => 'icona', 'type' =>  KpaCrud::TEXTAREA_FIELD_TYPE],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
         ]);
 
         // $crud->setConfig('onlyView');
@@ -76,7 +75,7 @@ class ConfiguracioController extends BaseController
         $nomsPares = [];
 
         $nomsPares[0] = 'No pare';
-        
+
         foreach ($pares as $pare) {
             $nomsPares[$pare['id']] = $pare['nom'];
         }
@@ -142,12 +141,12 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'xarxes_socials');
 
-        $crud->setColumns(['id', 'nom', 'icon', 'valor', 'tipus', 'visibilitat']);
+        $crud->setColumns(['nom', 'valor', 'visibilitat']);
 
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'icon' => ['name' => 'icona', 'type' => 'text'],
+            'icona' => ['name' => 'icona', 'type' => 'text'],
             'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['xarxes_socials' => 'Xarxes socials']],
             'ordre' => ['name' => 'ordre', 'type' => 'text', 'html_atts' => ["required"],],
