@@ -2,7 +2,7 @@
 
 <nav class="menu">
     <div class="menu-container">
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
         <ul class="menu-items">
         <?php foreach (mostrar_tree() as $menu): ?>
@@ -11,7 +11,7 @@
                 <button class="w3-btn w3-text-white"><?= $menu['nom'] ?> <i class="fa-solid fa-caret-down"></i></button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
                     <?php foreach ($menu['children'] as $child): ?>
-                        <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-white"><?= $child['nom'] ?></a>
+                        <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;"><?= $child['nom'] ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>
