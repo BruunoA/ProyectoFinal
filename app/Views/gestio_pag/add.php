@@ -39,13 +39,13 @@
         </div>
     <?php endif ?>
 
-    <?= validation_list_errors() ?>
+    <?php // validation_list_errors() ?>
 
     <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('/create/add') ?>">
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b><?= lang('gestioGeneral.nom') ?></b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>"><?= validation_show_error('nom') ?>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>"><?php // validation_show_error('nom') ?>
 
         <label for="resum" class="w3-text-black"><b><?= lang('gestioGeneral.resum') ?></b></label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">

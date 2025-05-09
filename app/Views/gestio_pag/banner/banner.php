@@ -28,7 +28,7 @@
                         <tr>
                             <td><?= $item['nom']; ?></td>
                             <td><?= $item['resum']; ?></td>
-                            <td><img src="<?= $item['contingut']; ?>" alt="Banner Image" style="width:100px;height:auto;"></td>
+                            <td><img src="<?= base_url($item['contingut']); ?>" alt="Banner Image" style="width:100px;height:auto;"></td>
                             <td>
                                 <a href="<?= base_url('gestio/modify/' . $item['id']); ?>" class="w3-button w3-blue">Editar</a>
                                 <a href="<?= base_url('gestio/delete/' . $item['id']); ?>" class="w3-button w3-red" onclick="return confirm('Estas seguro de que deseas eliminar aquest banner?');">Eliminar</a>

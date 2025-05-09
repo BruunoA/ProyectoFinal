@@ -11,7 +11,7 @@ class ConfiguracioSeeder extends Seeder
         $data = [
             [
                 'nom' => 'Inici',
-                'valor' => '/home',
+                'valor' => '/',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,

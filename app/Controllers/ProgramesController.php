@@ -32,7 +32,7 @@ class ProgramesController extends BaseController
 
         $menu = new ConfiguracioModel();
 
-        $parametre = $menu->where('valor', 'programes/' . $segment)->where('tipus', 'menu_general')->where('visibilitat', 'si')->first();
+        $parametre = $menu->where('valor', 'programes/' . $segment)->where('tipus', 'menu_general')->where('visibilitat', 1)->first();
 
         $nomCategoria = $parametre['nom'];
         // $info = $urls[$segment];

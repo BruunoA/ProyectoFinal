@@ -74,19 +74,19 @@
             <?php endforeach ?>
         </select>
 
-            <label for="estat" class="w3-text-black"><b>Estat</b></label>
-            <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
-                <option value="">Selecciona una opció</option>
-                <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
-                <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
-            </select>
+        <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
+            <option value=""><?= lang('gestioGeneral.seleccionaOpcio') ?></option>
+            <option value="0" <?= old('estat') == 0 ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
+            <option value="1" <?= old('estat') == 1 ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
+        </select>
 
-            <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
-            <div class="w3-margin-bottom">
-                <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
-            </div>
+        <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
+        <div class="w3-margin-bottom">
+            <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
+        </div>
 
-            <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
+        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>

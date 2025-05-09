@@ -9,7 +9,7 @@
         <?php if (isset($menu['children'])): ?>
             <div class="w3-dropdown-hover">
                 <button class="w3-btn w3-text-white"><?= $menu['nom'] ?> <i class="fa-solid fa-caret-down"></i></button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: #b11216">
+                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
                     <?php foreach ($menu['children'] as $child): ?>
                         <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-white"><?= $child['nom'] ?></a>
                     <?php endforeach; ?>

@@ -21,4 +21,6 @@ return [
     'dataEvent' => 'Data de l\'esdeveniment',
     'Data' => 'Data creació',
     'Estat' => 'Estat: ',
+    'Clubs' => 'Selecciona un club per filtrar',
+    'Buscar' => 'Busca per titol/contingut',
 ];

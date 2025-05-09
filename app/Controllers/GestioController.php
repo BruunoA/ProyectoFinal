@@ -95,10 +95,10 @@ class GestioController extends BaseController
                     'required' => 'El camp Portada és obligatori.',
                 ]
             ];
-        }else if($seccio === 'banner'){
+        } else if ($seccio === 'banner') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
-        }else if($seccio === 'logo'){
+        } else if ($seccio === 'logo') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
         }
@@ -128,7 +128,7 @@ class GestioController extends BaseController
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
 
-        if($seccio == 'noticies'){
+        if ($seccio == 'noticies') {
             return redirect()->to('/gestio/noticies');
         } else if ($seccio == 'banner' || $seccio == 'logo') {
             return redirect()->to('/gestio/banner');
@@ -137,7 +137,7 @@ class GestioController extends BaseController
         } else {
             return redirect()->to('/gestio');
         }
-        
+
         // $model = new GestioModel();
         // if ($model->insert($data)) {
         //     return redirect()->to('/gestio');
@@ -249,10 +249,10 @@ class GestioController extends BaseController
                     'required' => 'El camp Portada és obligatori.',
                 ]
             ];
-        }else if($seccio === 'banner'){
+        } else if ($seccio === 'banner') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
-        }else if($seccio === 'logo'){
+        } else if ($seccio === 'logo') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
         }
@@ -269,7 +269,7 @@ class GestioController extends BaseController
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
-        if($this->validate($rules)) {
+        if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->update($id, $data);
             // return redirect()->to('/gestio');
@@ -279,7 +279,7 @@ class GestioController extends BaseController
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
 
-        if($seccio == 'noticies'){
+        if ($seccio == 'noticies') {
             return redirect()->to('/gestio/noticies');
         } else if ($seccio == 'banner' || $seccio == 'logo') {
             return redirect()->to('/gestio/banner');
@@ -413,8 +413,12 @@ class GestioController extends BaseController
     public function noticies()
     {
         $search = $this->request->getGet('q') ?? '';
+        $buscarClub = $this->request->getGet('club') ?? '';
 
         $model = new GestioModel();
+
+        $modelClubs = new ClubsModel();
+        $clubs = $modelClubs->findAll();
 
         if ($search == '') {
             $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
@@ -422,10 +426,15 @@ class GestioController extends BaseController
             $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
         }
 
+        if ($buscarClub !== '') {
+            $noticies = $model->where('seccio', 'noticies')->where('id_club', $buscarClub)->orderBy('created_at', 'DESC')->paginate(6);
+        }
+
         $pager = $model->pager;
 
         $data = [
             'noticies' => $noticies,
+            'clubs' => $clubs,
             'pager' => $pager,
             'search' => $search,
         ];

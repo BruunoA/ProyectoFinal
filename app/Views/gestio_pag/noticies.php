@@ -16,10 +16,32 @@
     </div>
     <?= session()->getFlashdata('success') ?>
     <div class="w3-container">
-    <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm">
-        <input type='text' name='q' value='<?= $search ?>' placeholder="Buscar aqui...">
-        <input type='button' id='btnsearch' value='Cercar' onclick='document.getElementById("searchForm").submit();'>
-    </form>
+        <form method='get' action="<?= base_url('gestio/noticies'); ?>" id="searchForm" class="w3-container w3-padding w3-card">
+
+            <div class="w3-row w3-margin-bottom">
+                <input type='text' name='q' value='<?= $search ?>' class="w3-input" placeholder="<?= lang('noticies.Buscar') ?>">
+            </div>
+
+            <div class="w3-row w3-margin-bottom">
+                <select name="club" id="club" class="w3-select w3-border">
+                    <option value=""><?= lang('noticies.Clubs') ?></option>
+                    <?php foreach ($clubs as $club): ?>
+                        <option value="<?= $club['id'] ?>" <?= old('club', $club['id'] ?? '') == $club['id'] ? 'selected' : '' ?>>
+                            <?= $club['nom'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="w3-row">
+                <input type='button' id='btnsearch' value='Cercar' class="w3-button w3-green" onclick='document.getElementById("searchForm").submit();'>
+            </div>
+        </form>
+
+        <!-- <div class="w3-container"> -->
+
+        <!-- </div> -->
+
         <h1 class="w3-center"><?= lang("noticies.Titol") ?></h1>
         <?php if (!empty($noticies)): ?>
             <div class="cards-container">
@@ -29,7 +51,7 @@
                             <!-- <h3><?= esc($noticia['nom']) ?></h3> -->
                             <h3><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></h3>
                             <img src="<?= esc($noticia['portada']) ?>" alt="<?= esc($noticia['nom']) ?>" class="w3-image">
-                            <p><strong><?= lang("noticies.Resum") ?>:</strong> <?= $noticia['resum']?></p>
+                            <p><strong><?= lang("noticies.Resum") ?>:</strong> <?= $noticia['resum'] ?></p>
                         </div>
                         <div class="w3-container card-footer">
                             <strong><?= lang("noticies.Data") ?>:</strong> <?= $noticia['created_at'] ?>
@@ -38,7 +60,8 @@
                             <strong><?= lang('noticies.Estat') ?></strong> <?= esc($noticia['estat'] ? 'publicat' : 'no_publicat') ?>
                         </div>
                         <div class="card-actions">
-                            <!-- <a href="<?php // base_url('noticia/' . esc($noticia['id'])) ?>"><?= lang("noticies.Veure") ?></a> -->
+                            <!-- <a href="<?php // base_url('noticia/' . esc($noticia['id'])) 
+                                            ?>"><?= lang("noticies.Veure") ?></a> -->
                             <a href="<?= base_url('gestio/modify/' . esc($noticia['id'])) ?>" class="w3-green"><?= lang("noticies.Editar") ?></a>
                             <a href="<?= base_url('gestio/delete/' . esc($noticia['id'])) ?>" class="w3-red" onclick="return confirm('Estàs segur que vols eliminar aquesta notícia?')"><?= lang("noticies.Eliminar") ?></a>
                         </div>

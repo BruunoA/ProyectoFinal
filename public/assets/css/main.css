@@ -40,7 +40,8 @@ a:active {
 
 
 .menu {
-    background: linear-gradient(to right, #d32f2f, #000);
+    /* background: linear-gradient(to right, #d32f2f, #000); */
+    background-color: black;
     border-bottom: 2px solid #ddd;
     padding: 10px 20px;
 }
@@ -73,7 +74,7 @@ a:active {
 }
 
 .menu-items a:hover {
-    background: #f0f0f0;
+    background: grey;
     border-radius: 5px;
 }
 
