@@ -28,28 +28,28 @@
 
     <div class="w3-content w3-display-container">
         <!-- <div class="w3-content w3-display-container"> -->
-            <div class="w3-display-container mySlides" style="display: block;">
-                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-                <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
-                    French Alps
-                </div>
+        <div class="w3-display-container mySlides">
+            <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+            <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                French Alps
             </div>
+        </div>
 
-            <div class="w3-display-container mySlides">
-                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                    French Alps
-                </div>
+        <div class="w3-display-container mySlides">
+            <img src="<?= base_url('assets/img/destacado.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                French Alps
             </div>
+        </div>
 
-            <div class="w3-display-container mySlides">
-                <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                    French Alps
-                </div>
+        <div class="w3-display-container mySlides">
+            <img src="<?= base_url('assets/img/campo.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                French Alps
             </div>
-            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+        </div>
+        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
         <!-- </div> -->
     </div>
     <!-- <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000"> -->
@@ -164,17 +164,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
-            interval: 2000,
-            ride: 'carousel'
-        });
+        // var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
+        //     interval: 2000,
+        //     ride: 'carousel'
+        // });
 
-        var slideIndex = 1;
-        showDivs(slideIndex);
+        let slideIndex = 1;
+        document.addEventListener("DOMContentLoaded", function() {
+            showDivs(slideIndex);
+        });
 
         function plusDivs(n) {
             showDivs(slideIndex += n);
         }
+
+        setInterval(() => plusDivs(1), 4000);
 
         function showDivs(n) {
             var i;
