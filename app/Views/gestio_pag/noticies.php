@@ -35,7 +35,7 @@
                             <strong><?= lang("noticies.Data") ?>:</strong> <?= $noticia['created_at'] ?>
                         </div>
                         <div class="w3-container card-footer">
-                            <strong>Estat:</strong> <?= esc($noticia['estat']) ?>
+                            <strong><?= lang('noticies.Estat') ?></strong> <?= esc($noticia['estat'] ? 'publicat' : 'no_publicat') ?>
                         </div>
                         <div class="card-actions">
                             <!-- <a href="<?php // base_url('noticia/' . esc($noticia['id'])) ?>"><?= lang("noticies.Veure") ?></a> -->

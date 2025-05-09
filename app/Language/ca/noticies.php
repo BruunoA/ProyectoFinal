@@ -9,7 +9,7 @@ return [
     "Portada" => "Portada",
     "Contingut" => "Contingut",
     "Resum" => "Resum:",
-    "Contingut" => "Contingut:",
+    // "Contingut" => "Contingut:",
     "Veure" => "Veure",
     "Editar" => "Editar",
     "Eliminar" => "Eliminar",
@@ -20,4 +20,5 @@ return [
     'descripcioEvent' => 'Descripció',
     'dataEvent' => 'Data de l\'esdeveniment',
     'Data' => 'Data creació',
+    'Estat' => 'Estat: ',
 ];

@@ -2,4 +2,18 @@
 
 return [
     'uploadTitol' => 'Pujar fitxer',
+    'crearContingut' => 'Crear contingut',
+    'nom' => 'Nom',
+    'resum' => 'Resum',
+    'seccio' => 'Secció',
+    'selecciona' => 'Selecciona una secció',
+    'portadaNoticia' => 'Portada notícia',
+    'club' => 'Club',
+    'seleccionaClub' => 'Selecciona un club',
+    'estat' => 'Estat',
+    'seleccionaOpcio' => 'Selecciona un estat',
+    'publicat' => 'Publicat',
+    'no_publicat' => 'No publicat',
+    'contingut' => 'Contingut',
+    'crear' => 'Crear',
 ];

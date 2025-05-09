@@ -194,10 +194,10 @@ class GestioProgramesController extends BaseController
         $crud->setTable('equips');
         $crud->setPrimaryKey('id');
 
-        $crud->setColumns(['id', 'nom', 'created_at']);
+        $crud->setColumns(['nom']);
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'publicated_at' => ['name' => 'publicated_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);

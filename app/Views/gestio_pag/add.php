@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear contingut</title>
+    <title><?= lang('gestioGeneral.crearContingut') ?></title>
 
     <!-- W3.CSS -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,18 +39,20 @@
         </div>
     <?php endif ?>
 
+    <?= validation_list_errors() ?>
+
     <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('/create/add') ?>">
         <?= csrf_field() ?>
 
-        <label for="nom" class="w3-text-black"><b>Nom</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
+        <label for="nom" class="w3-text-black"><b><?= lang('gestioGeneral.nom') ?></b></label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>"><?= validation_show_error('nom') ?>
 
-        <label for="resum" class="w3-text-black"><b>Resum</b></label>
+        <label for="resum" class="w3-text-black"><b><?= lang('gestioGeneral.resum') ?></b></label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
 
-        <label for="seccio" class="w3-text-black"><b>Secció</b></label>
+        <label for="seccio" class="w3-text-black"><b><?= lang('gestioGeneral.seccio') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
-            <option value="">Selecciona una opció</option>
+            <option value=""><?= lang('gestioGeneral.selecciona') ?></option>
             <option value="#" disabled class="w3-bold">Noticies</option>
             <option value="noticies" <?= old('seccio') == 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
             <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
@@ -64,32 +66,32 @@
         </select>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
-            <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
+            <label for="portada" class="w3-text-black"><b><?= lang('gestioGeneral.portadaNoticia') ?></b></label>
             <input class="w3-input w3-border" type="text" id="portada" name="portada" value="<?= old('portada') ?>" readonly>
-            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
+            <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()"><?= lang('gestioGeneral.seleccionaImatge') ?></button>
         </div>
 
-        <label for="id_club" class="w3-text-black">Club</label>
+        <label for="id_club" class="w3-text-black"><?= lang('gestioGeneral.club') ?></label>
         <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
-            <option value="">Selecciona un club</option>
+            <option value=""><?= lang('gestioGeneral.seleccionaClub') ?></option>
             <?php  foreach ($clubs as $club): ?>
                 <option value="<?= esc($club['id']) ?>" <?= old('id_club') == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="estat" class="w3-text-black"><b>Estat</b></label>
+        <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
-            <option value="">Selecciona una opció</option>
-            <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>>No publicat</option>
-            <option value="publicat" <?= old('estat') == 'publicat' ? 'selected' : '' ?>>Publicat</option>
+            <option value=""><?= lang('gestioGeneral.seleccionaOpcio') ?></option>
+            <option value="0" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
+            <option value="1" <?= old('estat') == 'publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
         </select>
 
-        <label class="w3-text-black"><b>Contingut</b></label>
+        <label class="w3-text-black"><b><?= lang('gestioGeneral.contingut') ?></b></label>
         <div class="w3-margin-bottom">
             <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor') ?></textarea>
         </div>
 
-        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
+        <button type="submit" class="w3-button w3-green w3-margin-top"><?= lang('gestioGeneral.crear') ?></button>
     </form>
 
     <script>

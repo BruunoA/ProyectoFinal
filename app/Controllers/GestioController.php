@@ -122,7 +122,8 @@ class GestioController extends BaseController
             $model->insert($data);
             // return redirect()->to('/gestio');
         } else {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            // return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
