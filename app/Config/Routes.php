@@ -60,6 +60,8 @@ $routes->post('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum_
 $routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioGaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/edit_foto/(:num)', 'GestioGaleriaController::EditFoto/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/edit_foto/(:num)', 'GestioGaleriaController::EditFoto_post/$1' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
 // $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería de Fotos</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body class="w3-light-grey">
     <a href="<?= base_url('gestio/galeria') ?>" class="w3-button w3-black w3-margin">Tornar a la galeria</a>
     <div class="w3-container w3-padding-32">
-       <?= session()->getFlashdata('success') ?>
+        <?= session()->getFlashdata('success') ?>
         <?php if (!empty($album)): ?>
             <h1 class="w3-center"><?= esc($album['titol']) ?></h1>
 
@@ -25,6 +27,7 @@
                                     <input type="hidden" name="id_foto" value="<?= $foto['id'] ?>">
                                     <input type="hidden" name="id_album" value="<?= $album['id'] ?>">
                                     <button type="submit" class="w3-button w3-red w3-small" onclick="return confirm('Vols eliminar aquesta foto?')">Eliminar</button>
+                                    <button type="button" class="w3-button w3-blue w3-small" onclick="window.location.href='<?= base_url('gestio/galeria/edit_foto/' . $foto['id']) ?>'">Editar</button>
                                 </form>
                             </div>
                         </div>
@@ -40,4 +43,5 @@
     </div>
 
 </body>
+
 </html>

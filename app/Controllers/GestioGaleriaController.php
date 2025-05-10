@@ -16,9 +16,9 @@ class GestioGaleriaController extends BaseController
         $search = $this->request->getGet('q') ?? '';
         $model = new AlbumModel();
 
-        if($search !== '') {
+        if ($search !== '') {
             $albums = $model->like('titol', $search)->orderBy('created_at', 'DESC')->paginate(6);
-        }else {
+        } else {
             $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
         }
 
@@ -57,6 +57,63 @@ class GestioGaleriaController extends BaseController
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Imatge esborrada correctament</div>');
         return redirect()->back();
     }
+
+    public function EditFoto($id)
+    {
+        $fotoModel = new TaulaFotosModel();
+        $foto = $fotoModel->find($id);
+
+        if (!$foto) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Foto no trobada');
+        }
+
+        $data = [
+            'foto' => $foto,
+        ];
+
+        return view('gestio_pag/fotos/edit_foto', $data);
+    }
+
+    public function EditFoto_post($id)
+    {
+        $fotoModel = new TaulaFotosModel();
+
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+            // 'descripcio' => [
+            //     'label' => 'Descripció',
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'El camp Descripció és obligatori.',
+            //     ],
+            // ],
+        ];
+
+        $data = [
+            'id' => $id,
+            'titol' => $this->request->getPost('titol'),
+            'descripcio' => $this->request->getPost('descripcio'),
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+            return redirect()->back()->withInput()->with('errors', $data['errors']);
+        }
+
+        $fotoModel->save($data);
+        $fotoActualizada = $fotoModel->find($id);
+        return view('gestio_pag/fotos/editar_foto', [
+            'foto' => $fotoActualizada,
+            'success' => '<div style="background-color: green; color: white; padding: 10px;">Imatge modificada correctament</div>'
+        ]);
+    }
+
 
     public function eliminarAlbum($id)
     {
