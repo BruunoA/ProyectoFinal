@@ -108,7 +108,7 @@ class GestioGaleriaController extends BaseController
 
         $fotoModel->save($data);
         $fotoActualizada = $fotoModel->find($id);
-        return view('gestio_pag/fotos/editar_foto', [
+        return view('gestio_pag/fotos/edit_foto', [
             'foto' => $fotoActualizada,
             'success' => '<div style="background-color: green; color: white; padding: 10px;">Imatge modificada correctament</div>'
         ]);
