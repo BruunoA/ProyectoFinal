@@ -13,4 +13,6 @@ return [
     'noPublicat' => 'No publicat',
     'selecciona' => 'Selecciona una opció',
     'imatges' => 'Pujar imatges',
+    'portada' => 'Portada ',
+    'club' => 'Club',
 ];
