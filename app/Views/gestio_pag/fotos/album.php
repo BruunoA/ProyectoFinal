@@ -61,7 +61,6 @@
                 <p>No hi ha àlbums disponibles.</p>
             </div>
         <?php endif; ?>
-
         <div class="paginador w3-center w3-black" style="color:black">
             <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
         </div>

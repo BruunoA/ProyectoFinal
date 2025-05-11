@@ -46,7 +46,6 @@
                 <?php foreach ($noticies as $noticia): ?>
                     <div class="news-card w3-round">
                         <div class="card-content">
-                            <!-- <h3><?= esc($noticia['nom']) ?></h3> -->
                             <h3><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></h3>
                             <img src="<?= esc($noticia['portada']) ?>" alt="<?= esc($noticia['nom']) ?>" class="w3-image">
                             <p><strong><?= lang("noticies.Resum") ?>:</strong> <?= esc(strlen($noticia['resum']) > 70 ? substr($noticia['resum'], 0, 70) . '...' : $noticia['resum']) ?></p>

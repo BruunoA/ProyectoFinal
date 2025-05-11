@@ -6,6 +6,7 @@
     border-radius: 5px 5px 0 0;
 }
 
+
 .photo-count {
     background-color: #009688;
     color: white;
@@ -56,7 +57,7 @@
 }
 
 .album-card .w3-container {
-    flex-grow: 1;  /* Asegura que el título y el contador de fotos se expandan */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,8 +77,8 @@
 }
 
 .w3-col {
-    flex: 1 0 30%; /* Asegura que los elementos ocupen el 30% del ancho (ajustable) */
-    min-width: 250px; /* Mantén un tamaño mínimo para las tarjetas */
+    flex: 1 0 30%; 
+    min-width: 250px; 
 }
 
 

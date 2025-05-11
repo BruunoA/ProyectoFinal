@@ -41,7 +41,7 @@ class NoticiesController extends BaseController
 
         return view('noticiaGran', $data);
     }
-    
+
     public function noticies()
     {
         $search = $this->request->getGet('q') ?? '';

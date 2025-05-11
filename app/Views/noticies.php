@@ -51,7 +51,7 @@
         </div>
         <div class="cards-container">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="news-card w3-round" style="max-width: 700px;">
+                <div class="news-card w3-round">
                     <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
                         <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
                     </a>
