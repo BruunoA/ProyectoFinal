@@ -5,6 +5,7 @@ return [
     "Camp_nom" => "Nom",
     "Camp_correu" => "Correu electronic",
     "Camp_assumpte" => "Assumpte",
+    'Selecciona_assumpte' => "Selecciona un assumpte",
     "Camp_motiu" => "Motiu",
     "Boto_enviar" => "Enviar",
     "Placeholder" => "Escriu el motiu aqui...",

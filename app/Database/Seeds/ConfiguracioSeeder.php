@@ -11,6 +11,7 @@ class ConfiguracioSeeder extends Seeder
         $data = [
             [
                 'nom' => 'Inici',
+                // 'icona' => 'fa-solid fa-house',
                 'valor' => '/',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -258,10 +259,18 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => null
             ],
             [
+                'nom' => 'Botiga',
+                'valor' => 'botiga',
+                'tipus' => 'menu_general',
+                'ordre' => 7,
+                'visibilitat' => 1,
+                'id_pare' => null
+            ],
+                        [
                 'nom' => 'Acces privat',
                 'valor' => '',
                 'tipus' => 'menu_general',
-                'ordre' => 7,
+                'ordre' => 8,
                 'visibilitat' => 1,
                 'id_pare' => null
             ],
@@ -271,7 +280,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 32
+                'id_pare' => 33
             ],
             [
                 'nom' => 'Tancar sessio',
@@ -279,7 +288,7 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 32
+                'id_pare' => 33
             ],
             [
                 'nom' => 'Gestio',
@@ -287,8 +296,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 32
-            ]
+                'id_pare' => 33
+            ],
         ];
 
         $this->db->table('configuracio')->insertBatch($data);

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AssumptesModel;
 use App\Models\ConfiguracioModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ContacteModel;
@@ -12,12 +13,19 @@ class ContacteController extends BaseController
     public function index()
     {
         $model = new ConfiguracioModel();
+        $modelAssupmtes = new AssumptesModel();
+        $assumptes = $modelAssupmtes->findAll();
+        $urlMapa = $model->where('nom', 'Enllaç mapa')->first();
 
         $data = [
             'ubicacio' => $model->where('nom', 'Ubicacio')->first(),
             'telefon' => $model->where('nom', 'Telefon')->first(),
             'correu' => $model->where('nom', 'Correu')->first(),
+            'assumptes' => $assumptes,
+            'urlMapa' => $urlMapa['valor'],
         ];
+
+        // dd($urlMapa['valor']);
 
         return view('contacte', $data);
     }
@@ -61,7 +69,7 @@ class ContacteController extends BaseController
         $data = [
             'nom' => $this->request->getPost('nom'),
             'from_email' => $this->request->getPost('from_email'),
-            'assumpte' => $this->request->getPost('assumpte'),
+            'id_assumpte' => $this->request->getPost('assumpte'),
             'text' => $this->request->getPost('text'),
         ];
 

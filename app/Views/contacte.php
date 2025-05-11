@@ -10,19 +10,19 @@
     <title><?= lang('contacte.Titol') ?></title>
 </head>
 <style>
-.mapa {
-    position: relative;
-    padding-bottom: 60%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-}
+    .mapa {
+        position: relative;
+        padding-bottom: 60%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
 
-iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <body>
@@ -52,7 +52,12 @@ iframe {
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_assumpte') ?></label>
-                    <input class="w3-input w3-border" name="assumpte" type="text">
+                    <select class="w3-select w3-border" name="assumpte">
+                        <option value="" disabled selected><?= lang('contacte.Selecciona_assumpte') ?></option>
+                        <?php foreach ($assumptes as $assumpte): ?>
+                            <option value="<?= $assumpte['id'] ?>"><?= $assumpte['nom'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_motiu') ?></label>
@@ -70,7 +75,7 @@ iframe {
                 <p><strong><?= lang('contacte.CampCorreu') ?> </strong><?= $correu['valor'] ?></p>
             </div>
             <div class="mapa">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d745.0913701723812!2d0.5514229867548115!3d41.66944958758179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a71eaf593a5081%3A0x85412f105933abd3!2sCamp%20Municipal%20de%20Alpicat%20-%20Club%20Atl%C3%A8tic%20d%E2%80%99Alpicat!5e0!3m2!1ses!2ses!4v1741114931620!5m2!1ses!2ses"
+                <iframe src="<?= esc($urlMapa) ?>"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
