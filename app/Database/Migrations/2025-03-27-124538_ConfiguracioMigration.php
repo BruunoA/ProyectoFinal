@@ -23,8 +23,7 @@ class ConfiguracioMigration extends Migration
                                 'null'       => true,
                         ],
                         'valor' => [
-                                'type'       => 'VARCHAR',
-                                'constraint' => '250',
+                                'type'       => 'TEXT',
                                 'null'       => false,
                         ],
                         'tipus'          => [
