@@ -295,13 +295,34 @@ class GestioController extends BaseController
                     . '|mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
                     . '|max_size[userfile,3072]'
                     . '|max_dims[userfile,2024,2024]',
+                'errors' => [
+                    'uploaded' => 'El camp imatge és obligatori.',
+                    'is_image' => 'El fitxer no és una imatge.',
+                    'mime_in' => 'El fitxer no és una imatge vàlida.',
+                    'max_size' => 'La mida de la imatge no pot ser superior a 3MB.',
+                    'max_dims' => 'La imatge no pot ser superior a 2024x2024 píxels.',
+                ]
+            ],
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp títol és obligatori.',
+                ]
+            ],
+            'album' => [
+                'label' => 'Àlbum',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp àlbum és obligatori.',
+                ]
             ],
         ];
 
         if (!$this->validate($validationRule)) {
-            $data['errors'] = $this->validator->getErrors();
-
-            return view('gestio_pag/upload_form_drag', $data);
+            // $data['errors'] = $this->validator->getErrors();
+            return redirect()->back()->withInput();
+            // return view('gestio_pag/upload_form_drag', $data);
         }
 
         if ($imagefile = $this->request->getFiles()) {
