@@ -22,6 +22,11 @@ $routes->post('gestio/galeria/crearAlbum', 'GaleriaController::crearAlbum_post' 
 $routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/modify/(:num)', 'GaleriaController::modify/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/modify/(:num)', 'GaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/edit_foto/(:num)', 'GaleriaController::EditFoto/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/edit_foto/(:num)', 'GaleriaController::EditFoto_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/cambiar_estat_foto', 'GaleriaController::cambiarEstatFoto'/*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/cambiar_estat_foto', 'GaleriaController::cambiarEstatFoto'/*, ['filter' => 'gestio:admin']*/);
+
 
 
 // NOTICIES

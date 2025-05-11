@@ -23,6 +23,10 @@ class TaulaFotosMigration extends Migration
                 'constraint'     => '255',
                 'null'           => false,
             ],
+            'estat'          => [
+                'type'           => 'TINYINT',
+                'constraint'     => 1,
+            ],
             // 'banner'          => [
             //     'type'           => 'ENUM',
             //     'constraint'     => ['si', 'no'],

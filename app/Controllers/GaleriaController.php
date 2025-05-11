@@ -65,7 +65,7 @@ class GaleriaController extends BaseController
     public function getAlbumFotos($albumId)
     {
         $fotosModel = new FotosModel();
-        $fotos = $fotosModel->where('id_album', $albumId)->findAll();
+        $fotos = $fotosModel->where('id_album', $albumId)->where('estat', 1)->findAll();
 
         if (empty($fotos)) {
             return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
@@ -291,4 +291,85 @@ class GaleriaController extends BaseController
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Album modificat correctament</div>');
         return redirect()->to('/gestio/galeria');
     }
+
+     public function EditFoto($id)
+    {
+        $fotoModel = new TaulaFotosModel();
+        $foto = $fotoModel->find($id);
+
+        if (!$foto) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Foto no trobada');
+        }
+
+        $data = [
+            'foto' => $foto,
+        ];
+
+        return view('gestio_pag/fotos/edit_foto', $data);
+    }
+
+public function EditFoto_post($id)
+    {
+        $fotoModel = new TaulaFotosModel();
+
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp Títol és obligatori.',
+                ],
+            ],
+        ];
+
+        $data = [
+            'id' => $id,
+            'titol' => $this->request->getPost('titol'),
+            'descripcio' => $this->request->getPost('descripcio'),
+        ];
+
+        if (!$this->validate($validationRule)) {
+            $data['errors'] = $this->validator->getErrors();
+            return redirect()->back()->withInput()->with('errors', $data['errors']);
+        }
+
+        $fotoModel->save($data);
+        $fotoActualizada = $fotoModel->find($id);
+        return view('gestio_pag/fotos/edit_foto', [
+            'foto' => $fotoActualizada,
+            'success' => '<div style="background-color: green; color: white; padding: 10px;">Imatge modificada correctament</div>'
+        ]);
+    }
+
+    public function cambiarEstatFoto()
+    {
+        $idFoto = $this->request->getPost('id_foto');
+        $estatFoto = $this->request->getPost('estat'); 
+        $idAlbum = $this->request->getPost('id_album');
+
+
+        if($estatFoto === 'publicat') {
+            $estatNou = 1;
+        } elseif ($estatFoto === 'no_publicat') {
+            $estatNou = 0;
+        } else {
+            return redirect()->back()->with('error', 'Estat no vàlid');
+        }
+
+        if (empty($idFoto) || empty($estatFoto) || empty($idAlbum)) {
+            return redirect()->back()->with('error', 'Error, falten dades per a modificar l\'estat');
+        }
+
+        $fotoModel = new TaulaFotosModel();
+        $actualitzar = $fotoModel->update($idFoto, [
+            'estat' => $estatNou,
+        ]);
+
+        if (!$actualitzar) {
+            return redirect()->back()->with('error', 'No s\'ha pogut actualitzar l\'estat');
+        }
+
+        return redirect()->to("/gestio/galeria_fotos/$idAlbum")->with('success','<div style="background-color: green; color: white; padding: 10px;">Estat actualitzat correctament</div>');
+    }
+
 }

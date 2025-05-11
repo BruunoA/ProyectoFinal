@@ -342,7 +342,11 @@ class GestioController extends BaseController
 
             // nom de la carpeta a crear, on es guardara la imatge
             $carpeta = $this->request->getPost('album');
+            $carpeta = mb_url_title($carpeta, '-', true);
             $ruta = FCPATH . 'uploads/' . $carpeta;
+
+
+            // dd($ruta);
 
             if (!is_dir($ruta)) {
                 mkdir($ruta, 0777, true);

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/albumsGestio.css'); ?>">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title><?= lang('albumsGestio.titol') ?></title>
 </head>
 
@@ -50,8 +50,8 @@
                             </a>
                         </div>
                         <div class="w3-container card-footer">
-                            <a href="<?= base_url('gestio/galeria/modify/' . $album['id']) ?>" class="w3-bar-item w3-button w3-blue w3-margin-right">Modificar album</a>
-                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-bar-item w3-button w3-red" onclick="return confirm('Vols eliminar aquest album?');">Eliminar album</a>
+                            <a href="<?= base_url('gestio/galeria/modify/' . $album['id']) ?>" class="w3-bar-item w3-button w3-blue w3-margin-right"> <i class="fas fa-edit"></i>Modificar album</a>
+                            <a href="<?= base_url('gestio/galeria/eliminarAlbum/' . $album['id']) ?>" class="w3-bar-item w3-button w3-red" onclick="return confirm('Vols eliminar aquest album?');"> <i class="fas fa-trash-alt"></i>Eliminar album</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
