@@ -53,7 +53,7 @@ $routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'g
 // $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria', 'GestioGaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria_fotos/(:num)', 'GestioGaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+// $routes->get('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
@@ -62,6 +62,9 @@ $routes->get('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify/$1
 $routes->post('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/edit_foto/(:num)', 'GestioGaleriaController::EditFoto/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/edit_foto/(:num)', 'GestioGaleriaController::EditFoto_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/cambiar_estat_foto', 'GestioGaleriaController::cambiarEstatFoto'/*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/cambiar_estat_foto', 'GestioGaleriaController::cambiarEstatFoto'/*, ['filter' => 'gestio:admin']*/);
+
 
 $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
 // $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);

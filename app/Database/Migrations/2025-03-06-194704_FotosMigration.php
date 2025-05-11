@@ -34,8 +34,13 @@ class TaulaFotosMigration extends Migration
             ],
             'id_album'          => [
                 'type'           => 'INT',
-                'null'           => true,  
+                'null'           => true,
                 'default'        => 1,
+            ],
+            'estat' => [
+                'type' => 'TINYINT',
+                'constraint' => 1,
+                'default' => 0, // 0 = no_publicat, 1 = publicat
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',

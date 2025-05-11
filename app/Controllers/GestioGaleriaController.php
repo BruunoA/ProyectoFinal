@@ -114,6 +114,31 @@ class GestioGaleriaController extends BaseController
         ]);
     }
 
+    public function cambiarEstatFoto()
+    {
+    $idFoto = $this->request->getPost('id_foto');
+    $estatTexto = $this->request->getPost('estat'); // "publicat" o "no_publicat"
+    $idAlbum = $this->request->getPost('id_album');
+
+    $estatNumerico = ($estatTexto === 'publicat') ? 1 : 0;
+
+    if (empty($idFoto) || empty($estatTexto) || empty($idAlbum)) {
+        return redirect()->back()->with('error', 'Falten dades necessàries');
+    }
+
+    $fotoModel = new \App\Models\TaulaFotosModel();
+    $actualizado = $fotoModel->update($idFoto, [
+        'estat' => $estatNumerico,
+        'publicated_at' => ($estatNumerico === 1) ? date('Y-m-d H:i:s') : null
+    ]);
+
+    if (!$actualizado) {
+        return redirect()->back()->with('error', 'No s\'ha pogut actualitzar l\'estat');
+    }
+
+    return redirect()->to("/gestio/galeria_fotos/$idAlbum")->with('success', 
+    '<div style="background-color: green; color: white; padding: 10px;">Estat actualitzat correctament</div>');
+    }
 
     public function eliminarAlbum($id)
     {

@@ -12,7 +12,7 @@ class TaulaFotosModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['titol', 'ruta', 'descripcio', 'banner', 'id_album'];
+    protected $allowedFields    = ['titol', 'ruta', 'descripcio', 'banner', 'id_album', 'estat', 'id_club', 'publicated_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -35,8 +35,8 @@ class TaulaFotosModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
+    protected $beforeInsert   = ['setPublicatedAt'];
+    protected $afterInsert    = ['setPublicatedAt'];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
@@ -49,5 +49,17 @@ class TaulaFotosModel extends Model
         $query = $this->db->query("SHOW TABLE STATUS LIKE '" . $this->table . "'");
         $row = $query->getRow();
         return $row->Auto_increment;
+    }
+    protected function setPublicatedAt(array $data)
+    {
+        if (isset($data['data']['estat'])) {
+            // Manejar tanto valores numéricos como textuales
+            $esPublicado = (is_numeric($data['data']['estat']))
+                ? ($data['data']['estat'] == 1)
+                : ($data['data']['estat'] === 'publicat');
+
+            $data['data']['publicated_at'] = $esPublicado ? date('Y-m-d H:i:s') : null;
+        }
+        return $data;
     }
 }
