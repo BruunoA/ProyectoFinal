@@ -6,62 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-
+    <link rel="stylesheet" href="<?= base_url('assets/css/contacte.css'); ?>">
     <title><?= lang('contacte.Titol') ?></title>
 </head>
-<style>
-    .mapa {
-        position: relative;
-        padding-bottom: 60%;
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-
-    iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-    }
-</style>
 
 <body>
     <?= $this->include('general/menu'); ?>
+    <?php helper('form'); ?>
+    <div class="w3-container w3-padding">
+        <?= session()->getFlashdata('success') ?>
+    </div>
 
     <div class="w3-row content">
-        <?= session()->getFlashdata('success') ?>
-        <?php if (session()->has('errors')): ?>
-            <div class="w3-panel w3-red w3-padding">
-                <ul>
-                    <?php foreach (session('errors') as $error): ?>
-                        <li><?= esc($error) ?></li>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-        <?php endif ?>
         <div class="w3-half w3-padding">
             <h2 class="w3-center"><?= lang('contacte.Titol') ?></h2>
             <form class="w3-container w3-card w3-padding w3-white" action="<?= base_url('contacte/send') ?>" method="post">
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_nom') ?></label>
-                    <input class="w3-input w3-border" name="nom" type="text">
+                    <input class="w3-input w3-border" name="nom" type="text" value="<?= old('nom') ?>">
+                    <div class="error"><?= validation_show_error('nom') ?></div>
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_correu') ?></label>
-                    <input class="w3-input w3-border" name="from_email" type="email">
+                    <input class="w3-input w3-border" name="from_email" type="email" value="<?= old('from_email') ?>">
+                    <div class="error"><?= validation_show_error('from_email') ?></div>
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_assumpte') ?></label>
                     <select class="w3-select w3-border" name="assumpte">
                         <option value="" disabled selected><?= lang('contacte.Selecciona_assumpte') ?></option>
                         <?php foreach ($assumptes as $assumpte): ?>
-                            <option value="<?= $assumpte['id'] ?>"><?= $assumpte['nom'] ?></option>
+                            <option value="<?= $assumpte['id'] ?>" <?= old('assumpte') == $assumpte['id'] ? 'selected' : '' ?>><?= $assumpte['nom'] ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <div class="error"><?= validation_show_error('assumpte') ?></div>
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_motiu') ?></label>
                     <textarea class="w3-input w3-border" name="text" rows="4" placeholder="<?= lang('contacte.Placeholder') ?>"></textarea>
+                    <div class="error"> <?= validation_show_error('text') ?></div>
                 </div>
                 <button type="submit" class="w3-btn w3-green"><?= lang('contacte.Boto_enviar') ?></button>
             </form>
