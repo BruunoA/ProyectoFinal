@@ -20,10 +20,6 @@ class GestioController extends BaseController
 {
     public function index()
     {
-        // $model = new ConfiguracioModel();
-        // $data['menuGestio'] = $model->where('seccio', 'menuGestio')->findAll();
-
-        // $data = $this->data;
 
         $model = new ClubsModel();
 
@@ -36,7 +32,6 @@ class GestioController extends BaseController
 
     public function add()
     {
-        // $validation = \Config\Services::validation();
 
         helper(["form"]);
 
@@ -120,7 +115,6 @@ class GestioController extends BaseController
             $model->insert($data);
             return redirect()->to('/gestio');
         } else {
-            // return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             return redirect()->back()->withInput();
         }
 
@@ -161,8 +155,6 @@ class GestioController extends BaseController
 
     public function update($id)
     {
-
-        $validation = \Config\Services::validation();
 
         helper(["form"]);
 
@@ -244,9 +236,7 @@ class GestioController extends BaseController
         if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->update($id, $data);
-            // return redirect()->to('/gestio');
         } else {
-            // return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             return redirect()->back()->withInput();
         }
 

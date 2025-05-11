@@ -20,7 +20,7 @@ class GaleriaController extends BaseController
     {
 
         $fotosModel = new FotosModel();
-        
+
         $model = new AlbumModel();
         $albumsInfo = $model->where('estat', 1)->findAll(); // agafa els albums publicats
 
@@ -38,7 +38,7 @@ class GaleriaController extends BaseController
         foreach ($fotos as $foto) {
             $albumId = $foto['id_album'];   // agafa l'id de l'album de la foto
 
-            if(!isset($albumMap[$albumId])) { // si l'album no es publicat, el salta
+            if (!isset($albumMap[$albumId])) { // si l'album no es publicat, el salta
                 continue;
             }
 
@@ -95,12 +95,12 @@ class GaleriaController extends BaseController
         $base = $model->where('estat', 1)->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
-        if($search !== '') {
+        if ($search !== '') {
             $base->like('titol', $search);
         }
 
         // si hi ha un filtre de club, s'aplica
-        if($buscarClub !== '') {
+        if ($buscarClub !== '') {
             $base->where('id_club', $buscarClub);
         }
 
@@ -130,14 +130,12 @@ class GaleriaController extends BaseController
         return view('gestio_pag/fotos/galeria_fotos', $data);
     }
 
-    public function deleteFoto()
+    public function deleteFoto($id)
     {
         $fotoModel = new TaulaFotosModel();
-        $id_foto = $this->request->getVar('id_foto');
-        $id_album = $this->request->getVar('id_album');
 
-        if (!empty($id_foto)) {
-            $fotoModel->where('id', $id_foto)->delete();
+        if (!empty($id)) {
+            $fotoModel->delete($id);
         }
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Imatge esborrada correctament</div>');
@@ -290,7 +288,7 @@ class GaleriaController extends BaseController
         return redirect()->to('/gestio/galeria');
     }
 
-     public function EditFoto($id)
+    public function EditFoto($id)
     {
         $fotoModel = new TaulaFotosModel();
         $foto = $fotoModel->find($id);
@@ -306,7 +304,7 @@ class GaleriaController extends BaseController
         return view('gestio_pag/fotos/edit_foto', $data);
     }
 
-public function EditFoto_post($id)
+    public function EditFoto_post($id)
     {
         $fotoModel = new TaulaFotosModel();
 
@@ -341,11 +339,11 @@ public function EditFoto_post($id)
     public function cambiarEstatFoto()
     {
         $idFoto = $this->request->getPost('id_foto');
-        $estatFoto = $this->request->getPost('estat'); 
+        $estatFoto = $this->request->getPost('estat');
         $idAlbum = $this->request->getPost('id_album');
 
 
-        if($estatFoto === 'publicat') {
+        if ($estatFoto === 'publicat') {
             $estatNou = 1;
         } elseif ($estatFoto === 'no_publicat') {
             $estatNou = 0;
@@ -366,7 +364,6 @@ public function EditFoto_post($id)
             return redirect()->back()->with('error', 'No s\'ha pogut actualitzar l\'estat');
         }
 
-        return redirect()->to("/gestio/galeria_fotos/$idAlbum")->with('success','<div style="background-color: green; color: white; padding: 10px;">Estat actualitzat correctament</div>');
+        return redirect()->to("/gestio/galeria_fotos/$idAlbum")->with('success', '<div style="background-color: green; color: white; padding: 10px;">Estat actualitzat correctament</div>');
     }
-
 }

@@ -34,16 +34,14 @@
                                 <img src="<?= $foto['ruta'] ?>" alt="foto" style="width:100%" class="w3-image">
                                 <h4><?= esc(strlen($foto['titol']) > 20 ? substr($foto['titol'], 0, 20) . '...' : $foto['titol']) ?></h4>
                                 <p><?= esc(strlen($foto['descripcio']) > 50 ? substr($foto['descripcio'], 0, 50) . '...' : $foto['descripcio']) ?></p>
-                                <form action="<?= base_url('gestio/eliminar_foto') ?>" method="post">
-                                    <input type="hidden" name="id_foto" value="<?= $foto['id'] ?>">
-                                    <input type="hidden" name="id_album" value="<?= $album['id'] ?>">
-                                    <button type="submit" class="w3-button w3-red w3-small" onclick="return confirm('Vols eliminar aquesta foto?')">
+                                <div>
+                                    <a href="<?= base_url('gestio/eliminar_foto/' . $foto['id']) ?>" class="w3-button w3-red w3-small" onclick="return confirm('Vols eliminar aquesta foto?')">
                                         <i class="fas fa-trash"></i> Eliminar
-                                    </button>
+                                    </a>
                                     <a href="<?= base_url('gestio/galeria/edit_foto/' . $foto['id']) ?>" class="w3-button w3-blue w3-small">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
-                                </form>
+                                </div>
                                 <form action="<?= base_url('gestio/cambiar_estat_foto') ?>" method="post" style="display:inline;">
                                     <input type="hidden" name="id_foto" value="<?= $foto['id'] ?>">
                                     <input type="hidden" name="id_album" value="<?= $album['id'] ?>">
