@@ -50,16 +50,16 @@
                             </a>
                         </div>
                     </div>
-                    <?php endforeach; ?>
-                    </div>
-                <?php else: ?>
-                    <div class="w3-panel w3-yellow">
-                        <p><?= lang('galeria.ErrorFotos') ?></p>
-                    </div>
-                <?php endif; ?>
+                <?php endforeach; ?>
             </div>
+        <?php else: ?>
+            <div class="w3-panel w3-yellow">
+                <p><?= lang('galeria.ErrorFotos') ?></p>
+            </div>
+        <?php endif; ?>
+    </div>
 
-            <?= $this->include('general/footer'); ?>
+    <?= $this->include('general/footer'); ?>
 </body>
 
 </html>

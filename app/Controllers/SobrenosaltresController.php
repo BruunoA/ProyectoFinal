@@ -20,4 +20,18 @@ class SobreNosaltresController extends BaseController
         return view('sobreNosaltres', $data);
     }
 
+        public function sobreNosaltres()
+    {
+        $model = new GestioModel();
+
+        $data = [
+            'historia' => $model->where('seccio', 'historia')->findAll(),
+            'missio' => $model->where('seccio', 'missio')->findAll(),
+            'visio' => $model->where('seccio', 'visio')->findAll(),
+            'valors' => $model->where('seccio', 'valors')->findAll(),
+        ];
+
+        return view('gestio_pag/sobreNosaltres', $data);
+    }
+
 }

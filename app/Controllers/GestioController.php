@@ -395,52 +395,7 @@ class GestioController extends BaseController
             return redirect()->to('/gestio/galeria');
         }
     }
-
-    public function sobreNosaltres()
-    {
-        $model = new GestioModel();
-
-        $data = [
-            'historia' => $model->where('seccio', 'historia')->findAll(),
-            'missio' => $model->where('seccio', 'missio')->findAll(),
-            'visio' => $model->where('seccio', 'visio')->findAll(),
-            'valors' => $model->where('seccio', 'valors')->findAll(),
-        ];
-
-        return view('gestio_pag/sobreNosaltres', $data);
-    }
-
-    public function noticies()
-    {
-        $search = $this->request->getGet('q') ?? '';
-        $buscarClub = $this->request->getGet('club') ?? '';
-
-        $model = new GestioModel();
-
-        $modelClubs = new ClubsModel();
-        $clubs = $modelClubs->findAll();
-
-        if ($search == '') {
-            $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
-        } else {
-            $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
-        }
-
-        if ($buscarClub !== '') {
-            $noticies = $model->where('seccio', 'noticies')->where('id_club', $buscarClub)->orderBy('created_at', 'DESC')->paginate(6);
-        }
-
-        $pager = $model->pager;
-
-        $data = [
-            'noticies' => $noticies,
-            'clubs' => $clubs,
-            'pager' => $pager,
-            'search' => $search,
-        ];
-
-        return view('gestio_pag/noticies', $data);
-    }
+    
 
     public function events()
     {

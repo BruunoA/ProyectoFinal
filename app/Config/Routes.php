@@ -1,11 +1,6 @@
 <?php
 
 use CodeIgniter\Router\RouteCollection;
-
-// $routes->get('xarxes_socials', 'ConfiguracioController::xarxes_socials');
-$routes->match(['get', 'post'],'xarxes_socials', 'ConfiguracioController::xarxes_socials');
-
-// $routes->get('menuProva', 'ConfiguracioController::menuProva');
  
 // $routes->get('/', 'IndexController::index');
 
@@ -13,24 +8,48 @@ $routes->get('/', 'IndexController::home');
 $routes->get('index', 'IndexController::index');
 
 $routes->get('classificacio', 'ClassificacioController::index');
+$routes->post('/classificacio/filtrar', 'ClassificacioController::filtrar');
 
 // GALERIA
 $routes->get('galeria', 'GaleriaController::getFotos');
 $routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
+$routes->get('gestio/galeria', 'GaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria_fotos/(:num)', 'GaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/eliminar_foto', 'GaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar_foto', 'GaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/crearAlbum', 'GaleriaController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/crearAlbum', 'GaleriaController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/galeria/modify/(:num)', 'GaleriaController::modify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/galeria/modify/(:num)', 'GaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+
 
 // NOTICIES
 $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
+$routes->get('gestio/noticies', 'NoticiesController::noticies' /*, ['filter' => 'gestio:admin']*/);
 
 // PROGRAMES
 $routes->get('programes/(:segment)', 'ProgramesController::categoria/$1');
+$routes->get('gestio/programes', 'ProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/eliminar/(:num)', 'ProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/eliminar/(:num)', 'ProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/modify/programa/(:num)', 'ProgramesController::modify_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/modify/programa/(:num)', 'ProgramesController::modify_Programa_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/programes/add', 'ProgramesController::add' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/programes/add', 'ProgramesController::add_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/equips', 'ProgramesController::equips' /*, ['filter' => 'gestio:admin']*/);
 
+// CONTACTE
 $routes->get('contacte', 'ContacteController::index');
 $routes->post('contacte/send', 'ContacteController::send');
 $routes->get('contacte/(:any)', 'ContacteController::index/$1');
+$routes->match(['get', 'post'],'configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
 
+// SOBRE NOSALTRES
 $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
-$routes->post('/classificacio/filtrar', 'ClassificacioController::filtrar');
+$routes->get('gestio/sobreNosaltres', 'SobreNosaltresController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
+
 
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
@@ -45,21 +64,8 @@ $routes->get('gestio/modify/(:num)', 'GestioController::edit/$1' /*, ['filter' =
 $routes->post('/modify/(:num)', 'GestioController::update/$1'/* , ['filter' => 'gestio:admin']*/);
 
 // VISTES GESTIO
-$routes->get('gestio/sobreNosaltres', 'GestioController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/noticies', 'GestioController::noticies' /*, ['filter' => 'gestio:admin']*/);
 
-// GESTIO GALERIA
-// $routes->get('gestio/galeria', 'GestioController::galeria' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria', 'GestioGaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria_fotos/(:num)', 'GestioGaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/eliminar_foto', 'GestioGaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/galeria/crearAlbum', 'GestioGaleriaController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GestioGaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/galeria/modify/(:num)', 'GestioGaleriaController::modify_post/$1' /*, ['filter' => 'gestio:admin']*/);
 
 $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
 // $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
@@ -67,6 +73,7 @@ $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gesti
 // $routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 // $routes->get('gestio/banner/add', 'GestioController::bannerAdd' /*, ['filter' => 'gestio:admin']*/);
 // $routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
+
 
 // GESTIO CLUBS
 $routes->get('gestio/clubs', 'GestioClubsController::clubs' /*, ['filter' => 'gestio:admin']*/);
@@ -76,31 +83,23 @@ $routes->get('gestio/clubs/delete/(:num)', 'GestioClubsController::clubsDelete/$
 $routes->get('gestio/clubs/add', 'GestioClubsController::clubsAdd' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/clubs/add', 'GestioClubsController::clubsAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
-// GESTIO PROGRAMES
-$routes->get('gestio/programes', 'GestioProgramesController::programes' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/eliminar/(:num)', 'GestioProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/eliminar/(:num)', 'GestioProgramesController::delete_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/modify/programa/(:num)', 'GestioProgramesController::modify_Programa/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/modify/programa/(:num)', 'GestioProgramesController::modify_Programa_post/$1' /*, ['filter' => 'gestio:admin']*/);
-$routes->get('gestio/programes/add', 'GestioProgramesController::add' /*, ['filter' => 'gestio:admin']*/);
-$routes->post('gestio/programes/add', 'GestioProgramesController::add_post' /*, ['filter' => 'gestio:admin']*/);
-$routes->match(['get', 'post'],'gestio/equips', 'GestioProgramesController::equips' /*, ['filter' => 'gestio:admin']*/);
 
 // GESTIO EVENTS
 $routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, ['filter' => 'gestio:admin']*/);
+
 
 // UPLOAD
 $routes->get('pujarArxiu', 'GestioController::upload_drag');
 $routes->post('pujarArxiu', 'GestioController::upload_drag_post');
 
-// CONFIGURACIO MENU GENERAL
+
+// CONFIGURACIO MENU GENERAL I XARXES SOCIALS
 $routes->match(['get', 'post'],'config/menu_general', 'ConfiguracioController::menu');
+$routes->match(['get', 'post'],'xarxes_socials', 'ConfiguracioController::xarxes_socials');
 
 // CONFIGURACIO MENU GESTIO
-$routes->match(['get', 'post'],'config/menu_gestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
+// $routes->match(['get', 'post'],'config/menu_gestio', 'ConfiguracioController::menuGestio' /*, ['filter' => 'gestio:admin']*/);
 
-// CONFIGURACIO DADES CONTACTE
-$routes->match(['get', 'post'],'configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
 
 // elFinder
 $routes->get('elfinder', 'FileExplorerController::manager');
@@ -108,7 +107,6 @@ $routes->get('fileconnector', 'FileExplorerController::connector');
 $routes->post('fileconnector', 'FileExplorerController::connector');
 $routes->get('fileget/(:any)', 'FileExplorerController::getFile');
 
-// $routes->get('ck','FileExplorerController::ckeditor');
 
 //USERS 
 $routes->get('login', 'UsersController::login');

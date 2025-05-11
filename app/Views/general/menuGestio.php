@@ -23,7 +23,7 @@
                 <option value="">Configuracio</option>
                 <option value="dades_contacte">Dades contacte</option>
                 <option value="menu_general">Menu general</option>
-                <option value="menu_gestio">Menu gestio</option>
+                <!-- <option value="menu_gestio">Menu gestio</option> -->
                 <option value="xarxes_socials">Xarxes Socials</option>
             </select>
             <li><a href="<?= base_url('gestio/clubs') ?>">Clubs</a></li>
