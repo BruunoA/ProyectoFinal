@@ -277,7 +277,6 @@ class GestioController extends BaseController
         $model = new AlbumModel();
         $data = [
             'albums' => $model->findAll(),
-            'title' => lang('gestioGeneral.uploadTitol')
         ];
         $data['errors'] = [];
 

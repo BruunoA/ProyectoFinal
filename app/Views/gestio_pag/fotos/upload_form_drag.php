@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title) ?></title>
+    <title><?= lang('upload.Titol') ?></title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .drag-over {
@@ -22,7 +22,7 @@
 <body class="w3-light-grey">
 
     <div class="w3-container w3-padding">
-        <h2 class="w3-center"><?= esc($title) ?></h2>
+        <h2 class="w3-center"><?= lang('upload.Titol') ?></h2>
 
         <?php if (!empty($errors)) : ?>
             <div class="w3-panel w3-red w3-padding">
@@ -36,7 +36,7 @@
 
         <div id="dropContainer" class="w3-border w3-white w3-center"
             ondragover="dOver(event)" ondragenter="dEnter(event)"
-            ondrop="dDrop(event)" ondragleave="dLeave(event)">
+            ondrop="dDrop(event)" ondragleave="dLeave(event)" style="font-size: 1.5em; padding: 1em;">
             <?= lang('upload.soltar') ?>
         </div>
 
