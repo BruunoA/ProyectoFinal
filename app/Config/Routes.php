@@ -59,7 +59,7 @@ $routes->get('gestio/sobreNosaltres', 'SobreNosaltresController::sobreNosaltres'
 $routes->get('dades', 'ClassificacioController::obtenirDades');
 
 // ACCIONS GESTIO
-$routes->get('gestio', 'GestioController::sobreNosaltres');
+$routes->get('gestio', 'SobreNosaltresController::sobreNosaltres');
 $routes->get('wysiwyg', 'GestioController::index');
 $routes->post('create/add', 'GestioController::add');
 $routes->get('create/add/event', 'GestioController::addEvent' /*, ['filter' => 'gestio:admin']*/);

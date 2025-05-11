@@ -20,7 +20,7 @@ class SobreNosaltresController extends BaseController
         return view('sobreNosaltres', $data);
     }
 
-        public function sobreNosaltres()
+    public function sobreNosaltres()
     {
         $model = new GestioModel();
 
@@ -33,5 +33,4 @@ class SobreNosaltresController extends BaseController
 
         return view('gestio_pag/sobreNosaltres', $data);
     }
-
 }

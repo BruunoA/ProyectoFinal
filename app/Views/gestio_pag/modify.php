@@ -24,29 +24,28 @@
         .ck-editor__editable[role="textbox"] {
             min-height: 400px;
         }
+
+        .error {
+            color: red;
+            font-size: 1em;
+            /* margin-top: -10px; */
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body class="w3-container w3-padding">
-
-    <?php if (session()->has('errors')): ?>
-        <div class="w3-panel w3-red w3-padding">
-            <ul>
-                <?php foreach (session('errors') as $error): ?>
-                    <li><?= esc($error) ?></li>
-                <?php endforeach ?>
-            </ul>
-        </div>
-    <?php endif ?>
-
+    <?php helper('form'); ?>
     <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Títol</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= $gestio['nom'] ?>">
+        <div class="error"><?= validation_show_error('nom') ?></div>
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= $gestio['resum'] ?>">
+        <div class="error"><?= validation_show_error('resum') ?></div>
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
@@ -59,10 +58,12 @@
             <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
             <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
         </select>
+        <div class="error"><?= validation_show_error('seccio') ?></div>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly value="<?= old('portada', $gestio['portada']) ?>">
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly value="<?= $gestio['portada'] ?>">
+            <div class="error"><?= validation_show_error('portada') ?></div>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
@@ -73,6 +74,7 @@
                 <option value="<?= $club['id'] ?>" <?= old('id_club', $gestio['id_club']) == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
             <?php endforeach ?>
         </select>
+        <div class="error"><?= validation_show_error('id_club') ?></div>
 
         <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
@@ -80,10 +82,12 @@
             <option value="0" <?= old('estat', $gestio['estat'] ?? '') == 0 ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
             <option value="1" <?= old('estat', $gestio['estat'] ?? '') == 1 ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
         </select>
+        <div class="error"><?= validation_show_error('estat') ?></div>
 
         <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
         <div class="w3-margin-bottom">
-            <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
+            <textarea name="ckeditor" id="ckeditor"><?=  $gestio['contingut'] ?? 'No hi ha contingut' ?></textarea>
+            <div class="error"><?= validation_show_error('ckeditor') ?></div>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
