@@ -29,7 +29,7 @@
                 <select name="club" id="club" class="w3-select w3-border">
                     <option value=""><?= lang('noticies.Clubs') ?></option>
                     <?php foreach ($clubs as $club): ?>
-                        <option value="<?= $club['id'] ?>" <?= old('club', $club['id'] ?? '') == $club['id'] ? 'selected' : '' ?>>
+                        <option value="<?= $club['id'] ?>" <?= old('club', $noticia['id_club'] ?? '') == $club['id'] ? 'selected' : '' ?>>
                             <?= $club['nom'] ?>
                         </option>
                     <?php endforeach; ?>
@@ -58,8 +58,7 @@
                             <strong><?= lang('noticies.Estat') ?></strong> <?= esc($noticia['estat'] ? 'publicat' : 'no_publicat') ?>
                         </div>
                         <div class="card-actions">
-                            <!-- <a href="<?php // base_url('noticia/' . esc($noticia['id'])) 
-                                            ?>"><?= lang("noticies.Veure") ?></a> -->
+                            <a href="<?= base_url('noticia/' . esc($noticia['nom'])) ?>"><?= lang("noticies.Veure") ?></a>
                             <a href="<?= base_url('gestio/modify/' . esc($noticia['id'])) ?>" class="w3-green"><?= lang("noticies.Editar") ?></a>
                             <a href="<?= base_url('gestio/delete/' . esc($noticia['id'])) ?>" class="w3-red" onclick="return confirm('Estàs segur que vols eliminar aquesta notícia?')"><?= lang("noticies.Eliminar") ?></a>
                         </div>

@@ -14,8 +14,8 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <div class="w3-container w3-teal" style="margin-bottom: 2rem">
-            <h1><?= lang('noticies.Titol') ?></h1>
+        <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+            <h1 class="w3-center w3-text-white"><?= lang('noticies.Titol') ?></h1>
         </div>
 
         <button onclick="document.getElementById('eventModal').style.display='block'" class="w3-button w3-teal"><?= lang('noticies.VeureEvents') ?></button><br><br>
@@ -28,7 +28,7 @@
                     <div class="w3-responsive">
                         <table class="w3-table-all w3-hoverable w3-small">
                             <thead>
-                                <tr class="w3-teal">
+                                <tr class="w3-blue">
                                     <th><?= lang('noticies.nomEvent') ?></th>
                                     <th><?= lang('noticies.descripcioEvent') ?></th>
                                     <th><?= lang('noticies.dataEvent') ?></th>
@@ -49,23 +49,22 @@
                 </div>
             </div>
         </div>
-        <div class="w3-row-padding">
+        <div class="cards-container">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="w3-col s12 l3 m3 w3-container w3-margin-top">
-                    <div class="w3-card w3-hover-shadow w3-round-large" style="display: flex; flex-direction: column; height: 100%; min-height: 300px; width: 450px;">
-                        <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
-                            <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" style="width:100%; height: 250px; object-fit:cover;" class="w3-round-top">
-                        </a>
-                        <div class="w3-container" style="flex-grow: 1; display: flex; flex-direction: column;">
-                            <!-- <h5><strong><?= esc($noticia['nom']) ?></strong></h5> -->
-                            <h5><strong><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></strong></h5>
-                            <p style="flex-grow: 1"><?= esc($noticia['resum']) ?></p>
-                        </div>
+                <div class="news-card w3-round" style="max-width: 700px;">
+                    <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
+                        <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
+                    </a>
+                    <div class="card-content">
+                        <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
+                        <p class="content-preview">
+                            <?= esc(strlen($noticia['resum']) > 80 ? substr($noticia['resum'], 0, 100) . '...' : $noticia['resum']) ?>
+                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="paginador w3-center w3-red" style="color:black">
+        <div class="paginador w3-center w3-blue" style="color:black">
             <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
         </div>
     </div>

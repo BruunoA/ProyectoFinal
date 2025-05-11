@@ -28,7 +28,7 @@ class NoticiesSeeder extends Seeder
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
                 'estat' => $fake->numberBetween(0, 1),
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d'),
             ];
 
             $this->db->table('gestio')->insert($data);
@@ -51,7 +51,7 @@ class NoticiesSeeder extends Seeder
                 // 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
                 'estat' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d'),
             ];
 
             $this->db->table('gestio')->insert($data);
