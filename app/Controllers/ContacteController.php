@@ -50,6 +50,13 @@ class ContacteController extends BaseController
                     'required' => lang('contacte.camp_correu'),
                 ],
             ],
+            'telefon' => [
+                'label' => 'Telefon',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => lang('contacte.camp_telefon'),
+                ],
+            ],
             'assumpte' => [
                 'label' => 'Assumpte',
                 'rules' => 'required',
@@ -69,6 +76,7 @@ class ContacteController extends BaseController
         $data = [
             'nom' => $this->request->getPost('nom'),
             'from_email' => $this->request->getPost('from_email'),
+            'telefon' => $this->request->getPost('telefon'),
             'id_assumpte' => $this->request->getPost('assumpte'),
             'text' => $this->request->getPost('text'),
         ];

@@ -14,10 +14,12 @@ return [
     "Ubicacio" => " Camí del Graó, 25110, 25110 Alpicat, Lleida",
     "CampTelefon" => "Telefon:",
     "CampCorreu" => "Correu electronic:",
+    'Camp_telefon' => 'Telefon',
     "Correu" => " contacte@ejemple.com",
     'Missatge_enviat' => 'Missatge enviat correctament.',
     'camp_nom' => 'El camp nom és obligatori.',
     'camp_correu' => 'El camp correu electrònic és obligatori.',
     'camp_assumpte' => 'El camp assumpte és obligatori.',
     'camp_motiu' => 'El camp motiu és obligatori.',
+    'camp_telefon' => 'El camp telefon és obligatori.',
 ];

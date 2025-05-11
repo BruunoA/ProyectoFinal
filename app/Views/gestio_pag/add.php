@@ -24,31 +24,28 @@
         .ck-editor__editable[role="textbox"] {
             min-height: 400px;
         }
+
+        .error {
+            color: red;
+            font-size: 1em;
+            /* margin-top: -10px; */
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body class="w3-container w3-padding">
-
-    <?php if (session()->has('errors')): ?>
-        <div class="w3-panel w3-red w3-padding">
-            <ul>
-                <?php foreach (session('errors') as $error): ?>
-                    <li><?= esc($error) ?></li>
-                <?php endforeach ?>
-            </ul>
-        </div>
-    <?php endif ?>
-
-    <?php // validation_list_errors() ?>
-
+    <?php helper('form'); ?>
     <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('/create/add') ?>">
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b><?= lang('gestioGeneral.nom') ?></b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>"><?php // validation_show_error('nom') ?>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom') ?>">
+        <div class="error"><?= validation_show_error('nom') ?></div>
 
         <label for="resum" class="w3-text-black"><b><?= lang('gestioGeneral.resum') ?></b></label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum') ?>">
+        <div class="error"><?= validation_show_error('resum') ?></div>
 
         <label for="seccio" class="w3-text-black"><b><?= lang('gestioGeneral.seccio') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
@@ -64,20 +61,23 @@
             <option value="banner" <?= old('seccio') == 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
             <option value="logo" <?= old('seccio') == 'logo' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Logo</option>
         </select>
+        <div class="error"><?= validation_show_error('seccio') ?></div>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b><?= lang('gestioGeneral.portadaNoticia') ?></b></label>
             <input class="w3-input w3-border" type="text" id="portada" name="portada" value="<?= old('portada') ?>" readonly>
+            <div class="error"><?= validation_show_error('portada') ?></div>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()"><?= lang('gestioGeneral.seleccionaImatge') ?></button>
         </div>
 
         <label for="id_club" class="w3-text-black"><?= lang('gestioGeneral.club') ?></label>
         <select class="w3-select w3-border w3-margin-bottom" name="id_club" id="id_club">
             <option value=""><?= lang('gestioGeneral.seleccionaClub') ?></option>
-            <?php  foreach ($clubs as $club): ?>
+            <?php foreach ($clubs as $club): ?>
                 <option value="<?= esc($club['id']) ?>" <?= old('id_club') == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
             <?php endforeach; ?>
         </select>
+        <div class="error"><?= validation_show_error('id_club') ?></div>
 
         <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
@@ -85,16 +85,28 @@
             <option value="0" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
             <option value="1" <?= old('estat') == 'publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
         </select>
+        <div class="error"><?= validation_show_error('estat') ?></div>
 
         <label class="w3-text-black"><b><?= lang('gestioGeneral.contingut') ?></b></label>
         <div class="w3-margin-bottom">
             <textarea name="ckeditor" id="ckeditor"><?= old('ckeditor') ?></textarea>
+            <div class="error"><?= validation_show_error('ckeditor') ?></div>
         </div>
 
         <button type="submit" class="w3-button w3-green w3-margin-top"><?= lang('gestioGeneral.crear') ?></button>
     </form>
 
     <script>
+        function mostrarPortada() {
+            const seccio = document.getElementById('seccio').value;
+            const portadaContainer = document.getElementById('portada-container');
+            portadaContainer.style.display = (seccio === 'noticies') ? 'block' : 'none';
+        }
+
+        document.getElementById('seccio').addEventListener('change', mostrarPortada);
+
+        window.addEventListener('DOMContentLoaded', mostrarPortada);
+
         document.getElementById('seccio').addEventListener('change', function() {
             // const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
             // const ckeditor = document.getElementById('ckeditor');

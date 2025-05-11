@@ -36,7 +36,7 @@ class GestioController extends BaseController
 
     public function add()
     {
-        $validation = \Config\Services::validation();
+        // $validation = \Config\Services::validation();
 
         helper(["form"]);
 
@@ -47,42 +47,42 @@ class GestioController extends BaseController
                 'label' => 'Nom',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Nom és obligatori.',
+                    'required' => 'El camp nom és obligatori.',
                 ]
             ],
             'resum' => [
                 'label' => 'Resum',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Resum és obligatori.',
+                    'required' => 'El camp resum és obligatori.',
                 ]
             ],
             'seccio' => [
                 'label' => 'Secció',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Secció és obligatori.',
+                    'required' => 'El camp secció és obligatori.',
                 ]
             ],
             'id_club' => [
                 'label' => 'Club',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Club és obligatori.',
+                    'required' => 'El camp club és obligatori.',
                 ]
             ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Estat és obligatori.',
+                    'required' => 'El camp estat és obligatori.',
                 ]
             ],
             'ckeditor' => [
                 'label' => 'Contingut',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Contingut és obligatori.',
+                    'required' => 'El camp contingut és obligatori.',
                 ]
             ],
         ];
@@ -92,7 +92,7 @@ class GestioController extends BaseController
                 'label' => 'Portada',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Portada és obligatori.',
+                    'required' => 'El camp portada és obligatori.',
                 ]
             ];
         } else if ($seccio === 'banner') {
@@ -115,15 +115,13 @@ class GestioController extends BaseController
             'url' => mb_url_title($this->request->getPost('nom'), '-', true)
         ];
 
-        // $validation->setRules($rules);
-
         if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->insert($data);
-            // return redirect()->to('/gestio');
+            return redirect()->to('/gestio');
         } else {
             // return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-            return redirect()->back()->withInput()->with('validation', $validation);
+            return redirect()->back()->withInput();
         }
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
@@ -137,13 +135,6 @@ class GestioController extends BaseController
         } else {
             return redirect()->to('/gestio');
         }
-
-        // $model = new GestioModel();
-        // if ($model->insert($data)) {
-        //     return redirect()->to('/gestio');
-        // } else {
-        //     return redirect()->back()->withInput()->with('errors', $model->errors());
-        // }
     }
 
     public function delete($id)
@@ -170,25 +161,6 @@ class GestioController extends BaseController
 
     public function update($id)
     {
-        // helper(["form"]);
-        // $model = new GestioModel();
-        // $data = [
-        //     'id'  => $id,
-        //     'nom' => $this->request->getPost('nom'),
-        //     'portada' => $this->request->getPost('portada'),
-        //     'resum' => $this->request->getPost('resum'),
-        //     'seccio' => $this->request->getPost('seccio'),
-        //     'estat' => $this->request->getPost('estat'),
-        //     'contingut' => $this->request->getPost('ckeditor'),
-        //     'url' => mb_url_title($this->request->getPost('nom'), '-', true)
-        // ];
-
-        // if (!$model->validate($data)) {
-        //     return redirect()->back()->withInput()->with('errors', $model->errors());
-        // } else {
-        //     $model->save($data);
-        //     // return redirect()->to('/gestio');
-        // }
 
         $validation = \Config\Services::validation();
 
@@ -201,42 +173,42 @@ class GestioController extends BaseController
                 'label' => 'Nom',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Nom és obligatori.',
+                    'required' => 'El camp nom és obligatori.',
                 ]
             ],
             'resum' => [
                 'label' => 'Resum',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Resum és obligatori.',
+                    'required' => 'El camp resum és obligatori.',
                 ]
             ],
             'seccio' => [
                 'label' => 'Secció',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Secció és obligatori.',
+                    'required' => 'El camp secció és obligatori.',
                 ]
             ],
             'id_club' => [
                 'label' => 'Club',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Club és obligatori.',
+                    'required' => 'El camp club és obligatori.',
                 ]
             ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Estat és obligatori.',
+                    'required' => 'El camp estat és obligatori.',
                 ]
             ],
             'ckeditor' => [
                 'label' => 'Contingut',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Contingut és obligatori.',
+                    'required' => 'El camp contingut és obligatori.',
                 ]
             ],
         ];
@@ -246,7 +218,7 @@ class GestioController extends BaseController
                 'label' => 'Portada',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Portada és obligatori.',
+                    'required' => 'El camp portada és obligatori.',
                 ]
             ];
         } else if ($seccio === 'banner') {
@@ -274,7 +246,8 @@ class GestioController extends BaseController
             $model->update($id, $data);
             // return redirect()->to('/gestio');
         } else {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            // return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+            return redirect()->back()->withInput();
         }
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');

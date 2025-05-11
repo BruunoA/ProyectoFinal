@@ -16,4 +16,5 @@ return [
     'no_publicat' => 'No publicat',
     'contingut' => 'Contingut',
     'crear' => 'Crear',
+    'seleccionaImatge' => 'Selecciona la portada',
 ];

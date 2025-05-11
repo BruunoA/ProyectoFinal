@@ -27,6 +27,11 @@ class ContacteMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'telefon'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 255, 
+                'null'           => false,
+            ],
             'to'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 

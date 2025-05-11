@@ -32,6 +32,11 @@
                     <div class="error"><?= validation_show_error('from_email') ?></div>
                 </div>
                 <div class="w3-section">
+                    <label><?= lang('contacte.Camp_telefon') ?></label>
+                    <input class="w3-input w3-border" name="telefon" type="tel" value="<?= old('telefon') ?>">
+                    <div class="error"><?= validation_show_error('telefon') ?></div>
+                </div>
+                <div class="w3-section">
                     <label><?= lang('contacte.Camp_assumpte') ?></label>
                     <select class="w3-select w3-border" name="assumpte">
                         <option value="" disabled selected><?= lang('contacte.Selecciona_assumpte') ?></option>
