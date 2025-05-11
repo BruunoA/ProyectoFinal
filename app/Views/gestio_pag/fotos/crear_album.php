@@ -52,7 +52,7 @@
                 <select class="w3-select w3-border w3-round" name="estat" id="estat">
                     <option value="" disabled selected><?= lang('albumsGestio.selecciona') ?></option>
                     <option value="publicat" <?= old('estat') == 'publicat' ? 'selected' : '' ?>><?= lang('albumsGestio.publicat') ?></option>
-                    <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>><?= lang('albumsGestio.noPublicat') ?></option>
+                    <option value="no_publicat" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>><?= lang('albumsGestio.no_publicat') ?></option>
                 </select>
             <div class="error"><?= validation_show_error('estat') ?></div>
             </p>

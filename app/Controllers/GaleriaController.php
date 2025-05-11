@@ -245,28 +245,28 @@ class GaleriaController extends BaseController
                 'label' => 'Títol',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Títol és obligatori.',
+                    'required' => 'El camp títol és obligatori.',
                 ],
             ],
             'portada' => [
                 'label' => 'Portada',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Portada és obligatori.',
+                    'required' => 'El camp portada és obligatori.',
                 ],
             ],
             'club' => [
                 'label' => 'Club',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Club és obligatori.',
+                    'required' => 'El camp club és obligatori.',
                 ],
             ],
             'estat' => [
                 'label' => 'Estat',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Estat és obligatori.',
+                    'required' => 'El camp estat és obligatori.',
                 ],
             ]
         ];
@@ -282,8 +282,7 @@ class GaleriaController extends BaseController
         // dd($data);
 
         if (!$this->validate($validationRule)) {
-            $data['errors'] = $this->validator->getErrors();
-            return redirect()->back()->withInput()->with('errors', $data['errors']);
+            return redirect()->back()->withInput();
         }
 
         $model->save($data);
