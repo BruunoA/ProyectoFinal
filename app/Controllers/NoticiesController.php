@@ -14,11 +14,29 @@ class NoticiesController extends BaseController
     public function index()
     {
 
+        $search = $this->request->getGet('q') ?? '';
+        $buscarClub = $this->request->getGet('club') ?? '';
+
         $model = new GestioModel();
         $modelEvents = new EventsModel();
+        $modelClubs = new ClubsModel();
 
-        // agafa totes les noticies on el seu estat es 1 (publicat)
-        $gestio = $model->where('seccio', 'noticies')->where('estat', 1)->paginate(6);
+        // consulta base per a després poder filtrar, si fos necessari
+        $base = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC');
+
+        // si hi ha un filtre de cerca, s'aplica
+        if($search !== '') {
+            $base->like('nom', $search)->orLike('contingut', $search);
+        }
+
+        // si hi ha un filtre de club, s'aplica
+        if($buscarClub !== '') {
+            $base->where('id_club', $buscarClub);
+        }
+
+        // consulta final, aplicant filtre de que agafi sol els que tenen estat publicat
+        $gestio = $base->where('estat', 1)->paginate(6);
+
         $pager = $model->pager;
 
         $data = [
@@ -26,6 +44,8 @@ class NoticiesController extends BaseController
             // agafem solament els events on la data de event sigui mes gran o igual a la data actual
             'events' => $modelEvents->where('estat', 1)->where('data >=', date('Y-m-d'))->findAll(),
             'pager' => $pager,
+            'search' => $search,
+            'clubs' => $modelClubs->findAll(),
         ];
 
         return view('noticies', $data);
@@ -52,15 +72,21 @@ class NoticiesController extends BaseController
         $modelClubs = new ClubsModel();
         $clubs = $modelClubs->findAll();
 
-        if ($search == '') {
-            $noticies = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC')->paginate(6);
-        } else {
-            $noticies = $model->where('seccio', 'noticies')->like('nom', $search)->orLike('contingut', $search)->orderBy('created_at', 'DESC')->paginate(6);
+        // consulta base per a després poder filtrar, si fos necessari
+        $selectBase = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC');
+
+        // si hi ha un filtre de cerca, s'aplica
+        if($search !== '') {
+            $selectBase->like('nom', $search)->orLike('contingut', $search);
         }
 
-        if ($buscarClub !== '') {
-            $noticies = $model->where('seccio', 'noticies')->where('id_club', $buscarClub)->orderBy('created_at', 'DESC')->paginate(6);
+        // si hi ha un filtre de club, s'aplica
+        if($buscarClub !== '') {
+            $selectBase->where('id_club', $buscarClub);
         }
+
+        // consulta final
+        $noticies = $selectBase->paginate(6);
 
         $pager = $model->pager;
 
