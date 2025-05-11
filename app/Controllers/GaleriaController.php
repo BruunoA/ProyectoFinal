@@ -91,15 +91,21 @@ class GaleriaController extends BaseController
         $modelClubs = new ClubsModel();
         $clubs = $modelClubs->findAll();
 
-        if ($search !== '') {
-            $albums = $model->like('titol', $search)->orderBy('created_at', 'DESC')->paginate(6);
-        } else {
-            $albums = $model->orderBy('created_at', 'DESC')->paginate(6);
+        // consulta base per a després poder filtrar, si fos necessari
+        $base = $model->where('estat', 1)->orderBy('created_at', 'DESC');
+
+        // si hi ha un filtre de cerca, s'aplica
+        if($search !== '') {
+            $base->like('titol', $search);
         }
 
-        if ($buscarClub !== '') {
-            $albums = $model->where('id_club', $buscarClub)->orderBy('created_at', 'DESC')->paginate(6);
+        // si hi ha un filtre de club, s'aplica
+        if($buscarClub !== '') {
+            $base->where('id_club', $buscarClub);
         }
+
+        // consulta final
+        $albums = $base->paginate(6);
 
         $pager = $model->pager;
 

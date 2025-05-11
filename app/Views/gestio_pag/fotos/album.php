@@ -27,7 +27,7 @@
                 <select name="club" id="club" class="w3-select w3-border">
                     <option value=""><?= lang('noticies.Clubs') ?></option>
                     <?php foreach ($clubs as $club): ?>
-                        <option value="<?= $club['id'] ?>" <?= old('club', $club['id'] ?? '') == $club['id'] ? 'selected' : '' ?>>
+                        <option value="<?= $club['id'] ?>" <?= old('club', $album['id_club'] ?? '') == $club['id'] ? 'selected' : '' ?>>
                             <?= $club['nom'] ?>
                         </option>
                     <?php endforeach; ?>

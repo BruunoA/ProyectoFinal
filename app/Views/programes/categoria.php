@@ -13,7 +13,7 @@
 
     <?= $this->include('general/menu'); ?>
 
-    <section id="Programes" class="w3-container w3-margin-bottom w3-padding-large w3-white w3-card-4 w3-round-large">
+    <section id="Programes" class="w3-container w3-margin-bottom w3-padding-large w3-white w3-card-4 w3-round-large w3-margin">
         <h3 class="w3-center w3-text-dark-grey">
             <strong><?= lang('programes.categoria') ?></strong> <?= esc($titol) ?>
         </h3>
@@ -29,8 +29,6 @@
                     <p class="w3-justify"><?= $categoria['descripcio'] ?></p>
 
                     <div class="w3-padding-16">
-                        <!-- <p><strong>Dies:</strong> Dilluns, dimarts, dimecres</p>
-                        <p><strong>Horari:</strong> 9:00 - 15:00</p> -->
                     <p>
                         <?= $categoria['horari'] ?>
                     </p>

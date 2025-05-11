@@ -12,7 +12,7 @@ class EquipsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'id_classificacio'];
+    protected $allowedFields    = ['nom', 'url_federacio'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

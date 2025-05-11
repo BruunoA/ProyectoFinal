@@ -5,22 +5,23 @@
         <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
         <ul class="menu-items">
-        <?php foreach (mostrar_tree() as $menu): ?>
-        <?php if (isset($menu['children'])): ?>
-            <div class="w3-dropdown-hover">
-                <button class="w3-btn w3-text-white"><?= $menu['nom'] ?> <i class="fa-solid fa-caret-down"></i></button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
-                    <?php foreach ($menu['children'] as $child): ?>
-                        <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;"><?= $child['nom'] ?></a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        <?php else: ?>
-            <a href="<?= base_url($menu['valor']) ?>" class="w3-bar-item w3-btn w3-text-white">
-                <?= $menu['nom'] ?>
-            </a>
-        <?php endif; ?>
-    <?php endforeach; ?>
+            <img src="<?= base_url('uploads/alpicatLogo.png') ?>" alt="Logo" height="32">
+            <?php foreach (mostrar_tree() as $menu): ?>
+                <?php if (isset($menu['children'])): ?>
+                    <div class="w3-dropdown-hover">
+                        <button class="w3-btn w3-text-white"><?= $menu['nom'] ?> <i class="fa-solid fa-caret-down"></i></button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
+                            <?php foreach ($menu['children'] as $child): ?>
+                                <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;"><?= $child['nom'] ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <a href="<?= base_url($menu['valor']) ?>" class="w3-bar-item w3-btn w3-text-white">
+                        <?= $menu['nom'] ?>
+                    </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
     </div>
 </nav>
