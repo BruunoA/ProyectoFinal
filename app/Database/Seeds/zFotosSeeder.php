@@ -15,7 +15,7 @@ class zFotosSeeder extends Seeder
             $data = [
                 'titol' => $fake->sentence(4),
                 'descripcio' => $fake->text(100),
-                'ruta' => 'assets/img/camara.png',
+                'ruta' => 'http://localhost/fileget/camara.png',
                 'estat' => 1,
                 // 'banner' => 'no',  
                 'id_album' => rand(1, 13),

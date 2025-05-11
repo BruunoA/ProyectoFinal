@@ -1,0 +1,34 @@
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.w3-card-custom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.w3-input:focus {
+    border-color: #2196F3 !important;
+    box-shadow: 0 0 5px #2196F3;
+}
+
+.w3-button-custom {
+    transition: background-color 0.3s ease;
+}
+
+.w3-button-custom:hover {
+    background-color: #0056b3 !important;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: red;
+    font-size: 1em;
+    margin-bottom: 10px;
+}

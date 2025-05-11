@@ -315,7 +315,7 @@ public function EditFoto_post($id)
                 'label' => 'Títol',
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'El camp Títol és obligatori.',
+                    'required' => lang('errors.titolObligatori'),
                 ],
             ],
         ];
@@ -327,8 +327,7 @@ public function EditFoto_post($id)
         ];
 
         if (!$this->validate($validationRule)) {
-            $data['errors'] = $this->validator->getErrors();
-            return redirect()->back()->withInput()->with('errors', $data['errors']);
+            return redirect()->back()->withInput();
         }
 
         $fotoModel->save($data);

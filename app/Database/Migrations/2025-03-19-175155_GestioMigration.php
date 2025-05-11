@@ -53,7 +53,7 @@ class GestioMigration extends Migration
                                 'default'        => 0,
                         ],
                         'created_at'      =>  [
-                                'type'         =>  'DATE',
+                                'type'         =>  'DATETIME',
                                 'null'         =>  true,
                                 'default'    =>  null,
                         ],

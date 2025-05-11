@@ -31,8 +31,8 @@
                     <?php foreach ($fotos as $foto): ?>
                         <div class="w3-third w3-margin-bottom">
                             <div class="w3-card w3-white w3-padding">
-                                <img src="<?= base_url($foto['ruta']) ?>" alt="foto" style="width:100%" class="w3-image">
-                                <h4><?= esc(strlen($foto['titol']) > 40 ? substr($foto['titol'], 0, 40) . '...' : $foto['titol']) ?></h4>
+                                <img src="<?= $foto['ruta'] ?>" alt="foto" style="width:100%" class="w3-image">
+                                <h4><?= esc(strlen($foto['titol']) > 20 ? substr($foto['titol'], 0, 20) . '...' : $foto['titol']) ?></h4>
                                 <p><?= esc(strlen($foto['descripcio']) > 50 ? substr($foto['descripcio'], 0, 50) . '...' : $foto['descripcio']) ?></p>
                                 <form action="<?= base_url('gestio/eliminar_foto') ?>" method="post">
                                     <input type="hidden" name="id_foto" value="<?= $foto['id'] ?>">

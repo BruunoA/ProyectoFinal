@@ -22,4 +22,10 @@ return [
     'modifySelect' => 'Selecciona una imatge',
     'modifyClub' => 'Club',
     'modify' => 'Modificar',
+    'titolEditFoto' => 'Modificar foto',
+    'editarTitol' => 'Títol de la foto',
+    'editarDescripcio' => 'Descripció de la foto',
+    'guardar' => 'Desar',
+    'tornar' => 'Tornar enrere',
+    'dataPujada' => 'Data de pujada:'
 ];
