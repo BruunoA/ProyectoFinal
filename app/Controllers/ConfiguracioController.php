@@ -85,14 +85,13 @@ class ConfiguracioController extends BaseController
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'icona' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
-            'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'valor' => ['name' => 'enllaç', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'options' => $nomsPares],
             'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required", 'min=1'],],
         ]);
 
-        // $crud->setConfig('onlyView');
         $crud->setConfig(["editable" => true,]);
         $crud->setConfig('delete', true);
         $crud->setConfig('add', true);
@@ -113,16 +112,15 @@ class ConfiguracioController extends BaseController
         $crud->setColumns(['id', 'nom', 'icon', 'valor', 'tipus', 'visibilitat', 'ordre', 'id_pare']);
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'icon' => ['name' => 'icona', 'type' => 'text'],
-            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
-            'tipus' => ['name' => 'tipus', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['menu_gestio' => 'Menu gestio']],
-            'visibilitat' => ['name' => 'visibilitat', 'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'icon' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
+            'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_gestio' => 'Menu gestio']],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required"],],
         ]);
 
-        // $crud->setConfig('onlyView');
         $crud->setConfig(["editable" => true,]);
         $crud->setConfig('delete', true);
         $crud->setConfig('add', true);
@@ -155,7 +153,6 @@ class ConfiguracioController extends BaseController
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);
 
-        // $crud->setConfig('onlyView');
         $crud->setConfig(["editable" => true,]);
         $crud->setConfig('delete', true);
         $crud->setConfig('add', true);
