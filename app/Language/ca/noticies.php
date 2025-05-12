@@ -24,4 +24,5 @@ return [
     'Clubs' => 'Selecciona un club per filtrar',
     'Buscar' => 'Busca per titol/contingut',
     'dataCreacio' => 'Data de creació: ',
+    'gestioCategories' => 'Gestió de categories',
 ];

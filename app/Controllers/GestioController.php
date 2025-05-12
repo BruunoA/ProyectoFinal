@@ -449,15 +449,15 @@ class GestioController extends BaseController
     {
         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 
-        $crud->setTable('events');
+        $crud->setTable('seccions');
         $crud->setPrimaryKey('id');
 
-        $crud->setColumns(['nom', 'estat']);
+        $crud->setColumns(['nom']);
 
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
-            'estat' => ['name' => 'estat',  'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Publicat', 0 => 'No publicat'],],
+            // 'created_at' => ['name' => 'created_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);
 
         // $crud->setConfig('onlyView');
@@ -467,7 +467,33 @@ class GestioController extends BaseController
 
         $data['output'] = $crud->render();
 
-        return view('gestio_pag/events/events', $data);
+        return view('gestio_pag/seccions', $data);
+    }
+
+    public function clubs()
+    {
+
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('clubs');
+        $crud->setPrimaryKey('id');
+
+        $crud->setColumns(['nom']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            // 'created_at' => ['name' => 'created_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+        ]);
+
+        // $crud->setConfig('onlyView');
+        $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+
+        $data['output'] = $crud->render();
+
+        return view('gestio_pag/seccions', $data);
     }
 
     // public function bannerDelete($id)

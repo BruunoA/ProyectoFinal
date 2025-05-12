@@ -18,10 +18,10 @@ class ClubsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'foto_club'        => [
-                'type'           => 'TEXT',
-                'null'           => false,
-            ],
+            // 'foto_club'        => [
+            //     'type'           => 'TEXT',
+            //     'null'           => false,
+            // ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
                 'null'         =>  true,

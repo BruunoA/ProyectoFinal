@@ -13,17 +13,17 @@ class AClubsSeeder extends Seeder
         $data= [
             [
                 'nom'    => 'Amateur', 
-                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
+                // 'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
             [
                 'nom'    => 'Juvenil', 
-                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
+                // 'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
             [
                 'nom'    => 'Cadet', 
-                'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
+                // 'foto_club' => 'http://localhost/fileget/alpicatLogo.png',
                 'created_at' => date('Y-m-d H:i:s'), 
             ],
         ];

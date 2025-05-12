@@ -17,11 +17,11 @@ class SeccionsMigration extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'estat'       => [
-                'type'       => 'TINYINT',
-                'constraint' => 1,
-                'default'    => 0,
-            ],
+            // 'estat'       => [
+            //     'type'       => 'TINYINT',
+            //     'constraint' => 1,
+            //     'default'    => 0,
+            // ],
             'created_at'  => [
                 'type'      => 'DATETIME',
                 'null'      => true,

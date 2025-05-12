@@ -13,8 +13,7 @@
     <?= $this->include('general/menuGestio'); ?>
     <div class="w3-container">
         <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.afegir") ?></a>
-        <a href="<?= base_url('gestio/categories') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.gestioCategories") ?></a>
-        <a href="<?= base_url('gestio/clubs') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.gestioClubs") ?></a>
+        <a href="<?= base_url('gestio/seccions') ?>" class="w3-button w3-blue w3-margin"><?= lang("noticies.gestioCategories") ?></a>
     </div>
     <?= session()->getFlashdata('success') ?>
     <div class="w3-container">
