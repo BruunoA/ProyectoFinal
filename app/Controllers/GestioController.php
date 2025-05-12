@@ -483,6 +483,7 @@ class GestioController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'estat' => ['name' => 'estat',  'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Publicat', 0 => 'No publicat'],],
             // 'created_at' => ['name' => 'created_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);
 

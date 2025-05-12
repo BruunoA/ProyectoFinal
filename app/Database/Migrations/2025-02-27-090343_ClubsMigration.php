@@ -18,6 +18,11 @@ class ClubsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'estat'        => [
+                'type'           => 'TINYINT',
+                'constraint'     => 1,
+                'default'        => 1,
+            ],
             // 'foto_club'        => [
             //     'type'           => 'TEXT',
             //     'null'           => false,

@@ -7,6 +7,7 @@ use App\Models\AssumptesModel;
 use App\Models\ConfiguracioModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ContacteModel;
+use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
 class ContacteController extends BaseController
 {
@@ -52,9 +53,10 @@ class ContacteController extends BaseController
             ],
             'telefon' => [
                 'label' => 'Telefon',
-                'rules' => 'required',
+                'rules' => 'required|regex_match[/^\d{9}$/]',
                 'errors' => [
                     'required' => lang('contacte.camp_telefon'),
+                    'regex_match' => lang('contacte.camp_telefon'),
                 ],
             ],
             'assumpte' => [
@@ -153,5 +155,28 @@ class ContacteController extends BaseController
         $contacteModel->delete($id);
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Email esborrat correctament</div>');
         return redirect()->to('/gestio/email');
+    }
+
+    public function assumptes(){
+
+         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('assumptes');
+        $crud->setPrimaryKey('id');
+
+        $crud->setColumns(['nom']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+        ]);
+
+        $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+
+        $data['output'] = $crud->render();
+
+        return view('gestio_pag/correu/assumptes', $data);
     }
 }

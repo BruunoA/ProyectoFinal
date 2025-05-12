@@ -36,7 +36,7 @@
                 <button class="w3-btn w3-text-white">Contacte <i class="fa-solid fa-caret-down"></i></button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
                     <a href="<?= base_url('gestio/email') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Gestio de gmails</a>
-                    <a href="<?= base_url('config/menu_general') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Menu General</a>
+                    <a href="<?= base_url('gestio/assumptes') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Gestio assumptes</a>
                 </div>
             </li>
         </ul>

@@ -56,7 +56,7 @@ $routes->get('gestio/email/send/(:num)', 'ContacteController::emailSend/$1');
 $routes->get('gestio/email/send/(:num)', 'ContacteController::emailSend/$1'); // GET para mostrar el formulario
 $routes->post('gestio/email/send/(:num)', 'ContacteController::emailSend_post/$1'); // POST para procesar el formulario
 $routes->get('gestio/email/delete/(:num)', 'ContacteController::deleteEmail/$1' /*, ['filter' => 'gestio:admin']*/);
-
+$routes->match(['get', 'post'],'gestio/assumptes', 'ContacteController::assumptes' /*, ['filter' => 'gestio:admin']*/);
 
 // SOBRE NOSALTRES
 $routes->get('sobreNosaltres', 'SobreNosaltresController::index');

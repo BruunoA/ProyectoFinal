@@ -40,4 +40,7 @@ return [
     'correuRespondre' => 'Correu remitent',
     'missatgeRespondre' => 'Escriu el missatge de resposta',
     'enviarRespondre' => 'Enviar resposta',
+    'titolAssumptes' => 'Gestio d\'assumptes',
+    'subtitolAssumptes' => 'Gestio d\'assumptes',
+    'camp_telefon' => 'Ha de tenir 9 digits',
 ];
