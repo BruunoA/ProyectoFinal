@@ -21,7 +21,7 @@
             <?php foreach ($album['fotos'] as $foto): ?>
                 <div class="w3-col s12 m6 l3 w3-margin-bottom">
                     <div class="w3-card-4 w3-hover-shadow">
-                        <img class="ferGran" src="<?= $foto['ruta'] ?>" alt="<?= esc($foto['descripcio']) ?>" style="width:100%">
+                        <img class="ferGran" src="<?= base_url($foto['ruta']) ?>" alt="<?= esc($foto['descripcio']) ?>" style="width:100%">
                     </div>
                 </div>
             <?php endforeach; ?>

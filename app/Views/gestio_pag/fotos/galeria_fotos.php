@@ -17,6 +17,19 @@
         opacity: 0.5;
         cursor: not-allowed;
     }
+
+    .fotos {
+    height: 400px; /* Ajusta según tus necesidades */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.fotos img {
+    max-height: 200px;
+    object-fit: cover;
+}
 </style>
 
 <body class="w3-light-grey">
@@ -30,8 +43,8 @@
                 <div class="w3-row-padding w3-margin-top">
                     <?php foreach ($fotos as $foto): ?>
                         <div class="w3-third w3-margin-bottom">
-                            <div class="w3-card w3-white w3-padding">
-                                <img src="<?= $foto['ruta'] ?>" alt="foto" style="width:100%" class="w3-image">
+                            <div class="w3-card w3-white w3-padding fotos">
+                                <img src="<?= base_url($foto['ruta']) ?>" alt="foto" style="width:100%" class="w3-image">
                                 <h4><?= esc(strlen($foto['titol']) > 20 ? substr($foto['titol'], 0, 20) . '...' : $foto['titol']) ?></h4>
                                 <p><?= esc(strlen($foto['descripcio']) > 50 ? substr($foto['descripcio'], 0, 50) . '...' : $foto['descripcio']) ?></p>
                                 <div>

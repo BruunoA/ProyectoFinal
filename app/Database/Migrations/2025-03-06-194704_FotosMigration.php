@@ -26,6 +26,7 @@ class TaulaFotosMigration extends Migration
             'estat'          => [
                 'type'           => 'TINYINT',
                 'constraint'     => 1,
+                'default'        => 1,
             ],
             // 'banner'          => [
             //     'type'           => 'ENUM',

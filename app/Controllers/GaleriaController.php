@@ -92,7 +92,7 @@ class GaleriaController extends BaseController
         $clubs = $modelClubs->findAll();
 
         // consulta base per a després poder filtrar, si fos necessari
-        $base = $model->where('estat', 1)->orderBy('created_at', 'DESC');
+        $base = $model->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
         if ($search !== '') {
