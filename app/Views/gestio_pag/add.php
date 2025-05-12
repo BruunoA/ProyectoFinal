@@ -50,16 +50,9 @@
         <label for="seccio" class="w3-text-black"><b><?= lang('gestioGeneral.seccio') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value=""><?= lang('gestioGeneral.selecciona') ?></option>
-            <option value="#" disabled class="w3-bold">Noticies</option>
-            <option value="noticies" <?= old('seccio') == 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="#" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia" <?= old('seccio') == 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio" <?= old('seccio') == 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio" <?= old('seccio') == 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors" <?= old('seccio') == 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
-            <option value="#" disabled class="w3-bold">Inici</option>
-            <option value="banner" <?= old('seccio') == 'banner' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Banner</option>
-            <option value="logo" <?= old('seccio') == 'logo' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Logo</option>
+            <?php foreach ($seccions as $seccio): ?>
+                <option value="<?= esc($seccio['nom']) ?>" <?= old('seccio') == $seccio['nom'] ? 'selected' : '' ?>><?= esc($seccio['nom']) ?></option>
+            <?php endforeach; ?>
         </select>
         <div class="error"><?= validation_show_error('seccio') ?></div>
 
@@ -100,7 +93,7 @@
         function mostrarPortada() {
             const seccio = document.getElementById('seccio').value;
             const portadaContainer = document.getElementById('portada-container');
-            portadaContainer.style.display = (seccio === 'noticies') ? 'block' : 'none';
+            portadaContainer.style.display = (seccio === 'Notícies') ? 'block' : 'none';
         }
 
         document.getElementById('seccio').addEventListener('change', mostrarPortada);
@@ -112,7 +105,7 @@
             // const ckeditor = document.getElementById('ckeditor');
 
             const portada = document.getElementById('portada-container');
-            if (this.value === 'noticies') {
+            if (this.value === 'Notícies') {
                 portada.style.display = 'block';
             } else {
                 portada.style.display = 'none';

@@ -12,10 +12,10 @@ class SobreNosaltresController extends BaseController
     {
         $model = new GestioModel();
         $data = [
-            'historia' => $model->where('seccio', 'historia')->where('estat', 'publicat')->first(),
-            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
-            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
-            'valors' => $model->where('seccio', 'valors')->where('estat', 'publicat')->first(),
+            'historia' => $model->where('id_seccio', 2)->where('estat', 1)->first(),
+            'missio' => $model->where('id_seccio', 3)->where('estat', 1)->first(),
+            'visio' => $model->where('id_seccio', 4)->where('estat', 1)->first(),
+            'valors' => $model->where('id_seccio', 5)->where('estat', 1)->first(),
         ];
         return view('sobreNosaltres', $data);
     }
@@ -25,10 +25,10 @@ class SobreNosaltresController extends BaseController
         $model = new GestioModel();
 
         $data = [
-            'historia' => $model->where('seccio', 'historia')->findAll(),
-            'missio' => $model->where('seccio', 'missio')->findAll(),
-            'visio' => $model->where('seccio', 'visio')->findAll(),
-            'valors' => $model->where('seccio', 'valors')->findAll(),
+            'historia' => $model->where('id_seccio', 2)->findAll(),
+            'missio' => $model->where('id_seccio', 3)->findAll(),
+            'visio' => $model->where('id_seccio', 4)->findAll(),
+            'valors' => $model->where('id_seccio', 5)->findAll(),
         ];
 
         return view('gestio_pag/sobreNosaltres', $data);

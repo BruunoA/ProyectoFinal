@@ -35,9 +35,9 @@ class GestioMigration extends Migration
                                 'type'           => 'TEXT',
                                 'null'           => false,
                         ],
-                        'seccio'          => [
-                                'type'           => 'VARCHAR',
-                                'constraint'     => '100',
+                        'id_seccio'          => [
+                                'type'           => 'INT',
+                                'null'           => false,
                         ],
                         'portada'          => [
                                 'type'           => 'VARCHAR',
@@ -70,6 +70,7 @@ class GestioMigration extends Migration
                 ]);
                 $this->forge->addPrimaryKey('id');
                 $this->forge->addForeignKey('id_club', 'clubs', 'id');
+                $this->forge->addForeignKey('id_seccio', 'seccions', 'id');
                 $this->forge->createTable('gestio');
         }
 

@@ -15,7 +15,6 @@ class NoticiesSeeder extends Seeder
             $nom = $fake->sentence(6); 
             $resum = $fake->text(100); 
             $contingut = $fake->paragraphs(20, true); 
-            $seccio = "noticies";
             $url = url_title($nom, '-', true);
 
             $data = [
@@ -24,7 +23,7 @@ class NoticiesSeeder extends Seeder
                 'resum' => $resum,
                 'contingut' => $contingut,
                 'destacat' => $fake->numberBetween(0, 1),
-                'seccio' => $seccio,
+                'id_seccio' => 1,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
                 'estat' => $fake->numberBetween(0, 1),
@@ -38,7 +37,6 @@ class NoticiesSeeder extends Seeder
             $nom = $fake->sentence(6); 
             // $resum = $fake->text(100); 
             // $contingut = $fake->paragraphs(20, true); 
-            $seccio = "banner";
             $url = url_title($nom, '-', true);
 
             $data = [
@@ -47,7 +45,7 @@ class NoticiesSeeder extends Seeder
                 // 'resum' => $resum,
                 'contingut' => 'assets/img/campoAlpicat.jpg',
                 'destacat' => 0,
-                'seccio' => $seccio,
+                'id_seccio' => 6,
                 // 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
                 'estat' => 1,

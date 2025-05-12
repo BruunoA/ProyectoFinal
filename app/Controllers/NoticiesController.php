@@ -22,7 +22,7 @@ class NoticiesController extends BaseController
         $modelClubs = new ClubsModel();
 
         // consulta base per a després poder filtrar, si fos necessari
-        $base = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC');
+        $base = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
         if($search !== '') {
@@ -73,7 +73,7 @@ class NoticiesController extends BaseController
         $clubs = $modelClubs->findAll();
 
         // consulta base per a després poder filtrar, si fos necessari
-        $selectBase = $model->where('seccio', 'noticies')->orderBy('created_at', 'DESC');
+        $selectBase = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
         if($search !== '') {

@@ -16,7 +16,6 @@ $routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
 $routes->get('gestio/galeria', 'GaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria_fotos/(:num)', 'GaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/eliminar_foto/(:num)', 'GaleriaController::deleteFoto/$1' /*, ['filter' => 'gestio:admin']*/);
-// $routes->post('gestio/eliminar_foto', 'GaleriaController::deleteFoto' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/crearAlbum', 'GaleriaController::crearAlbum' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/galeria/crearAlbum', 'GaleriaController::crearAlbum_post' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria/eliminarAlbum/(:num)', 'GaleriaController::eliminarAlbum/$1' /*, ['filter' => 'gestio:admin']*/);
@@ -33,6 +32,8 @@ $routes->get('gestio/cambiar_estat_foto', 'GaleriaController::cambiarEstatFoto'/
 $routes->get('noticies', 'NoticiesController::index');
 $routes->get('noticia/(:segment)', 'NoticiesController::noticia/$1');
 $routes->get('gestio/noticies', 'NoticiesController::noticies' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/seccions', 'GestioController::seccions' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/clubs', 'GestioController::clubs' /*, ['filter' => 'gestio:admin']*/);
 
 // PROGRAMES
 $routes->get('programes/(:segment)', 'ProgramesController::categoria/$1');

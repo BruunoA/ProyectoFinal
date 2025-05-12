@@ -11,6 +11,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 use App\Models\MenuModel;
 use App\Models\ClubsModel;
+use App\Models\SeccionsModel;
 use App\Models\TaulaFotosModel;
 use CodeIgniter\Files\File;
 use SIENSIS\KpaCrud\Libraries\KpaCrud;
@@ -22,9 +23,11 @@ class GestioController extends BaseController
     {
 
         $model = new ClubsModel();
+        $modelSeccions = new SeccionsModel();
 
         $data = [
             'clubs' => $model->findAll(),
+            'seccions' => $modelSeccions->findAll(),
         ];
 
         return view('gestio_pag/add', $data);
@@ -35,7 +38,9 @@ class GestioController extends BaseController
 
         helper(["form"]);
 
+        $model = new SeccionsModel();
         $seccio = $this->request->getPost('seccio');
+        $seccioID = $model->where('nom', $seccio)->select('id')->first();
 
         $rules = [
             'nom' => [
@@ -82,7 +87,7 @@ class GestioController extends BaseController
             ],
         ];
 
-        if ($seccio === 'noticies') {
+        if ($seccio === 'Notícies') {
             $rules['portada'] = [
                 'label' => 'Portada',
                 'rules' => 'required',
@@ -90,10 +95,10 @@ class GestioController extends BaseController
                     'required' => 'El camp portada és obligatori.',
                 ]
             ];
-        } else if ($seccio === 'banner') {
+        } else if ($seccio === 'Banner') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
-        } else if ($seccio === 'logo') {
+        } else if ($seccio === 'Logo') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
         }
@@ -101,7 +106,7 @@ class GestioController extends BaseController
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
-            'seccio' => $this->request->getPost('seccio'),
+            'id_seccio' => $seccioID,
             'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
@@ -120,11 +125,11 @@ class GestioController extends BaseController
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
 
-        if ($seccio == 'noticies') {
+        if ($seccio == 'Notícies') {
             return redirect()->to('/gestio/noticies');
-        } else if ($seccio == 'banner' || $seccio == 'logo') {
+        } else if ($seccio == 'Banner' || $seccio == 'Logo') {
             return redirect()->to('/gestio/banner');
-        } else if ($seccio == 'historia' || $seccio == 'missio' || $seccio == 'visio' || $seccio == 'valors') {
+        } else if ($seccio == 'Història' || $seccio == 'Missió' || $seccio == 'Visió' || $seccio == 'Valors') {
             return redirect()->to('/gestio/sobreNosaltres');
         } else {
             return redirect()->to('/gestio');
@@ -142,12 +147,14 @@ class GestioController extends BaseController
     public function edit($id)
     {
         $model = new GestioModel();
-
         $modelClubs = new ClubsModel();
+        $modelSeccions = new SeccionsModel();
+
 
         $data = [
             'gestio' => $model->find($id),
             'clubs' => $modelClubs->findAll(),
+            'seccions' => $modelSeccions->findAll(),
         ];
 
         return view('gestio_pag/modify', $data);
@@ -158,7 +165,9 @@ class GestioController extends BaseController
 
         helper(["form"]);
 
+        $model = new SeccionsModel();
         $seccio = $this->request->getPost('seccio');
+        $seccioID = $model->where('nom', $seccio)->select('id')->first();
 
         $rules = [
             'nom' => [
@@ -205,7 +214,7 @@ class GestioController extends BaseController
             ],
         ];
 
-        if ($seccio === 'noticies') {
+        if ($seccio === 'Notícies') {
             $rules['portada'] = [
                 'label' => 'Portada',
                 'rules' => 'required',
@@ -213,10 +222,10 @@ class GestioController extends BaseController
                     'required' => 'El camp portada és obligatori.',
                 ]
             ];
-        } else if ($seccio === 'banner') {
+        } else if ($seccio === 'Banner') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
-        } else if ($seccio === 'logo') {
+        } else if ($seccio === 'Logo') {
             $rules['resum']['rules'] = 'permit_empty';
             $rules['id_club']['rules'] = 'permit_empty';
         }
@@ -224,7 +233,7 @@ class GestioController extends BaseController
         $data = [
             'nom' => $this->request->getPost('nom'),
             'resum' => $this->request->getPost('resum'),
-            'seccio' => $this->request->getPost('seccio'),
+            'id_seccio' => $seccioID,
             'id_club' => $this->request->getPost('id_club'),
             'estat' => $this->request->getPost('estat'),
             'data' => $this->request->getPost('data'),
@@ -242,23 +251,18 @@ class GestioController extends BaseController
 
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
 
-        if ($seccio == 'noticies') {
+
+        if ($seccio == 'Notícies') {
             return redirect()->to('/gestio/noticies');
-        } else if ($seccio == 'banner' || $seccio == 'logo') {
+        } else if ($seccio == 'Banner' || $seccio == 'Logo') {
             return redirect()->to('/gestio/banner');
-        } else if ($seccio == 'historia' || $seccio == 'missio' || $seccio == 'visio' || $seccio == 'valors') {
+        } else if ($seccio == 'Història' || $seccio == 'Missió' || $seccio == 'Visió' || $seccio == 'Valors') {
             return redirect()->to('/gestio/sobreNosaltres');
         } else {
             return redirect()->to('/gestio');
         }
     }
 
-    public function historia()
-    {
-        $model = new GestioModel();
-        $data['historia'] = $model->where('seccio', 'historia')->findAll();
-        return view('sobreNosaltres', $data);
-    }
 
     public function upload_drag()
     {
@@ -382,7 +386,7 @@ class GestioController extends BaseController
             return redirect()->to('/gestio/galeria');
         }
     }
-    
+
 
     public function events()
     {
@@ -401,7 +405,7 @@ class GestioController extends BaseController
             'descripcio' => ['name' => 'descripcio', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'publicated_at' => ['name' => 'publicated_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'data' => ['name' => 'data', 'type' => KpaCrud::DATE_FIELD_TYPE, 'default' => $dataActual, 'html_atts' => ["required"],],
-            'estat' => ['name' => 'estat',  'type' => 'dropdown', 'html_atts' => ["required"], 'options' => ['publicat' => 'Publicat', 'no_publicat' => 'No publicat'],],
+            'estat' => ['name' => 'estat',  'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Publicat', 0 => 'No publicat'],],
         ]);
 
         // $crud->setConfig('onlyView');
@@ -439,6 +443,31 @@ class GestioController extends BaseController
         // dd($data);
 
         return view('gestio_pag/banner/banner', $data);
+    }
+
+    public function seccions()
+    {
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('events');
+        $crud->setPrimaryKey('id');
+
+        $crud->setColumns(['nom', 'estat']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'estat' => ['name' => 'estat',  'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Publicat', 0 => 'No publicat'],],
+        ]);
+
+        // $crud->setConfig('onlyView');
+        $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+
+        $data['output'] = $crud->render();
+
+        return view('gestio_pag/events/events', $data);
     }
 
     // public function bannerDelete($id)

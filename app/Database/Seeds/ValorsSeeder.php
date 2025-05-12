@@ -16,7 +16,7 @@ class ValorsSeeder extends Seeder
                 'id_club' => random_int(1, 3),
                 'resum' => $fake->sentence(20),
                 'contingut' => $fake->paragraph(2),
-                'seccio' => 'valors',
+                'id_seccio' => 5,
                 'url' => url_title($nom, '-', true),
                 'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'),

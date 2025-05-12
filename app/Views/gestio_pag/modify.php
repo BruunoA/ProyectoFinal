@@ -50,13 +50,9 @@
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value="">Selecciona una opció</option>
-            <option value="" disabled class="w3-bold">Noticies</option>
-            <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia" <?= old('seccio', $gestio['seccio']) === 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio" <?= old('seccio', $gestio['seccio']) === 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
+            <?php foreach ($seccions as $seccio): ?>
+                <option value="<?= $seccio['nom'] ?>" <?= old('id_seccio', $gestio['id_seccio']) == $seccio['id'] ? 'selected' : '' ?>><?= esc($seccio['nom']) ?></option>
+            <?php endforeach ?>
         </select>
         <div class="error"><?= validation_show_error('seccio') ?></div>
 
@@ -97,24 +93,12 @@
         function mostrarPortada() {
             const seccio = document.getElementById('seccio').value;
             const portadaContainer = document.getElementById('portada-container');
-            portadaContainer.style.display = (seccio === 'noticies') ? 'block' : 'none';
+            portadaContainer.style.display = (seccio === 'Notícies') ? 'block' : 'none';
         }
 
         document.getElementById('seccio').addEventListener('change', mostrarPortada);
 
         window.addEventListener('DOMContentLoaded', mostrarPortada);
-
-        document.getElementById('seccio').addEventListener('change', function() {
-            const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
-            const ckeditor = document.getElementById('ckeditor');
-
-            const portada = document.getElementById('portada-container');
-            if (this.value === 'noticies') {
-                portada.style.display = 'block';
-            } else {
-                portada.style.display = 'none';
-            }
-        });
 
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';
