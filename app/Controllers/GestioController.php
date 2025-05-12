@@ -429,8 +429,8 @@ class GestioController extends BaseController
 
         $model = new GestioModel();
 
-        $banners = $model->where('seccio', 'banner')->orderBy('created_at', 'DESC')->paginate(6);
-        $logos = $model->where('seccio', 'logo')->orderBy('created_at', 'DESC')->paginate(6);
+        $banners = $model->where('id_seccio', 6)->orderBy('created_at', 'DESC')->paginate(6);
+        $logos = $model->where('id_seccio', 7)->orderBy('created_at', 'DESC')->paginate(6);
 
         $pager = $model->pager;
 

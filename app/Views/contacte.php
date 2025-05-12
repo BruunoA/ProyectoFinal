@@ -33,7 +33,7 @@
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_telefon') ?></label>
-                    <input class="w3-input w3-border" name="telefon" type="tel" value="<?= old('telefon') ?>">
+                    <input class="w3-input w3-border" name="telefon" type="number" value="<?= old('telefon') ?>">
                     <div class="error"><?= validation_show_error('telefon') ?></div>
                 </div>
                 <div class="w3-section">
