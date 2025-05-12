@@ -184,6 +184,20 @@ a:active {
     box-sizing: border-box;
 }
 
+.xarxes_socials{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.xarxes_socials i{
+    font-size: 20px;
+    color: white;
+}
+
+
+
 
 
 

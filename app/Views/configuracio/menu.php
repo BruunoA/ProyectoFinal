@@ -11,7 +11,7 @@
 
 <body>
     <?= $this->include('general/menuGestio'); ?>
-    <div class="w3-margin">
+    <div class="w3-margin w3-margin-top">
         <h2 class="w3-center"><?= lang('gestioMenu.subtitolGeneral') ?></h2>
         <?php echo $output; ?>
     </div>

@@ -24,5 +24,17 @@ class HistoriaSeeder extends Seeder
             ];
 
             $this->db->table('gestio')->insert($data);
+
+            $data = [
+                'nom' => $nom,
+                'id_club' => random_int(1, 3),
+                'resum' => $fake->sentence(30),
+                'contingut' => $fake->paragraphs(20, true), 
+                'id_seccio' => 8,
+                'estat' => 1,
+                'created_at' => date('Y-m-d H:i:s'), 
+            ];
+
+            $this->db->table('gestio')->insert($data);
     }
 }

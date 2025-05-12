@@ -18,7 +18,7 @@
             <h1 class="w3-center w3-text-white"><?= lang('noticies.Titol') ?></h1>
         </div>
 
-        <button onclick="document.getElementById('eventModal').style.display='block'" class="w3-button w3-teal"><?= lang('noticies.VeureEvents') ?></button><br><br>
+        <button onclick="document.getElementById('eventModal').style.display='block'" class="w3-button w3-black"><?= lang('noticies.VeureEvents') ?></button><br><br>
 
         <div id="eventModal" class="w3-modal">
             <div class="w3-modal-content w3-animate-zoom">
@@ -51,14 +51,14 @@
         </div>
         <div class="cards-container">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="news-card w3-round">
+                <div class="news-card w3-round"  style="border: 2px solid black;">
                     <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
                         <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
                     </a>
                     <div class="card-content">
                         <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
                         <p class="content-preview">
-                            <?= esc(strlen($noticia['resum']) > 80 ? substr($noticia['resum'], 0, 100) . '...' : $noticia['resum']) ?>
+                            <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
                         </p>
                     </div>
                 </div>

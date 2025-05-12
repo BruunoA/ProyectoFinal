@@ -23,6 +23,15 @@
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>
+        <div class="xarxes_socials">
+            <?php
+            $xarxes_socials = mostrar_footer();
+            foreach ($xarxes_socials as $xarxa): ?>
+                <a href="<?= $xarxa['valor']; ?>" target="_blank">
+                    <i class="<?= esc($xarxa['icona']); ?>"></i>
+                </a>
+            <?php endforeach; ?>
+        </div>
     </div>
 </nav>
 

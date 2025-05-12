@@ -12,7 +12,7 @@ $routes->post('/classificacio/filtrar', 'ClassificacioController::filtrar');
 
 // GALERIA
 $routes->get('galeria', 'GaleriaController::getFotos');
-$routes->get('galeria/album/(:num)', 'GaleriaController::getAlbumFotos/$1');
+$routes->get('galeria/album/(:segment)', 'GaleriaController::getAlbumFotos/$1');
 $routes->get('gestio/galeria', 'GaleriaController::album' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/galeria_fotos/(:num)', 'GaleriaController::albumFotos/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/eliminar_foto/(:num)', 'GaleriaController::deleteFoto/$1' /*, ['filter' => 'gestio:admin']*/);

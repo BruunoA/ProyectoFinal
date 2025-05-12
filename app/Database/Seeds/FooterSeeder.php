@@ -15,6 +15,7 @@ class FooterSeeder extends Seeder
             'nom' => 'Twitter',
             'valor' => 'https://twitter.com/' . $fake->userName,
             'icona' => 'fa-brands fa-twitter',
+            'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
 
@@ -24,6 +25,7 @@ class FooterSeeder extends Seeder
             'nom' => 'Facebook',
             'valor' => 'https://facebook.com/' . $fake->userName,
             'icona' => 'fa-brands fa-facebook',
+            'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
 
@@ -33,6 +35,7 @@ class FooterSeeder extends Seeder
             'nom' => 'Instagram',
             'valor' => 'https://instagram.com/' . $fake->userName,
             'icona' => 'fa-brands fa-instagram',
+            'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
 

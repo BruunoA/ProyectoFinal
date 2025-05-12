@@ -17,4 +17,8 @@ return [
     'contingut' => 'Contingut',
     'crear' => 'Crear',
     'seleccionaImatge' => 'Selecciona la portada',
+    'titolDades' => 'Gestio de contacte',
+    'subtitolDades' => 'Dades de contacte',
+    'titolXarxes' => 'Gestio xarxes socials',
+    'subtitolXarxes' => 'Xarxes socials',
 ];

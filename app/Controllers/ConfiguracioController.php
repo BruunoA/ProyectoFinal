@@ -11,17 +11,6 @@ use SIENSIS\KpaCrud\Libraries\KpaCrud;
 class ConfiguracioController extends BaseController
 {
 
-    public function menuProva(){
-
-        $model = new ConfiguracioModel();
-
-        $data = [
-            'menu' => $model->where('tipus', 'menu_general')->where('visibilitat', 'Si')->findAll(),
-        ];
-
-        return view('general/provaMenu', $data);
-    }
-
     public function dades_contacte()
     {
         // $model = new ConfiguracioModel();
@@ -35,12 +24,12 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'dades_contacte');
 
-        $crud->setColumns(['nom','visibilitat']);
+        $crud->setColumns(['nom', 'visibilitat']);
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'icona' => ['name' => 'icona', 'type' =>  KpaCrud::TEXTAREA_FIELD_TYPE],
@@ -139,16 +128,16 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'xarxes_socials');
 
-        $crud->setColumns(['nom', 'valor', 'visibilitat']);
+        $crud->setColumns(['nom', 'visibilitat']);
 
         $crud->setColumnsInfo([
-            'id' => ['name' => 'codi', 'type' => 'text', 'html_atts' => ["required"],],
-            'nom' => ['name' => 'nom', 'type' => 'text', 'html_atts' => ["required"],],
-            'icona' => ['name' => 'icona', 'type' => 'text'],
-            'valor' => ['name' => 'valor', 'type' => 'text', 'html_atts' => ["required"],],
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'icona' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
+            'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['xarxes_socials' => 'Xarxes socials']],
-            'ordre' => ['name' => 'ordre', 'type' => 'text', 'html_atts' => ["required"],],
-            'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['Si' => 'Visible', 'No' => 'No visible']],
+            'ordre' => ['name' => 'ordre', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);

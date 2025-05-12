@@ -1,45 +1,49 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="menu">
     <div class="menu-container">
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
-        <!-- TODO: ACABAR DE VEURE COM FICAR ELS APARTATS DE FILTRAR-->
-        <ul class="menu-items">
-            <li><a href="<?= base_url('gestio/banner') ?>">Inici</a></li>
-            <li><a href="<?= base_url('gestio/sobreNosaltres') ?>">Sobre Nosaltres</a></li>
-            <select class="seccio-select w3-select">
-                <option value="">Programes</option>
-                <option value="programes">Programes</option>
-                <option value="equips">Equips</option>
-            </select>
-            <select class="seccio-select w3-select">
-                <option value="">Noticies</option>
-                <option value="noticies">Notícies</option>
-                <option value="events">Events</option>
-            </select>
-            <li><a href="<?= base_url('/gestio/galeria') ?>">Galeria</a></li>
-            <select class="seccio-configuracio-select w3-select">
-                <option value="">Configuracio</option>
-                <option value="dades_contacte">Dades contacte</option>
-                <option value="menu_general">Menu general</option>
-                <!-- <option value="menu_gestio">Menu gestio</option> -->
-                <option value="xarxes_socials">Xarxes Socials</option>
-            </select>
-            <li><a href="<?= base_url('gestio/clubs') ?>">Clubs</a></li>
+        <ul class="menu-items w3-bar">
+            <li><a href="<?= base_url('gestio/banner') ?>" class="w3-bar-item w3-btn w3-text-white">Inici</a></li>
+            <li><a href="<?= base_url('gestio/sobreNosaltres') ?>" class="w3-bar-item w3-btn w3-text-white">Sobre Nosaltres</a></li>
+
+            <li class="w3-dropdown-hover">
+                <button class="w3-btn w3-text-white">Gestio <i class="fa-solid fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
+                    <a href="<?= base_url('gestio/noticies') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Noticies</a>
+                    <a href="<?= base_url('gestio/programes') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Programes</a>
+                    <a href="<?= base_url('gestio/equips') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Equips</a>
+                </div>
+            </li>
+
+            <li><a href="<?= base_url('/gestio/galeria') ?>" class="w3-bar-item w3-btn w3-text-white">Galeria</a></li>
+
+            <li class="w3-dropdown-hover">
+                <button class="w3-btn w3-text-white">Configuracio <i class="fa-solid fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
+                    <a href="<?= base_url('configuracio/dades_contacte') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Dades de Contacte</a>
+                    <a href="<?= base_url('config/menu_general') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Menu General</a>
+                    <!-- <a href="<?= base_url('config/menu_gestio') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Menu Gestio</a> -->
+                    <a href="<?= base_url('xarxes_socials') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Xarxes Socials</a>
+                </div>
+            </li>
+
+            <li><a href="<?= base_url('gestio/clubs') ?>" class="w3-bar-item w3-btn w3-text-white">Clubs</a></li>
         </ul>
     </div>
 </nav>
 
 <script>
     document.querySelectorAll('.seccio-select').forEach(select => {
-        select.addEventListener('change', function () {
+        select.addEventListener('change', function() {
             const selected = this.value;
             if (selected === 'noticies') {
                 window.location.href = "<?= base_url('gestio/noticies') ?>";
             } else if (selected === 'events') {
                 window.location.href = "<?= base_url('gestio/events') ?>";
-            }else if(selected === 'programes') {
+            } else if (selected === 'programes') {
                 window.location.href = "<?= base_url('gestio/programes') ?>";
             } else if (selected === 'equips') {
                 window.location.href = "<?= base_url('gestio/equips') ?>";
@@ -48,7 +52,7 @@
     });
 
     document.querySelectorAll('.seccio-configuracio-select').forEach(select => {
-        select.addEventListener('change', function () {
+        select.addEventListener('change', function() {
             const selected = this.value;
             if (selected === 'dades_contacte') {
                 window.location.href = "<?= base_url('configuracio/dades_contacte') ?>";
@@ -61,4 +65,8 @@
             }
         });
     });
+
+    function toggleMenu() {
+        document.querySelector(".menu-items").classList.toggle("show");
+    }
 </script>
