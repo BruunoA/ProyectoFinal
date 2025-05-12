@@ -377,18 +377,20 @@ class GestioController extends BaseController
         return redirect()->to('/gestio/galeria');
     }
 
-    public function banner(){
+    public function banner()
+    {
 
         $model = new TaulaFotosModel();
 
-        $data =[
+        $data = [
             'banner' => $model->where('banner', 'si')->findAll(),
         ];
 
         return view('gestio_pag/banner/banner', $data);
     }
 
-    public function bannerDelete($id){
+    public function bannerDelete($id)
+    {
 
         $model = new TaulaFotosModel();
         $model->where('id', $id)->delete();
@@ -397,7 +399,8 @@ class GestioController extends BaseController
         return redirect()->to('/gestio/banner');
     }
 
-    public function bannerModify($id){
+    public function bannerModify($id)
+    {
 
         $model = new TaulaFotosModel();
         $data['banner'] = $model->find($id);
@@ -405,7 +408,8 @@ class GestioController extends BaseController
         return view('gestio_pag/banner/banner_modify', $data);
     }
 
-    public function bannerModify_post($id){
+    public function bannerModify_post($id)
+    {
 
         helper(["form"]);
 
@@ -431,20 +435,54 @@ class GestioController extends BaseController
         }
     }
 
-    public function mail() {
+    public function mail()
+    {
         $contacteModel = new ContacteModel();
-        $data['contactes'] = $contacteModel->findAll(); 
-        
-        return view('gestio_pag/email', $data); 
+        $data['contactes'] = $contacteModel->findAll();
+
+        return view('gestio_pag/email', $data);
     }
-    public function mailSend($id) {
+    
+    public function mailSend($id)
+    {
         $contacteModel = new ContacteModel();
-        $contacte = $contacteModel->find($id); 
-        return view ('gestio_pag/email_view');
+        $contacte = $contacteModel->find($id);
+
+        if (!$contacte) {
+            return redirect()->to('/gestio/email')->with('error', 'Mensaje no encontrado');
+        }
+
+        $data = [
+            'mensaje_original' => $contacte['text'],
+            'email_remitent' => $contacte['to'],
+            'id' => $id
+        ];
+        return view('gestio_pag/email_view', $data);
     }
-    public function deleteMail($id) {
+    
+    public function mailSend_post($id)
+    {
+        $email = $this->request->getPost('email');
+        $mensaje = $this->request->getPost('mensaje');
+
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setSubject('Respuesta a tu mensaje');
+        $emailService->setMessage($mensaje);
+
+        if ($emailService->send()) {
+            session()->setFlashdata('success', 'Respuesta enviada correctamente');
+        } else {
+            session()->setFlashdata('error', 'Error al enviar el correo');
+        }
+
+        return redirect()->to('/gestio/mail');
+    }
+
+    public function deleteMail($id)
+    {
         $contacteModel = new ContacteModel();
-        $contacteModel->delete($id); 
+        $contacteModel->delete($id);
         session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Email esborrat correctament</div>');
         return redirect()->to('/gestio/email');
     }

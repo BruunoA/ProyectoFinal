@@ -87,6 +87,9 @@ $routes->match(['get', 'post'],'gestio/events', 'GestioController::events' /*, [
 
 $routes->get('gestio/mail', 'GestioController::mail' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/mail/send/(:num)', 'GestioController::mailSend/$1');
+$routes->get('gestio/mail/send/(:num)', 'GestioController::mailSend/$1'); // GET para mostrar el formulario
+$routes->post('gestio/mail/send/(:num)', 'GestioController::mailSend_post/$1'); // POST para procesar el formulario
+
 $routes->get('gestio/mail/delete/(:num)', 'GestioController::deleteMail/$1' /*, ['filter' => 'gestio:admin']*/);
 
 
