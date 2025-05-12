@@ -31,6 +31,8 @@ class SobreNosaltresController extends BaseController
             'valors' => $model->where('id_seccio', 5)->findAll(),
         ];
 
+        // dd($data);
+
         return view('gestio_pag/sobreNosaltres', $data);
     }
 }

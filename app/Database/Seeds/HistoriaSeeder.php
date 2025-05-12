@@ -18,7 +18,7 @@ class HistoriaSeeder extends Seeder
                 'id_club' => random_int(1, 3),
                 'resum' => $fake->sentence(30),
                 'contingut' => $fake->paragraphs(20, true), 
-                'id_seccio' => 1,
+                'id_seccio' => 2,
                 'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'), 
             ];
