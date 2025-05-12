@@ -87,6 +87,71 @@ class ContacteController extends BaseController
 
         $contacteModel->insert($data);
         return redirect()->back()->with('success', '<div style="background-color: green; color: white; padding: 10px;">' . lang('contacte.Missatge_enviat') . '</div>');
+    }
 
+    public function email()
+    {
+        $contacteModel = new ContacteModel();
+
+        $model = new AssumptesModel();
+        $assumptes = $model->paginate(4);
+
+        $pager = $model->pager;
+
+
+
+        $data = [
+            'assumptes' => $assumptes,
+            // agafa tots els camps de la taula contacte, incloent el nom de l'assumpte de la taula assumptes
+            // compara el id de l'assumpte amb id_assumpte de contacte
+            'contactes' => $contacteModel->select('contacte.*, assumptes.nom as nom_assumpte')->join('assumptes', 'assumptes.id = contacte.id_assumpte', 'left')->findAll(),
+            'pager' => $model->pager,
+        ];
+
+        return view('gestio_pag/correu/email', $data);
+    }
+
+    public function emailSend($id)
+    {
+        $contacteModel = new ContacteModel();
+        $contacte = $contacteModel->find($id);
+
+        if (!$contacte) {
+            return redirect()->to('gestio/email')->with('error', 'Missatge no trobat');
+        }
+
+        $data = [
+            'missatge_original' => $contacte['text'],
+            'email_remitent' => $contacte['to'],
+            'id' => $id
+        ];
+        return view('gestio_pag/correu/email_view', $data);
+    }
+
+    public function emailSend_post($id)
+    {
+        $email = $this->request->getPost('email');
+        $mensaje = $this->request->getPost('mensaje');
+
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setSubject('Respuesta a tu mensaje');
+        $emailService->setMessage($mensaje);
+
+        if ($emailService->send()) {
+            session()->setFlashdata('success', 'Respuesta enviada correctamente');
+        } else {
+            session()->setFlashdata('error', 'Error al enviar el correo');
+        }
+
+        return redirect()->to('/gestio/email');
+    }
+
+    public function deleteEmail($id)
+    {
+        $contacteModel = new ContacteModel();
+        $contacteModel->delete($id);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Email esborrat correctament</div>');
+        return redirect()->to('/gestio/email');
     }
 }

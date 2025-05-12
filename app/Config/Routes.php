@@ -50,7 +50,13 @@ $routes->match(['get', 'post'],'gestio/equips', 'ProgramesController::equips' /*
 $routes->get('contacte', 'ContacteController::index');
 $routes->post('contacte/send', 'ContacteController::send');
 $routes->get('contacte/(:any)', 'ContacteController::index/$1');
-$routes->match(['get', 'post'],'configuracio/dades_contacte', 'ConfiguracioController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'configuracio/dades_contacte', 'ContacteController::dades_contacte' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/email', 'ContacteController::email' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/email/send/(:num)', 'ContacteController::emailSend/$1');
+$routes->get('gestio/email/send/(:num)', 'ContacteController::emailSend/$1'); // GET para mostrar el formulario
+$routes->post('gestio/email/send/(:num)', 'ContacteController::emailSend_post/$1'); // POST para procesar el formulario
+$routes->get('gestio/email/delete/(:num)', 'ContacteController::deleteEmail/$1' /*, ['filter' => 'gestio:admin']*/);
+
 
 // SOBRE NOSALTRES
 $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
