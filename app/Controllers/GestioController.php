@@ -444,40 +444,72 @@ class GestioController extends BaseController
     }
     
     public function mailSend($id)
-    {
-        $contacteModel = new ContacteModel();
-        $contacte = $contacteModel->find($id);
+{
+    $contacteModel = new ContacteModel();
+    $contacte = $contacteModel->find($id);
 
-        if (!$contacte) {
-            return redirect()->to('/gestio/email')->with('error', 'Mensaje no encontrado');
-        }
-
-        $data = [
-            'mensaje_original' => $contacte['text'],
-            'email_remitent' => $contacte['to'],
-            'id' => $id
-        ];
-        return view('gestio_pag/email_view', $data);
+    if (!$contacte) {
+        return redirect()->to('/gestio/mail')->with('error', 'Mensaje no encontrado');
     }
+
+    $data = [
+        'contacte' => $contacte,
+        'id' => $id,
+        'mensaje_original' => $contacte['text'],
+        'email_remitent' => $contacte['from_email'], 
+        'nom_remitent' => $contacte['nom'],
+        'assumpte_original' => $contacte['assumpte']
+    ];
     
-    public function mailSend_post($id)
-    {
-        $email = $this->request->getPost('email');
-        $mensaje = $this->request->getPost('mensaje');
+    return view('gestio_pag/email_view', $data);
+}
 
-        $emailService = \Config\Services::email();
-        $emailService->setTo($email);
-        $emailService->setSubject('Respuesta a tu mensaje');
-        $emailService->setMessage($mensaje);
+public function mailSend_post($id)
+{
+    $validation = \Config\Services::validation();
+    $validation->setRules([
+        'mensaje' => 'required'
+    ]);
 
-        if ($emailService->send()) {
-            session()->setFlashdata('success', 'Respuesta enviada correctamente');
-        } else {
-            session()->setFlashdata('error', 'Error al enviar el correo');
-        }
-
-        return redirect()->to('/gestio/mail');
+    if (!$validation->withRequest($this->request)->run()) {
+        return redirect()->back()->withInput()->with('errors', $validation->getErrors());
     }
+
+    $mensaje = $this->request->getPost('mensaje');
+    
+    $contacteModel = new ContacteModel();
+    $contacte = $contacteModel->find($id);
+    
+    if (!$contacte) {
+        return redirect()->to('/gestio/mail')->with('error', 'Missatge no trobat');
+    }
+
+    $email = \Config\Services::email();
+    
+    $cuerpoMensaje = "Resposta al teu missatge:\n\n";
+    $cuerpoMensaje .= "---------- Missatge Original ----------\n";
+    $cuerpoMensaje .= "De: {$contacte['nom']} <{$contacte['from_email']}>\n";
+    $cuerpoMensaje .= "Assumpte: {$contacte['assumpte']}\n";
+    $cuerpoMensaje .= "Data: {$contacte['created_at']}\n\n";
+    $cuerpoMensaje .= "{$contacte['text']}\n\n";
+    $cuerpoMensaje .= "---------- Resposta ----------\n";
+    $cuerpoMensaje .= $mensaje;
+
+    try {
+        $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
+        $email->setTo($contacte['from_email']);
+        $email->setSubject('Re: ' . $contacte['assumpte']);
+        $email->setMessage($cuerpoMensaje);
+        
+        if ($email->send()) {
+            return redirect()->to('/gestio/mail')->with('success', 'Resposta enviada correctament a '.$contacte['from_email']);
+        } else {
+            return redirect()->to('/gestio/mail')->with('error', 'Error en enviar: '.$email->printDebugger(['headers']));
+        }
+    } catch (\Exception $e) {
+        return redirect()->to('/gestio/mail')->with('error', 'Error: '.$e->getMessage());
+    }
+}
 
     public function deleteMail($id)
     {

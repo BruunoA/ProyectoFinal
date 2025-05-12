@@ -24,39 +24,47 @@ class ContacteController extends BaseController
 
     public function send()
     {
-        $contacteModel = new contacteModel();
-        $email = \Config\Services::email();
-        $cfg = config('Email');
-        $email->initialize($cfg);
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'nom' => 'required',
+            'from_email' => 'required|valid_email',
+            'assumpte' => 'required',
+            'text' => 'required'
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
             'from_email' => $this->request->getPost('from_email'),
             'assumpte' => $this->request->getPost('assumpte'),
             'text' => $this->request->getPost('text'),
+            'created_at' => date('Y-m-d H:i:s')
         ];
 
-        if ($contacteModel->insert($data)) {
-            $email->setTo($this->request->getPost('from_email')); //saber a que correo enviar el missatge
-            $email->setSubject('Nou missatge de contacte');
-            $email->setMessage("Nom: " . $this->request->getPost('nom') . "\n" .
-                                "Email: " . $this->request->getPost('from_email') . "\n" .
-                                "Assumpte: " . $this->request->getPost('assumpte') . "\n\n" .
-                                $this->request->getPost('text'));
+        $contacteModel = new ContacteModel();
+        $contacteModel->insert($data);
 
-            if ($email->send()) {
-                return redirect()->to('/contacte')->with('success', 'Missatge enviat correctament!');
-            } else {
-                echo $email->printDebugger();
-                die;
-                return redirect()->to('/contacte')->with('error', 'Error en enviar el missatge.');
-            }
+        $email = \Config\Services::email();
+
+        $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
+        $email->setTo('fcalpicat@capalabs.com'); 
+        $email->setSubject('Nuevo mensaje de contacto: ' . $data['assumpte']);
+
+        $mensaje = "Has recibido un nuevo mensaje de contacto:\n\n";
+        $mensaje .= "Nombre: {$data['nom']}\n";
+        $mensaje .= "Email: {$data['from_email']}\n";
+        $mensaje .= "Asunto: {$data['assumpte']}\n";
+        $mensaje .= "Mensaje:\n{$data['text']}\n";
+
+        $email->setMessage($mensaje);
+
+        if ($email->send()) {
+            return redirect()->to('/contacte')->with('success', 'Tu mensaje ha sido enviado. Nos pondremos en contacto contigo pronto.');
         } else {
-            return view('contacte', [
-                'validation' => $contacteModel->errors(),
-                'error' => 'No se pudo guardar el mensaje. Intente de nuevo.'
-            ]);
+            return redirect()->to('/contacte')->with('error', 'El mensaje se ha guardado, pero hubo un problema al notificar al administrador.');
         }
-        
     }
 }
