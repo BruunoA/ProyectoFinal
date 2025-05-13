@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/homecalendario.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Home</title>
+    <title><?= lang('home.home') ?></title>
 </head>
 <style>
     .w3-card-4 .w3-container {
@@ -28,7 +28,19 @@
 
     <div class="w3-content w3-display-container">
         <!-- <div class="w3-content w3-display-container"> -->
-        <div class="w3-display-container mySlides">
+
+        <?php foreach ($banners as $banner): ?>
+            <div class="w3-display-container mySlides">
+                <img src="<?= $banner['img']; ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                    <?= esc($banner['titol']) ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+
+
+        <!-- <div class="w3-display-container mySlides">
             <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
             <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
                 French Alps
@@ -47,7 +59,7 @@
             <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                 French Alps
             </div>
-        </div>
+        </div> -->
         <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
         <!-- </div> -->

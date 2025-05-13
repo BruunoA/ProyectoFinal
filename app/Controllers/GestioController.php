@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AlbumModel;
+use App\Models\BannerModel;
 use App\Models\CategoriesModel;
 use App\Models\ConfiguracioModel;
 use App\Models\EventsModel;
@@ -421,16 +422,10 @@ class GestioController extends BaseController
     public function banner()
     {
 
-        // $model = new TaulaFotosModel();
+        $model = new BannerModel();
 
-        // $data = [
-        //     'banner' => $model->where('banner', 'si')->findAll(),
-        // ];
-
-        $model = new GestioModel();
-
-        $banners = $model->where('id_seccio', 6)->orderBy('created_at', 'DESC')->paginate(6);
-        $logos = $model->where('id_seccio', 7)->orderBy('created_at', 'DESC')->paginate(6);
+        $banners = $model->where('tipus', 'banner')->orderBy('created_at', 'DESC')->paginate(6);
+        $logos = $model->where('tipus', 'logo')->orderBy('created_at', 'DESC')->paginate(6);
 
         $pager = $model->pager;
 
@@ -497,131 +492,131 @@ class GestioController extends BaseController
         return view('gestio_pag/seccions', $data);
     }
 
-    // public function bannerDelete($id)
-    // {
+    public function bannerDelete($id)
+    {
 
-    //     $model = new TaulaFotosModel();
-    //     $model->where('id', $id)->delete();
+        $model = new BannerModel();
+        $model->where('id', $id)->delete();
 
-    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner esborrat correctament</div>');
-    //     return redirect()->to('/gestio/banner');
-    // }
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre esborrat correctament</div>');
+        return redirect()->to('/gestio/banner');
+    }
 
-    // public function bannerModify($id)
-    // {
+    public function bannerModify($id)
+    {
 
-    //     $model = new TaulaFotosModel();
-    //     $data['banner'] = $model->find($id);
+        $model = new BannerModel();
+        $data['banner'] = $model->find($id);
 
-    //     return view('gestio_pag/banner/banner_modify', $data);
-    // }
+        return view('gestio_pag/banner/banner_modify', $data);
+    }
 
-    // public function bannerModify_post($id)
-    // {
+    public function bannerModify_post($id)
+    {
 
-    //     helper(["form"]);
+        helper(["form"]);
 
-    //     $validationRule = [
-    //         'titol' => [
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Títol és obligatori.',
-    //             ]
-    //         ],
-    //         'descripcio' => [
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Descripció és obligatori.',
-    //             ]
-    //         ],
-    //         'ruta' => [
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Imatge és obligatori.',
-    //             ]
-    //         ],
-    //         'banner' => [
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Destacat banner és obligatori.',
-    //             ]
-    //         ],
-    //     ];
+        $validationRule = [
+            'titol' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp títol és obligatori.',
+                ]
+            ],
+            'imatge' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp imatge és obligatori.',
+                ]
+            ],
+            'destacat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp destacat és obligatori.',
+                ]
+            ],
+            'tipus' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp tipus és obligatori.',
+                ]
+            ],
+        ];
 
-    //     $model = new TaulaFotosModel();
-    //     $data = [
-    //         'id' => $id,
-    //         'titol' => $this->request->getPost('titol'),
-    //         'descripcio' => $this->request->getPost('descripcio'),
-    //         'ruta' => $this->request->getPost('ruta'),
-    //         'banner' => $this->request->getPost('banner'),
-    //     ];
+        $model = new BannerModel();
+        $data = [
+            'id' => $id,
+            'titol' => $this->request->getPost('titol'),
+            'img' => $this->request->getPost('imatge'),
+            'destacat' => $this->request->getPost('destacat'),
+            'tipus' => $this->request->getPost('tipus'),
+        ];
 
-    //     if (!$this->validate($validationRule)) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
 
-    //     $model->save($data);
-    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
-    //     return redirect()->to('/gestio/banner');
+        $model->save($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre modificat correctament</div>');
+        return redirect()->to('/gestio/banner');
+    }
 
-    //     // if ($model->save($data)) {
-    //     //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner modificat correctament</div>');
-    //     //     return redirect()->to('/gestio/banner');
-    //     // } else {
-    //     //     return redirect()->back()->withInput()->with('errors', $model->errors());
-    //     // }
-    // }
+    public function bannerAdd()
+    {
+        return view('gestio_pag/banner/banner_create');
+    }
 
-    // public function bannerAdd()
-    // {
-    //     return view('gestio_pag/banner/banner_create');
-    // }
+    public function bannerAdd_post()
+    {
+        helper(["form"]);
 
-    // public function bannerAdd_post()
-    // {
-    //     helper(["form"]);
+        $validationRule = [
+            'titol' => [
+                'label' => 'Títol',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp títol és obligatori.',
+                ]
+            ],
+            'imatge' => [
+                'label' => 'Imatge',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp imatge és obligatori.',
+                ]
+            ],
+            'destacat' => [
+                'label' => 'Destacat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp destacat banner és obligatori.',
+                ]
+            ],
+            'tipus' => [
+                'label' => 'Tipus',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'El camp tipus és obligatori.',
+                ]
+            ],
+        ];
 
-    //     $validationRule = [
-    //         'titol' => [
-    //             'label' => 'Títol',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Títol és obligatori.',
-    //             ]
-    //         ],
-    //         'ruta' => [
-    //             'label' => 'Imatge',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Imatge és obligatori.',
-    //             ]
-    //         ],
-    //         'banner' => [
-    //             'label' => 'Destacat banner',
-    //             'rules' => 'required',
-    //             'errors' => [
-    //                 'required' => 'El camp Destacat banner és obligatori.',
-    //             ]
-    //         ],
-    //     ];
 
+        $model = new BannerModel();
 
-    //     $model = new TaulaFotosModel();
+        $data = [
+            'titol' => $this->request->getPost('titol'),
+            'img' => $this->request->getPost('imatge'),
+            'destacat' => $this->request->getPost('destacat'),
+            'tipus' => $this->request->getPost('tipus'),
+        ];
 
-    //     $data = [
-    //         'titol' => $this->request->getPost('titol'),
-    //         'descripcio' => $this->request->getPost('descripcio'),
-    //         'ruta' => $this->request->getPost('ruta'),
-    //         'banner' => $this->request->getPost('banner'),
-    //     ];
+        if (!$this->validate($validationRule)) {
+            return redirect()->back()->withInput();
+        }
 
-    //     if (!$this->validate($validationRule)) {
-    //         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-    //     }
-
-    //     $model->insert($data);
-    //     session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Banner creat correctament</div>');
-    //     return redirect()->to('/gestio/banner');
-    // }
+        $model->insert($data);
+        session()->setFlashdata('success', '<div style="background-color: green; color: white; padding: 10px;">Registre creat correctament</div>');
+        return redirect()->to('/gestio/banner');
+    }
 }

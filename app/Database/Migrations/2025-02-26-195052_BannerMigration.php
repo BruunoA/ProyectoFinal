@@ -13,19 +13,35 @@ class BannerMigration extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'text'  => [
+            'titol'  => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 
-            ],
-            'boto'  => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255,
-                'null'           => true,   
             ],
             'img'   => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'type'           => 'text',
                 'null'           => false,
+            ],
+            'tipus' => [
+                'type'           => 'ENUM',
+                'constraint'     => ['banner', 'logo'],
+                'default'        => 'banner',
+            ],
+            'destacat' => [
+                'type'           => 'TINYINT',
+                'constraint'     => 1,
+                'default'        => 0,
+            ],
+            'created_at' => [
+                'type'           => 'DATETIME',
+                'null'           => false,
+            ],
+            'updated_at' => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+            ],
+            'deleted_at' => [
+                'type'           => 'DATETIME',
+                'null'           => true,
             ],
         ]);
         $this->forge->addPrimaryKey('id');

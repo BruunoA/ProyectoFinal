@@ -5,7 +5,8 @@
         <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
         <ul class="menu-items">
-            <img src="<?= base_url('uploads/alpicatLogo.png') ?>" alt="Logo" height="32">
+            <?php $logo = mostrar_logo(); ?>
+            <img src="<?= $logo['img'] ?>" alt="Logo" height="32">
             <?php foreach (mostrar_tree() as $menu): ?>
                 <?php if (isset($menu['children'])): ?>
                     <div class="w3-dropdown-hover">

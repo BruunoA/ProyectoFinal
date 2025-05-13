@@ -4,7 +4,7 @@ return [
     'titol' => 'Gestió d\'àlbums',
     'subtitol' => 'Galeria de albums',
     'null' => 'No hi ha àlbums disponibles.',
-    'pujar' => 'Crear banner',
+    'pujar' => 'Pujar banner/logo',
     'crear' => 'Crear àlbum',
     'crearAlbum' => 'Crear àlbum',
     'crearTitol' => 'Títol de l\'àlbum',

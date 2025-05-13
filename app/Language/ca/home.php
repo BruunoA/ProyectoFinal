@@ -13,4 +13,5 @@ return [
     'Missio' => 'Missió',
     'Visio' => 'Visió',
     'Valors' => 'Valors',
+    'home' => 'Inici',
 ];

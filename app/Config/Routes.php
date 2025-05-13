@@ -80,11 +80,11 @@ $routes->get('gestio/configuracio', 'GestioController::configuracio' /*, ['filte
 
 
 $routes->get('gestio/banner', 'GestioController::banner' /*, ['filter' => 'gestio:admin']*/);
-// $routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
-// $routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
-// $routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
-// $routes->get('gestio/banner/add', 'GestioController::bannerAdd' /*, ['filter' => 'gestio:admin']*/);
-// $routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/modify/(:num)', 'GestioController::bannerModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/banner/modify/(:num)', 'GestioController::bannerModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/delete/(:num)', 'GestioController::bannerDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/banner/add', 'GestioController::bannerAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/banner/add', 'GestioController::bannerAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 
 // GESTIO CLUBS
