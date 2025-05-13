@@ -47,9 +47,7 @@
         <?php else: ?>
             <p class="w3-text-red"><?= lang('contacte.res') ?></p>
         <?php endif; ?>
-        <div class="paginador w3-center w3-red" style="color:black">
-            <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
-        </div>
+
     </div>
 </body>
 

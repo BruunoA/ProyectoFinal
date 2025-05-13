@@ -31,12 +31,18 @@ class ContacteController extends BaseController
         return view('contacte', $data);
     }
 
+    public function email()
+    {
+        $contacteModel = new ContacteModel();
+        $data['contactes'] = $contacteModel->findAll();
+
+        return view('gestio_pag/correu/email', $data);
+    }
+
     public function send()
     {
-        helper(['form']);
-        $contacteModel = new contacteModel();
-
-        $validation = [
+        $validation = \Config\Services::validation();
+        $validation->setRules([
             'nom' => [
                 'label' => 'Nom',
                 'rules' => 'required',
@@ -73,45 +79,44 @@ class ContacteController extends BaseController
                     'required' => lang('contacte.camp_motiu'),
                 ],
             ],
-        ];
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
 
         $data = [
             'nom' => $this->request->getPost('nom'),
             'from_email' => $this->request->getPost('from_email'),
-            'telefon' => $this->request->getPost('telefon'),
-            'id_assumpte' => $this->request->getPost('assumpte'),
+            'assumpte' => $this->request->getPost('assumpte'),
             'text' => $this->request->getPost('text'),
+            'created_at' => date('Y-m-d H:i:s')
         ];
 
-        if (!$this->validate($validation)) {
-            return redirect()->back()->withInput()/*->with('errors', $this->validator->getErrors())*/;
-        }
-
-        $contacteModel->insert($data);
-        return redirect()->back()->with('success', '<div style="background-color: green; color: white; padding: 10px;">' . lang('contacte.Missatge_enviat') . '</div>');
-    }
-
-    public function email()
-    {
         $contacteModel = new ContacteModel();
+        $contacteModel->insert($data);
 
-        $model = new AssumptesModel();
-        $assumptes = $model->paginate(4);
+        $email = \Config\Services::email();
 
-        $pager = $model->pager;
+        $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
+        $email->setTo('fcalpicat@capalabs.com');
+        $email->setSubject('Nuevo mensaje de contacto: ' . $data['assumpte']);
 
+        $missatge = "Has recibido un nuevo mensaje de contacto:\n\n";
+        $missatge .= "Nombre: {$data['nom']}\n";
+        $missatge .= "Email: {$data['from_email']}\n";
+        $missatge .= "Asunto: {$data['assumpte']}\n";
+        $missatge .= "Mensaje:\n{$data['text']}\n";
 
+        $email->setMessage($missatge);
 
-        $data = [
-            'assumptes' => $assumptes,
-            // agafa tots els camps de la taula contacte, incloent el nom de l'assumpte de la taula assumptes
-            // compara el id de l'assumpte amb id_assumpte de contacte
-            'contactes' => $contacteModel->select('contacte.*, assumptes.nom as nom_assumpte')->join('assumptes', 'assumptes.id = contacte.id_assumpte', 'left')->findAll(),
-            'pager' => $model->pager,
-        ];
-
-        return view('gestio_pag/correu/email', $data);
+        if ($email->send()) {
+            return redirect()->to('/contacte')->with('success', 'El teu missatge s\'ha enviat correctament');
+        } else {
+            return redirect()->to('/contacte')->with('error', 'Ha hagut un problema.');
+        }
     }
+
 
     public function emailSend($id)
     {
@@ -119,34 +124,66 @@ class ContacteController extends BaseController
         $contacte = $contacteModel->find($id);
 
         if (!$contacte) {
-            return redirect()->to('gestio/email')->with('error', 'Missatge no trobat');
+            return redirect()->to('/gestio/correu/mail')->with('error', 'Missatge no trobat');
         }
 
         $data = [
+            'contacte' => $contacte,
+            'id' => $id,
             'missatge_original' => $contacte['text'],
-            'email_remitent' => $contacte['to'],
-            'id' => $id
+            'email_remitent' => $contacte['from_email'],
+            'nom_remitent' => $contacte['nom'],
+            'assumpte_original' => $contacte['id_assumpte']
         ];
+
         return view('gestio_pag/correu/email_view', $data);
     }
 
     public function emailSend_post($id)
     {
-        $email = $this->request->getPost('email');
-        $mensaje = $this->request->getPost('mensaje');
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'mensaje' => 'required'
+        ]);
 
-        $emailService = \Config\Services::email();
-        $emailService->setTo($email);
-        $emailService->setSubject('Respuesta a tu mensaje');
-        $emailService->setMessage($mensaje);
-
-        if ($emailService->send()) {
-            session()->setFlashdata('success', 'Respuesta enviada correctamente');
-        } else {
-            session()->setFlashdata('error', 'Error al enviar el correo');
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
-        return redirect()->to('/gestio/email');
+        $mensaje = $this->request->getPost('mensaje');
+
+        $contacteModel = new ContacteModel();
+        $contacte = $contacteModel->find($id);
+
+        if (!$contacte) {
+            return redirect()->to('/gestio/mail')->with('error', 'Missatge no trobat');
+        }
+
+        $email = \Config\Services::email();
+
+        $cossMissatge = "Resposta al teu missatge:\n\n";
+        $cossMissatge .= "---------- Missatge Original ----------\n";
+        $cossMissatge .= "De: {$contacte['nom']} <{$contacte['from_email']}>\n";
+        $cossMissatge .= "Assumpte: {$contacte['assumpte']}\n";
+        $cossMissatge .= "Data: {$contacte['created_at']}\n\n";
+        $cossMissatge .= "{$contacte['text']}\n\n";
+        $cossMissatge .= "---------- Resposta ----------\n";
+        $cossMissatge .= $mensaje;
+
+        try {
+            $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
+            $email->setTo($contacte['from_email']);
+            $email->setSubject('Re: ' . $contacte['assumpte']);
+            $email->setMessage($cossMissatge);
+
+            if ($email->send()) {
+                return redirect()->to('/gestio/mail')->with('success', 'Resposta enviada correctament a ' . $contacte['from_email']);
+            } else {
+                return redirect()->to('/gestio/mail')->with('error', 'Error en enviar: ' . $email->printDebugger(['headers']));
+            }
+        } catch (\Exception $e) {
+            return redirect()->to('/gestio/mail')->with('error', 'Error: ' . $e->getMessage());
+        }
     }
 
     public function deleteEmail($id)
@@ -157,9 +194,10 @@ class ContacteController extends BaseController
         return redirect()->to('/gestio/email');
     }
 
-    public function assumptes(){
+    public function assumptes()
+    {
 
-         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+        $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 
         $crud->setTable('assumptes');
         $crud->setPrimaryKey('id');
