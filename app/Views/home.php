@@ -26,12 +26,12 @@
     <?= $this->include('general/menu'); ?>
     <?= session()->getFlashdata('error') ?>
 
-    <div class="w3-content w3-display-container">
+    <div class="w3-content w3-display-container" style=" z-index: 0;">
         <!-- <div class="w3-content w3-display-container"> -->
 
         <?php foreach ($banners as $banner): ?>
             <div class="w3-display-container mySlides">
-                <img src="<?= $banner['img']; ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
+                <img src="<?= $banner['img']; ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover; ">
                 <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                     <?= esc($banner['titol']) ?>
                 </div>

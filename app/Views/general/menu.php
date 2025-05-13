@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
 
-<nav class="menu">
+<nav class="menu" style=" z-index: 1;">
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
