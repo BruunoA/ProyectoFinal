@@ -40,20 +40,22 @@ class SobreNosaltresController extends BaseController
 
     public function staff()
     {
-
         $model = new StaffModel();
         $model->select('staff.*, carrecs.nom as nom_carrec')->join('carrecs', 'staff.id_carrec = carrecs.id');
-        $staff = $model->where('estat', 1)->paginate(6);
+        $staff = $model->where('estat', 1)->findAll();
 
-        $pager = $model->pager;
+        $agrupar = [];
+        foreach ($staff as $persona) {
+            $agrupar[$persona['nom_carrec']][] = $persona;
+        }
 
         $data = [
-            'staff' => $staff,
-            'pager' => $model->pager,
+            'carrecs' => $agrupar,
         ];
 
         return view('staff', $data);
     }
+
 
     public function gestioStaff()
     {

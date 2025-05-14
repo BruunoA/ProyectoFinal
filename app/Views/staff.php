@@ -14,7 +14,7 @@
     <?= $this->include('general/menu'); ?>
     <div>
         <div class="cards-container w3-margin">
-            <?php foreach ($staff as $persona): ?>
+            <?php foreach ($carrecs as $persona): ?>
                 <div class="news-card w3-round" style="border: 2px solid black; max-width: 300px; max-height: 600px;">
                     <div class="w3-center">
                         <img src="<?= esc($persona['img']); ?>" alt="<?= esc($persona['nom']); ?>" class="w3-image" style="width:300px; max-height:200px; object-fit:cover;">
