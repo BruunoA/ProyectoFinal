@@ -19,7 +19,7 @@
                     <div class="w3-center">
                         <img src="<?= esc($persona['img']); ?>" alt="<?= esc($persona['nom']); ?>" class="w3-image" style="width:300px; max-height:200px; object-fit:cover;">
                     </div>
-                    <div class="card-content">
+                    <div class="w3-margin">
                         <h3><?= esc($persona['nom']) ?></h3>
                         <p class="content-preview"><strong><?= esc($persona['nom_carrec']) ?></strong></p>
                         <p><?= esc($persona['descripcio']) ?></p>
