@@ -126,3 +126,4 @@ $routes->get('fileget/(:any)', 'FileExplorerController::getFile');
 $routes->get('login', 'UsersController::login');
 $routes->post('login', 'UsersController::loginVerify');
 $routes->get('logout', 'UsersController::logout');
+$routes->match(['get', 'post'], 'gestio/usuaris', 'UsersController::gestioUsuaris');

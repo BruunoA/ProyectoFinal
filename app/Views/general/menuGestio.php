@@ -39,6 +39,8 @@
                     <a href="<?= base_url('gestio/assumptes') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Gestio assumptes</a>
                 </div>
             </li>
+
+            <li><a href="<?= base_url('gestio/usuaris') ?>" class="w3-bar-item w3-btn w3-text-white">Gestio usuaris</a></li>
         </ul>
     </div>
 </nav>
