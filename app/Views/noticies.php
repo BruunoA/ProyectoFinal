@@ -60,6 +60,9 @@
                         <p class="content-preview">
                             <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
                         </p>
+                        <p>
+                            <?= date('d/m/Y', strtotime($noticia['created_at']))?>
+                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>

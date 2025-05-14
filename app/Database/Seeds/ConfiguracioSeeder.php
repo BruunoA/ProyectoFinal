@@ -298,6 +298,22 @@ class ConfiguracioSeeder extends Seeder
                 'visibilitat' => 1,
                 'id_pare' => 33
             ],
+            [
+                'nom' => 'Sobre nosaltres',
+                'valor' => 'sobreNosaltres',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => 1,
+                'id_pare' => 3
+            ],
+            [
+                'nom' => 'El nostre staff',
+                'valor' => 'staff',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => 1,
+                'id_pare' => 3
+            ],
         ];
 
         $this->db->table('configuracio')->insertBatch($data);
