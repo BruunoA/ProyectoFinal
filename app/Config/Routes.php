@@ -61,6 +61,13 @@ $routes->match(['get', 'post'],'gestio/assumptes', 'ContacteController::assumpte
 // SOBRE NOSALTRES
 $routes->get('sobreNosaltres', 'SobreNosaltresController::index');
 $routes->get('gestio/sobreNosaltres', 'SobreNosaltresController::sobreNosaltres' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('staff', 'SobreNosaltresController::staff');
+$routes->get('gestio/staff', 'SobreNosaltresController::gestioStaff' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/staff/modify/(:num)', 'SobreNosaltresController::staffModify/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/staff/modify/(:num)', 'SobreNosaltresController::staffModify_post/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/staff/delete/(:num)', 'SobreNosaltresController::staffDelete/$1' /*, ['filter' => 'gestio:admin']*/);
+$routes->get('gestio/staff/add', 'SobreNosaltresController::staffAdd' /*, ['filter' => 'gestio:admin']*/);
+$routes->post('gestio/staff/add', 'SobreNosaltresController::staffAdd_post' /*, ['filter' => 'gestio:admin']*/);
 
 
 $routes->get('dades', 'ClassificacioController::obtenirDades');

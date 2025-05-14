@@ -18,14 +18,24 @@ class StaffMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'carrec'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
-                'null'           => false,
-            ],
-            'id_equip'          => [
+            'id_carrec'          => [
                 'type'           => 'INT',
                 'null'           => false,
+            ],
+            'img'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 300, 
+                'null'           => false,
+            ],
+            'descripcio'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 400,
+                'null'           => false,
+            ],
+            'estat'          => [
+                'type'           => 'TINYINT',
+                'constraint'     => 1,
+                'default'        => 0,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -37,11 +47,6 @@ class StaffMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,
@@ -49,7 +54,7 @@ class StaffMigration extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('id_equip', 'equips', 'id');
+        $this->forge->addForeignKey('id_carrec', 'carrecs', 'id');
         $this->forge->createTable('staff');
     }
 

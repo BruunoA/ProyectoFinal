@@ -18,7 +18,7 @@ class zFotosSeeder extends Seeder
                 'ruta' => 'uploads/camara.png',
                 'estat' => 1,
                 // 'banner' => 'no',  
-                'id_album' => rand(1, 13),
+                'id_album' => rand(1, 7),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

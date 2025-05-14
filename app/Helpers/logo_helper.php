@@ -7,7 +7,7 @@ if (!function_exists('mostrar_logo')) {
     {
         $model = new BannerModel();
 
-        $logo = $model->where('tipus', 'logo') ->where('destacat', 1)->orderBy('created_at', 'ASC')->first();
+        $logo = $model->where('tipus', 'logo') ->where('destacat', 1)->orderBy('created_at', 'DESC')->first();
 
         return $logo;
     }

@@ -7,7 +7,15 @@
 
         <ul class="menu-items w3-bar">
             <li><a href="<?= base_url('gestio/banner') ?>" class="w3-bar-item w3-btn w3-text-white">Inici</a></li>
-            <li><a href="<?= base_url('gestio/sobreNosaltres') ?>" class="w3-bar-item w3-btn w3-text-white">Sobre Nosaltres</a></li>
+
+            <li class="w3-dropdown-hover">
+                <button class="w3-btn w3-text-white">Sobre Nosaltres <i class="fa-solid fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: black;">
+                    <a href="<?= base_url('gestio/sobreNosaltres') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">Sobre Nosaltres</a>
+                    <a href="<?= base_url('gestio/staff') ?>" class="w3-bar-item w3-btn w3-text-black" style="background-color:white;">El nostre staff</a>
+                </div>
+
+            </li>
 
             <li class="w3-dropdown-hover">
                 <button class="w3-btn w3-text-white">Gestio <i class="fa-solid fa-caret-down"></i></button>

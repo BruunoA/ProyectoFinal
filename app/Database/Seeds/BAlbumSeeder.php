@@ -11,7 +11,7 @@ class BAlbumSeeder extends Seeder
     {
         $fake = Factory::create("ca_ES");
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $data = [
                 'titol' => $fake->sentence(4),
                 'id_club' => random_int(1, 3),
@@ -49,6 +49,13 @@ class BAlbumSeeder extends Seeder
                 'titol' => 'Banner',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
+                'estat' => 0,
+                'created_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'titol' => 'Staff',
+                'id_club' => random_int(1, 3),
+                'portada' => 'http://localhost/fileget/entrenador.jpg',
                 'estat' => 0,
                 'created_at' => date('Y-m-d H:i:s'),
             ],
