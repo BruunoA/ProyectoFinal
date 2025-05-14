@@ -58,6 +58,6 @@ class EventsController extends BaseController
             12 => 'Desembre'
         ];
 
-        return view('Home', $data);
+        return view('home', $data);
     }
 }

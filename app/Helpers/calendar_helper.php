@@ -29,7 +29,7 @@ function getCalendarData(): array
     $data['eventDays'] = [];
     foreach ($events as $event) {
         $eventDay = date('j', strtotime($event['data']));
-        $data['eventDays'][$eventDay] = true;
+        $data['eventDays'][$eventDay][] = $event['nom'];
     }
 
     $data['mesesCatala'] = [
