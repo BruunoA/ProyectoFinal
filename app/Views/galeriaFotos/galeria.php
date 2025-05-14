@@ -30,16 +30,16 @@
         <h1><?= lang('galeria.TitolGaleria') ?></h1>
         <?php if (!empty($albums)): ?>
             <div class="w3-row-padding">
-                <?php foreach ($albums as $albumId => $albumData): ?>
+                <?php foreach ($albums as $albumId): ?>
                     <div class="news-card w3-round">
                         <div class="w3-card w3-hover-shadow w3-round-large" style="display: flex; flex-direction: column; height: 100%; min-height: 300px;">
                             <a href="<?= base_url("galeria/album/$albumId") ?>" class="w3-card w3-padding album-card w3-block w3-hover-shadow" style="text-decoration: none; color: inherit;">
                                 <div class="img-album">
-                                    <img src="<?= $albumData['portada']; ?>" alt="Portada album">
+                                    <img src="<?= $albumId['portada']; ?>" alt="Portada album">
                                 </div>
                                 <div class="card-content">
-                                    <h3><?= $albumData['titol']; ?></h3>
-                                    <span class="photo-count"><?= $albumData['count'] ?> fotos</span>
+                                    <h3><?= $albumId['titol']; ?></h3>
+                                    <span class="photo-count"><?= $albumId['count'] ?> fotos</span>
                                 </div>
                             </a>
                         </div>

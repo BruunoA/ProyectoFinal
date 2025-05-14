@@ -16,34 +16,31 @@ class ConfiguracioController extends BaseController
         $data['controller'] = $this;
 
         $model = new ConfiguracioModel();
-        
+
         $data["cat"] = $model->get_fills(NULL);
 
         return view('general/menu', $data);
     }
 
-    public function mostrar_tree ($categories) {
-        //mostrar categoria
-        echo "<ol>";
-     
-        foreach ($categories as $cat) {
-            echo "<li>" . $cat['nom'] . "</li>";
+    // public function mostrar_tree($categories)
+    // {
+    //     //mostrar categoria
+    //     echo "<ol>";
 
-            $model = new ConfiguracioModel();
-            $fills = $model->get_fills($cat['id']);
-            
-            if (count($fills)>0 )
-                $this->mostrar_tree($fills);
-        }
-        echo "</ol>";
-}
+    //     foreach ($categories as $cat) {
+    //         echo "<li>" . $cat['nom'] . "</li>";
+
+    //         $model = new ConfiguracioModel();
+    //         $fills = $model->get_fills($cat['id']);
+
+    //         if (count($fills) > 0)
+    //             $this->mostrar_tree($fills);
+    //     }
+    //     echo "</ol>";
+    // }
 
     public function dades_contacte()
     {
-        // $model = new ConfiguracioModel();
-        // $data = [
-        //     'dades_contacte' => $model->where('tipus', 'dades_contacte')->findAll(),
-        // ];
 
         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
 
@@ -59,7 +56,7 @@ class ConfiguracioController extends BaseController
             'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'icona' => ['name' => 'icona', 'type' =>  KpaCrud::TEXTAREA_FIELD_TYPE],
+            'icona' => ['name' => 'icona', 'type' =>  KpaCrud::INVISIBLE_FIELD_TYPE],
             'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
         ]);
 
