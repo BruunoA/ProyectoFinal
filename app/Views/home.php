@@ -29,11 +29,14 @@
     <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000">
 
         <!-- <div class="carousel-inner">
-            <?php // foreach ($banners as $banner): ?>
+            <?php // foreach ($banners as $banner): 
+            ?>
                 <div class="carousel-item">
-                    <img src="<?php // $banner['contingut']; ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
+                    <img src="<?php // $banner['contingut']; 
+                                ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
                 </div>
-            <?php // endforeach; ?>
+            <?php // endforeach; 
+            ?>
         </div> -->
 
 
@@ -75,60 +78,76 @@
                         </div>
                     </div>
 
-                    <div class="w3-col l6 m12 s12 w3-padding">
-                        <div class="w3-card w3-padding-16 w3-round-large w3-center">
-                            <h2 class="w3-text-black"><?= lang('home.Calendari') ?></h2>
-                            <div class="calendario-container">
-                                <div class="calendario">
-                                    <?php
-                                    $year = date('Y');
-                                    $month = date('m');
-                                    $today = date('j');
-                                    $firstDayOfMonth = strtotime("$year-$month-01");
-                                    $daysInMonth = date('t', $firstDayOfMonth);
-                                    $firstDayOfWeek = date('N', $firstDayOfMonth);
-                                    $diasSemana = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
-                                    foreach ($diasSemana as $dia) {
-                                        echo "<div class='calendario-header'>$dia</div>";
-                                    }
-                                    for ($i = 1; $i < $firstDayOfWeek; $i++) {
-                                        echo '<div class="calendario-dia"> </div>';
-                                    }
-                                    for ($day = 1; $day <= $daysInMonth; $day++) {
-                                        $class = ($day == $today) ? 'calendario-dia hoy' : 'calendario-dia';
-                                        echo "<div class='$class'>$day</div>";
-                                    }
-                                    ?>
-                                </div>
+                    <div class="calendario-container">
+                        <div class="w3-row w3-margin-bottom">
+                            <div class="w3-col s4">
+                                <a href="?month=<?= $month - 1 ?>&year=<?= ($month == 1) ? $year - 1 : $year ?>"
+                                    class="w3-button w3-round-large w3-grey">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </a>
                             </div>
+                            <div class="w3-col s4">
+                                <h3 class="w3-text-black"><?= $mesesCatala[$month] . ' ' . $year ?></h3>
+                            </div>
+                            <div class="w3-col s4">
+                                <a href="?month=<?= $month + 1 ?>&year=<?= ($month == 12) ? $year + 1 : $year ?>"
+                                    class="w3-button w3-round-large w3-grey">
+                                    Siguiente <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="calendario">
+                            <?php foreach (['L', 'M', 'X', 'J', 'V', 'S', 'D'] as $dia): ?>
+                                <div class='calendario-header'><?= $dia ?></div>
+                            <?php endforeach; ?>
+
+                            <?php
+                            $firstDayOfWeek = date('N', strtotime("$year-$month-01"));
+                            for ($i = 1; $i < $firstDayOfWeek; $i++): ?>
+                                <div class="calendario-dia"></div>
+                            <?php endfor; ?>
+
+                            <?php
+                            $daysInMonth = date('t', strtotime("$year-$month-01"));
+                            for ($day = 1; $day <= $daysInMonth; $day++):
+                                $isToday = ($day == $today && $year == $currentYear && $month == $currentMonth);
+                            ?>
+                                <div class='calendario-dia <?= $isToday ? 'hoy' : '' ?>'>
+                                    <div><?= $day ?></div>
+                                    <?= isset($eventDays[$day]) ? '<div class="event-dot"></div>' : '' ?>
+                                </div>
+                            <?php endfor; ?>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </section>
+    </div>
+    </section>
 
 
-        <div class="w3-margin-top">
-            <h2 class="w3-text-green"><?= lang('home.NoticiesDestacades') ?></h2>
-            <?php if (!empty($noticies)): ?>
-                <div class="w3-row-padding">
-                    <?php foreach ($noticies as $noticia): ?>
-                        <div class="w3-third w3-margin-bottom">
-                            <div class="w3-card-4 noticies" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                                <div class="w3-container w3-padding">
-                                    <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 200px; object-fit: cover;">
-                                    <h3><?= esc($noticia['nom']) ?></h3>
-                                    <p><?= esc($noticia['resum']) ?></p>
-                                </div>
-                                <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top w3-margin-bottom w3-margin"><?= lang('home.LlegirMes') ?></a>
+    <div class="w3-margin-top">
+        <h2 class="w3-text-green"><?= lang('home.NoticiesDestacades') ?></h2>
+        <?php if (!empty($noticies)): ?>
+            <div class="w3-row-padding">
+                <?php foreach ($noticies as $noticia): ?>
+                    <div class="w3-third w3-margin-bottom">
+                        <div class="w3-card-4 noticies" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                            <div class="w3-container w3-padding">
+                                <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 200px; object-fit: cover;">
+                                <h3><?= esc($noticia['nom']) ?></h3>
+                                <p><?= esc($noticia['resum']) ?></p>
                             </div>
+                            <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top w3-margin-bottom w3-margin"><?= lang('home.LlegirMes') ?></a>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-            <?php else: ?>
-                <p style="background-color: red; color: white; padding: 10px;"><?= lang('errors.noNews') ?></p>
-            <?php endif; ?>
-        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <p style="background-color: red; color: white; padding: 10px;"><?= lang('errors.noNews') ?></p>
+        <?php endif; ?>
+    </div>
     </div>
     <?= $this->include('general/footer'); ?>
 

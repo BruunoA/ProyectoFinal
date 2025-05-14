@@ -45,6 +45,8 @@ class IndexController extends BaseController
             'banners' => $modelBanners->where('seccio', 'banner')->where('estat', 'publicat')->findAll(3),
         ];
 
+        helper('calendar');
+        $data=getCalendarData();
         // dd($data['banners']);
 
         return view("home", $data);

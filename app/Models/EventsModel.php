@@ -12,7 +12,7 @@ class EventsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'tipus_event', 'seccio', 'id_tag'];
+    protected $allowedFields    = ['nom', 'tipus_event', 'seccio', 'id_tag', 'data', 'hora', 'descripcio', 'estat', 'url', 'id_club'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,4 +43,12 @@ class EventsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getEventsByMonth($year, $month)
+    {
+        return $this->where('YEAR(data)', $year)
+            ->where('MONTH(data)', $month)
+            ->where('estat', 'publicat')
+            ->findAll();
+    }
 }

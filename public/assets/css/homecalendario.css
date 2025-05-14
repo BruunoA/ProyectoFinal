@@ -5,6 +5,12 @@
     flex-direction: column;
     margin-top: 20px;
     padding: 10px;
+    position: relative;
+}
+
+.w3-button {
+    margin: 0 5px;
+    padding: 5px 10px !important;
 }
 
 .calendario {
@@ -46,6 +52,14 @@
     background-color: yellow !important;
     font-weight: bold;
     color: black;
+}
+
+.event-dot {
+    width: 8px;
+    height: 8px;
+    background-color: red; /* o el color que quieras */
+    border-radius: 50%;
+    margin: 4px auto 0;
 }
 
 @media (max-width: 600px) {
