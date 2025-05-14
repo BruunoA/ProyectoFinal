@@ -49,4 +49,14 @@ class ConfiguracioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_fills($catid)
+    {
+        $builder = $this->db->table('configuracio');
+        $builder->where('tipus', 'menu_general')->where('id_pare', $catid);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
 }
