@@ -4,9 +4,9 @@
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
-        <ul class="menu-items">
+        <ul class="menu-items" style="align-items: center; width: 100%;">
             <?php $logo = mostrar_logo(); ?>
-            <img src="<?= $logo['img'] ?>" alt="Logo" height="32">
+            <img src="<?= $logo['img'] ?>" alt="Logo" height="40" style="width: 40px;">
             <?php foreach (mostrar_tree() as $menu): ?>
                 <?php if (isset($menu['children'])): ?>
                     <div class="w3-dropdown-hover">
