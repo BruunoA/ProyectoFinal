@@ -20,4 +20,6 @@ return [
     'titolModify' => 'Modificar membre del staff',
     'subtitolModifu' => 'Modificar membre del staff',
     'modificar' => 'Modificar',
+    'carrecs' => 'Gestió de càrrecs',
+    'titolCarrecs' => 'Gestió de càrrecs',
 ];

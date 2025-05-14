@@ -7,6 +7,7 @@ use App\Models\CarrecsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
 use App\Models\StaffModel;
+use SIENSIS\KpaCrud\Libraries\KpaCrud;
 
 class SobreNosaltresController extends BaseController
 {
@@ -241,5 +242,29 @@ class SobreNosaltresController extends BaseController
         } else {
             return redirect()->back()->withInput()->with('errors', $model->errors());
         }
+    }
+
+    public function gestioCarrecs(){
+         $crud = new \SIENSIS\KpaCrud\Libraries\KpaCrud();
+
+        $crud->setTable('carrecs');
+        $crud->setPrimaryKey('id');
+
+        $crud->setColumns(['nom']);
+
+        $crud->setColumnsInfo([
+            'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+]);
+
+        // $crud->setConfig('onlyView');
+        // $crud->setConfig(["editable" => true,]);
+        $crud->setConfig('delete', true);
+        $crud->setConfig('add', true);
+        $crud->setConfig('modify', true);
+
+        $data['output'] = $crud->render();
+
+        return view('gestio_pag/staff/carrecs', $data);
     }
 }

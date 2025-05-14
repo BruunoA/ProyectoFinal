@@ -26,7 +26,10 @@ class GaleriaController extends BaseController
 
         $albumMap = [];     // array per a guardar els albums publicats
         foreach ($albumsInfo as $album) {
-            $albumMap[$album['id']] = $album['titol'];  // guarda l'id i el titol de l'album publicat
+            $albumMap[$album['id']] = [
+                'titol' =>$album['titol'],  // guardem el titol de l'album
+                'portada' => $album['portada'], // guardem la portada de l'album
+            ];
         }
 
         // inner join per a agafar solament les fotos que tenen un album amb le id del club
@@ -44,7 +47,8 @@ class GaleriaController extends BaseController
 
             if (!isset($albums[$albumId])) {    // si no existeix l'album, el crea
                 $albums[$albumId] = [   // crea un array amb l'id de l'album, el titol, un count i un array per a les fotos
-                    'titol' => $albumMap[$albumId],
+                    'titol' => $albumMap[$albumId]['titol'],
+                    'portada' => $albumMap[$albumId]['portada'],
                     'count' => 0,
                     'fotos' => []
                 ];

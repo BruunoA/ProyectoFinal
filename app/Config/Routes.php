@@ -68,6 +68,7 @@ $routes->post('gestio/staff/modify/(:num)', 'SobreNosaltresController::staffModi
 $routes->get('gestio/staff/delete/(:num)', 'SobreNosaltresController::staffDelete/$1' /*, ['filter' => 'gestio:admin']*/);
 $routes->get('gestio/staff/add', 'SobreNosaltresController::staffAdd' /*, ['filter' => 'gestio:admin']*/);
 $routes->post('gestio/staff/add', 'SobreNosaltresController::staffAdd_post' /*, ['filter' => 'gestio:admin']*/);
+$routes->match(['get', 'post'],'gestio/carrecs', 'SobreNosaltresController::gestioCarrecs' /*, ['filter' => 'gestio:admin']*/);
 
 
 $routes->get('dades', 'ClassificacioController::obtenirDades');

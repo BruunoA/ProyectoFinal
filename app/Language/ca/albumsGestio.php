@@ -27,5 +27,7 @@ return [
     'editarDescripcio' => 'Descripció de la foto',
     'guardar' => 'Desar',
     'tornar' => 'Tornar enrere',
-    'dataPujada' => 'Data de pujada:'
+    'dataPujada' => 'Data de pujada:',
+    'editar' => 'Editar',
+    'eliminar' => 'Eliminar',
 ];
