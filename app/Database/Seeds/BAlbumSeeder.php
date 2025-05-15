@@ -12,12 +12,16 @@ class BAlbumSeeder extends Seeder
         $fake = Factory::create("ca_ES");
 
         for ($i = 0; $i < 5; $i++) {
+            $titol = $fake->sentence(4);
+            $slug = url_title($titol, '-', true);
+
             $data = [
-                'titol' => $fake->sentence(4),
-                'id_club' => random_int(1, 3),
-                'portada' => 'http://localhost/fileget/album.jpg',
-                'estat' => 1,
-                'created_at' => date('Y-m-d H:i:s'),
+            'titol' => $titol,
+            'slug' => $slug,
+            'id_club' => random_int(1, 3),
+            'portada' => 'http://localhost/fileget/album.jpg',
+            'estat' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
             ];
 
             $this->db->table('albums')->insert($data);
@@ -26,6 +30,7 @@ class BAlbumSeeder extends Seeder
         $data = [
             [
                 'titol' => 'Tags',
+                'slug' => 'tags',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/alpicatLogo.png',
                 'estat' => 0,
@@ -33,6 +38,7 @@ class BAlbumSeeder extends Seeder
             ],
             [
                 'titol' => 'Noticies',
+                'slug' => 'noticies',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'estat' => 0,
@@ -40,6 +46,7 @@ class BAlbumSeeder extends Seeder
             ],
             [
                 'titol' => 'Programes',
+                'slug' => 'programes',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
                 'estat' => 0,
@@ -47,6 +54,7 @@ class BAlbumSeeder extends Seeder
             ],
             [
                 'titol' => 'Banner',
+                'slug' => 'banner',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/album.jpg',
                 'estat' => 0,
@@ -54,6 +62,7 @@ class BAlbumSeeder extends Seeder
             ],
             [
                 'titol' => 'Staff',
+                'slug' => 'staff',
                 'id_club' => random_int(1, 3),
                 'portada' => 'http://localhost/fileget/entrenador.jpg',
                 'estat' => 0,

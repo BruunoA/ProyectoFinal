@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/galeria.css'); ?>">
-    <title><?= esc($album['titol']) ?> - Galería</title>
+    <title><?= esc($album['titol']) ?></title>
 </head>
 
 <body class="w3-light-grey">

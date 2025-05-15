@@ -41,8 +41,8 @@
             <p>
                 <label for="estat"><strong><?= lang('albumsGestio.modifyEstat') ?></strong></label>
                 <select class="w3-select w3-border" name="estat" id="estat">
-                    <option value="publicat" <?= $album['estat'] == 'publicat' ? 'selected' : '' ?>><?= lang('albumsGestio.publicat') ?></option>
-                    <option value="no_publicat" <?= $album['estat'] == 'no_publicat' ? 'selected' : '' ?>><?= lang('albumsGestio.no_publicat') ?></option>
+                    <option value="1" <?= $album['estat'] === '1' ? 'selected' : '' ?>><?= lang('albumsGestio.publicat') ?></option>
+                    <option value="0" <?= $album['estat'] === '0' ? 'selected' : '' ?>><?= lang('albumsGestio.no_publicat') ?></option>
                 </select>
             <div class="error"><?= validation_show_error('estat') ?></div>
             </p>

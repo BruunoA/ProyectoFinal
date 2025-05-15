@@ -79,7 +79,7 @@ class UsersController extends BaseController
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'password' => ['name' => 'password', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
-            'rol' => ['name' => 'rol', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'admin', 2 => 'superadmin']],
+            'rol' => ['name' => 'rol', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['admin' => 'admin', 'superadmin' => 'superadmin']],
         ]);
 
         // $crud->setConfig('onlyView');

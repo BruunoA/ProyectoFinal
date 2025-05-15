@@ -29,6 +29,7 @@ class GaleriaController extends BaseController
             $albumMap[$album['id']] = [
                 'titol' =>$album['titol'],  // guardem el titol de l'album
                 'portada' => $album['portada'], // guardem la portada de l'album
+                'slug' => $album['slug'], // guardem el slug de l'album
             ];
         }
 
@@ -49,6 +50,7 @@ class GaleriaController extends BaseController
                 $albums[$albumId] = [   // crea un array amb l'id de l'album, el titol, un count i un array per a les fotos
                     'titol' => $albumMap[$albumId]['titol'],
                     'portada' => $albumMap[$albumId]['portada'],
+                    'slug' => $albumMap[$albumId]['slug'],
                     'count' => 0,
                     'fotos' => []
                 ];
@@ -66,10 +68,18 @@ class GaleriaController extends BaseController
         return view('galeriaFotos/galeria', $data);
     }
 
-    public function getAlbumFotos($albumId)
+    public function getAlbumFotos($slug)
     {
         $fotosModel = new FotosModel();
-        $fotos = $fotosModel->where('id_album', $albumId)->where('estat', 1)->findAll();
+        $albumModel = new AlbumModel();
+
+        $album = $albumModel->where('slug', $slug)->first();
+
+        if (empty($album)) {
+            return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
+        }
+
+        $fotos = $fotosModel->where('id_album', $album['id'])->where('estat', 1)->findAll();
 
         if (empty($fotos)) {
             return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
@@ -77,8 +87,8 @@ class GaleriaController extends BaseController
 
         $data = [
             'album' => [
-                'id' => $albumId,
-                'titol' => $fotos[0]['titulo_album'] ?? 'Álbum ' . $albumId,
+                'id' => $album['id'],
+                'titol' => $album['titol'],
                 'fotos' => $fotos
             ]
         ];
@@ -209,6 +219,7 @@ class GaleriaController extends BaseController
 
         $data = [
             'titol' => $this->request->getPost('titol'),
+            'slug' => url_title($this->request->getPost('titol'), '-', true),
             'portada' => $this->request->getPost('portada'),
             'id_club' => $this->request->getPost('club'),
             'estat' => $this->request->getPost('estat'),
@@ -276,6 +287,7 @@ class GaleriaController extends BaseController
         $data = [
             'id' => $id,
             'titol' => $this->request->getPost('titol'),
+            'slug' => url_title($this->request->getPost('titol'), '-', true),
             'portada' => $this->request->getPost('portada'),
             'id_club' => $this->request->getPost('club'),
             'estat' => $this->request->getPost('estat'),

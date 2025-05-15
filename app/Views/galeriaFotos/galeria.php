@@ -25,7 +25,7 @@
 
 <body>
     <?= $this->include('general/menu'); ?>
-
+    <?= session()->getFlashdata('error') ?>
     <div class="cards-container w3-margin-bottom">
         <h1><?= lang('galeria.TitolGaleria') ?></h1>
         <?php if (!empty($albums)): ?>
@@ -33,7 +33,7 @@
                 <?php foreach ($albums as $albumId => $album): ?>
                     <div class="news-card w3-round">
                         <div class="w3-card w3-hover-shadow w3-round-large" style="display: flex; flex-direction: column; height: 100%; min-height: 300px;">
-                            <a href="<?= base_url("galeria/album/$albumId") ?>" class="w3-card w3-padding album-card w3-block w3-hover-shadow" style="text-decoration: none; color: inherit;">
+                            <a href="<?= base_url("galeria/album/" . $album['slug']) ?>" class="w3-card w3-padding album-card w3-block w3-hover-shadow" style="text-decoration: none; color: inherit;">
                                 <div class="img-album">
                                     <img src="<?= $album['portada']; ?>" alt="Portada album">
                                 </div>
