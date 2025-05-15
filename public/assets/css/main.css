@@ -41,7 +41,6 @@ a:active {
 
 
 .menu {
-    /* background: linear-gradient(to right, #d32f2f, #000); */
     background-color: black;
     border-bottom: 2px solid #ddd;
     padding: 10px 20px;
@@ -51,7 +50,6 @@ a:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* max-width: 1200px; */
     margin: 0 auto;
 
 }
@@ -268,13 +266,85 @@ a:active {
 
 
 
+.menu-items {
+    /* list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; */
+    position: relative;
+    justify-content: center; /* Centra los elementos del menú horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
+}
+
+.menu-items li {
+    position: relative;
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente dentro de cada li */
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra el texto horizontalmente */
+    height: 100%; /* Asegura que ocupe toda la altura del li */
+}
+
+.has-submenu > a {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto y el icono */
+    gap: 5px; /* Espacio entre texto e icono */
+}
+
+
+@media (max-width: 768px) { 
+    .menu-container {
+        flex-direction: column; 
+        padding: 10px;
+    }
+    
+    .menu-items {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        text-align: center; 
+    }
+
+    .menu-items.show {
+        display: flex;
+    }
+
+    .menu-items li {    /*  */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .menu-toggle {  /* Obrir menu a l'esquerra */
+        display: flex;
+        align-self: flex-start; 
+        margin-bottom: 10px;
+    }
+    
+    /* Veure que fer amb esto */
+
+    /* .xarxes_socials {        
+        margin-top: 15px;
+        justify-content: center;
+        width: 100%;
+    } */
+}
+
 
 
 
 
 
 .menu {
-    background-color: rgb(8, 8, 8);
+    /* background-color: rgb(8, 8, 8); */
     color: white;
 }
 
@@ -284,17 +354,9 @@ a:active {
     /* padding: 0 15px; */
 }
 
-.menu-items {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+/* .menu-items li {
     position: relative;
-}
-
-.menu-items li {
-    position: relative;
-}
+} */
 
 .menu-items li a {
     color: white;
@@ -303,7 +365,7 @@ a:active {
     display: block;
 }
 
-.menu-items>li>a {
+.menu-items>li> {
     display: flex;
     align-items: center;
 }
@@ -342,50 +404,18 @@ a:active {
 }
 
 @media (max-width: 768px) { 
-    .menu-items {
-        flex-direction: column;
-        display: none;
-    }
 
-    .menu-items.show {
-        display: flex;
-    }
-
-    .menu-toggle {
+    .menu-toggle {     /* Per mostrar la icona en mobil */ 
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .submenu {
+    /* .submenu {
         position: static;
         display: none;
-        /* padding-left: 20px; */
+        padding-left: 20px;
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
-    }
-
-    .submenu.nivell-3 {
-        /* padding-left: 40px; */
-    }
-
-    /* .has-submenu.active > .submenu {
-        display: block;
-    }
-    
-    .has-submenu > a {
-        justify-content: space-between;
-    }
-    
-    .has-submenu > a > i {
-        transition: transform 0.3s;
-    } */
-
-    /* .has-submenu.active > a > i.fa-caret-down {
-        transform: rotate(180deg);
-    }
-    
-    .has-submenu.active > a > i.fa-caret-right {
-        transform: rotate(90deg);
     } */
 }
