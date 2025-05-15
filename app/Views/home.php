@@ -107,9 +107,9 @@
                                 <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
                             </a>
                             <div class="card-content">
-                                <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
+                                <h3><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></h3>
                                 <p class="content-preview">
-                                    <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
+                                    <?= esc(strlen($noticia['resum']) > 60 ? substr($noticia['resum'], 0, 60) . '...' : $noticia['resum']) ?>
                                 </p>
                                 <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
                             </div>
