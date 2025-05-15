@@ -13,7 +13,7 @@
     </div>
     <div>
         <?php 
-        $footer = mostrar_tree_inferior();
+        $footer = mostrar_tree();
 
         foreach ($footer as $item): ?>
             <a href="<?= base_url($item['valor']); ?>" style="color: white; text-decoration: none; margin: 0 10px;"><?= esc($item['nom']); ?></a>
