@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/sobreNosaltres.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <title><?= lang('sobreNosaltres.Titol') ?></title>
 </head>
 
@@ -13,7 +14,7 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <h2 class="w3-center"><?= lang('sobreNosaltres.TitolHistoria') ?></h2>
+        <h2 class="w3-center"><strong><?= lang('sobreNosaltres.TitolHistoria') ?></strong></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
             <div id="historia" class="w3-container w3-border">
@@ -27,9 +28,23 @@
         </div>
     </div>
 
+        <div class="w3-container" style="margin-top: 2rem;">
+        <h2 class="w3-center"><strong><?= lang('sobreNosaltres.TitolPresentacio') ?></strong></h2>
+        <div class="historia-container">
+            <div id="historia" class="w3-container w3-border">
+                <?php if (!empty($presentacio)): ?>
+                    <h3 class="w3-center"><?= esc($historia['nom']) ?></h3>
+                    <p><?= $presentacio['contingut'] ?></p>
+                <?php else: ?>
+                    <p><?= lang('errors.presentacio') ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
     <div class="w3-container" style="margin-top: 2rem; margin-bottom: 2rem;">
         <div class="w3-container">
-            <h1 class="w3-center"><?= lang('sobreNosaltres.Subtitol') ?></h1>
+            <h1 class="w3-center"><strong><?= lang('sobreNosaltres.Subtitol') ?></strong></h1>
 
             <div class="w3-bar w3-black">
                 <button class="w3-bar-item w3-button tablink w3-red"

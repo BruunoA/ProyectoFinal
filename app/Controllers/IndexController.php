@@ -3,46 +3,26 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\BannerModel;
 use App\Models\GestioModel;
 use App\Models\ClubsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class IndexController extends BaseController
 {
-    public function index()
-    {
-        $model = new ClubsModel();
-
-        $data = [
-            'tags' => $model->findAll(),
-        ];
-
-        return view("pagina_inicial", $data);
-    }
 
     public function home()
     {
 
-        $model = new ClubsModel();
-        $club = $this->request->getGet('club');
-        $modelBanners = new GestioModel();
-
-        $id_club = $model->where('nom', $club)->first();
-
-        $id = $id_club['id'] ?? null; // agafa l'id del club de la sessio, si no existeix, es null
-
-        if($id_club){
-            session()->set('id_club', $id);
-        }
+        $modelBanners = new BannerModel();
         
         $model = new GestioModel();
 
         $data = [
-            'noticies' => $model->where('seccio', 'noticies')->where('destacat', 'si')->where('id_club', $id)->orderBy('created_at', 'desc')->findAll(6),
-            'banners' => $model->where('seccio', 'banner')->where('estat', 'publicat')->findAll(4),
-            'missio' => $model->where('seccio', 'missio')->where('estat', 'publicat')->first(),
-            'visio' => $model->where('seccio', 'visio')->where('estat', 'publicat')->first(),
-            'banners' => $modelBanners->where('seccio', 'banner')->where('estat', 'publicat')->findAll(3),
+            'noticies' => $model->where('id_seccio', 1)->where('destacat', 1)->orderBy('created_at', 'desc')->findAll(6),
+            'missio' => $model->where('id_seccio', 3)->where('estat', 1)->first(),
+            'visio' => $model->where('id_seccio', 4)->where('estat', 1)->first(),
+            'banners' => $modelBanners->where('tipus', 'banner')->where('destacat', 1)->findAll(3),
         ];
 
         // dd($data['banners']);

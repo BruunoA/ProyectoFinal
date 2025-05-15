@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ClubsModel;
 use App\Models\EventsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\GestioModel;
@@ -13,26 +14,38 @@ class NoticiesController extends BaseController
     public function index()
     {
 
-        $id_club = session()->get('id_club');
-
-        // missatge d'error si no hi ha id_club a la sessio
-        if (!$id_club) {
-            session()->setFlashdata('error', '<div style="background-color: red; color: white; padding: 10px; margin-top: 1rem">' . lang('errors.noSessio') . '</div>');
-            return redirect()->to('/');
-        }
+        $search = $this->request->getGet('q') ?? '';
+        $buscarClub = $this->request->getGet('club') ?? '';
 
         $model = new GestioModel();
         $modelEvents = new EventsModel();
+        $modelClubs = new ClubsModel();
 
-        // aga de gestio on seccio = noticies, estat = publicat i el id del club es el mateix que el de la sessio
-        $gestio = $model->where('seccio', 'noticies')->where('estat', 'publicat')->where('id_club', $id_club)->paginate(6);
+        // consulta base per a després poder filtrar, si fos necessari
+        $base = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
+
+        // si hi ha un filtre de cerca, s'aplica
+        if ($search !== '') {
+            $base->like('nom', $search)->orLike('contingut', $search);
+        }
+
+        // si hi ha un filtre de club, s'aplica
+        if ($buscarClub !== '') {
+            $base->where('id_club', $buscarClub);
+        }
+
+        // consulta final, aplicant filtre de que agafi sol els que tenen estat publicat
+        $gestio = $base->where('estat', 1)->paginate(6);
+
         $pager = $model->pager;
-
 
         $data = [
             'gestio' => $gestio,
-            'events' => $modelEvents->where('estat', 'publicat')->where('data >=', date('Y-m-d'))->findAll(),
+            // agafem solament els events on la data de event sigui mes gran o igual a la data actual
+            'events' => $modelEvents->where('estat', 1)->where('data >=', date('Y-m-d'))->findAll(),
             'pager' => $pager,
+            'search' => $search,
+            'clubs' => $modelClubs->findAll(),
         ];
 
         return view('noticies', $data);
@@ -47,5 +60,43 @@ class NoticiesController extends BaseController
         // dd($data['noticia']);
 
         return view('noticiaGran', $data);
+    }
+
+    public function noticies()
+    {
+        $search = $this->request->getGet('q') ?? '';
+        $buscarClub = $this->request->getGet('club') ?? '';
+
+        $model = new GestioModel();
+
+        $modelClubs = new ClubsModel();
+        $clubs = $modelClubs->findAll();
+
+        // consulta base per a després poder filtrar, si fos necessari
+        $selectBase = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
+
+        // si hi ha un filtre de cerca, s'aplica
+        if ($search !== '') {
+            $selectBase->like('nom', $search)->orLike('contingut', $search);
+        }
+
+        // si hi ha un filtre de club, s'aplica
+        if ($buscarClub !== '') {
+            $selectBase->where('id_club', $buscarClub);
+        }
+
+        // consulta final
+        $noticies = $selectBase->paginate(6);
+
+        $pager = $model->pager;
+
+        $data = [
+            'noticies' => $noticies,
+            'clubs' => $clubs,
+            'pager' => $pager,
+            'search' => $search,
+        ];
+
+        return view('gestio_pag/noticies', $data);
     }
 }

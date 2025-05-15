@@ -18,6 +18,13 @@ class EquipsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'grup'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
+            'url_federacio'          => [
+                'type'           => 'TEXT',
+            ],
             // 'id_classificacio'          => [
             //     'type'           => 'INT',
             //     'null'           => false,
@@ -32,11 +39,11 @@ class EquipsMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
+            // 'publicated_at'          => [
+            //     'type'           => 'TIMESTAMP',
+            //     'null'           => true,
+            //     'default'        => null,
+            // ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,

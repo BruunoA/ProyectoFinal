@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title) ?></title>
+    <title><?= lang('upload.Titol') ?></title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .drag-over {
@@ -16,38 +16,35 @@
             padding: 16px;
             transition: border 0.3s;
         }
+
+        .error {
+            color: red;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body class="w3-light-grey">
-
+    <?php helper('form'); ?>
     <div class="w3-container w3-padding">
-        <h2 class="w3-center"><?= esc($title) ?></h2>
-
-        <?php if (!empty($errors)) : ?>
-            <div class="w3-panel w3-red w3-padding">
-                <ul class="w3-ul">
-                    <?php foreach ($errors as $error) : ?>
-                        <li><?= esc($error) ?></li>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-        <?php endif; ?>
+        <h2 class="w3-center"><?= lang('upload.Titol') ?></h2>
 
         <div id="dropContainer" class="w3-border w3-white w3-center"
             ondragover="dOver(event)" ondragenter="dEnter(event)"
-            ondrop="dDrop(event)" ondragleave="dLeave(event)">
+            ondrop="dDrop(event)" ondragleave="dLeave(event)" style="font-size: 1.5em; padding: 1em;">
             <?= lang('upload.soltar') ?>
+            <div class="error"><?= validation_show_error('userfile') ?></div>
         </div>
 
         <?= form_open_multipart(base_url('pujarArxiu'), ['class' => 'w3-container w3-card w3-white w3-margin-top']) ?>
 
         <input type="file" id="formFiles" name="userfile[]" style="display:none" />
 
-
         <p>
             <label for="titol">Titol de la imatge</label>
-            <input class="w3-input w3-border" type="text" name="titol" id="titol" >
+            <input class="w3-input w3-border" type="text" name="titol" id="titol">
+        <div class="error"><?= validation_show_error('titol') ?></div>
         </p>
 
         <!-- <p>
@@ -66,11 +63,12 @@
         <p>
             <label for="album" class="w3-text">Album:</label>
             <select name="album" id="album" class="w3-select w3-border">
-            <option value="">Selecciona un album</option>
-            <?php foreach ($albums as $album) : ?>
-                <option value="<?= esc($album['titol']) ?>"><?= esc($album['titol']) ?></option>
-            <?php endforeach; ?>
+                <option value="">Selecciona un album</option>
+                <?php foreach ($albums as $album) : ?>
+                    <option value="<?= esc($album['titol']) ?>"><?= esc($album['titol']) ?></option>
+                <?php endforeach; ?>
             </select>
+        <div class="error"><?= validation_show_error('album') ?></div>
         </p>
 
         <p class="w3-center">

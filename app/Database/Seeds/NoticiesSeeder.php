@@ -15,7 +15,6 @@ class NoticiesSeeder extends Seeder
             $nom = $fake->sentence(6); 
             $resum = $fake->text(100); 
             $contingut = $fake->paragraphs(20, true); 
-            $seccio = "noticies";
             $url = url_title($nom, '-', true);
 
             $data = [
@@ -23,34 +22,11 @@ class NoticiesSeeder extends Seeder
                 'id_club' => random_int(1, 3),
                 'resum' => $resum,
                 'contingut' => $contingut,
-                'destacat' => $fake->randomElement(['si', 'no']),
-                'seccio' => $seccio,
+                'destacat' => $fake->numberBetween(0, 1),
+                'id_seccio' => 1,
                 'portada' => 'http://localhost/fileget/noticia.jpeg',
                 'url' => $url,
-                'estat' => $fake->randomElement(['publicat', 'no_publicat']),
-                'created_at' => date('Y-m-d H:i:s'),
-            ];
-
-            $this->db->table('gestio')->insert($data);
-        }
-
-        for ($i = 0; $i < 3; $i++) { 
-            $nom = $fake->sentence(6); 
-            // $resum = $fake->text(100); 
-            // $contingut = $fake->paragraphs(20, true); 
-            $seccio = "banner";
-            $url = url_title($nom, '-', true);
-
-            $data = [
-                'nom' => $nom,
-                'id_club' => random_int(1, 3),
-                // 'resum' => $resum,
-                'contingut' => 'http://localhost/fileget/campoAlpicat.jpg',
-                'destacat' => 'no',
-                'seccio' => $seccio,
-                'portada' => 'http://localhost/fileget/noticia.jpeg',
-                'url' => $url,
-                'estat' => 'publicat',
+                'estat' => $fake->numberBetween(0, 1),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

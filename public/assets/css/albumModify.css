@@ -1,0 +1,18 @@
+.error{
+    color: red;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}

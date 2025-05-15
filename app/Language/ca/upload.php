@@ -5,4 +5,5 @@ return [
     'selecciona' => 'Selecciona una carpeta:',
     'descripcio' => 'Descripció',
     'submit' => 'Pujar',
+    'Titol' => 'Pujar imatges',
 ];

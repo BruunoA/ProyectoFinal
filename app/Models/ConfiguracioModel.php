@@ -12,7 +12,7 @@ class ConfiguracioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'valor', 'tipus'];
+    protected $allowedFields    = ['nom', 'valor', 'tipus', 'icona', 'id_pare', 'visibilitat', 'ordre', 'zona'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -49,4 +49,14 @@ class ConfiguracioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function get_fills($catid)
+    {
+        $builder = $this->db->table('configuracio');
+        $builder->where('tipus', 'menu_general')->where('id_pare', $catid);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
 }

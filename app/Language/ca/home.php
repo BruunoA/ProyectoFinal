@@ -13,4 +13,9 @@ return [
     'Missio' => 'Missió',
     'Visio' => 'Visió',
     'Valors' => 'Valors',
+    'home' => 'Inici',
+    'gestio' => 'Gestió',
+    'logout' => 'Tancar sessió',
+    'login' => 'Iniciar sessió',
+    'selecciona' => 'Part privada',
 ];

@@ -14,11 +14,31 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <div class="w3-container w3-teal" style="margin-bottom: 2rem">
-            <h1><?= lang('noticies.Titol') ?></h1>
+        <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+            <h1 class="w3-center w3-text-white"><?= lang('noticies.Titol') ?></h1>
         </div>
+        <form method='get' action="<?= base_url('noticies'); ?>" id="searchForm" class="w3-container w3-padding w3-card w3-margin-bottom">
 
-        <button onclick="document.getElementById('eventModal').style.display='block'" class="w3-button w3-teal"><?= lang('noticies.VeureEvents') ?></button><br><br>
+            <div class="w3-row w3-margin-bottom">
+                <input type='text' name='q' value='<?= $search ?>' class="w3-input" placeholder="<?= lang('noticies.Buscar') ?>">
+            </div>
+
+            <div class="w3-row w3-margin-bottom">
+                <select name="club" id="club" class="w3-select w3-border">
+                    <option value=""><?= lang('noticies.Clubs') ?></option>
+                    <?php foreach ($clubs as $club): ?>
+                        <option value="<?= $club['id'] ?>" <?= old('club', $noticia['id_club'] ?? '') == $club['id'] ? 'selected' : '' ?>>
+                            <?= $club['nom'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="w3-row">
+                <input type='button' id='btnsearch' value='Cercar' class="w3-button w3-green" onclick='document.getElementById("searchForm").submit();'>
+            </div>
+        </form>
+        <button onclick="document.getElementById('eventModal').style.display='block'" class="w3-button w3-black"><?= lang('noticies.VeureEvents') ?></button><br><br>
 
         <div id="eventModal" class="w3-modal">
             <div class="w3-modal-content w3-animate-zoom">
@@ -28,7 +48,7 @@
                     <div class="w3-responsive">
                         <table class="w3-table-all w3-hoverable w3-small">
                             <thead>
-                                <tr class="w3-teal">
+                                <tr class="w3-blue">
                                     <th><?= lang('noticies.nomEvent') ?></th>
                                     <th><?= lang('noticies.descripcioEvent') ?></th>
                                     <th><?= lang('noticies.dataEvent') ?></th>
@@ -49,23 +69,25 @@
                 </div>
             </div>
         </div>
-        <div class="w3-row-padding">
+        <div class="cards-container">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="w3-col s12 l3 m3 w3-container w3-margin-top">
-                    <div class="w3-card w3-hover-shadow w3-round-large" style="display: flex; flex-direction: column; height: 100%; min-height: 300px; width: 450px;">
-                        <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
-                            <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" style="width:100%; height: 250px; object-fit:cover;" class="w3-round-top">
-                        </a>
-                        <div class="w3-container" style="flex-grow: 1; display: flex; flex-direction: column;">
-                            <!-- <h5><strong><?= esc($noticia['nom']) ?></strong></h5> -->
-                            <h5><strong><?= esc(strlen($noticia['nom']) > 30 ? substr($noticia['nom'], 0, 30) . '...' : $noticia['nom']) ?></strong></h5>
-                            <p style="flex-grow: 1"><?= esc($noticia['resum']) ?></p>
-                        </div>
+                <div class="news-card w3-round" style="border: 2px solid black; max-height: 420px;">
+                    <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
+                        <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
+                    </a>
+                    <div class="card-content">
+                        <h3><?= esc(strlen($noticia['nom']) > 50 ? substr($noticia['nom'], 0, 50) . '...' : $noticia['nom']) ?></h3>
+                        <p class="content-preview">
+                            <?= esc(strlen($noticia['resum']) > 50 ? substr($noticia['resum'], 0, 50) . '...' : $noticia['resum']) ?>
+                        </p>
+                        <p>
+                            <?= date('d/m/Y', strtotime($noticia['created_at'])) ?>
+                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="paginador w3-center w3-red" style="color:black">
+        <div class="paginador w3-center w3-blue" style="color:black">
             <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
         </div>
     </div>

@@ -27,17 +27,17 @@ class GestioMigration extends Migration
                                 'constraint'     => '250',
                         ],
                         'destacat'         => [
-                                'type'           => 'ENUM',
-                                'constraint'     => ['si', 'no'],
-                                'default'        => 'no',
+                                'type'           => 'TINYINT',
+                                'constraint'     => 1,
+                                'default'        => 0,
                         ],
                         'contingut' => [
                                 'type'           => 'TEXT',
-                                'null'           => true,
+                                'null'           => false,
                         ],
-                        'seccio'          => [
-                                'type'           => 'VARCHAR',
-                                'constraint'     => '100',
+                        'id_seccio'          => [
+                                'type'           => 'INT',
+                                'null'           => false,
                         ],
                         'portada'          => [
                                 'type'           => 'VARCHAR',
@@ -48,9 +48,9 @@ class GestioMigration extends Migration
                                 'constraint'     => '150',
                         ],
                         'estat'         =>  [
-                                'type'           => 'ENUM',
-                                'constraint'     => ['publicat', 'no_publicat'],
-                                'default'        => 'no_publicat',
+                                'type'           => 'TINYINT',
+                                'constraint'     => 1,
+                                'default'        => 0,
                         ],
                         'created_at'      =>  [
                                 'type'         =>  'DATETIME',
@@ -70,6 +70,7 @@ class GestioMigration extends Migration
                 ]);
                 $this->forge->addPrimaryKey('id');
                 $this->forge->addForeignKey('id_club', 'clubs', 'id');
+                $this->forge->addForeignKey('id_seccio', 'seccions', 'id');
                 $this->forge->createTable('gestio');
         }
 

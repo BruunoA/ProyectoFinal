@@ -9,7 +9,7 @@ return [
     "Portada" => "Portada",
     "Contingut" => "Contingut",
     "Resum" => "Resum:",
-    "Contingut" => "Contingut:",
+    // "Contingut" => "Contingut:",
     "Veure" => "Veure",
     "Editar" => "Editar",
     "Eliminar" => "Eliminar",
@@ -20,4 +20,9 @@ return [
     'descripcioEvent' => 'Descripció',
     'dataEvent' => 'Data de l\'esdeveniment',
     'Data' => 'Data creació',
+    'Estat' => 'Estat: ',
+    'Clubs' => 'Selecciona un club per filtrar',
+    'Buscar' => 'Busca per titol/contingut',
+    'dataCreacio' => 'Data de creació: ',
+    'gestioCategories' => 'Gestió de categories',
 ];

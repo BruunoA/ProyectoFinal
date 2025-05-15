@@ -11,13 +11,14 @@ class zFotosSeeder extends Seeder
     {
         $fake = Factory::create("ca_ES");
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 60; $i++) {
             $data = [
                 'titol' => $fake->sentence(4),
                 'descripcio' => $fake->text(100),
-                'ruta' => 'assets/img/camara.png',
-                'banner' => 'no',  
-                'id_album' => rand(1, 13),
+                'ruta' => 'uploads/camara.png',
+                'estat' => 1,
+                // 'banner' => 'no',  
+                'id_album' => rand(1, 7),
                 'created_at' => date('Y-m-d H:i:s'),
             ];
 

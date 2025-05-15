@@ -17,9 +17,9 @@ class VisioSeeder extends Seeder
                 'id_club' => random_int(1, 3),
                 'contingut' => $fake->paragraph(3),
                 'resum' => $fake->paragraph(20),
-                'seccio' => 'visio',
+                'id_seccio' => 4,
                 'url' => url_title($nom, '-', true),
-                'estat' => 'publicat',
+                'estat' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
             ];
             $this->db->table('gestio')->insert($data);

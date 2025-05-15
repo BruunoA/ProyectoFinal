@@ -1,0 +1,19 @@
+    .mapa {
+        position: relative;
+        padding-bottom: 60%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .error {
+        color: red;
+        font-size: 1em;
+        margin-top: 4px;
+    }

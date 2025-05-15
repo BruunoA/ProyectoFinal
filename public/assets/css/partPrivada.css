@@ -1,0 +1,266 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #000;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    /* margin-top: auto; */
+}
+
+footer div {
+    margin-bottom: 1rem;
+}
+
+footer a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #d32f2f;
+}
+
+a:active {
+    color: red;
+}
+
+
+.menu {
+    /* background: linear-gradient(to right, #d32f2f, #000); */
+    background-color: black;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 20px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+
+}
+
+.menu-items {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-items li {
+    display: inline;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.menu-items a:hover {
+    background: grey;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.w3-row-padding {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.w3-third {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.noticies {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.w3-container {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.w3-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.w3-margin-top h2 {
+    margin-bottom: 20px;
+}
+
+.w3-button {
+    padding: 8px 12px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.w3-button:hover {
+    background: #388E3C;
+}
+
+@media (max-width: 768px) {
+    .menu-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: black;
+        width: 100%;
+        /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+    }
+
+    .menu-items.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1007px) {
+    /* footer {
+        background-color: white;
+        position: absolute;
+        bottom: 10;
+        width: 100%;
+        height: 40px;
+        color: red;
+    } */
+}
+
+.noticies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.noticies-card {
+    flex: 1 1 calc(33.333% - 16px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.xarxes_socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.xarxes_socials i {
+    font-size: 20px;
+    color: white;
+}
+
+.banner {
+    width: 100%;
+    height: 50vh;
+    /* 50% de la altura de la pantalla */
+    object-fit: cover;
+}
+
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.news-card {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    min-height: 60px;
+}
+
+
+@media (max-width: 900px) {
+    .news-card {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .news-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+.noticies {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap;  */
+}
+
+

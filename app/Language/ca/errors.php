@@ -8,4 +8,5 @@ return [
     'visio' => 'No s\'ha trobat la visió.',
     'valors' => 'No s\'ha trobat els valors.',
     'noNews' => 'No s\'han trobat les notícies destacades.',
+    'titolObligatori' => 'El títol és obligatori.',
 ];

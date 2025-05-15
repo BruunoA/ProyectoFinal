@@ -24,45 +24,42 @@
         .ck-editor__editable[role="textbox"] {
             min-height: 400px;
         }
+
+        .error {
+            color: red;
+            font-size: 1em;
+            /* margin-top: -10px; */
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body class="w3-container w3-padding">
-
-    <?php if (session()->has('errors')): ?>
-        <div class="w3-panel w3-red w3-padding">
-            <ul>
-                <?php foreach (session('errors') as $error): ?>
-                    <li><?= esc($error) ?></li>
-                <?php endforeach ?>
-            </ul>
-        </div>
-    <?php endif ?>
-
+    <?php helper('form'); ?>
     <form class="w3-card w3-padding w3-margin-top" method="post" action="<?= base_url('modify/' . $gestio['id']) ?>">
         <?= csrf_field() ?>
 
         <label for="nom" class="w3-text-black"><b>Títol</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= old('nom', $gestio['nom']) ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="nom" id="nom" value="<?= $gestio['nom'] ?>">
+        <div class="error"><?= validation_show_error('nom') ?></div>
 
         <label for="resum" class="w3-text-black"><b>Resum</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= old('resum', $gestio['resum']) ?>">
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="resum" id="resum" value="<?= $gestio['resum'] ?>">
+        <div class="error"><?= validation_show_error('resum') ?></div>
 
         <label for="seccio" class="w3-text-black"><b>Secció</b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="seccio" id="seccio">
             <option value="">Selecciona una opció</option>
-            <option value="" disabled class="w3-bold">Noticies</option>
-            <option value="noticies" <?= old('seccio', $gestio['seccio']) === 'noticies' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Noticies</option>
-            <option value="" disabled class="w3-bold">Sobre nosaltres</option>
-            <option value="historia" <?= old('seccio', $gestio['seccio']) === 'historia' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Història</option>
-            <option value="missio" <?= old('seccio', $gestio['seccio']) === 'missio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Missió</option>
-            <option value="visio" <?= old('seccio', $gestio['seccio']) === 'visio' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Visió</option>
-            <option value="valors" <?= old('seccio', $gestio['seccio']) === 'valors' ? 'selected' : '' ?>>&nbsp;&nbsp;&nbsp;Valors</option>
+            <?php foreach ($seccions as $seccio): ?>
+                <option value="<?= $seccio['nom'] ?>" <?= old('id_seccio', $gestio['id_seccio']) == $seccio['id'] ? 'selected' : '' ?>><?= esc($seccio['nom']) ?></option>
+            <?php endforeach ?>
         </select>
+        <div class="error"><?= validation_show_error('seccio') ?></div>
 
         <div id="portada-container" class="w3-margin-bottom" style="display: none;">
             <label for="portada" class="w3-text-black"><b>Portada Notícia</b></label>
-            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly value="<?= old('portada', $gestio['portada']) ?>">
+            <input class="w3-input w3-border" type="text" id="portada" name="portada" readonly value="<?= $gestio['portada'] ?>">
+            <div class="error"><?= validation_show_error('portada') ?></div>
             <button type="button" class="w3-button w3-blue w3-margin-top" onclick="openFileManager()">Seleccionar imatge</button>
         </div>
 
@@ -73,44 +70,35 @@
                 <option value="<?= $club['id'] ?>" <?= old('id_club', $gestio['id_club']) == $club['id'] ? 'selected' : '' ?>><?= esc($club['nom']) ?></option>
             <?php endforeach ?>
         </select>
+        <div class="error"><?= validation_show_error('id_club') ?></div>
 
-            <label for="estat" class="w3-text-black"><b>Estat</b></label>
-            <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
-                <option value="">Selecciona una opció</option>
-                <option value="no_publicat" <?= old('estat', $gestio['estat']) === 'no_publicat' ? 'selected' : '' ?>>No Publicat</option>
-                <option value="publicat" <?= old('estat', $gestio['estat']) === 'publicat' ? 'selected' : '' ?>>Publicat</option>
-            </select>
+        <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
+        <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
+            <option value=""><?= lang('gestioGeneral.seleccionaOpcio') ?></option>
+            <option value="0" <?= old('estat', $gestio['estat'] ?? '') == 0 ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
+            <option value="1" <?= old('estat', $gestio['estat'] ?? '') == 1 ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
+        </select>
+        <div class="error"><?= validation_show_error('estat') ?></div>
 
-            <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
-            <div class="w3-margin-bottom">
-                <textarea name="ckeditor" id="ckeditor"><?= old('contingut', $gestio['contingut'] ?? 'No hi ha contingut') ?></textarea>
-            </div>
+        <label class="w3-text-black w3-margin-top"><b>Contingut</b></label>
+        <div class="w3-margin-bottom">
+            <textarea name="ckeditor" id="ckeditor"><?=  $gestio['contingut'] ?? 'No hi ha contingut' ?></textarea>
+            <div class="error"><?= validation_show_error('ckeditor') ?></div>
+        </div>
 
-            <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
+        <button type="submit" class="w3-button w3-green w3-margin-top">Submit</button>
     </form>
 
     <script>
         function mostrarPortada() {
             const seccio = document.getElementById('seccio').value;
             const portadaContainer = document.getElementById('portada-container');
-            portadaContainer.style.display = (seccio === 'noticies') ? 'block' : 'none';
+            portadaContainer.style.display = (seccio === 'Notícies') ? 'block' : 'none';
         }
 
         document.getElementById('seccio').addEventListener('change', mostrarPortada);
 
         window.addEventListener('DOMContentLoaded', mostrarPortada);
-
-        document.getElementById('seccio').addEventListener('change', function() {
-            const contenidorContingut = document.querySelector('#ckeditor').closest('.w3-margin-bottom');
-            const ckeditor = document.getElementById('ckeditor');
-
-            const portada = document.getElementById('portada-container');
-            if (this.value === 'noticies') {
-                portada.style.display = 'block';
-            } else {
-                portada.style.display = 'none';
-            }
-        });
 
         const connectorUrl = "<?= base_url('fileconnector') ?>";
         const uploadTargetHash = 'l1_XA';

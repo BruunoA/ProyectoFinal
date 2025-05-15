@@ -13,15 +13,14 @@
 <body>
     <?= $this->include('general/menu'); ?>
 
-    <div class="w3-container" style="margin-top: 2rem;">
-        <div class="w3-container w3-teal" style="margin-bottom: 2rem">
-            <h1 class="w3-text-white"><?= $noticia['nom'] ?></h1>
+    <div class="w3-container" style="margin-top: 2rem; max-width: 800px; margin: auto;">
+        <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+            <h1 class="w3-text-white w3-center"><?= $noticia['nom'] ?></h1>
         </div>
-
-        <div class="w3-card news-card" style="display:flex; flex-direction: column; align-items:center">
-            <!-- <img src="<?= $noticia['portada'] ?>" style="height: 50%px; width:auto" alt="Noticia portada"> -->
+        <div class="w3-card" style="display:flex; flex-direction: column; align-items:center">
             <img src="<?= $noticia['portada'] ?>" alt="Noticia portada" class="img-fluid rounded" style="object-fit: cover;">
             <div class="w3-container news-container">
+                <p><strong><?= lang('noticies.dataCreacio') . date('d/m/Y', strtotime($noticia['created_at'])) ?></strong></p>
                 <p><?= $noticia['contingut'] ?></p>
             </div>
         </div>

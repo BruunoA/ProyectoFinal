@@ -11,22 +11,18 @@ class AssumptesSeeder extends Seeder
         $data =[
             [
             'nom' => 'Entrenaments',
-            'missatge' => 'lorem diwjpqwidqwpd`qwp`kqwpow',
             'created_at' => date('Y-m-d H:i:s'),
             ],
             [
             'nom' => 'Partits',
-            'missatge' => 'lorem diwjpqwidqwpd`qwp`kqwpow',
             'created_at' => date('Y-m-d H:i:s'),
             ],
             [
             'nom' => 'Competicions',
-            'missatge' => 'lorem diwjpqwidqwpd`qwp`kqwpow',
             'created_at' => date('Y-m-d H:i:s'),
             ],
             [
             'nom' => 'Altres',
-            'missatge' => 'lorem diwjpqwidqwpd`qwp`kqwpow',
             'created_at' => date('Y-m-d H:i:s'),
             ],
         ];

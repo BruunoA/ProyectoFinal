@@ -17,20 +17,24 @@ class ConfiguracioMigration extends Migration
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                         ],
-                        'icon' => [
+                        'icona' => [
                                 'type'       => 'VARCHAR',
                                 'constraint' => '250',
                                 'null'       => true,
                         ],
+                        'zona' => [
+                                'type'      => 'ENUM',
+                                'constraint' => ['superior', 'inferior'],
+                                'default'   => 'superior',
+                        ],
                         'valor' => [
-                                'type'       => 'VARCHAR',
-                                'constraint' => '250',
+                                'type'       => 'TEXT',
                                 'null'       => false,
                         ],
                         'tipus'          => [
                                 'type'           => 'ENUM',
                                 'constraint'     => ['dades_contacte', 'xarxes_socials', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
-                                'default'        => null,
+                                'default'        => 'menu_general',
                         ],
                         'id_pare' => [
                                 'type' => 'INT',
@@ -38,8 +42,9 @@ class ConfiguracioMigration extends Migration
                                 'default' => null,
                         ],
                         'visibilitat' => [
-                                'type' => 'ENUM',
-                                'constraint' => ['Si', 'No'],
+                                'type' => 'TINYINT',
+                                'constraint' => 1,
+                                'default' => 0,
                         ],
                         'ordre' => [
                                 'type' => 'INT',

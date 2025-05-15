@@ -6,8 +6,14 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    //  public function __construct()
+    // {
+    //     $model = new ConfiguracioModel();
+    //     $gmail = $model->where('nom', 'Correu')->first();
+    //     $this->fromEmail = $gmail['valor'] ?? 'fcalpicat@capalabs.com';
+    // }
+    public string $fromEmail  = 'fcalpicat@capalabs.com';
+    public string $fromName   = 'Administrador Picat';
     public string $recipients = '';
 
     /**
@@ -28,22 +34,22 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = 'sandbox.smtp.mailtrap.io';
+    public string $SMTPHost = 'capalabs.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'ca57493ad13366';
+    public string $SMTPUser = 'fcalpicat@capalabs.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '843ae6e49b5978';
+    public string $SMTPPass = 'daw-alpicat-futbol-club-projecte25';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 2525;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -62,7 +68,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
@@ -77,7 +83,7 @@ class Email extends BaseConfig
     /**
      * Type of mail, either 'text' or 'html'
      */
-    public string $mailType = 'text';
+    public string $mailType = 'text';//httml para poner negritas y tal 
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)

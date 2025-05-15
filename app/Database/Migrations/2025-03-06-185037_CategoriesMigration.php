@@ -29,12 +29,13 @@ class CategoriesMigration extends Migration
                 'null'           => false,
             ],
             'horari'          => [
-                'type'           => 'TEXT',
-                'constraint'     => '400',
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
                 'null'           => false,
             ],
             'id_equip'          => [
                 'type'           => 'int',
+                'null'           => false,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',
@@ -46,11 +47,11 @@ class CategoriesMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'publicated_at'          => [
-                'type'           => 'TIMESTAMP',
-                'null'           => true,
-                'default'        => null,
-            ],
+            // 'publicated_at'          => [
+            //     'type'           => 'TIMESTAMP',
+            //     'null'           => true,
+            //     'default'        => null,
+            // ],
             'deleted_at'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => true,

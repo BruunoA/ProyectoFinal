@@ -7,13 +7,13 @@
         $xarxes_socials = mostrar_footer(); 
         foreach ($xarxes_socials as $xarxa): ?>
             <a href="<?= $xarxa['valor']; ?>" target="_blank">
-            <i class="<?= esc($xarxa['icon']); ?>" style="font-size: 40px; color: white; margin: 0 10px;"></i>
+            <i class="<?= esc($xarxa['icona']); ?>" style="font-size: 40px; color: white; margin: 0 10px;"></i>
             </a>
         <?php endforeach; ?>
     </div>
     <div>
         <?php 
-        $footer = mostrar_tree();
+        $footer = mostrar_tree_inferior();
 
         foreach ($footer as $item): ?>
             <a href="<?= base_url($item['valor']); ?>" style="color: white; text-decoration: none; margin: 0 10px;"><?= esc($item['nom']); ?></a>

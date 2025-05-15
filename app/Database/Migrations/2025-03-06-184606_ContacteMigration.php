@@ -18,19 +18,18 @@ class ContacteMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'assumpte'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => 255, 
-                'null'           => false,
-            ],
             'text'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255, 
+                'constraint'     => 400,
                 'null'           => false,
             ],
             'from_email'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 255, 
+                'null'           => false,
+            ],
+            'telefon'          => [
+                'type'           => 'INT',
                 'null'           => false,
             ],
             'to'          => [
@@ -43,14 +42,10 @@ class ContacteMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
-            'data'          => [
+            'data_resposta'          => [
                 'type'           => 'TIMESTAMP',
                 'null'           => false,
             ],
-            // 'id_tag'          => [       // TODO: ACABAR DE VEURE SI FA FALTA FICAR-HO
-            //     'type'           => 'INT',
-            //     'null'           => false,
-            // ],
             'id_assumpte'          => [
                 'type'           => 'INT',
                 'null'           => false,
@@ -60,7 +55,7 @@ class ContacteMigration extends Migration
                 'null'         =>  true,
                 'default'    =>  null,
             ],
-            'updated_at'     =>  [      // TODO: FA FALTA?
+            'updated_at'     =>  [     
                 'type'         =>  'DATETIME',
                 'null'         =>  true,
                 'default'    =>  null,
@@ -73,7 +68,6 @@ class ContacteMigration extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('contacte');
-        // $this->forge->addForeignKey('id_tag', 'tag', 'id');
         $this->forge->addForeignKey('id_assumpte', 'assumptes', 'id');
     }
 

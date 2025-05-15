@@ -16,15 +16,17 @@ class UsersMigration extends Migration
             'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '150',
+                'null'           => false,
             ],
             'rol'         => [
                 'type'           => 'ENUM',
-                'constraint'     => ['admin', 'user'],
-                'default'        => 'user',
+                'constraint'     => ['admin', 'superadmin'],
+                'default'        => 'admin',
             ],
             'password'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '250',
+                'constraint'     => '300',
+                'null'           => false,
             ],
             'created_at'      =>  [
                 'type'         =>  'DATETIME',

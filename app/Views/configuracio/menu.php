@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= lang('gestioMenu.titolGestio') ?></title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/partPrivada.css'); ?>">
 </head>
 
 <body>
     <?= $this->include('general/menuGestio'); ?>
-    <div class="w3-margin">
+    <div class="w3-margin w3-margin-top">
         <h2 class="w3-center"><?= lang('gestioMenu.subtitolGeneral') ?></h2>
         <?php echo $output; ?>
     </div>

@@ -1,32 +1,109 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<nav class="menu">
+<style>
+
+</style>
+<nav class="menu" style=" z-index: 1;">
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <ul class="menu-items">
-        <?php foreach (mostrar_tree() as $menu): ?>
-        <?php if (isset($menu['children'])): ?>
-            <div class="w3-dropdown-hover">
-                <button class="w3-btn w3-text-white"><?= $menu['nom'] ?> <i class="fa-solid fa-caret-down"></i></button>
-                <div class="w3-dropdown-content w3-bar-block w3-card-4" style="background-color: #b11216">
-                    <?php foreach ($menu['children'] as $child): ?>
-                        <a href="<?= base_url($child['valor']) ?>" class="w3-bar-item w3-btn w3-text-white"><?= $child['nom'] ?></a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        <?php else: ?>
-            <a href="<?= base_url($menu['valor']) ?>" class="w3-bar-item w3-btn w3-text-white">
-                <?= $menu['nom'] ?>
-            </a>
-        <?php endif; ?>
-    <?php endforeach; ?>
+            <?php $logo = mostrar_logo(); ?>
+            <img src="<?= $logo['img'] ?>" alt="Logo" height="40" style="width: 40px;">
+            <?php foreach (mostrar_tree() as $menu_item): ?>
+                <?php if (empty($menu_item['children'])): ?>
+                    <li>
+                        <a href="<?= base_url($menu_item['valor']) ?>"><?= $menu_item['nom'] ?></a>
+                    </li>
+                <?php else: ?>
+                    <li class="has-submenu">
+                        <a href="<?= base_url($menu_item['valor']) ?>">
+                            <?= $menu_item['nom'] ?> <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <?php foreach ($menu_item['children'] as $child): ?>
+                                <?php if (empty($child['children'])): ?>
+                                    <li>
+                                        <a href="<?= base_url($child['valor']) ?>"><?= $child['nom'] ?></a>
+                                    </li>
+                                <?php else: ?>
+                                    <li class="has-submenu">
+                                        <a href="<?= base_url($child['valor']) ?>">
+                                            <?= $child['nom'] ?> <i class="fa-solid fa-caret-right"></i>
+                                        </a>
+                                        <ul class="submenu nivell-3">
+                                            <?php foreach ($child['children'] as $grandchild): ?>
+                                                <li>
+                                                    <a href="<?= base_url($grandchild['valor']) ?>"><?= $grandchild['nom'] ?></a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if (session()->has('logged_in') && session('logged_in')): ?>
+                <li>
+                    <a href="<?= base_url('gestio') ?>"><?= lang('home.gestio') ?></a>
+                </li>
+                <a href="<?= base_url('logout') ?>"><?= lang('home.logout') ?></a>
+            <?php else: ?>
+                <li>
+                    <a href="<?= base_url('login') ?>"><?= lang('home.login') ?></a>
+                </li>
+            <?php endif; ?>
         </ul>
+        <div class="xarxes_socials">
+            <?php
+            $xarxes_socials = mostrar_footer();
+            foreach ($xarxes_socials as $xarxa): ?>
+                <a href="<?= $xarxa['valor']; ?>" target="_blank">
+                    <i class="<?= esc($xarxa['icona']); ?>"></i>
+                </a>
+            <?php endforeach; ?>
+        </div>
     </div>
 </nav>
 
 <script>
     function toggleMenu() {
-        document.querySelector(".menu-items").classList.toggle("show");
+        const menu = document.querySelector(".menu-items");
+        menu.classList.toggle("show");
     }
+
+    document.querySelectorAll('.has-submenu > a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // if (window.innerWidth <= 768) {
+            const parentItem = this.parentElement;
+            const isSubmenuActive = parentItem.classList.contains('active');
+
+            if (parentItem.querySelector('.submenu')) {
+                e.preventDefault();
+                parentItem.classList.toggle('active');
+
+                document.querySelectorAll('.has-submenu').forEach(item => {
+                    if (item !== parentItem) {
+                        item.classList.remove('active');
+                    }
+                });
+            } else if (isSubmenuActive) {
+                return true;
+            }
+            // }
+        });
+    });
+
+    // document.querySelectorAll('.submenu a').forEach(subLink => {
+    //     subLink.addEventListener('click', function(e) {
+    //         // if (window.innerWidth <= 768) {
+    //             if (!this.parentElement.classList.contains('has-submenu')) {
+    //                 return true;
+    //             // }
+    //         }
+    //     });
+    // });
 </script>
