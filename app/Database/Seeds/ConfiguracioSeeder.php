@@ -11,7 +11,7 @@ class ConfiguracioSeeder extends Seeder
         $data = [
             [
                 'nom' => 'Inici',
-                // 'icona' => 'fa-solid fa-house',
+                'icona' => 'fa-solid fa-house',
                 'valor' => '/',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -21,6 +21,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Contacte',
+                'icona' => 'fa-solid fa-phone',
                 'valor' => 'contacte',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -30,6 +31,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Sobre Nosaltres',
+                'icona' => 'fa-solid fa-users',
                 'valor' => 'sobreNosaltres',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
@@ -39,6 +41,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Programes',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
@@ -48,6 +51,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Juvenil',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/sub-19',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -57,6 +61,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Juvenil segona divisio',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/juvenil-segona-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -66,6 +71,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Cadet',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/cadet',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -75,15 +81,17 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Cadet primera divisio',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/cadet-primera-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 8,
+                'id_pare' => 7,
                 'zona' => 'superior'
             ],
             [
                 'nom' => 'Cadet segona divisio',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/cadet-segona-divisio',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -93,6 +101,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Amateur',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/amateur',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -101,7 +110,8 @@ class ConfiguracioSeeder extends Seeder
                 'zona' => 'superior'
             ],
             [
-                'nom' => 'Tercera catalana',
+                'nom' => 'Amateur tercera catalana',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/tercera-catalana',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -110,7 +120,8 @@ class ConfiguracioSeeder extends Seeder
                 'zona' => 'superior'
             ],
             [
-                'nom' => 'Segona catalana',
+                'nom' => 'Amateur segona catalana',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-catalana',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -120,6 +131,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Infantil',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/infantil',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
@@ -129,6 +141,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [   // ni ha dos
                 'nom' => 'Infantil segona divisio S14',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/infantil-segona-divisio-s14',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -138,6 +151,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Alevi',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/alevi',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
@@ -147,15 +161,17 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Primera divisio alevi S12',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/primera-divisio-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
-                'visibilitat' => 1,
+                'visibilitat' => 0,
                 'id_pare' => 15,
                 'zona' => 'superior'
             ],
             [
                 'nom' => 'Primera divisio alevi S11',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/primera-divisio-alevi-s11',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -165,6 +181,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Segona divisio alevi S12',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-divisio-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
@@ -174,6 +191,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Segona divisio alevi S11',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-divisio-alevi-s11',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
@@ -183,6 +201,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Preferent alevi S12',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/preferent-alevi-s12',
                 'tipus' => 'menu_general',
                 'ordre' => 5,
@@ -192,6 +211,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Benjamins',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/benjamins',
                 'tipus' => 'menu_general',
                 'ordre' => 12,
@@ -201,6 +221,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Primera divisio benjamins S10',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/primera-divisio-benjamins-s10',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -210,6 +231,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Primera divisio benjamins S9',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/primera-divisio-benjamins-s9',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -219,6 +241,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Prebenjami S8',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/prebenjami-s8',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
@@ -228,6 +251,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Prebenjami S7',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/prebenjami-s7',
                 'tipus' => 'menu_general',
                 'ordre' => 4,
@@ -237,6 +261,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Femeni',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/femeni',
                 'tipus' => 'menu_general',
                 'ordre' => 15,
@@ -246,6 +271,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Segona divisio femeni juvenil',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-divisio-femeni-juvenil',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -255,6 +281,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Segona divisio femeni infantil',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-divisio-femeni-infantil',
                 'tipus' => 'menu_general',
                 'ordre' => 2,
@@ -264,6 +291,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Segona divisio femeni alevi',
+                'icona' => 'fa-solid fa-football',
                 'valor' => 'programes/segona-divisio-femeni-alevi',
                 'tipus' => 'menu_general',
                 'ordre' => 3,
@@ -273,6 +301,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Noticies',
+                'icona' => 'fa-solid fa-newspaper',
                 'valor' => 'noticies',
                 'tipus' => 'menu_general',
                 'ordre' => 5,
@@ -282,6 +311,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Galeria',
+                'icona' => 'fa-solid fa-image',
                 'valor' => 'galeria',
                 'tipus' => 'menu_general',
                 'ordre' => 6,
@@ -291,6 +321,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'Botiga',
+                'icona' => 'fa-solid fa-store',
                 'valor' => 'botiga',
                 'tipus' => 'menu_general',
                 'ordre' => 7,
@@ -298,44 +329,45 @@ class ConfiguracioSeeder extends Seeder
                 'id_pare' => null,
                 'zona' => 'superior'
             ],
-            [
-                'nom' => 'Acces privat',
-                'valor' => '',
-                'tipus' => 'menu_general',
-                'ordre' => 8,
-                'visibilitat' => 1,
-                'id_pare' => null,
-                'zona' => 'superior'
-            ],
-            [
-                'nom' => 'Iniciar sessio',
-                'valor' => 'login',
-                'tipus' => 'menu_general',
-                'ordre' => 1,
-                'visibilitat' => 1,
-                'id_pare' => 33,
-                'zona' => 'superior'
-            ],
-            [
-                'nom' => 'Tancar sessio',
-                'valor' => 'logout',
-                'tipus' => 'menu_general',
-                'ordre' => 2,
-                'visibilitat' => 1,
-                'id_pare' => 33,
-                'zona' => 'superior'
-            ],
-            [
-                'nom' => 'Gestio',
-                'valor' => 'gestio',
-                'tipus' => 'menu_general',
-                'ordre' => 3,
-                'visibilitat' => 1,
-                'id_pare' => 33,
-                'zona' => 'superior'
-            ],
+            // [
+            //     'nom' => 'Acces privat',
+            //     'valor' => '',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 8,
+            //     'visibilitat' => 1,
+            //     'id_pare' => null,
+            //     'zona' => 'superior'
+            // ],
+            // [
+            //     'nom' => 'Iniciar sessio',
+            //     'valor' => 'login',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 1,
+            //     'visibilitat' => 1,
+            //     'id_pare' => 33,
+            //     'zona' => 'superior'
+            // ],
+            // [
+            //     'nom' => 'Tancar sessio',
+            //     'valor' => 'logout',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 2,
+            //     'visibilitat' => 1,
+            //     'id_pare' => 33,
+            //     'zona' => 'superior'
+            // ],
+            // [
+            //     'nom' => 'Gestio',
+            //     'valor' => 'gestio',
+            //     'tipus' => 'menu_general',
+            //     'ordre' => 3,
+            //     'visibilitat' => 1,
+            //     'id_pare' => 33,
+            //     'zona' => 'superior'
+            // ],
             [
                 'nom' => 'Sobre nosaltres',
+                'icona' => 'fa-solid fa-users',
                 'valor' => 'sobreNosaltres',
                 'tipus' => 'menu_general',
                 'ordre' => 1,
@@ -345,6 +377,7 @@ class ConfiguracioSeeder extends Seeder
             ],
             [
                 'nom' => 'El nostre staff',
+                'icona' => 'fa-solid fa-users',
                 'valor' => 'staff',
                 'tipus' => 'menu_general',
                 'ordre' => 2,

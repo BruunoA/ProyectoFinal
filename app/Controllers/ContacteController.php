@@ -88,7 +88,7 @@ class ContacteController extends BaseController
         $data = [
             'nom' => $this->request->getPost('nom'),
             'from_email' => $this->request->getPost('from_email'),
-            'assumpte' => $this->request->getPost('assumpte'),
+            'id_assumpte' => $this->request->getPost('assumpte'),
             'text' => $this->request->getPost('text'),
             'created_at' => date('Y-m-d H:i:s')
         ];
@@ -100,12 +100,12 @@ class ContacteController extends BaseController
 
         $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
         $email->setTo('fcalpicat@capalabs.com');
-        $email->setSubject('Nuevo mensaje de contacto: ' . $data['assumpte']);
+        $email->setSubject('Nuevo mensaje de contacto: ' . $data['id_assumpte']);
 
         $missatge = "Has recibido un nuevo mensaje de contacto:\n\n";
         $missatge .= "Nombre: {$data['nom']}\n";
         $missatge .= "Email: {$data['from_email']}\n";
-        $missatge .= "Asunto: {$data['assumpte']}\n";
+        $missatge .= "Asunto: {$data['id_assumpte']}\n";
         $missatge .= "Mensaje:\n{$data['text']}\n";
 
         $email->setMessage($missatge);
