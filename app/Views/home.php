@@ -43,7 +43,7 @@
         <!-- <div class="w3-content w3-display-container"> -->
         <?php foreach ($banners as $banner): ?>
             <div class="w3-display-container mySlides">
-                <img src="<?= $banner['img']; ?>" class="w3-margin-top banner" style="max-height: 500px;">
+                <img src="<?= $banner['img']; ?>" class="w3-margin-top banner" style="max-height: 400px;">
             </div>
         <?php endforeach; ?>
 

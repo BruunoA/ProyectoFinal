@@ -48,10 +48,10 @@ class SobreNosaltresController extends BaseController
 
         $agrupar = [];
         foreach ($staff as $persona) {
-            $agrupar[$persona['nom_carrec']] = $persona;
+            $agrupar[$persona['nom_carrec']][] = $persona;
         }
 
-        dd($agrupar);
+        // dd($agrupar);
 
         $data = [
             'carrecs' => $agrupar,

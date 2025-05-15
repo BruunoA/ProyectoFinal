@@ -14,7 +14,7 @@
     <?= $this->include('general/menu'); ?>
     <div>
         <div class="staff-container">
-            <?php foreach ($carrecs as $carrec): ?>
+            <?php foreach ($carrecs as $carrec => $persones): ?>
                 <h2 class="w3-padding"><?= esc($carrec) ?></h2>
                 <div class="cards-container w3-row-padding">
                     <?php foreach ($persones as $persona): ?>

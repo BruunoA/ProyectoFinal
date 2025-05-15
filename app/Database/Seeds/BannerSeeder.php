@@ -11,7 +11,7 @@ class BannerSeeder extends Seeder
     {
         $fake = Factory::create("es_ES");
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             $nom = $fake->sentence(6);
 
             $data = [
