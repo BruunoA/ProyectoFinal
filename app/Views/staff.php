@@ -13,24 +13,35 @@
 <body>
     <?= $this->include('general/menu'); ?>
     <div>
-        <div class="cards-container w3-margin">
-            <?php foreach ($carrecs as $persona): ?>
-                <div class="news-card w3-round" style="border: 2px solid black; max-width: 300px; max-height: 600px;">
-                    <div class="w3-center">
-                        <img src="<?= esc($persona['img']); ?>" alt="<?= esc($persona['nom']); ?>" class="w3-image" style="width:300px; max-height:200px; object-fit:cover;">
-                    </div>
-                    <div class="w3-margin">
-                        <h3><?= esc($persona['nom']) ?></h3>
-                        <p class="content-preview"><strong><?= esc($persona['nom_carrec']) ?></strong></p>
-                        <p><?= esc($persona['descripcio']) ?></p>
-                    </div>
+        <div class="staff-container">
+            <?php foreach ($carrecs as $carrec): ?>
+                <h2 class="w3-padding"><?= esc($carrec) ?></h2>
+                <div class="cards-container w3-row-padding">
+                    <?php foreach ($persones as $persona): ?>
+                        <div class="news-card w3-round w3-col m4 l3" style="border: 2px solid black; max-height: 400px; margin-bottom: 20px;">
+                            <div class="w3-center">
+                                <img src="<?= esc($persona['img']); ?>" alt="<?= esc($persona['nom']); ?>"
+                                    class="w3-image" style="width:100%; max-height:200px; object-fit:cover;">
+                            </div>
+                            <div class="card-content w3-padding">
+                                <h3><?= esc($persona['nom']) ?></h3>
+                                <p class="content-preview">
+                                    <strong><?= esc($persona['nom_carrec']) ?></strong>
+                                </p>
+                                <p>
+                                    <?= esc(strlen($persona['descripcio']) > 90 ? substr($persona['descripcio'], 0, 90) . '...' : $persona['descripcio']) ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             <?php endforeach; ?>
         </div>
-
+        <!-- 
         <div class="paginador w3-center w3-black" style="color:black">
-            <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
-        </div>
+            <p><?php // $pager->links('default', 'daw_template'); 
+                ?></p> <?php ?>
+        </div> -->
     </div>
     <?= $this->include('general/footer'); ?>
 </body>
