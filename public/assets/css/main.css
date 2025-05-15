@@ -1,14 +1,15 @@
-html, body {
-    height: 100%;  
-    margin: 0;     
-    display: flex; 
-    flex-direction: column; 
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     font-family: 'Segoe UI', sans-serif;
     background-color: #f4f4f4;
 }
 
 main {
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 footer {
@@ -93,7 +94,7 @@ a:active {
 }
 
 .w3-third {
-    flex: 1 1 calc(33.333% - 20px); 
+    flex: 1 1 calc(33.333% - 20px);
     min-width: 280px;
     max-width: calc(33.333% - 20px);
     display: flex;
@@ -185,21 +186,22 @@ a:active {
     box-sizing: border-box;
 }
 
-.xarxes_socials{
+.xarxes_socials {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-left: auto;
 }
 
-.xarxes_socials i{
+.xarxes_socials i {
     font-size: 20px;
     color: white;
 }
 
-.banner{
-     width: 100%;
-    height: 50vh; /* 50% de la altura de la pantalla */
+.banner {
+    width: 100%;
+    height: 50vh;
+    /* 50% de la altura de la pantalla */
     object-fit: cover;
 }
 
@@ -212,7 +214,7 @@ a:active {
 }
 
 .news-card {
-    flex: 1 1 calc(33.333% - 20px); 
+    flex: 1 1 calc(33.333% - 20px);
     min-width: 280px;
     max-width: calc(33.333% - 20px);
     display: flex;
@@ -237,7 +239,7 @@ a:active {
 
 .card-content h3 {
     margin-top: 0;
-    min-height: 60px; 
+    min-height: 60px;
 }
 
 
@@ -250,12 +252,12 @@ a:active {
 
 @media (max-width: 600px) {
     .news-card {
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
         max-width: 100%;
     }
 }
 
-.noticies{
+.noticies {
     overflow: hidden;
     text-overflow: ellipsis;
     /* white-space: nowrap;  */
@@ -271,8 +273,8 @@ a:active {
 
 
 
-    .menu {
-    background-color:rgb(8, 8, 8);
+.menu {
+    background-color: rgb(8, 8, 8);
     color: white;
 }
 
@@ -301,7 +303,7 @@ a:active {
     display: block;
 }
 
-.menu-items > li > a {
+.menu-items>li>a {
     display: flex;
     align-items: center;
 }
@@ -312,7 +314,7 @@ a:active {
     cursor: pointer;
 }
 
-.has-submenu > a > i {
+.has-submenu>a>i {
     margin-left: 5px;
 }
 
@@ -321,53 +323,52 @@ a:active {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color:rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
     min-width: 200px;
     z-index: 1000;
     list-style: none;
     padding: 0;
     margin: 0;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.submenu.level-3 {
+.submenu.nivell-3 {
     left: 100%;
     top: 0;
 }
 
-.has-submenu:hover > .submenu {
+.has-submenu:hover>.submenu {
     display: block;
 }
 
-/* Estilos para móvil */
-@media (max-width: 768px) {
+@media (max-width: 768px) { 
     .menu-items {
         flex-direction: column;
         display: none;
     }
-    
+
     .menu-items.show {
         display: flex;
     }
-    
+
     .menu-toggle {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    
+
     .submenu {
         position: static;
         display: none;
         /* padding-left: 20px; */
-        background-color: rgba(0,0,0,0.2);
+        background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
     }
-    
-    .submenu.level-3 {
+
+    .submenu.nivell-3 {
         /* padding-left: 40px; */
     }
-    
+
     /* .has-submenu.active > .submenu {
         display: block;
     }
@@ -379,7 +380,7 @@ a:active {
     .has-submenu > a > i {
         transition: transform 0.3s;
     } */
-    
+
     /* .has-submenu.active > a > i.fa-caret-down {
         transform: rotate(180deg);
     }
@@ -388,15 +389,3 @@ a:active {
         transform: rotate(90deg);
     } */
 }
-
-
-
-
-
-
-
-
-
-
-
-

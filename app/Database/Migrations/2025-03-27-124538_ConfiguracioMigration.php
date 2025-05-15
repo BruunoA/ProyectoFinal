@@ -22,6 +22,11 @@ class ConfiguracioMigration extends Migration
                                 'constraint' => '250',
                                 'null'       => true,
                         ],
+                        'zona' => [
+                                'type'      => 'ENUM',
+                                'constraint' => ['superior', 'inferior'],
+                                'default'   => 'superior',
+                        ],
                         'valor' => [
                                 'type'       => 'TEXT',
                                 'null'       => false,
@@ -29,7 +34,7 @@ class ConfiguracioMigration extends Migration
                         'tipus'          => [
                                 'type'           => 'ENUM',
                                 'constraint'     => ['dades_contacte', 'xarxes_socials', 'menu_general', 'menu_gestio', 'idiomes', 'idioma_defecte'],
-                                'default'        => null,
+                                'default'        => 'menu_general',
                         ],
                         'id_pare' => [
                                 'type' => 'INT',

@@ -7,8 +7,10 @@
 <nav class="menu" style=" z-index: 1;">
     <div class="menu-container">
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        
+
         <ul class="menu-items">
+            <?php $logo = mostrar_logo(); ?>
+            <img src="<?= $logo['img'] ?>" alt="Logo" height="40" style="width: 40px;">
             <?php foreach (mostrar_tree() as $menu_item): ?>
                 <?php if (empty($menu_item['children'])): ?>
                     <li>
@@ -30,7 +32,7 @@
                                         <a href="<?= base_url($child['valor']) ?>">
                                             <?= $child['nom'] ?> <i class="fa-solid fa-caret-right"></i>
                                         </a>
-                                        <ul class="submenu level-3">
+                                        <ul class="submenu nivell-3">
                                             <?php foreach ($child['children'] as $grandchild): ?>
                                                 <li>
                                                     <a href="<?= base_url($grandchild['valor']) ?>"><?= $grandchild['nom'] ?></a>
@@ -49,41 +51,40 @@
 </nav>
 
 <script>
-function toggleMenu() {
-    const menu = document.querySelector(".menu-items");
-    menu.classList.toggle("show");
-}
+    function toggleMenu() {
+        const menu = document.querySelector(".menu-items");
+        menu.classList.toggle("show");
+    }
 
-document.querySelectorAll('.has-submenu > a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        // if (window.innerWidth <= 768) {
+    document.querySelectorAll('.has-submenu > a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // if (window.innerWidth <= 768) {
             const parentItem = this.parentElement;
             const isSubmenuActive = parentItem.classList.contains('active');
-            
+
             if (parentItem.querySelector('.submenu')) {
                 e.preventDefault();
                 parentItem.classList.toggle('active');
-                
+
                 document.querySelectorAll('.has-submenu').forEach(item => {
                     if (item !== parentItem) {
                         item.classList.remove('active');
                     }
                 });
-            }
-            else if (isSubmenuActive) {
+            } else if (isSubmenuActive) {
                 return true;
             }
-        // }
-    });
-});
-
-document.querySelectorAll('.submenu a').forEach(subLink => {
-    subLink.addEventListener('click', function(e) {
-        // if (window.innerWidth <= 768) {
-            if (!this.parentElement.classList.contains('has-submenu')) {
-                return true;
             // }
-        }
+        });
     });
-});
-</script>   
+
+    // document.querySelectorAll('.submenu a').forEach(subLink => {
+    //     subLink.addEventListener('click', function(e) {
+    //         // if (window.innerWidth <= 768) {
+    //             if (!this.parentElement.classList.contains('has-submenu')) {
+    //                 return true;
+    //             // }
+    //         }
+    //     });
+    // });
+</script>

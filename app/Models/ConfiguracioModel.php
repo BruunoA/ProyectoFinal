@@ -12,7 +12,7 @@ class ConfiguracioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'valor', 'tipus', 'icona', 'id_pare', 'visibilitat', 'ordre'];
+    protected $allowedFields    = ['nom', 'valor', 'tipus', 'icona', 'id_pare', 'visibilitat', 'ordre', 'zona'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

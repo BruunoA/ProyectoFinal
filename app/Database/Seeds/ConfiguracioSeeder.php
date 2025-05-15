@@ -16,7 +16,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Contacte',
@@ -24,7 +25,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Sobre Nosaltres',
@@ -32,7 +34,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Programes',
@@ -40,7 +43,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Juvenil',
@@ -48,7 +52,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Juvenil segona divisio',
@@ -56,7 +61,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 5
+                'id_pare' => 5,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Cadet',
@@ -64,7 +70,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Cadet primera divisio',
@@ -72,7 +79,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 8
+                'id_pare' => 8,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Cadet segona divisio',
@@ -80,7 +88,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 8
+                'id_pare' => 8,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Amateur',
@@ -88,7 +97,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Tercera catalana',
@@ -96,7 +106,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 10
+                'id_pare' => 10,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona catalana',
@@ -104,7 +115,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 10
+                'id_pare' => 10,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Infantil',
@@ -112,7 +124,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [   // ni ha dos
                 'nom' => 'Infantil segona divisio S14',
@@ -120,7 +133,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 13
+                'id_pare' => 13,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Alevi',
@@ -128,7 +142,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Primera divisio alevi S12',
@@ -136,7 +151,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 15
+                'id_pare' => 15,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Primera divisio alevi S11',
@@ -144,7 +160,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 15
+                'id_pare' => 15,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona divisio alevi S12',
@@ -152,7 +169,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 15
+                'id_pare' => 15,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona divisio alevi S11',
@@ -160,7 +178,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => 1,
-                'id_pare' => 15
+                'id_pare' => 15,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Preferent alevi S12',
@@ -168,7 +187,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 5,
                 'visibilitat' => 1,
-                'id_pare' => 15
+                'id_pare' => 15,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Benjamins',
@@ -176,7 +196,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 12,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Primera divisio benjamins S10',
@@ -184,7 +205,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 21
+                'id_pare' => 21,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Primera divisio benjamins S9',
@@ -192,7 +214,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 21
+                'id_pare' => 21,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Prebenjami S8',
@@ -200,7 +223,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 21
+                'id_pare' => 21,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Prebenjami S7',
@@ -208,7 +232,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 4,
                 'visibilitat' => 1,
-                'id_pare' => 21
+                'id_pare' => 21,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Femeni',
@@ -216,7 +241,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 15,
                 'visibilitat' => 1,
-                'id_pare' => 4
+                'id_pare' => 4,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona divisio femeni juvenil',
@@ -224,7 +250,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 26
+                'id_pare' => 26,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona divisio femeni infantil',
@@ -232,7 +259,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 26
+                'id_pare' => 26,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Segona divisio femeni alevi',
@@ -240,7 +268,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 26
+                'id_pare' => 26,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Noticies',
@@ -248,7 +277,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 5,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Galeria',
@@ -256,7 +286,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 6,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Botiga',
@@ -264,15 +295,17 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 7,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
-                        [
+            [
                 'nom' => 'Acces privat',
                 'valor' => '',
                 'tipus' => 'menu_general',
                 'ordre' => 8,
                 'visibilitat' => 1,
-                'id_pare' => null
+                'id_pare' => null,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Iniciar sessio',
@@ -280,7 +313,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 33
+                'id_pare' => 33,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Tancar sessio',
@@ -288,7 +322,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 33
+                'id_pare' => 33,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Gestio',
@@ -296,7 +331,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 3,
                 'visibilitat' => 1,
-                'id_pare' => 33
+                'id_pare' => 33,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'Sobre nosaltres',
@@ -304,7 +340,8 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 1,
                 'visibilitat' => 1,
-                'id_pare' => 3
+                'id_pare' => 3,
+                'zona' => 'superior'
             ],
             [
                 'nom' => 'El nostre staff',
@@ -312,11 +349,63 @@ class ConfiguracioSeeder extends Seeder
                 'tipus' => 'menu_general',
                 'ordre' => 2,
                 'visibilitat' => 1,
-                'id_pare' => 3
+                'id_pare' => 3,
+                'zona' => 'superior'
             ],
         ];
 
         $this->db->table('configuracio')->insertBatch($data);
+
+                $data3 = [
+            [
+                'nom' => 'Inici',
+                // 'icona' => 'fa-solid fa-house',
+                'valor' => '/',
+                'tipus' => 'menu_general',
+                'ordre' => 1,
+                'visibilitat' => 1,
+                'id_pare' => null,
+                'zona' => 'inferior'
+            ],
+            [
+                'nom' => 'Contacte',
+                'valor' => 'contacte',
+                'tipus' => 'menu_general',
+                'ordre' => 2,
+                'visibilitat' => 1,
+                'id_pare' => null,
+                'zona' => 'inferior'
+            ],
+            [
+                'nom' => 'Sobre Nosaltres',
+                'valor' => 'sobreNosaltres',
+                'tipus' => 'menu_general',
+                'ordre' => 3,
+                'visibilitat' => 1,
+                'id_pare' => null,
+                'zona' => 'inferior'
+            ],
+            [
+                'nom' => 'Noticies',
+                'valor' => 'noticies',
+                'tipus' => 'menu_general',
+                'ordre' => 5,
+                'visibilitat' => 1,
+                'id_pare' => null,
+                'zona' => 'inferior'
+            ],
+            [
+                'nom' => 'Galeria',
+                'valor' => 'galeria',
+                'tipus' => 'menu_general',
+                'ordre' => 6,
+                'visibilitat' => 1,
+                'id_pare' => null,
+                'zona' => 'inferior'
+            ]
+        ];
+
+        $this->db->table('configuracio')->insertBatch($data3);
 
         $data2 = [
             [

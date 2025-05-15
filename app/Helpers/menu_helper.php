@@ -7,7 +7,18 @@ if (!function_exists('mostrar_tree')) {
     {
         $model = new ConfiguracioModel();
 
-        $categories = $model->where('tipus', 'menu_general') ->where('visibilitat', 1)->orderBy('ordre', 'ASC')->findAll();
+        $categories = $model->where('tipus', 'menu_general') ->where('visibilitat', 1)->where('zona', 'superior')->orderBy('ordre', 'ASC')->findAll();
+
+        return build_menu_tree($categories);
+    }
+}
+
+if (!function_exists('mostrar_tree_inferior')) {
+    function mostrar_tree_inferior()
+    {
+        $model = new ConfiguracioModel();
+
+        $categories = $model->where('tipus', 'menu_general') ->where('visibilitat', 1)->where('zona', 'inferior')->orderBy('ordre', 'ASC')->findAll();
 
         return build_menu_tree($categories);
     }
