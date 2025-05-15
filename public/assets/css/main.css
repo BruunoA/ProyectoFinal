@@ -271,4 +271,132 @@ a:active {
 
 
 
+    .menu {
+    background-color:rgb(8, 8, 8);
+    color: white;
+}
+
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 0 15px; */
+}
+
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    position: relative;
+}
+
+.menu-items li {
+    position: relative;
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    /* padding: 15px 20px; */
+    display: block;
+}
+
+.menu-items > li > a {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    /* padding: 15px 20px; */
+    cursor: pointer;
+}
+
+.has-submenu > a > i {
+    margin-left: 5px;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color:rgb(0, 0, 0);
+    min-width: 200px;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.submenu.level-3 {
+    left: 100%;
+    top: 0;
+}
+
+.has-submenu:hover > .submenu {
+    display: block;
+}
+
+/* Estilos para móvil */
+@media (max-width: 768px) {
+    .menu-items {
+        flex-direction: column;
+        display: none;
+    }
+    
+    .menu-items.show {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .submenu {
+        position: static;
+        display: none;
+        /* padding-left: 20px; */
+        background-color: rgba(0,0,0,0.2);
+        box-shadow: none;
+    }
+    
+    .submenu.level-3 {
+        /* padding-left: 40px; */
+    }
+    
+    /* .has-submenu.active > .submenu {
+        display: block;
+    }
+    
+    .has-submenu > a {
+        justify-content: space-between;
+    }
+    
+    .has-submenu > a > i {
+        transition: transform 0.3s;
+    } */
+    
+    /* .has-submenu.active > a > i.fa-caret-down {
+        transform: rotate(180deg);
+    }
+    
+    .has-submenu.active > a > i.fa-caret-right {
+        transform: rotate(90deg);
+    } */
+}
+
+
+
+
+
+
+
+
+
+
+
 
