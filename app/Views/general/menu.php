@@ -57,6 +57,11 @@
                 </li>
             <?php endif; ?>
         </ul>
+        <?= $footer = mostrar_footer();
+
+        foreach ($footer as $item): ?>
+            <a href="<?= base_url($item['valor']); ?>" style="color: white; text-decoration: none; margin: 0 10px;"><?= esc($item['nom']); ?></a>
+        <?php endforeach; ?>
     </div>
 </nav>
 
