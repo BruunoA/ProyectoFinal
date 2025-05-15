@@ -25,12 +25,12 @@ class NoticiesController extends BaseController
         $base = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
-        if($search !== '') {
+        if ($search !== '') {
             $base->like('nom', $search)->orLike('contingut', $search);
         }
 
         // si hi ha un filtre de club, s'aplica
-        if($buscarClub !== '') {
+        if ($buscarClub !== '') {
             $base->where('id_club', $buscarClub);
         }
 
@@ -76,12 +76,12 @@ class NoticiesController extends BaseController
         $selectBase = $model->where('id_seccio', 1)->orderBy('created_at', 'DESC');
 
         // si hi ha un filtre de cerca, s'aplica
-        if($search !== '') {
+        if ($search !== '') {
             $selectBase->like('nom', $search)->orLike('contingut', $search);
         }
 
         // si hi ha un filtre de club, s'aplica
-        if($buscarClub !== '') {
+        if ($buscarClub !== '') {
             $selectBase->where('id_club', $buscarClub);
         }
 
