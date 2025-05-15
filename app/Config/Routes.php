@@ -124,10 +124,10 @@ $routes->match(['get', 'post'], 'xarxes_socials', 'ConfiguracioController::xarxe
 
 
 // elFinder
-$routes->get('elfinder', 'FileExplorerController::manager', ['filter' => 'gestio:admin, superadmin']);
-$routes->get('fileconnector', 'FileExplorerController::connector', ['filter' => 'gestio:admin, superadmin']);
-$routes->post('fileconnector', 'FileExplorerController::connector', ['filter' => 'gestio:admin, superadmin']);
-$routes->get('fileget/(:any)', 'FileExplorerController::getFile', ['filter' => 'gestio:admin, superadmin']);
+$routes->get('elfinder', 'FileExplorerController::manager');
+$routes->get('fileconnector', 'FileExplorerController::connector');
+$routes->post('fileconnector', 'FileExplorerController::connector');
+$routes->get('fileget/(:any)', 'FileExplorerController::getFile');
 
 
 //USERS 
