@@ -75,8 +75,8 @@
         <label for="estat" class="w3-text-black"><b><?= lang('gestioGeneral.estat') ?></b></label>
         <select class="w3-select w3-border w3-margin-bottom" name="estat" id="estat">
             <option value=""><?= lang('gestioGeneral.seleccionaOpcio') ?></option>
-            <option value="0" <?= old('estat') == 'no_publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
-            <option value="1" <?= old('estat') == 'publicat' ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
+            <option value="0" <?= old('estat') === '0' ? 'selected' : '' ?>><?= lang('gestioGeneral.no_publicat') ?></option>
+            <option value="1" <?= old('estat') === '1' ? 'selected' : '' ?>><?= lang('gestioGeneral.publicat') ?></option>
         </select>
         <div class="error"><?= validation_show_error('estat') ?></div>
 

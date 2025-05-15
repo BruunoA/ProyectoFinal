@@ -119,7 +119,7 @@ class GestioController extends BaseController
         if ($this->validate($rules)) {
             $model = new GestioModel();
             $model->insert($data);
-            return redirect()->to('/gestio');
+            // return redirect()->to('/gestio');
         } else {
             return redirect()->back()->withInput();
         }

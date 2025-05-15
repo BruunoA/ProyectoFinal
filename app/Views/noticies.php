@@ -78,7 +78,7 @@
                     <div class="card-content">
                         <h3><?= esc(strlen($noticia['nom']) > 50 ? substr($noticia['nom'], 0, 50) . '...' : $noticia['nom']) ?></h3>
                         <p class="content-preview">
-                            <?= esc(strlen($noticia['resum']) > 50 ? substr($noticia['resum'], 0, 50) . '...' : $noticia['resum']) ?>
+                            <?= esc(strlen($noticia['resum']) > 80 ? substr($noticia['resum'], 0, 80) . '...' : $noticia['resum']) ?>
                         </p>
                         <p>
                             <?= date('d/m/Y', strtotime($noticia['created_at'])) ?>
