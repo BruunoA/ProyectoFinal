@@ -22,4 +22,5 @@ return [
     'modificar' => 'Modificar',
     'carrecs' => 'Gestió de càrrecs',
     'titolCarrecs' => 'Gestió de càrrecs',
+    'presenatacio' => 'No hi ha presentacio del president',
 ];

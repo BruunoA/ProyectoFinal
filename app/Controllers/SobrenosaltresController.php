@@ -15,6 +15,7 @@ class SobreNosaltresController extends BaseController
     {
         $model = new GestioModel();
         $data = [
+            'presentacio' => $model->where('id_seccio', 6)->where('estat', 1)->first(),
             'historia' => $model->where('id_seccio', 2)->where('estat', 1)->first(),
             'missio' => $model->where('id_seccio', 3)->where('estat', 1)->first(),
             'visio' => $model->where('id_seccio', 4)->where('estat', 1)->first(),
