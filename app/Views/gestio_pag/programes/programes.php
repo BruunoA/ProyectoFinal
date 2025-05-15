@@ -45,7 +45,7 @@
                 <tr class="w3-light-grey">
                     <th>Títol</th>
                     <!-- <th>Descripció</th> -->
-                    <th>Imatge</th>
+                    <!-- <th>Imatge</th> -->
                     <!-- <th>Horari</th> -->
                     <th>Equip</th>
                     <th colspan="2">Accions</th>
@@ -56,7 +56,7 @@
                     <tr>
                         <td><?= $categoria['titol'] ?></td>
                         <!-- <td><?php // $categoria['descripcio'] ?></td> -->
-                        <td><img src="<?= $categoria['img'] ?>" alt="<?= $categoria['titol'] ?>" width="100"></td>
+                        <!-- <td><img src="<?= $categoria['img'] ?>" alt="<?= $categoria['titol'] ?>" width="100"></td> -->
                         <!-- <td><?php // $categoria['horari'] ?></td> -->
                         <td><?= $categoria['nom'] ?></td>
                         <td>

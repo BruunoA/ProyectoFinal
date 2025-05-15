@@ -242,6 +242,7 @@ class ProgramesController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'grup' => ['name' => 'grup', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required"],],
             'publicated_at' => ['name' => 'publicated_at', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
         ]);
 

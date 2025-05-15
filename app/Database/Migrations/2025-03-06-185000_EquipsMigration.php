@@ -18,6 +18,10 @@ class EquipsMigration extends Migration
                 'constraint'     => 255, 
                 'null'           => false,
             ],
+            'grup'          => [
+                'type'           => 'INT',
+                'null'           => false,
+            ],
             'url_federacio'          => [
                 'type'           => 'TEXT',
             ],

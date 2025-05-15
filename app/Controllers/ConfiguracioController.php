@@ -11,16 +11,16 @@ use SIENSIS\KpaCrud\Libraries\KpaCrud;
 class ConfiguracioController extends BaseController
 {
 
-    public function index()
-    {
-        $data['controller'] = $this;
+    // public function index()
+    // {
+    //     $data['controller'] = $this;
 
-        $model = new ConfiguracioModel();
+    //     $model = new ConfiguracioModel();
 
-        $data["cat"] = $model->get_fills(NULL);
+    //     $data["cat"] = $model->get_fills(NULL);
 
-        return view('general/menu', $data);
-    }
+    //     return view('general/menu', $data);
+    // }
 
     // public function mostrar_tree($categories)
     // {
