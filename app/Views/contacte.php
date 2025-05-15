@@ -48,7 +48,8 @@
                 </div>
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_motiu') ?></label>
-                    <textarea class="w3-input w3-border" name="text" rows="4" placeholder="<?= lang('contacte.Placeholder') ?>"></textarea>
+                    <textarea class="w3-input w3-border" name="text" rows="4" placeholder="<?= lang('contacte.Placeholder') ?>" maxlength="400"></textarea>
+                    <span id="numero">0</span>/400
                     <div class="error"> <?= validation_show_error('text') ?></div>
                 </div>
                 <button type="submit" class="w3-btn w3-green"><?= lang('contacte.Boto_enviar') ?></button>
@@ -71,6 +72,17 @@
     </div>
     <?= $this->include('general/footer'); ?>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.querySelector('textarea[name="text"]');
+            const numero = document.getElementById('numero');
+
+            textarea.addEventListener('input', function() {
+                const length = this.value.length;
+                numero.textContent = length;
+            });
+        });
+    </script>
 </body>
 
 </html>

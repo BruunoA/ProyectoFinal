@@ -19,7 +19,8 @@ class ContacteMigration extends Migration
                 'null'           => false,
             ],
             'text'          => [
-                'type'           => 'TEXT',
+                'type'           => 'VARCHAR',
+                'constraint'     => 400,
                 'null'           => false,
             ],
             'from_email'          => [
