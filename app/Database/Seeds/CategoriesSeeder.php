@@ -9,35 +9,36 @@ class CategoriesSeeder extends Seeder
 {
     public function run()
     {
+        $fake = Factory::create("ca_ES");
 
         $data = [
             [
                 'titol' => 'juvenil-segona-divisio',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
-                'horari' => 'Dilluns, dimarts, dimecres',
+                'horari' => 'Dilluns=> 12:40 - 14:00',
                 'id_equip' => 1,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
                 'titol' => 'cadet-primera-divisio',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
-                'horari' => 'Dijous, divendres, dissabte',
+                'horari' => 'Dijous => 12:40 - 14:00 | Dissabte => 10:00 - 11:30',
                 'id_equip' => 2,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
                 'titol' => 'tercera-catalana',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
-                'horari' => 'Dilluns, dimarts, dimecres',
+                'horari' => 'Dissabte => 12:00 - 13:30 | Diumenge => 10:00 - 11:30',
                 'id_equip' => 3,
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
                 'titol' => 'segona-catalana',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 4,
@@ -45,7 +46,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'cadet-segona-divisio',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
                 'id_equip' => 5,
@@ -53,7 +54,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'infantil-segona-divisio-s14',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 6,
@@ -69,7 +70,7 @@ class CategoriesSeeder extends Seeder
             // ],
             [
                 'titol' => 'primera-divisio-alevi-s11',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 7,
@@ -77,7 +78,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'segona-divisio-alevi-s12',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
                 'id_equip' => 8,
@@ -85,7 +86,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'segona-divisio-alevi-s11',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 9,
@@ -93,7 +94,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'preferent-alevi-s12',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
                 'id_equip' => 10,
@@ -101,7 +102,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'primera-divisio-benjami-s10',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 11,
@@ -109,7 +110,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'primera-divisio-benjami-s9',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
                 'id_equip' => 12,
@@ -117,7 +118,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'prebenjami-s8',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dijous, divendres, dissabte',
                 'id_equip' => 13,
@@ -125,7 +126,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'titol' => 'prebenjami-s7',
-                'descripcio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'descripcio' => $fake->sentence(30),
                 'img' => 'http://localhost/fileget/programes.jpg',
                 'horari' => 'Dilluns, dimarts, dimecres',
                 'id_equip' => 14,
@@ -155,11 +156,11 @@ class CategoriesSeeder extends Seeder
                 'id_equip' => 17,
                 'created_at' => date('Y-m-d H:i:s')
             ],
-                // ['titol'] = > $faker->words(
+            // ['titol'] = > $faker->words(
         ];
-        
+
         $this->db->table('categories')->insertBatch($data);
-        
+
         // $this->db->enableForeignKeyChecks(); // Reactiva las restricciones FK
     }
 }
