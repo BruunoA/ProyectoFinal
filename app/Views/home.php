@@ -20,17 +20,6 @@
     .mySlides {
         display: none;
     }
-
-    figure.image img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    figure {
-        max-width: 90%;
-        margin: 0 auto;
-    }
 </style>
 
 <body>
@@ -118,9 +107,9 @@
                                 <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
                             </a>
                             <div class="card-content">
-                                <h3><?= esc(strlen($noticia['nom']) > 40 ? substr($noticia['nom'], 0, 40) . '...' : $noticia['nom']) ?></h3>
+                                <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
                                 <p class="content-preview">
-                                    <?= esc(strlen($noticia['resum']) > 60 ? substr($noticia['resum'], 0, 60) . '...' : $noticia['resum']) ?>
+                                    <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
                                 </p>
                                 <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
                             </div>
@@ -137,6 +126,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // var myCarousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
+        //     interval: 2000,
+        //     ride: 'carousel'
+        // });
+
         let slideIndex = 1;
         document.addEventListener("DOMContentLoaded", function() {
             showDivs(slideIndex);
