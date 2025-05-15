@@ -20,6 +20,19 @@
     .mySlides {
         display: none;
     }
+
+    .w3-display-container.mySlides {
+        max-width: 90%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .w3-display-container.mySlides .banner {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        width: 100%;
+    }
 </style>
 
 <body>
@@ -30,15 +43,9 @@
         <!-- <div class="w3-content w3-display-container"> -->
         <?php foreach ($banners as $banner): ?>
             <div class="w3-display-container mySlides">
-                <img src="<?= $banner['img']; ?>" class="w3-margin-top banner">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                    <?= esc($banner['titol']) ?>
-                </div>
+                <img src="<?= $banner['img']; ?>" class="w3-margin-top banner" style="max-height: 500px;">
             </div>
         <?php endforeach; ?>
-
-
-
 
         <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
