@@ -46,6 +46,16 @@
                     </li>
                 <?php endif; ?>
             <?php endforeach; ?>
+            <?php if (session()->has('logged_in') && session('logged_in')): ?>
+                <li>
+                    <a href="<?= base_url('gestio') ?>"><?= lang('home.gestio') ?></a>
+                </li>
+                <a href="<?= base_url('logout') ?>"><?= lang('home.logout') ?></a>
+            <?php else: ?>
+                <li>
+                    <a href="<?= base_url('login') ?>"><?= lang('home.login') ?></a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

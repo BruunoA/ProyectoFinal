@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/partPrivada.css'); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <nav class="menu">
@@ -6,6 +6,9 @@
         <div class="menu-toggle" onclick="toggleMenu()" style="color: white;">☰</div>
 
         <ul class="menu-items w3-bar">
+
+            <li><a href="<?= base_url('/') ?>" class="w3-bar-item w3-btn w3-text-white">Part publica</a></li>
+
             <li><a href="<?= base_url('gestio/banner') ?>" class="w3-bar-item w3-btn w3-text-white">Inici</a></li>
 
             <li class="w3-dropdown-hover">

@@ -20,6 +20,17 @@
     .mySlides {
         display: none;
     }
+
+    figure.image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    figure {
+        max-width: 90%;
+        margin: 0 auto;
+    }
 </style>
 
 <body>
@@ -126,7 +137,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-
         let slideIndex = 1;
         document.addEventListener("DOMContentLoaded", function() {
             showDivs(slideIndex);

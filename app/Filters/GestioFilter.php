@@ -27,12 +27,13 @@ class GestioFilter implements FilterInterface
     {
         if ($arguments == null) {
             if (!session()->get('loggedIn')) {
-                return redirect()->to(base_url('home'));
+                session()->setFlashdata('error', '<div style="color: red; background-color: #f8d7da; padding: 10px; border-radius: 5px;">Tens que iniciar sessio</div>');
+                return redirect()->to(base_url('/'));
             }
         } else {
             if (!in_array(session()->get('rol'), $arguments)) {
                 session()->setFlashdata('error', '<div style="color: red; background-color: #f8d7da; padding: 10px; border-radius: 5px;">No tens accés a aquesta pàgina</div>');
-                return redirect()->to(base_url('home'));
+                return redirect()->to(base_url('/'));
             }
         }
     }
