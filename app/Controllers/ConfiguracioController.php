@@ -97,6 +97,7 @@ class ConfiguracioController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'zona' => ['name' => 'zona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'icona' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
             'valor' => ['name' => 'enllaç', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
