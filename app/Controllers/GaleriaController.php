@@ -27,7 +27,7 @@ class GaleriaController extends BaseController
         $albumMap = [];     // array per a guardar els albums publicats
         foreach ($albumsInfo as $album) {
             $albumMap[$album['id']] = [
-                'titol' =>$album['titol'],  // guardem el titol de l'album
+                'titol' => $album['titol'],  // guardem el titol de l'album
                 'portada' => $album['portada'], // guardem la portada de l'album
                 'slug' => $album['slug'], // guardem el slug de l'album
             ];
@@ -76,13 +76,13 @@ class GaleriaController extends BaseController
         $album = $albumModel->where('slug', $slug)->first();
 
         if (empty($album)) {
-            return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
+            return redirect()->to('/galeria')->with('error', '<div style="background-color: red; color: white; padding: 10px;">' . lang('errors.noAlbum') . '</div>');
         }
 
         $fotos = $fotosModel->where('id_album', $album['id'])->where('estat', 1)->findAll();
 
         if (empty($fotos)) {
-            return redirect()->to('/galeria')->with('error', lang('errors.noAlbum'));
+            return redirect()->to('/galeria')->with('error', '<div style="background-color: red; color: white; padding: 10px;">' . lang('errors.noAlbum') . '</div>');
         }
 
         $data = [
