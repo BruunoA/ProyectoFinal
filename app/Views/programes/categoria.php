@@ -20,7 +20,6 @@
 
         <div class="w3-row-padding w3-padding-16">
             <div class="w3-col l4 m6 s12">
-                <!-- <img src="<?= base_url('assets/img/equipo.jpg'); ?>" class="w3-image w3-card-4 w3-round-large" alt="Imatge de l'equip"> -->
                 <img src="<?= $categoria['img'] ?>" class="w3-image w3-card-4 w3-round-large" alt="Imatge de l'equip">
             </div>
 

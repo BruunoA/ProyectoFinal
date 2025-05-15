@@ -267,20 +267,16 @@ a:active {
 
 
 .menu-items {
-    /* list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex; */
     position: relative;
-    justify-content: center; /* Centra los elementos del menú horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-    flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
+    justify-content: center; 
+    align-items: center; 
+    flex-grow: 1;
 }
 
 .menu-items li {
     position: relative;
     display: flex;
-    align-items: center; /* Centra el contenido verticalmente dentro de cada li */
+    align-items: center;
 }
 
 .menu-items li a {
@@ -288,16 +284,16 @@ a:active {
     text-decoration: none;
     padding: 15px 20px;
     display: flex;
-    align-items: center; /* Centra el texto verticalmente */
-    justify-content: center; /* Centra el texto horizontalmente */
-    height: 100%; /* Asegura que ocupe toda la altura del li */
+    align-items: center; 
+    justify-content: center; 
+    height: 100%; 
 }
 
 .has-submenu > a {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centra el texto y el icono */
-    gap: 5px; /* Espacio entre texto e icono */
+    justify-content: center; 
+    gap: 5px;
 }
 
 

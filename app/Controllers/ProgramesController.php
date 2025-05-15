@@ -45,10 +45,18 @@ class ProgramesController extends BaseController
         $model = new ClassificacioModel();
         $classificacio = $model->where('categoria', $nomCategoria)->findAll();
 
+        $resultats = [];
+        foreach($classificacio as $equip){
+            if(isset($equip['resultats'])){
+            $resultats[$equip['id']] = json_decode($equip['resultats'], true) ?? $equip['resultats'];
+            }
+        }
+
         $data = [
             'classificacio' => $classificacio,
             'categoria' => $categoria,
             'titol' => $nomCategoria,
+            'resultats' => $resultats,
         ];
 
         return view('programes/categoria', $data);
