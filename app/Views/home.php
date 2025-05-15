@@ -39,62 +39,11 @@
 
 
 
-        <!-- <div class="w3-display-container mySlides">
-            <img src="<?= base_url('assets/img/album.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-            <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
-                French Alps
-            </div>
-        </div>
 
-        <div class="w3-display-container mySlides">
-            <img src="<?= base_url('assets/img/destacado.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                French Alps
-            </div>
-        </div>
-
-        <div class="w3-display-container mySlides">
-            <img src="<?= base_url('assets/img/campo.jpg') ?>" class="w3-margin-top" style="width:100%; height: 300px; object-fit: cover;">
-            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                French Alps
-            </div>
-        </div> -->
         <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-        <!-- </div> -->
     </div>
-    <!-- <div id="carouselExample" class="carousel slide w-75 mx-auto" data-bs-ride="carousel" data-bs-interval="1000"> -->
 
-    <!-- <div class="carousel-inner">
-            <?php // foreach ($banners as $banner): 
-            ?>
-                <div class="carousel-item">
-                    <img src="<?php // $banner['contingut']; 
-                                ?>" class="d-block w-100 rounded img-fluid" alt="Banner" style="object-fit: cover; height: 500px;">
-                </div>
-            <?php // endforeach; 
-            ?>
-        </div> -->
-
-
-    <!-- <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Campo de fútbol Alpicat" style="height: 500px; object-fit:cover">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Imagen 2" style="height: 500px; object-fit:cover">
-            </div>
-            <div class="carousel-item">
-                <img src="<?= base_url('assets/img/campoAlpicat.jpg'); ?>" class="d-block w-100 rounded img-fluid" alt="Imagen 3" style="height: 500px; object-fit:cover">
-            </div>
-        </div>
-
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-    </div> -->
     </section>
 
     <div class="w3-content w3-padding-32" style="max-width:1200px">
@@ -148,19 +97,21 @@
         </section>
 
 
-        <div class="w3-margin-top">
+        <div class="w3-margin-top w3-margin">
             <h2 class="w3-text-green"><?= lang('home.NoticiesDestacades') ?></h2>
             <?php if (!empty($noticies)): ?>
-                <div class="w3-row-padding">
+                <div class="cards-container">
                     <?php foreach ($noticies as $noticia): ?>
-                        <div class="w3-third w3-margin-bottom">
-                            <div class="w3-card-4 noticies" style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
-                                <div class="w3-container w3-padding">
-                                    <img src="<?= $noticia['portada']; ?>" style="width:100%; height: 200px; object-fit: cover;">
-                                    <h3><?= esc($noticia['nom']) ?></h3>
-                                    <p><?= esc($noticia['resum']) ?></p>
-                                </div>
-                                <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top w3-margin-bottom w3-margin"><?= lang('home.LlegirMes') ?></a>
+                        <div class="news-card w3-round" style="border: 2px solid black; display: flex; flex-direction: column;">
+                            <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>">
+                                <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
+                            </a>
+                            <div class="card-content">
+                                <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
+                                <p class="content-preview">
+                                    <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
+                                </p>
+                                <a href="<?= base_url('noticia/' . esc($noticia['url'])) ?>" class="w3-button w3-green w3-margin-top"><?= lang('home.LlegirMes') ?></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
