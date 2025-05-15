@@ -17,5 +17,5 @@ return [
     "mssgVisio" => "No hi ha contingut a la secció visió.",
     "mssgValors" => "No hi ha contingut a la secció valors.",
     'TitolPresentacio' => "Presentació president",
-    
+    'Presentacio' => "Presentació president",
 ];

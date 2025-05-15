@@ -30,6 +30,7 @@ class SobreNosaltresController extends BaseController
 
         $data = [
             'historia' => $model->where('id_seccio', 2)->findAll(),
+            'presentacio' => $model->where('id_seccio', 6)->findAll(),  
             'missio' => $model->where('id_seccio', 3)->findAll(),
             'visio' => $model->where('id_seccio', 4)->findAll(),
             'valors' => $model->where('id_seccio', 5)->findAll(),

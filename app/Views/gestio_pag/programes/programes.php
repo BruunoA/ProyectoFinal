@@ -42,7 +42,7 @@
     <div class="w3-responsive w3-card-4 w3-light-grey w3-margin">
         <table class="w3-table-all w3-hoverable w3-card-4">
             <thead>
-                <tr class="w3-light-grey">
+                <tr class="w3-black">
                     <th>Títol</th>
                     <!-- <th>Descripció</th> -->
                     <!-- <th>Imatge</th> -->
@@ -67,7 +67,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="paginador w3-center w3-red" style="color:black">
+        <div class="paginador w3-center w3-black" style="color:black">
             <p><?= $pager->links('default', 'daw_template'); ?></p> <?php ?>
         </div>
     </div>

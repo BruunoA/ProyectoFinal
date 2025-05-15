@@ -85,6 +85,21 @@
                 <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgHistoria") ?></p>
             <?php endif; ?>
         </div>
+        <?php if (!empty($presentacio)): ?>
+            <h2 class="w3-center"><?= lang("sobreNosaltres.Presentacio") ?></h2>
+            <?php foreach ($presentacio as $item): ?>
+                <div class="w3-card w3-white w3-round w3-margin w3-padding">
+                    <h3><strong>Nom:</strong><?= esc($item['nom']) ?></h3>
+                    <p><strong>Resum:</strong> <?= esc($item['resum']) ?></p>
+                    <div class="w3-container w3-center">
+                        <a href="<?= base_url('/gestio/modify/' . $item['id']) ?>" class="w3-button w3-blue">Editar</a>
+                        <a href="<?= base_url('/gestio/delete/' . $item['id']) ?>" class="w3-button w3-red" onclick="return confirm('Estàs segur que vols eliminar aquest element?')">Esborrar</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="w3-panel w3-yellow w3-padding"><?= lang("sobreNosaltres.mssgMissio") ?></p>
+        <?php endif; ?>
         <?php if (!empty($missio)): ?>
             <h2 class="w3-center"><?= lang("sobreNosaltres.Missio") ?></h2>
             <?php foreach ($missio as $item): ?>

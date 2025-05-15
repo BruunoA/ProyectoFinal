@@ -48,12 +48,14 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'dades_contacte');
 
-        $crud->setColumns(['nom', 'visibilitat']);
+        $crud->setColumns(['nom']);
 
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
+            'zona' => ['name' => 'zona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+            'tipus' => ['name' => 'tipus', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'icona' => ['name' => 'icona', 'type' =>  KpaCrud::INVISIBLE_FIELD_TYPE],
@@ -80,7 +82,7 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'menu_general');
 
-        $crud->setColumns(['nom', 'valor', 'visibilitat', 'ordre', 'id_pare']);
+        $crud->setColumns(['nom', 'valor', 'visibilitat']);
 
         $id_pares = new ConfiguracioModel();
 
@@ -97,9 +99,10 @@ class ConfiguracioController extends BaseController
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
-            'icona' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
+            'icona' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+            'zona' => ['name' => 'zona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'valor' => ['name' => 'enllaç', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
-            'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
+            'tipus' => ['name' => 'tipus', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'options' => $nomsPares],
             'visibilitat' => ['name' => 'visibilitat', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => [1 => 'Visible', 0 => 'No visible']],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::NUMBER_FIELD_TYPE, 'html_atts' => ["required", 'min=1'],],

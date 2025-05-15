@@ -71,14 +71,14 @@
         </div>
         <div class="cards-container">
             <?php foreach ($gestio as $noticia): ?>
-                <div class="news-card w3-round" style="border: 2px solid black; max-height: 400px;">
+                <div class="news-card w3-round" style="border: 2px solid black; max-height: 420px;">
                     <a href="<?= base_url('noticia/' . $noticia['url']); ?>">
                         <img src="<?= esc($noticia['portada']); ?>" alt="<?= esc($noticia['nom']); ?>" class="w3-image">
                     </a>
                     <div class="card-content">
-                        <h3><?= esc(strlen($noticia['nom']) > 70 ? substr($noticia['nom'], 0, 70) . '...' : $noticia['nom']) ?></h3>
+                        <h3><?= esc(strlen($noticia['nom']) > 50 ? substr($noticia['nom'], 0, 50) . '...' : $noticia['nom']) ?></h3>
                         <p class="content-preview">
-                            <?= esc(strlen($noticia['resum']) > 90 ? substr($noticia['resum'], 0, 90) . '...' : $noticia['resum']) ?>
+                            <?= esc(strlen($noticia['resum']) > 50 ? substr($noticia['resum'], 0, 50) . '...' : $noticia['resum']) ?>
                         </p>
                         <p>
                             <?= date('d/m/Y', strtotime($noticia['created_at'])) ?>

@@ -7,6 +7,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'IndexController::home');
 $routes->get('index', 'IndexController::index');
 
+$routes->get('botiga', 'IndexController::botiga');
+
 $routes->get('classificacio', 'ClassificacioController::index');
 $routes->post('/classificacio/filtrar', 'ClassificacioController::filtrar');
 

@@ -27,7 +27,7 @@
             <div class="w3-row">
                 <div class="w3-half w3-padding">
                     <img class="w3-image w3-border w3-round"
-                        src="<?= $foto['ruta'] ?>"
+                        src="<?= base_url($foto['ruta']) ?>"
                         alt="<?= esc($foto['titol']) ?>">
                     <div class="w3-margin-top">
                         <p class="w3-small w3-text-black">
@@ -41,14 +41,14 @@
                         <div class="w3-margin-bottom">
                             <label class="w3-text-black"><strong><?= lang('albumsGestio.editarTitol') ?></strong></label>
                             <input class="w3-input w3-border w3-round <?= isset($errors['titol']) ? 'w3-border-red' : '' ?>"
-                                type="text" name="titol" value="<?=  esc($foto['titol']) ?>">
+                                type="text" name="titol" value="<?= esc($foto['titol']) ?>">
                             <div class="error"><?= validation_show_error('titol') ?></div>
                         </div>
 
                         <div class="w3-margin-bottom">
                             <label class="w3-text-black"><strong><?= lang('albumsGestio.editarDescripcio') ?></strong></label>
                             <textarea class="w3-input w3-border w3-round <?= isset($errors['descripcio']) ? 'w3-border-red' : '' ?>"
-                                name="descripcio" rows="4"><?=  esc($foto['descripcio']) ?></textarea>
+                                name="descripcio" rows="4"><?= esc($foto['descripcio']) ?></textarea>
                         </div>
                         <div class="w3-margin-top w3-bar">
                             <button type="submit" class="w3-button w3-black w3-round w3-button-custom w3-bar-item">

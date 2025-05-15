@@ -18,7 +18,7 @@
 <body class="w3-container">
     <div class="container">
         <h1 class="w3-center w3-text-blue">Respondre Missatge</h1>
-        <a href="<?= base_url('gestio/mail') ?>" class="w3-button w3-light-grey w3-margin-bottom">
+        <a href="<?= base_url('gestio/email') ?>" class="w3-button w3-light-grey w3-margin-bottom">
             <i class="fas fa-arrow-left"></i> Enrere
         </a>
         <div class="w3-card w3-padding w3-margin w3-light-grey">
