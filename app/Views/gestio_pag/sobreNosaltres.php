@@ -62,7 +62,7 @@
 
 <body class="w3-light-grey">
     <?= $this->include('general/menuGestio'); ?>
-    <a href="<?= base_url('wysiwyg') ?>" class="w3-button w3-blue w3-margin" style="max-width: 400px; height: 200px;"><?= lang("noticies.afegir") ?></a>
+    <a href="<?= base_url('wysiwyg') ?>" class="w3-blue w3-margin w3-padding" style="text-decoration: none; width:150px"><?= lang("noticies.afegir") ?></a>
     <div class="w3-container  w3-margin">
         <?= session()->getFlashdata('success'); ?>
         <h1 class="w3-center"><?= lang("sobreNosaltres.Titol") ?></h1>
