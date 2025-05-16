@@ -12,8 +12,8 @@
 
 <body>
     <?= $this->include('general/menuGestio'); ?>
-    <a href="<?= base_url('pujarArxiu') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.imatges') ?></a>
-    <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-button w3-black w3-margin"><?= lang('albumsGestio.crear') ?></a>
+    <a href="<?= base_url('pujarArxiu') ?>" class="w3-black w3-margin w3-padding" style="text-decoration: none; width:150px"><?= lang('albumsGestio.imatges') ?></a>
+    <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-black w3-margin w3-padding" style="text-decoration: none; width:150px"><?= lang('albumsGestio.crear') ?></a>
     <div class="w3-container">
         <?= session()->getFlashdata('success') ?>
         <h2><?= lang('albumsGestio.subtitol') ?></h2>

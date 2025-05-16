@@ -15,6 +15,7 @@ class FooterSeeder extends Seeder
             'nom' => 'Twitter',
             'valor' => 'https://twitter.com/' . $fake->userName,
             'icona' => 'fa-brands fa-twitter',
+            'zona' => 'superior',
             'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
@@ -25,21 +26,23 @@ class FooterSeeder extends Seeder
             'nom' => 'Facebook',
             'valor' => 'https://facebook.com/' . $fake->userName,
             'icona' => 'fa-brands fa-facebook',
+            'zona' => 'superior',
             'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
 
         $this->db->table('configuracio')->insert($facebook);
 
+
         $instagram = [
             'nom' => 'Instagram',
             'valor' => 'https://instagram.com/' . $fake->userName,
             'icona' => 'fa-brands fa-instagram',
+            'zona' => 'inferior',
             'visibilitat' => 1,
             'tipus' => 'xarxes_socials',
         ];
 
         $this->db->table('configuracio')->insert($instagram);
-
     }
 }

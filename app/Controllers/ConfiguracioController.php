@@ -155,12 +155,13 @@ class ConfiguracioController extends BaseController
         $crud->setPrimaryKey('id');
         $crud->addWhere('tipus', 'xarxes_socials');
 
-        $crud->setColumns(['nom', 'visibilitat']);
+        $crud->setColumns(['nom']);
 
         $crud->setColumnsInfo([
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'icona' => ['name' => 'icona', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE],
+            'zona' => ['name' => 'zona', 'type' =>  KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['superior' => 'Superior', 'inferior' => 'Inferior']],
             'valor' => ['name' => 'valor', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['xarxes_socials' => 'Xarxes socials']],
             'ordre' => ['name' => 'ordre', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
