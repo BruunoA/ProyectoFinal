@@ -175,13 +175,13 @@ class ContacteController extends BaseController
         try {
             $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
             $email->setTo($contacte['from_email']);
-            $email->setSubject('Re: ' . $contacte['assumpte']);
+            $email->setSubject('Re: ' . $contacte['id_assumpte']);
             $email->setMessage($cossMissatge);
 
             if ($email->send()) {
-                return redirect()->to('/gestio/email')->with('success', 'Resposta enviada correctament a ' . $contacte['from_email']);
+                return redirect()->to('/gestio/email')->with('success', '<div style="background-color: green; color: white; padding: 10px;">Resposta enviada correctament a ' . $contacte['from_email'] . '</div>');
             } else {
-                return redirect()->to('/gestio/email')->with('error', 'Error en enviar: ' . $email->printDebugger(['headers']));
+                return redirect()->to('/gestio/email')->with('error', '<div style="background-color: red; color: white; padding: 10px;">Error en enviar: ' . $email->printDebugger(['headers']) . '</div>');
             }
         } catch (\Exception $e) {
             return redirect()->to('/gestio/email')->with('error', 'Error: ' . $e->getMessage());

@@ -6,12 +6,6 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    //  public function __construct()
-    // {
-    //     $model = new ConfiguracioModel();
-    //     $gmail = $model->where('nom', 'Correu')->first();
-    //     $this->fromEmail = $gmail['valor'] ?? 'fcalpicat@capalabs.com';
-    // }
     public string $fromEmail  = 'fcalpicat@capalabs.com';
     public string $fromName   = 'Administrador Picat';
     public string $recipients = '';
