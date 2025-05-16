@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <form action="<?= base_url('gestio/mail/send/' . $id) ?>" method="post" class="w3-card w3-padding w3-margin">
+        <form action="<?= base_url('gestio/email/send/' . $id) ?>" method="post" class="w3-card w3-padding w3-margin">
             <div class="w3-section">
                 <label class="w3-text-blue"><strong>Per a:</strong></label>
                 <input type="text" class="w3-input w3-border"
