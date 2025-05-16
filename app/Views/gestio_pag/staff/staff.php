@@ -11,12 +11,12 @@
 
 <body>
     <?= $this->include('general/menuGestio'); ?>
+    <h1 class="w3-center"><?= lang("staff.subtitol") ?></h1>
     <div class="">
         <a href="<?= base_url('gestio/staff/add') ?>" class="w3-button w3-blue w3-margin"><?= lang("staff.crear") ?></a>
         <a href="<?= base_url('gestio/carrecs') ?>" class="w3-button w3-blue w3-margin"><?= lang("staff.carrecs") ?></a>
     </div>
     <?= session()->getFlashdata('success') ?>
-    <h1 class="w3-center"><?= lang("staff.subtitol") ?></h1>
     <div class="w3-container w3-padding">
         <table class="w3-table-all w3-hoverable w3-card">
             <thead>
