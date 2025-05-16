@@ -166,7 +166,7 @@ class ContacteController extends BaseController
         $cossMissatge = "Resposta al teu missatge:\n\n";
         $cossMissatge .= "---------- Missatge Original ----------\n";
         $cossMissatge .= "De: {$contacte['nom']} <{$contacte['from_email']}>\n";
-        $cossMissatge .= "Assumpte: {$contacte['assumpte']}\n";
+        $cossMissatge .= "Assumpte: {$contacte['id_assumpte']}\n";
         $cossMissatge .= "Data: {$contacte['created_at']}\n\n";
         $cossMissatge .= "{$contacte['text']}\n\n";
         $cossMissatge .= "---------- Resposta ----------\n";
@@ -179,12 +179,12 @@ class ContacteController extends BaseController
             $email->setMessage($cossMissatge);
 
             if ($email->send()) {
-                return redirect()->to('/gestio/mail')->with('success', 'Resposta enviada correctament a ' . $contacte['from_email']);
+                return redirect()->to('/gestio/email')->with('success', 'Resposta enviada correctament a ' . $contacte['from_email']);
             } else {
-                return redirect()->to('/gestio/mail')->with('error', 'Error en enviar: ' . $email->printDebugger(['headers']));
+                return redirect()->to('/gestio/email')->with('error', 'Error en enviar: ' . $email->printDebugger(['headers']));
             }
         } catch (\Exception $e) {
-            return redirect()->to('/gestio/mail')->with('error', 'Error: ' . $e->getMessage());
+            return redirect()->to('/gestio/email')->with('error', 'Error: ' . $e->getMessage());
         }
     }
 

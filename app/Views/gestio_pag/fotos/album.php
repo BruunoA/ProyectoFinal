@@ -16,6 +16,7 @@
     <a href="<?= base_url('gestio/galeria/crearAlbum') ?>" class="w3-black w3-margin w3-padding" style="text-decoration: none; width:150px"><?= lang('albumsGestio.crear') ?></a>
     <div class="w3-container">
         <?= session()->getFlashdata('success') ?>
+        <?= session()->getFlashdata('error') ?>
         <h2><?= lang('albumsGestio.subtitol') ?></h2>
         <form method='get' action="<?= base_url('gestio/galeria'); ?>" id="searchForm" class="w3-container w3-padding w3-card w3-margin-bottom">
 
