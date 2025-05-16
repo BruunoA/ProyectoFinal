@@ -16,12 +16,14 @@ class ContacteController extends BaseController
         $model = new ConfiguracioModel();
         $modelAssupmtes = new AssumptesModel();
         $assumptes = $modelAssupmtes->findAll();
+        $dadesContacte = $model->where('nom !=', 'Enllaç mapa')->where('tipus', 'dades_contacte')->findAll();
         $urlMapa = $model->where('nom', 'Enllaç mapa')->first();
 
         $data = [
-            'ubicacio' => $model->where('nom', 'Ubicacio')->first(),
-            'telefon' => $model->where('nom', 'Telefon')->first(),
-            'correu' => $model->where('nom', 'Correu')->first(),
+            // 'ubicacio' => $model->where('nom', 'Ubicacio')->first(),
+            // 'telefon' => $model->where('nom', 'Telefon')->first(),
+            // 'correu' => $model->where('nom', 'Correu')->first(),
+            'dades' => $dadesContacte,
             'assumptes' => $assumptes,
             'urlMapa' => $urlMapa['valor'],
         ];

@@ -63,9 +63,9 @@
                 <h1 class="w3-center w3-text-white"><?= lang('contacte.TitolContacte') ?></h1>
             </div>
             <div class="w3-card w3-white w3-padding w3-margin-bottom">
-                <p><strong><?= lang('contacte.CampUbicacio') ?> </strong><?= $ubicacio['valor'] ?></p>
-                <p><strong><?= lang('contacte.CampTelefon') ?> </strong><?= $telefon['valor'] ?></p>
-                <p><strong><?= lang('contacte.CampCorreu') ?> </strong><?= $correu['valor'] ?></p>
+                <?php foreach ($dades as $dada): ?>
+                    <p><strong><?= esc($dada['nom']) ?>: </strong><?= esc($dada['valor']) ?></p>
+                <?php endforeach; ?>
             </div>
             <div class="mapa">
                 <iframe src="<?= esc($urlMapa) ?>"
