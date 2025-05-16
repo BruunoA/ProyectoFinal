@@ -100,7 +100,7 @@ class ConfiguracioController extends BaseController
             'id' => ['name' => 'codi', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'nom' => ['name' => 'nom', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'icona' => ['name' => 'icona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
-            'zona' => ['name' => 'zona', 'type' => KpaCrud::INVISIBLE_FIELD_TYPE],
+            'zona' => ['name' => 'zona', 'type' =>  KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['superior' => 'Superior', 'inferior' => 'Inferior']],
             'valor' => ['name' => 'enllaç', 'type' => KpaCrud::TEXTAREA_FIELD_TYPE, 'html_atts' => ["required"],],
             'tipus' => ['name' => 'tipus', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'html_atts' => ["required"], 'options' => ['menu_general' => 'Menu general']],
             'id_pare' => ['name' => 'id_pare', 'type' => KpaCrud::DROPDOWN_FIELD_TYPE, 'options' => $nomsPares],
