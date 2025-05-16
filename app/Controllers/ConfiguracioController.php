@@ -86,7 +86,7 @@ class ConfiguracioController extends BaseController
 
         $id_pares = new ConfiguracioModel();
 
-        $pares = $id_pares->where('tipus', 'menu_general')->where('id_pare', null)->findAll();
+        $pares = $id_pares->where('tipus', 'menu_general')->where('id_pare', null)->groupBy('nom')->orderBy('ordre', 'ASC')->findAll();
         $nomsPares = [];
 
         $nomsPares[0] = 'No pare';
