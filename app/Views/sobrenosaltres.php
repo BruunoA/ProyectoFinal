@@ -14,7 +14,10 @@
     <?= $this->include('general/menu'); ?>
 
     <div class="w3-container" style="margin-top: 2rem;">
-        <h2 class="w3-center"><strong><?= lang('sobreNosaltres.TitolHistoria') ?></strong></h2>
+        <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+            <h1 class="w3-center w3-text-white"><?= lang('sobreNosaltres.TitolHistoria') ?></h1>
+        </div>
+        <h2 class="w3-center"><strong></strong></h2>
         <div class="historia-container">
             <img src="assets/img/campoAlpicat.jpg" alt="Campo Alpicat" class="historia-img" style="width: 50%;">
             <div id="historia" class="w3-container w3-border">
@@ -28,8 +31,10 @@
         </div>
     </div>
 
-        <div class="w3-container" style="margin-top: 2rem;">
-        <h2 class="w3-center"><strong><?= lang('sobreNosaltres.TitolPresentacio') ?></strong></h2>
+    <div class="w3-container" style="margin-top: 2rem;">
+        <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+            <h1 class="w3-center w3-text-white"><?= lang('sobreNosaltres.TitolPresentacio') ?></h1>
+        </div>
         <div class="historia-container">
             <div id="historia" class="w3-container w3-border">
                 <?php if (!empty($presentacio)): ?>
@@ -44,8 +49,9 @@
 
     <div class="w3-container" style="margin-top: 2rem; margin-bottom: 2rem;">
         <div class="w3-container">
-            <h1 class="w3-center"><strong><?= lang('sobreNosaltres.Subtitol') ?></strong></h1>
-
+            <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+                <h1 class="w3-center w3-text-white"><?= lang('sobreNosaltres.Subtitol') ?></h1>
+            </div>
             <div class="w3-bar w3-black">
                 <button class="w3-bar-item w3-button tablink w3-red"
                     onclick="openCity(event,'Missio')"><?= lang('sobreNosaltres.TitolMissio') ?></button>

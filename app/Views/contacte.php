@@ -19,7 +19,9 @@
 
     <div class="w3-row content">
         <div class="w3-half w3-padding">
-            <h2 class="w3-center"><?= lang('contacte.Titol') ?></h2>
+            <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+                <h1 class="w3-center w3-text-white"><?= lang('contacte.Titol') ?></h1>
+            </div>
             <form class="w3-container w3-card w3-padding w3-white" action="<?= base_url('contacte/send') ?>" method="post">
                 <div class="w3-section">
                     <label><?= lang('contacte.Camp_nom') ?></label>
@@ -57,7 +59,9 @@
         </div>
 
         <div class="w3-half w3-padding">
-            <h2 class="w3-center"><?= lang('contacte.TitolContacte') ?></h2>
+            <div class="w3-container w3-blue" style="margin-bottom: 2rem">
+                <h1 class="w3-center w3-text-white"><?= lang('contacte.TitolContacte') ?></h1>
+            </div>
             <div class="w3-card w3-white w3-padding w3-margin-bottom">
                 <p><strong><?= lang('contacte.CampUbicacio') ?> </strong><?= $ubicacio['valor'] ?></p>
                 <p><strong><?= lang('contacte.CampTelefon') ?> </strong><?= $telefon['valor'] ?></p>

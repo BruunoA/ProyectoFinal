@@ -15,7 +15,10 @@
     <div>
         <div class="staff-container">
             <?php foreach ($carrecs as $carrec => $persones): ?>
-                <h2 class="w3-padding"><?= esc($carrec) ?></h2>
+                <div class="w3-container w3-blue" style="margin-bottom: 2rem; margin:20px ;height: 100px;">
+                    <h2 class="w3-padding"><?= esc($carrec) ?></h2>
+                </div>
+
                 <div class="cards-container w3-row-padding">
                     <?php foreach ($persones as $persona): ?>
                         <div class="news-card w3-round w3-col m4 l3" style="border: 2px solid black; max-height: 400px; margin-bottom: 20px;">
