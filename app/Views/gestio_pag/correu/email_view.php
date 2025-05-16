@@ -53,7 +53,7 @@
             <button type="submit" class="w3-button w3-green">
                 <i class="fas fa-paper-plane"></i> Enviar resposta
             </button>
-            <a href="<?= base_url('gestio/mail') ?>" class="w3-button w3-red">
+            <a href="<?= base_url('gestio/email') ?>" class="w3-button w3-red">
                 <i class="fas fa-times"></i> Cancel·lar
             </a>
         </form>
