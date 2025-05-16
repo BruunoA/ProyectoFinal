@@ -102,13 +102,13 @@ class ContacteController extends BaseController
 
         $email->setFrom('fcalpicat@capalabs.com', 'Administrador Picat');
         $email->setTo('fcalpicat@capalabs.com');
-        $email->setSubject('Nuevo mensaje de contacto: ' . $data['id_assumpte']);
+        $email->setSubject('Nou missatge de contacte: ' . $data['id_assumpte']);
 
-        $missatge = "Has recibido un nuevo mensaje de contacto:\n\n";
-        $missatge .= "Nombre: {$data['nom']}\n";
+        $missatge = "Has rebut un nou missatge:\n\n";
+        $missatge .= "Nom: {$data['nom']}\n";
         $missatge .= "Email: {$data['from_email']}\n";
-        $missatge .= "Asunto: {$data['id_assumpte']}\n";
-        $missatge .= "Mensaje:\n{$data['text']}\n";
+        $missatge .= "Assumpte: {$data['id_assumpte']}\n";
+        $missatge .= "Missatge:\n{$data['text']}\n";
 
         $email->setMessage($missatge);
 
